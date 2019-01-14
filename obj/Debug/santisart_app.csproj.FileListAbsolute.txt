@@ -81,3 +81,4 @@ C:\Users\mumee\source\repos\santisart_app\santisart_app\obj\Debug\santisart_app.
 C:\Users\mumee\source\repos\santisart_app\santisart_app\obj\Debug\santisart_app.csproj.CopyComplete
 C:\Users\mumee\source\repos\santisart_app\santisart_app\obj\Debug\santisart_app.dll
 C:\Users\mumee\source\repos\santisart_app\santisart_app\obj\Debug\santisart_app.pdb
+C:\Users\mumee\source\repos\santisart_app\santisart_app\obj\Debug\santisart_app.csprojAssemblyReference.cache
