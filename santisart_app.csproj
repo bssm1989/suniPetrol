@@ -137,6 +137,7 @@
       <DependentUpon>santisart.database.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Views\student\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -145,6 +146,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\studentController.cs" />
     <Compile Include="Models\ENROLL_PAID.cs">
       <DependentUpon>santisart.tt</DependentUpon>
     </Compile>

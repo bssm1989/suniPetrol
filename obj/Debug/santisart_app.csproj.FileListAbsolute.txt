@@ -82,3 +82,7 @@ C:\Users\mumee\source\repos\santisart_app\santisart_app\obj\Debug\santisart_app.
 C:\Users\mumee\source\repos\santisart_app\santisart_app\obj\Debug\santisart_app.dll
 C:\Users\mumee\source\repos\santisart_app\santisart_app\obj\Debug\santisart_app.pdb
 C:\Users\mumee\source\repos\santisart_app\santisart_app\obj\Debug\santisart_app.csprojAssemblyReference.cache
+C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\EntityFramework.dll
+C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\EntityFramework.SqlServer.dll
+C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\EntityFramework.xml
+C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\EntityFramework.SqlServer.xml

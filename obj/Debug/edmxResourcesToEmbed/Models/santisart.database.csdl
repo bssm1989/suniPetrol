@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="santisar_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ENROLL_PAID">
+    <Key>
+      <PropertyRef Name="PAID_ID" />
+    </Key>
+    <Property Name="PAID_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="STUDENT_ID" Type="Int32" />
+    <Property Name="MONTHLY_ID" Type="Int32" />
+    <Property Name="TIMESTAMP" Type="DateTime" Precision="3" />
+    <Property Name="STAFF_PAID_ID" Type="Int32" />
+    <Property Name="STUDENT_TYPE_ID" Type="Int32" />
+    <Property Name="PAID" Type="Int32" />
+    <Property Name="CLASS_ID" Type="Int32" />
+    <Property Name="PAY_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ENROLL_PAY">
+    <Key>
+      <PropertyRef Name="PAY_ID" />
+    </Key>
+    <Property Name="PAY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PAID_ID" Type="Int32" />
+    <Property Name="STUDENT_ID" Type="Int32" />
+    <Property Name="PAY" Type="Int32" />
+    <Property Name="STAFF_ID" Type="Int32" />
+    <Property Name="TIMESTAMP" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ENROLL_STUDENT_CLASS">
+    <Key>
+      <PropertyRef Name="ENROL_STU_CLASS_ID" />
+    </Key>
+    <Property Name="STUDENT_ID" Type="Int32" Nullable="false" />
+    <Property Name="CLASS_ID" Type="Int32" Nullable="false" />
+    <Property Name="ENROL_STU_CLASS_ID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FOOD">
+    <Key>
+      <PropertyRef Name="FOOD_ID" />
+    </Key>
+    <Property Name="FOOD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FOOD_ID_STUDENT" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="FOOD_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FOOD_LASTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FOOD_MONTH_TH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FOOD_MONTH_INDEX" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="FOOD_PAID" Type="Int32" />
+    <Property Name="FOOD_FULL_PAID" Type="Int32" />
+    <Property Name="FOOD_CLASS" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="FOOD_YEAR" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="FOOD_TIMESATAMP" Type="DateTime" Precision="3" />
+    <Property Name="FOOD_UPDATE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FOOD_PAID_ID" Type="Int32" />
+    <Property Name="FOOD_TITLE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MONTHLY">
+    <Key>
+      <PropertyRef Name="MONTHLY_ID" />
+    </Key>
+    <Property Name="MONTHLY_ID" Type="Int32" Nullable="false" />
+    <Property Name="MONTH_NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="MONTH_YEAR" Type="Int32" />
+    <Property Name="MONTH_COURSE" Type="Int32" />
+    <Property Name="MONTH_STATUS" Type="Boolean" />
+    <Property Name="MONTH_YEARINDEX" Type="Int32" />
+  </EntityType>
+  <EntityType Name="STUDENTS">
+    <Key>
+      <PropertyRef Name="STUDENT_ID" />
+    </Key>
+    <Property Name="STUDENT_ID" Type="Int32" Nullable="false" />
+    <Property Name="STUDENT_TITLE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="STUDENT_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="STUDENT_LNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="STUDENT_BIRTHDAY" Type="DateTime" Precision="3" />
+    <Property Name="STUDENT_IDCARD" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="STUDENT_PSIS_ID" Type="Int32" />
+    <Property Name="STUDENT_STATUS" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="STUDENT_TIMESTAMP" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="santisar_serv" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ENROLL_PAID" EntityType="Self.ENROLL_PAID" />
+    <EntitySet Name="ENROLL_PAY" EntityType="Self.ENROLL_PAY" />
+    <EntitySet Name="ENROLL_STUDENT_CLASS" EntityType="Self.ENROLL_STUDENT_CLASS" />
+    <EntitySet Name="FOOD" EntityType="Self.FOOD" />
+    <EntitySet Name="MONTHLY" EntityType="Self.MONTHLY" />
+    <EntitySet Name="STUDENTS" EntityType="Self.STUDENTS" />
+  </EntityContainer>
+</Schema>
