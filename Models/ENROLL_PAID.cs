@@ -12,16 +12,16 @@ namespace santisart_app.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ENROLL_PAID
+    public partial class Enroll_paid
     {
-        public int PAID_ID { get; set; }
-        public Nullable<int> STUDENT_ID { get; set; }
-        public Nullable<int> MONTHLY_ID { get; set; }
-        public Nullable<System.DateTime> TIMESTAMP { get; set; }
-        public Nullable<int> STAFF_PAID_ID { get; set; }
-        public Nullable<int> STUDENT_TYPE_ID { get; set; }
-        public Nullable<int> PAID { get; set; }
-        public Nullable<int> CLASS_ID { get; set; }
-        public Nullable<int> PAY_ID { get; set; }
+        public int Paid_id { get; set; }
+        public Nullable<int> Student_id { get; set; }
+        public Nullable<int> Monthly_id { get; set; }
+        public Nullable<System.DateTime> Timestamp { get; set; }
+        public Nullable<int> Staff_paid_id { get; set; }
+        public Nullable<int> Student_type_id { get; set; }
+        public Nullable<int> Paid { get; set; }
+        public Nullable<int> Class_id { get; set; }
+        public Nullable<int> Pay_id { get; set; }
     }
 }

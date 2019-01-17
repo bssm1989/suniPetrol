@@ -12,10 +12,10 @@ namespace santisart_app.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ENROLL_STUDENT_CLASS
+    public partial class Enroll_student_class
     {
-        public int STUDENT_ID { get; set; }
-        public int CLASS_ID { get; set; }
-        public int ENROL_STU_CLASS_ID { get; set; }
+        public int Student_id { get; set; }
+        public int Class_id { get; set; }
+        public int Enrol_stu_class_id { get; set; }
     }
 }

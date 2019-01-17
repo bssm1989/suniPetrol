@@ -12,21 +12,21 @@ namespace santisart_app.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class FOOD
+    public partial class Food
     {
-        public int FOOD_ID { get; set; }
-        public string FOOD_ID_STUDENT { get; set; }
-        public string FOOD_NAME { get; set; }
-        public string FOOD_LASTNAME { get; set; }
-        public string FOOD_MONTH_TH { get; set; }
-        public string FOOD_MONTH_INDEX { get; set; }
-        public Nullable<int> FOOD_PAID { get; set; }
-        public Nullable<int> FOOD_FULL_PAID { get; set; }
-        public string FOOD_CLASS { get; set; }
-        public string FOOD_YEAR { get; set; }
-        public Nullable<System.DateTime> FOOD_TIMESATAMP { get; set; }
-        public string FOOD_UPDATE { get; set; }
-        public Nullable<int> FOOD_PAID_ID { get; set; }
-        public string FOOD_TITLE { get; set; }
+        public int Food_id { get; set; }
+        public string Food_id_student { get; set; }
+        public string Food_name { get; set; }
+        public string Food_lastname { get; set; }
+        public string Food_month_th { get; set; }
+        public string Food_month_index { get; set; }
+        public Nullable<int> Food_paid { get; set; }
+        public Nullable<int> Food_full_paid { get; set; }
+        public string Food_class { get; set; }
+        public string Food_year { get; set; }
+        public Nullable<System.DateTime> Food_timesatamp { get; set; }
+        public string Food_update { get; set; }
+        public Nullable<int> Food_paid_id { get; set; }
+        public string Food_title { get; set; }
     }
 }

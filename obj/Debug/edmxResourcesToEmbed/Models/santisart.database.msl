@@ -1,86 +1,98 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="santisar_ModelStoreContainer" CdmEntityContainer="santisar_serv">
-    <EntitySetMapping Name="ENROLL_PAID">
-      <EntityTypeMapping TypeName="santisar_Model.ENROLL_PAID">
-        <MappingFragment StoreEntitySet="ENROLL_PAID">
-          <ScalarProperty Name="PAID_ID" ColumnName="PAID_ID" />
-          <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
-          <ScalarProperty Name="MONTHLY_ID" ColumnName="MONTHLY_ID" />
-          <ScalarProperty Name="TIMESTAMP" ColumnName="TIMESTAMP" />
-          <ScalarProperty Name="STAFF_PAID_ID" ColumnName="STAFF_PAID_ID" />
-          <ScalarProperty Name="STUDENT_TYPE_ID" ColumnName="STUDENT_TYPE_ID" />
-          <ScalarProperty Name="PAID" ColumnName="PAID" />
-          <ScalarProperty Name="CLASS_ID" ColumnName="CLASS_ID" />
-          <ScalarProperty Name="PAY_ID" ColumnName="PAY_ID" />
+    <EntitySetMapping Name="Enroll_paid">
+      <EntityTypeMapping TypeName="santisar_Model.Enroll_paid">
+        <MappingFragment StoreEntitySet="Enroll_paid">
+          <ScalarProperty Name="Pay_id" ColumnName="Pay_id" />
+          <ScalarProperty Name="Class_id" ColumnName="Class_id" />
+          <ScalarProperty Name="Paid" ColumnName="Paid" />
+          <ScalarProperty Name="Student_type_id" ColumnName="Student_type_id" />
+          <ScalarProperty Name="Staff_paid_id" ColumnName="Staff_paid_id" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          <ScalarProperty Name="Monthly_id" ColumnName="Monthly_id" />
+          <ScalarProperty Name="Student_id" ColumnName="Student_id" />
+          <ScalarProperty Name="Paid_id" ColumnName="Paid_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ENROLL_PAY">
-      <EntityTypeMapping TypeName="santisar_Model.ENROLL_PAY">
-        <MappingFragment StoreEntitySet="ENROLL_PAY">
-          <ScalarProperty Name="PAY_ID" ColumnName="PAY_ID" />
-          <ScalarProperty Name="PAID_ID" ColumnName="PAID_ID" />
-          <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
-          <ScalarProperty Name="PAY" ColumnName="PAY" />
-          <ScalarProperty Name="STAFF_ID" ColumnName="STAFF_ID" />
-          <ScalarProperty Name="TIMESTAMP" ColumnName="TIMESTAMP" />
+    <EntitySetMapping Name="Class_student">
+      <EntityTypeMapping TypeName="santisar_Model.Class_student">
+        <MappingFragment StoreEntitySet="Class_student">
+          <ScalarProperty Name="Class_id" ColumnName="Class_id" />
+          <ScalarProperty Name="Status_class" ColumnName="Status_class" />
+          <ScalarProperty Name="Class_name_id" ColumnName="Class_name_id" />
+          <ScalarProperty Name="Teacher_id" ColumnName="Teacher_id" />
+          <ScalarProperty Name="Class_room" ColumnName="Class_room" />
+          <ScalarProperty Name="Class_year_index" ColumnName="Class_year_index" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ENROLL_STUDENT_CLASS">
-      <EntityTypeMapping TypeName="santisar_Model.ENROLL_STUDENT_CLASS">
-        <MappingFragment StoreEntitySet="ENROLL_STUDENT_CLASS">
-          <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
-          <ScalarProperty Name="CLASS_ID" ColumnName="CLASS_ID" />
-          <ScalarProperty Name="ENROL_STU_CLASS_ID" ColumnName="ENROL_STU_CLASS_ID" />
+    <EntitySetMapping Name="Enroll_pay">
+      <EntityTypeMapping TypeName="santisar_Model.Enroll_pay">
+        <MappingFragment StoreEntitySet="Enroll_pay">
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          <ScalarProperty Name="Staff_id" ColumnName="Staff_id" />
+          <ScalarProperty Name="Pay" ColumnName="Pay" />
+          <ScalarProperty Name="Student_id" ColumnName="Student_id" />
+          <ScalarProperty Name="Paid_id" ColumnName="Paid_id" />
+          <ScalarProperty Name="Pay_id" ColumnName="Pay_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="FOOD">
-      <EntityTypeMapping TypeName="santisar_Model.FOOD">
-        <MappingFragment StoreEntitySet="FOOD">
-          <ScalarProperty Name="FOOD_ID" ColumnName="FOOD_ID" />
-          <ScalarProperty Name="FOOD_ID_STUDENT" ColumnName="FOOD_ID_STUDENT" />
-          <ScalarProperty Name="FOOD_NAME" ColumnName="FOOD_NAME" />
-          <ScalarProperty Name="FOOD_LASTNAME" ColumnName="FOOD_LASTNAME" />
-          <ScalarProperty Name="FOOD_MONTH_TH" ColumnName="FOOD_MONTH_TH" />
-          <ScalarProperty Name="FOOD_MONTH_INDEX" ColumnName="FOOD_MONTH_INDEX" />
-          <ScalarProperty Name="FOOD_PAID" ColumnName="FOOD_PAID" />
-          <ScalarProperty Name="FOOD_FULL_PAID" ColumnName="FOOD_FULL_PAID" />
-          <ScalarProperty Name="FOOD_CLASS" ColumnName="FOOD_CLASS" />
-          <ScalarProperty Name="FOOD_YEAR" ColumnName="FOOD_YEAR" />
-          <ScalarProperty Name="FOOD_TIMESATAMP" ColumnName="FOOD_TIMESATAMP" />
-          <ScalarProperty Name="FOOD_UPDATE" ColumnName="FOOD_UPDATE" />
-          <ScalarProperty Name="FOOD_PAID_ID" ColumnName="FOOD_PAID_ID" />
-          <ScalarProperty Name="FOOD_TITLE" ColumnName="FOOD_TITLE" />
+    <EntitySetMapping Name="Enroll_student_class">
+      <EntityTypeMapping TypeName="santisar_Model.Enroll_student_class">
+        <MappingFragment StoreEntitySet="Enroll_student_class">
+          <ScalarProperty Name="Enrol_stu_class_id" ColumnName="Enrol_stu_class_id" />
+          <ScalarProperty Name="Class_id" ColumnName="Class_id" />
+          <ScalarProperty Name="Student_id" ColumnName="Student_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="MONTHLY">
-      <EntityTypeMapping TypeName="santisar_Model.MONTHLY">
-        <MappingFragment StoreEntitySet="MONTHLY">
-          <ScalarProperty Name="MONTHLY_ID" ColumnName="MONTHLY_ID" />
-          <ScalarProperty Name="MONTH_NAME" ColumnName="MONTH_NAME" />
-          <ScalarProperty Name="MONTH_YEAR" ColumnName="MONTH_YEAR" />
-          <ScalarProperty Name="MONTH_COURSE" ColumnName="MONTH_COURSE" />
-          <ScalarProperty Name="MONTH_STATUS" ColumnName="MONTH_STATUS" />
-          <ScalarProperty Name="MONTH_YEARINDEX" ColumnName="MONTH_YEARINDEX" />
+    <EntitySetMapping Name="Food">
+      <EntityTypeMapping TypeName="santisar_Model.Food">
+        <MappingFragment StoreEntitySet="Food">
+          <ScalarProperty Name="Food_title" ColumnName="Food_title" />
+          <ScalarProperty Name="Food_paid_id" ColumnName="Food_paid_id" />
+          <ScalarProperty Name="Food_update" ColumnName="Food_update" />
+          <ScalarProperty Name="Food_timesatamp" ColumnName="Food_timesatamp" />
+          <ScalarProperty Name="Food_year" ColumnName="Food_year" />
+          <ScalarProperty Name="Food_class" ColumnName="Food_class" />
+          <ScalarProperty Name="Food_full_paid" ColumnName="Food_full_paid" />
+          <ScalarProperty Name="Food_paid" ColumnName="Food_paid" />
+          <ScalarProperty Name="Food_month_index" ColumnName="Food_month_index" />
+          <ScalarProperty Name="Food_month_th" ColumnName="Food_month_th" />
+          <ScalarProperty Name="Food_lastname" ColumnName="Food_lastname" />
+          <ScalarProperty Name="Food_name" ColumnName="Food_name" />
+          <ScalarProperty Name="Food_id_student" ColumnName="Food_id_student" />
+          <ScalarProperty Name="Food_id" ColumnName="Food_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="STUDENTS">
-      <EntityTypeMapping TypeName="santisar_Model.STUDENTS">
-        <MappingFragment StoreEntitySet="STUDENTS">
-          <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
-          <ScalarProperty Name="STUDENT_TITLE" ColumnName="STUDENT_TITLE" />
-          <ScalarProperty Name="STUDENT_NAME" ColumnName="STUDENT_NAME" />
-          <ScalarProperty Name="STUDENT_LNAME" ColumnName="STUDENT_LNAME" />
-          <ScalarProperty Name="STUDENT_BIRTHDAY" ColumnName="STUDENT_BIRTHDAY" />
-          <ScalarProperty Name="STUDENT_IDCARD" ColumnName="STUDENT_IDCARD" />
-          <ScalarProperty Name="STUDENT_PSIS_ID" ColumnName="STUDENT_PSIS_ID" />
-          <ScalarProperty Name="STUDENT_STATUS" ColumnName="STUDENT_STATUS" />
-          <ScalarProperty Name="STUDENT_TIMESTAMP" ColumnName="STUDENT_TIMESTAMP" />
+    <EntitySetMapping Name="Monthly">
+      <EntityTypeMapping TypeName="santisar_Model.Monthly">
+        <MappingFragment StoreEntitySet="Monthly">
+          <ScalarProperty Name="Month_yearindex" ColumnName="Month_yearindex" />
+          <ScalarProperty Name="Month_status" ColumnName="Month_status" />
+          <ScalarProperty Name="Month_course" ColumnName="Month_course" />
+          <ScalarProperty Name="Month_year" ColumnName="Month_year" />
+          <ScalarProperty Name="Month_name" ColumnName="Month_name" />
+          <ScalarProperty Name="Monthly_id" ColumnName="Monthly_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="santisar_Model.Students">
+        <MappingFragment StoreEntitySet="Students">
+          <ScalarProperty Name="Student_timestamp" ColumnName="Student_timestamp" />
+          <ScalarProperty Name="Student_status" ColumnName="Student_status" />
+          <ScalarProperty Name="Student_psis_id" ColumnName="Student_psis_id" />
+          <ScalarProperty Name="Student_idcard" ColumnName="Student_idcard" />
+          <ScalarProperty Name="Student_birthday" ColumnName="Student_birthday" />
+          <ScalarProperty Name="Student_lname" ColumnName="Student_lname" />
+          <ScalarProperty Name="Student_name" ColumnName="Student_name" />
+          <ScalarProperty Name="Student_title" ColumnName="Student_title" />
+          <ScalarProperty Name="Student_id" ColumnName="Student_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

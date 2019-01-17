@@ -12,13 +12,13 @@ namespace santisart_app.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class MONTHLY
+    public partial class Monthly
     {
-        public int MONTHLY_ID { get; set; }
-        public string MONTH_NAME { get; set; }
-        public Nullable<int> MONTH_YEAR { get; set; }
-        public Nullable<int> MONTH_COURSE { get; set; }
-        public Nullable<bool> MONTH_STATUS { get; set; }
-        public Nullable<int> MONTH_YEARINDEX { get; set; }
+        public int Monthly_id { get; set; }
+        public string Month_name { get; set; }
+        public Nullable<int> Month_year { get; set; }
+        public Nullable<int> Month_course { get; set; }
+        public Nullable<bool> Month_status { get; set; }
+        public Nullable<int> Month_yearindex { get; set; }
     }
 }

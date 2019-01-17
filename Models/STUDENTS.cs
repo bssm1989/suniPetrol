@@ -12,16 +12,16 @@ namespace santisart_app.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class STUDENTS
+    public partial class Students
     {
-        public int STUDENT_ID { get; set; }
-        public string STUDENT_TITLE { get; set; }
-        public string STUDENT_NAME { get; set; }
-        public string STUDENT_LNAME { get; set; }
-        public Nullable<System.DateTime> STUDENT_BIRTHDAY { get; set; }
-        public string STUDENT_IDCARD { get; set; }
-        public Nullable<int> STUDENT_PSIS_ID { get; set; }
-        public string STUDENT_STATUS { get; set; }
-        public Nullable<System.DateTime> STUDENT_TIMESTAMP { get; set; }
+        public int Student_id { get; set; }
+        public string Student_title { get; set; }
+        public string Student_name { get; set; }
+        public string Student_lname { get; set; }
+        public Nullable<System.DateTime> Student_birthday { get; set; }
+        public string Student_idcard { get; set; }
+        public Nullable<int> Student_psis_id { get; set; }
+        public string Student_status { get; set; }
+        public Nullable<System.DateTime> Student_timestamp { get; set; }
     }
 }

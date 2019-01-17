@@ -10,11 +10,11 @@ namespace santisart_app.Controllers
     public class studentController : Controller
     {
         // GET: student
-        santisar_serv db = new santisar_serv();
+        santisar_Entities db = new santisar_Entities();
         public ActionResult Index()
         {
 
-            return View(db.STUDENTS.ToList());
+            return View(db.Students.ToList());
         }
     }
 }

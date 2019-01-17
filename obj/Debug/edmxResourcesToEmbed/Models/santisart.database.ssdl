@@ -1,98 +1,109 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="santisar_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <!--Errors Found During Generation:
-warning 6013: The table/view 'santisar_.santisart.CLASS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="CLASS">
-          <Property Name="CLASS_ID" Type="int" />
-          <Property Name="STATUS" Type="varchar" MaxLength="20" />
-          <Property Name="CLASS_NAME_ID" Type="varchar" MaxLength="5" />
-          <Property Name="TEACHER_ID" Type="int" />
-          <Property Name="CLASS_ROOM" Type="int" />
-          <Property Name="CLASS_YEAR_INDEX" Type="int" />
+warning 6013: The table/view 'santisar_.santisart.Class_student' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Class_student">
+          <Property Name="Class_id" Type="int" />
+          <Property Name="Status_class" Type="varchar" MaxLength="20" />
+          <Property Name="Class_name_id" Type="varchar" MaxLength="5" />
+          <Property Name="Teacher_id" Type="int" />
+          <Property Name="Class_room" Type="int" />
+          <Property Name="Class_year_index" Type="int" />
         </EntityType>-->
-  <EntityType Name="ENROLL_PAID">
+  <EntityType Name="Enroll_paid">
     <Key>
-      <PropertyRef Name="PAID_ID" />
+      <PropertyRef Name="Paid_id" />
     </Key>
-    <Property Name="PAID_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="STUDENT_ID" Type="int" />
-    <Property Name="MONTHLY_ID" Type="int" />
-    <Property Name="TIMESTAMP" Type="datetime" />
-    <Property Name="STAFF_PAID_ID" Type="int" />
-    <Property Name="STUDENT_TYPE_ID" Type="int" />
-    <Property Name="PAID" Type="int" />
-    <Property Name="CLASS_ID" Type="int" />
-    <Property Name="PAY_ID" Type="int" />
+    <Property Name="Paid_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Student_id" Type="int" />
+    <Property Name="Monthly_id" Type="int" />
+    <Property Name="Timestamp" Type="datetime" />
+    <Property Name="Staff_paid_id" Type="int" />
+    <Property Name="Student_type_id" Type="int" />
+    <Property Name="Paid" Type="int" />
+    <Property Name="Class_id" Type="int" />
+    <Property Name="Pay_id" Type="int" />
   </EntityType>
-  <EntityType Name="ENROLL_PAY">
+  <EntityType Name="Class_student">
     <Key>
-      <PropertyRef Name="PAY_ID" />
+      <PropertyRef Name="Paid_id" />
     </Key>
-    <Property Name="PAY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="PAID_ID" Type="int" />
-    <Property Name="STUDENT_ID" Type="int" />
-    <Property Name="PAY" Type="int" />
-    <Property Name="STAFF_ID" Type="int" />
-    <Property Name="TIMESTAMP" Type="datetime" />
+    <Property Name="Class_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status_class" Type="varchar " />
+    <Property Name="Class_name_id" Type="varchar " />
+    <Property Name="Teacher_id" Type="int" />
+    <Property Name="Class_room" Type="int" />
+    <Property Name="Class_year_index" Type="int" />
   </EntityType>
-  <EntityType Name="ENROLL_STUDENT_CLASS">
+  <EntityType Name="Enroll_pay">
     <Key>
-      <PropertyRef Name="ENROL_STU_CLASS_ID" />
+      <PropertyRef Name="Pay_id" />
     </Key>
-    <Property Name="STUDENT_ID" Type="int" Nullable="false" />
-    <Property Name="CLASS_ID" Type="int" Nullable="false" />
-    <Property Name="ENROL_STU_CLASS_ID" Type="int" Nullable="false" />
+    <Property Name="Pay_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Paid_id" Type="int" />
+    <Property Name="Student_id" Type="int" />
+    <Property Name="Pay" Type="int" />
+    <Property Name="Staff_id" Type="int" />
+    <Property Name="Timestamp" Type="datetime" />
   </EntityType>
-  <EntityType Name="FOOD">
+  <EntityType Name="Enroll_student_class">
     <Key>
-      <PropertyRef Name="FOOD_ID" />
+      <PropertyRef Name="Enrol_stu_class_id" />
     </Key>
-    <Property Name="FOOD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FOOD_ID_STUDENT" Type="varchar" MaxLength="6" />
-    <Property Name="FOOD_NAME" Type="varchar" MaxLength="50" />
-    <Property Name="FOOD_LASTNAME" Type="varchar" MaxLength="50" />
-    <Property Name="FOOD_MONTH_TH" Type="varchar" MaxLength="20" />
-    <Property Name="FOOD_MONTH_INDEX" Type="varchar" MaxLength="2" />
-    <Property Name="FOOD_PAID" Type="int" />
-    <Property Name="FOOD_FULL_PAID" Type="int" />
-    <Property Name="FOOD_CLASS" Type="varchar" MaxLength="5" />
-    <Property Name="FOOD_YEAR" Type="varchar" MaxLength="4" />
-    <Property Name="FOOD_TIMESATAMP" Type="datetime" />
-    <Property Name="FOOD_UPDATE" Type="varchar" MaxLength="50" />
-    <Property Name="FOOD_PAID_ID" Type="int" />
-    <Property Name="FOOD_TITLE" Type="varchar" MaxLength="20" />
+    <Property Name="Student_id" Type="int" Nullable="false" />
+    <Property Name="Class_id" Type="int" Nullable="false" />
+    <Property Name="Enrol_stu_class_id" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="MONTHLY">
+  <EntityType Name="Food">
     <Key>
-      <PropertyRef Name="MONTHLY_ID" />
+      <PropertyRef Name="Food_id" />
     </Key>
-    <Property Name="MONTHLY_ID" Type="int" Nullable="false" />
-    <Property Name="MONTH_NAME" Type="varchar" MaxLength="25" />
-    <Property Name="MONTH_YEAR" Type="int" />
-    <Property Name="MONTH_COURSE" Type="int" />
-    <Property Name="MONTH_STATUS" Type="bit" />
-    <Property Name="MONTH_YEARINDEX" Type="int" />
+    <Property Name="Food_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Food_id_student" Type="varchar" MaxLength="6" />
+    <Property Name="Food_name" Type="varchar" MaxLength="50" />
+    <Property Name="Food_lastname" Type="varchar" MaxLength="50" />
+    <Property Name="Food_month_th" Type="varchar" MaxLength="20" />
+    <Property Name="Food_month_index" Type="varchar" MaxLength="2" />
+    <Property Name="Food_paid" Type="int" />
+    <Property Name="Food_full_paid" Type="int" />
+    <Property Name="Food_class" Type="varchar" MaxLength="5" />
+    <Property Name="Food_year" Type="varchar" MaxLength="4" />
+    <Property Name="Food_timesatamp" Type="datetime" />
+    <Property Name="Food_update" Type="varchar" MaxLength="50" />
+    <Property Name="Food_paid_id" Type="int" />
+    <Property Name="Food_title" Type="varchar" MaxLength="20" />
   </EntityType>
-  <EntityType Name="STUDENTS">
+  <EntityType Name="Monthly">
     <Key>
-      <PropertyRef Name="STUDENT_ID" />
+      <PropertyRef Name="Monthly_id" />
     </Key>
-    <Property Name="STUDENT_ID" Type="int" Nullable="false" />
-    <Property Name="STUDENT_TITLE" Type="varchar" MaxLength="10" />
-    <Property Name="STUDENT_NAME" Type="varchar" MaxLength="100" />
-    <Property Name="STUDENT_LNAME" Type="varchar" MaxLength="100" />
-    <Property Name="STUDENT_BIRTHDAY" Type="datetime" />
-    <Property Name="STUDENT_IDCARD" Type="varchar" MaxLength="13" />
-    <Property Name="STUDENT_PSIS_ID" Type="int" />
-    <Property Name="STUDENT_STATUS" Type="varchar" MaxLength="25" />
-    <Property Name="STUDENT_TIMESTAMP" Type="datetime" />
+    <Property Name="Monthly_id" Type="int" Nullable="false" />
+    <Property Name="Month_name" Type="varchar" MaxLength="25" />
+    <Property Name="Month_year" Type="int" />
+    <Property Name="Month_course" Type="int" />
+    <Property Name="Month_status" Type="bit" />
+    <Property Name="Month_yearindex" Type="int" />
+  </EntityType>
+  <EntityType Name="Students">
+    <Key>
+      <PropertyRef Name="Student_id" />
+    </Key>
+    <Property Name="Student_id" Type="int" Nullable="false" />
+    <Property Name="Student_title" Type="varchar" MaxLength="10" />
+    <Property Name="Student_name" Type="varchar" MaxLength="100" />
+    <Property Name="Student_lname" Type="varchar" MaxLength="100" />
+    <Property Name="Student_birthday" Type="datetime" />
+    <Property Name="Student_idcard" Type="varchar" MaxLength="13" />
+    <Property Name="Student_psis_id" Type="int" />
+    <Property Name="Student_status" Type="varchar" MaxLength="25" />
+    <Property Name="Student_timestamp" Type="datetime" />
   </EntityType>
   <EntityContainer Name="santisar_ModelStoreContainer">
-    <EntitySet Name="ENROLL_PAID" EntityType="Self.ENROLL_PAID" Schema="santisart" store:Type="Tables" />
-    <EntitySet Name="ENROLL_PAY" EntityType="Self.ENROLL_PAY" Schema="santisart" store:Type="Tables" />
-    <EntitySet Name="ENROLL_STUDENT_CLASS" EntityType="Self.ENROLL_STUDENT_CLASS" Schema="santisart" store:Type="Tables" />
-    <EntitySet Name="FOOD" EntityType="Self.FOOD" Schema="santisart" store:Type="Tables" />
-    <EntitySet Name="MONTHLY" EntityType="Self.MONTHLY" Schema="santisart" store:Type="Tables" />
-    <EntitySet Name="STUDENTS" EntityType="Self.STUDENTS" Schema="santisart" store:Type="Tables" />
+    <EntitySet Name="Enroll_paid" EntityType="Self.Enroll_paid" Schema="santisart" store:Type="Tables" />
+    <EntitySet Name="Enroll_pay" EntityType="Self.Enroll_pay" Schema="santisart" store:Type="Tables" />
+    <EntitySet Name="Enroll_student_class" EntityType="Self.Enroll_student_class" Schema="santisart" store:Type="Tables" />
+    <EntitySet Name="Food" EntityType="Self.Food" Schema="santisart" store:Type="Tables" />
+    <EntitySet Name="Monthly" EntityType="Self.Monthly" Schema="santisart" store:Type="Tables" />
+    <EntitySet Name="Students" EntityType="Self.Students" Schema="santisart" store:Type="Tables" />
   </EntityContainer>
 </Schema>

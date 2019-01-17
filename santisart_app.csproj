@@ -3244,15 +3244,15 @@
     <Content Include="Content\vendors\validator\multifield.js" />
     <Content Include="Content\vendors\validator\validator.js" />
     <Content Include="Global.asax" />
-    <Content Include="Models\santisart.Context.tt">
+    <Content Include="Models\SantisartDatabaseServ.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>santisart.Context.cs</LastGenOutput>
-      <DependentUpon>santisart.database.edmx</DependentUpon>
+      <DependentUpon>SantisartDatabaseServ.edmx</DependentUpon>
+      <LastGenOutput>SantisartDatabaseServ.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\santisart.tt">
+    <Content Include="Models\SantisartDatabaseServ.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>santisart.database.edmx</DependentUpon>
-      <LastGenOutput>santisart.cs</LastGenOutput>
+      <DependentUpon>SantisartDatabaseServ.edmx</DependentUpon>
+      <LastGenOutput>SantisartDatabaseServ.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -3922,6 +3922,13 @@
     <Content Include="Content\vendors\validator\.gitattributes" />
     <Content Include="Content\vendors\validator\README.md" />
     <Content Include="Content\vendors\validator\validator.jquery.json" />
+    <EntityDeploy Include="Models\SantisartDatabaseServ.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SantisartDatabaseServ.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\SantisartDatabaseServ.edmx.diagram">
+      <DependentUpon>SantisartDatabaseServ.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -3938,17 +3945,11 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config" />
-    <EntityDeploy Include="Models\santisart.database.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>santisart.database.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\santisart.database.edmx.diagram">
-      <DependentUpon>santisart.database.edmx</DependentUpon>
-    </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\student\Index.cshtml" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Views\FoodPaid\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3957,40 +3958,50 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\FoodPaidController.cs" />
     <Compile Include="Controllers\studentController.cs" />
-    <Compile Include="Models\ENROLL_PAID.cs">
-      <DependentUpon>santisart.tt</DependentUpon>
+    <Compile Include="Models\Class.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ENROLL_PAY.cs">
-      <DependentUpon>santisart.tt</DependentUpon>
+    <Compile Include="Models\Enroll_paid.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ENROLL_STUDENT_CLASS.cs">
-      <DependentUpon>santisart.tt</DependentUpon>
+    <Compile Include="Models\Enroll_pay.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FOOD.cs">
-      <DependentUpon>santisart.tt</DependentUpon>
+    <Compile Include="Models\Enroll_student_class.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\MONTHLY.cs">
-      <DependentUpon>santisart.tt</DependentUpon>
+    <Compile Include="Models\Food.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\santisart.Context.cs">
+    <Compile Include="Models\Monthly.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SantisartDatabaseServ.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>santisart.Context.tt</DependentUpon>
+      <DependentUpon>SantisartDatabaseServ.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\santisart.cs">
+    <Compile Include="Models\SantisartDatabaseServ.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>santisart.tt</DependentUpon>
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\santisart.database.Designer.cs">
+    <Compile Include="Models\SantisartDatabaseServ.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>santisart.database.edmx</DependentUpon>
+      <DependentUpon>SantisartDatabaseServ.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\STUDENTS.cs">
-      <DependentUpon>santisart.tt</DependentUpon>
+    <Compile Include="Models\studentNow.cs" />
+    <Compile Include="Models\Students.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\viewdetail.cs" />
+    <Compile Include="Models\ViewDetailPaide.cs" />
+    <Compile Include="Models\viewPaid.cs" />
+    <Compile Include="Models\ViewPrintInvoise.cs" />
+    <Compile Include="Models\ViewStudentClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
