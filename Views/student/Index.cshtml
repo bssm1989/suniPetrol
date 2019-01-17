@@ -3,73 +3,111 @@
 @{
     ViewBag.Title = "Index";
 }
+<head>
+    
+        <script type="text/javascript" language="javascript" class="init">
 
+         $(document).ready(function () {
+
+           var table= $('#datatable1').DataTable({  "pageLength": 50,  
+                select: {
+                    style: 'multi'
+                }
+            })
+            $('#datatable1 tbody').mouseup(function () {
+
+               // callPaid(table);
+
+            });
+           
+      
+            table.on('select.dt', function () {
+                var array = [];
+
+                table.rows('.selected').every(function (rowIdx) {
+                    array.push(table.row(rowIdx).id())
+                })
+
+                console.log("id"+array);
+              //  callPaid(table)
+            })
+        }); 
+        </script>
+   
+</head>
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.STUDENT_TITLE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.STUDENT_NAME)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.STUDENT_LNAME)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.STUDENT_BIRTHDAY)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.STUDENT_IDCARD)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.STUDENT_PSIS_ID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.STUDENT_STATUS)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.STUDENT_TIMESTAMP)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.STUDENT_TITLE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.STUDENT_NAME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.STUDENT_LNAME)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.STUDENT_BIRTHDAY)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.STUDENT_IDCARD)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.STUDENT_PSIS_ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.STUDENT_STATUS)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.STUDENT_TIMESTAMP)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.STUDENT_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.STUDENT_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.STUDENT_ID })
-        </td>
-    </tr>
-}
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <table id="datatable1" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.STUDENT_TITLE)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.STUDENT_NAME)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.STUDENT_LNAME)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.STUDENT_BIRTHDAY)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.STUDENT_IDCARD)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.STUDENT_PSIS_ID)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.STUDENT_STATUS)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.STUDENT_TIMESTAMP)
+                            </th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.STUDENT_TITLE)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.STUDENT_NAME)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.STUDENT_LNAME)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.STUDENT_BIRTHDAY)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.STUDENT_IDCARD)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.STUDENT_PSIS_ID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.STUDENT_STATUS)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.STUDENT_TIMESTAMP)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.STUDENT_ID }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.STUDENT_ID }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.STUDENT_ID })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-</table>
+
