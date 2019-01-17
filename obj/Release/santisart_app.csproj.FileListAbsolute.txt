@@ -82,3 +82,8 @@ C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\roslyn\vbc.exe.confi
 C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\roslyn\vbc.rsp
 C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\roslyn\VBCSCompiler.exe
 C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\EntityFramework.dll
+C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\EntityFramework.SqlServer.dll
+C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\Rotativa.dll
+C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\EntityFramework.xml
+C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\EntityFramework.SqlServer.xml

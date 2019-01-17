@@ -122,8 +122,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\css\AdminLTE.css" />
-    <Content Include="Content\css\AdminLTE.min.css" />
     <Content Include="Content\css\bootstrap-datepicker3.min.css" />
     <Content Include="Content\css\bootstrap-select.css" />
     <Content Include="Content\css\bootstrap-select.min.css" />

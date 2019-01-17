@@ -86,3 +86,4 @@ C:\Users\mumee\source\repos\santisart_app\santisart_app\obj\Debug\santisart_app.
 C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\Rotativa.dll
 C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\roslyn\System.IO.FileSystem.dll
 C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\mumee\source\repos\santisart_app\santisart_app\obj\Debug\santisart_app.csprojAssemblyReference.cache
