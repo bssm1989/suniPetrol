@@ -1,5 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="santisar_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="santisar_Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Class" EntityType="santisar_Model.Class" />
+    <EntitySet Name="Enroll_paid" EntityType="santisar_Model.Enroll_paid" />
+    <EntitySet Name="Enroll_pay" EntityType="santisar_Model.Enroll_pay" />
+    <EntitySet Name="Enroll_student_class" EntityType="santisar_Model.Enroll_student_class" />
+    <EntitySet Name="Food" EntityType="santisar_Model.Food" />
+    <EntitySet Name="Monthly" EntityType="santisar_Model.Monthly" />
+    <EntitySet Name="Students" EntityType="santisar_Model.Students" />
+  </EntityContainer>
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="Class_id" />
+    </Key>
+    <Property Name="Class_id" Type="Int32" Nullable="false" />
+    <Property Name="Status_class" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Class_name_id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Teacher_id" Type="Int32" />
+    <Property Name="Class_room" Type="Int32" />
+    <Property Name="Class_year_index" Type="Int32" />
+  </EntityType>
   <EntityType Name="Enroll_paid">
     <Key>
       <PropertyRef Name="Paid_id" />
@@ -76,25 +96,5 @@
     <Property Name="Student_psis_id" Type="Int32" />
     <Property Name="Student_status" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="Student_timestamp" Type="DateTime" Precision="3" />
-  </EntityType>
-  <EntityContainer Name="santisar_Entities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Enroll_paid" EntityType="Self.Enroll_paid" />
-    <EntitySet Name="Enroll_pay" EntityType="Self.Enroll_pay" />
-    <EntitySet Name="Enroll_student_class" EntityType="Self.Enroll_student_class" />
-    <EntitySet Name="Food" EntityType="Self.Food" />
-    <EntitySet Name="Monthly" EntityType="Self.Monthly" />
-    <EntitySet Name="Students" EntityType="Self.Students" />
-    <EntitySet Name="Class" EntityType="santisar_Model.Class" />
-  </EntityContainer>
-  <EntityType Name="Class">
-    <Key>
-      <PropertyRef Name="Class_id" />
-    </Key>
-    <Property Name="Class_id" Type="Int32" Nullable="false" />
-    <Property Name="Status_class" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="Class_name_id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-    <Property Name="Teacher_id" Type="Int32" />
-    <Property Name="Class_room" Type="Int32" />
-    <Property Name="Class_year_index" Type="Int32" />
   </EntityType>
 </Schema>

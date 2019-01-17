@@ -11,14 +11,7 @@
                 "scrollCollapse": false,
                 "info": true,
                 "paging": true,
-                'aoColumns': [
-                    { sWidth: "15%", bSearchable: false, bSortable: false },
-                    { sWidth: "15%", bSearchable: false, bSortable: false },
-                    { sWidth: "15%", bSearchable: false, bSortable: false },
-                    { sWidth: "15%", bSearchable: false, bSortable: false },
-                    { sWidth: "15%", bSearchable: false, bSortable: false },
-                    { sWidth: "15%", bSearchable: false, bSortable: false },
-                ],
+                
             });
         });
 
@@ -41,39 +34,39 @@
                 
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(models =>Model.First().students.StudentId )
+                            รหัส
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.First().students.StudentTitle)
+                            @Html.DisplayNameFor(model => model.First().students.Student_title)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.First().students.StudentName)
+                            @Html.DisplayNameFor(model => model.First().students.Student_name)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.First().students.StudentLname)
+                            @Html.DisplayNameFor(model => model.First().students.Student_lname)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.First().students.StudentBirthday)
+                            @Html.DisplayNameFor(model => model.First().students.Student_birthday)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.First().students.StudentIdcard)
+                            @Html.DisplayNameFor(model => model.First().students.Student_idcard)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.First().students.StudentPsisId)
+                            @Html.DisplayNameFor(model => model.First().students.Student_psis_id)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.First().students.StudentStatus)
+                            @Html.DisplayNameFor(model => model.First().students.Student_status)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.First().students.StudentTimestamp)
+                            @Html.DisplayNameFor(model => model.First().students.Student_timestamp)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.First().Class2.ClassNameId)
+                            @Html.DisplayNameFor(model => model.First().Class2.Class_name_id)
                         </th>
 <th>
-                            @Html.DisplayNameFor(model => model.First().Class2.ClassRoom)
+                            @Html.DisplayNameFor(model => model.First().Class2.Class_room)
                         </th><th>
-                            @Html.DisplayNameFor(model => model.First().Class2.ClassYearIndex)
+                            @Html.DisplayNameFor(model => model.First().Class2.Class_year_index)
                         </th>
 
                         <th></th>
@@ -84,47 +77,49 @@
                 {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.students.StudentId)
+                        @Html.DisplayFor(modelItem => item.students.Student_id)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.students.StudentTitle)
+                        @Html.DisplayFor(modelItem => item.students.Student_title)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.students.StudentName)
+                        @Html.DisplayFor(modelItem => item.students.Student_name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.students.StudentLname)
+                        @Html.DisplayFor(modelItem => item.students.Student_lname)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.students.StudentBirthday)
+                        @Html.DisplayFor(modelItem => item.students.Student_birthday)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.students.StudentIdcard)
+                        @Html.DisplayFor(modelItem => item.students.Student_idcard)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.students.StudentPsisId)
+                        @Html.DisplayFor(modelItem => item.students.Student_psis_id)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.students.StudentStatus)
+                        @Html.DisplayFor(modelItem => item.students.Student_status)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.students.StudentTimestamp)
+                        @Html.DisplayFor(modelItem => item.students.Student_timestamp)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Class2.ClassNameId)
+                        @Html.DisplayFor(modelItem => item.Class2.Class_name_id)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Class2.ClassRoom)
+                        @Html.DisplayFor(modelItem => item.Class2.Class_room)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Class2.ClassYearIndex)
+                        @Html.DisplayFor(modelItem => item.Class2.Class_year_index)
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Details", "Details", new { item.students.StudentId }) |
+                        @Html.ActionLink("Details", "Details", new { item.students.Student_id }) |
                         @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
                     </td>
                 </tr>
                 }
             </tbody>
         </table>
+        </div>
+</div>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace santisart_app.Controllers
+namespace santisart_app.Models
 {
     public class viewPaid
 

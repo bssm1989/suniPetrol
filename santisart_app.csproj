@@ -45,6 +45,9 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.7.3\lib\net461\Rotativa.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -3254,6 +3257,10 @@
       <DependentUpon>SantisartDatabaseServ.edmx</DependentUpon>
       <LastGenOutput>SantisartDatabaseServ.cs</LastGenOutput>
     </Content>
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\fastclick.js" />
@@ -3929,6 +3936,7 @@
     <Content Include="Models\SantisartDatabaseServ.edmx.diagram">
       <DependentUpon>SantisartDatabaseServ.edmx</DependentUpon>
     </Content>
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -3949,6 +3957,17 @@
     <Content Include="Views\student\Index.cshtml" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Views\FoodPaid\DemoViewAsPDF.cshtml" />
+    <Content Include="Views\FoodPaid\Details.cshtml" />
+    <Content Include="Views\FoodPaid\Index1.cshtml" />
+    <Content Include="Views\FoodPaid\invoiceAllStudent.cshtml" />
+    <Content Include="Views\FoodPaid\modalPaid.cshtml" />
+    <Content Include="Views\FoodPaid\paid.cshtml" />
+    <Content Include="Views\FoodPaid\printBill.cshtml" />
+    <Content Include="Views\FoodPaid\printPaid.cshtml" />
+    <Content Include="Views\FoodPaid\View1.cshtml" />
+    <Content Include="Views\FoodPaid\View2.cshtml" />
+    <Content Include="Views\FoodPaid\ViewDetail.cshtml" />
     <Content Include="Views\FoodPaid\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -3960,6 +3979,8 @@
   <ItemGroup>
     <Compile Include="Controllers\FoodPaidController.cs" />
     <Compile Include="Controllers\studentController.cs" />
+    <Compile Include="Models\AddPaidStudent.cs" />
+    <Compile Include="Models\BlogViewPrintBill.cs" />
     <Compile Include="Models\Class.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
