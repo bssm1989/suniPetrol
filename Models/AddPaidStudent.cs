@@ -7,7 +7,7 @@ namespace santisart_app.Models
 {
     public class AddPaidStudent
     {
-        public int StudentId { get; set; }
+        public int Student_id { get; set; }
         public int[] MonthIdAndPaid { get; set; }
         public int numPaid { get; set; }
 

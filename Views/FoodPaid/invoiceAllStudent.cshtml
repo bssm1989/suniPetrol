@@ -95,18 +95,18 @@
                     <table style="height: 6px; width: 789px; font-size: 20px;" cellspacing="0" cellpadding="0">
                         <thead>
                             <tr>
-                                <td style="width: 231px;">ชื่อ-สกุล  @Model.detailStudent[i].StudentName @Model.detailStudent[i].StudentLname&nbsp;</td>
-                                <td style="width: 348px;">เลขที่บัตรประชาชน @Model.detailStudent[i].StudentIdcard   </td>
-                                <td style="width: 188px;">รหัสประจำตัว @Model.detailStudent[i].StudentPsisId</td>
+                                <td style="width: 231px;">ชื่อ-สกุล  @Model.detailStudent[i].Student_name @Model.detailStudent[i].Student_lname&nbsp;</td>
+                                <td style="width: 348px;">เลขที่บัตรประชาชน @Model.detailStudent[i].Student_idcard   </td>
+                                <td style="width: 188px;">รหัสประจำตัว @Model.detailStudent[i].Student_psis_id</td>
                             </tr>
                         </thead>
                     </table>
                     <table style="height: 6px; width: 789px; font-size: 20px;" cellspacing="0" cellpadding="0">
                         <thead>
                             <tr>
-                                <td style="width: 231px;">ปีการศึกษา&nbsp; @Model.detailStudent[i].ClassYearIndex</td>
+                                <td style="width: 231px;">ปีการศึกษา&nbsp; @Model.detailStudent[i].Class_year_index</td>
                                 <td style="width: 348px;">ภาคเรียนที่ 2</td>
-                                <td style="width: 188px;">ชั้น @Model.detailStudent[i].ClassNameId</td>
+                                <td style="width: 188px;">ชั้น @Model.detailStudent[i].Class_name_id</td>
                             </tr>
                         </thead>
                     </table>
@@ -129,13 +129,13 @@
                 int index = 1;
                 foreach (var items in Model.studentInvoise[i])
                 {
-                    var sub = items.MonthCourse - items.totalPaid;
+                    var sub = items.Month_course - items.totalPaid;
 
 
                     <tr style="height: 24px;">
                         <td style="width: 97px; height: 24px;">&nbsp;@index</td>
-                        <td style="width: 633px; height: 24px;">&nbsp;ค่าอาหารประจำเดือน @items.MonthName พ.ศ.@items.MonthYear</td>
-                        <td style="width: 138px; height: 24px; text-align: center;">&nbsp;@Convert.ToDecimal(items.MonthCourse).ToString("#,##0.00")</td>
+                        <td style="width: 633px; height: 24px;">&nbsp;ค่าอาหารประจำเดือน @items.Month_name พ.ศ.@items.Month_year</td>
+                        <td style="width: 138px; height: 24px; text-align: center;">&nbsp;@Convert.ToDecimal(items.Month_course).ToString("#,##0.00")</td>
                         <td style="width: 123px; height: 24px; text-align: center;">@Convert.ToDecimal(sub).ToString("#,##0.00")</td>
 
                     </tr>
@@ -146,7 +146,7 @@
 
             <tr style="height: 18px;">
                 <td style="width: 868px; height: 18px; text-align: right; padding-left: 60px;" colspan="3">รวม&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
-                <td style="width: 123px; height: 18px; text-align: center;">@Convert.ToDecimal(Model.studentInvoise[i].Sum(x => x.MonthCourse - x.totalPaid)).ToString("#,##0.00") </td>
+                <td style="width: 123px; height: 18px; text-align: center;">@Convert.ToDecimal(Model.studentInvoise[i].Sum(x => x.Month_course - x.totalPaid)).ToString("#,##0.00") </td>
             </tr>
         </tbody>
     </table>

@@ -9,27 +9,27 @@ namespace santisart_app.Models
     {
        
         
-        public int StudentId { get; set; }
-        public string StudentIdcard { get; set; }
-        public int? StudentPsisId { get; set; }
-        public string StudentTitle { get; set; }
-        public string StudentName { get; set; }
-        public string StudentLname { get; set; }
-        public string MonthName { get; set; }
-        public int? MonthYear { get; set; }
-        public int? MonthCourse { get; set; }
-        public int ClassId { get; set; }
+        public int Student_id { get; set; }
+        public string Student_id_card { get; set; }
+        public int? Student_psis_id { get; set; }
+        public string Student_title { get; set; }
+        public string Student_name { get; set; }
+        public string Student_lname { get; set; }
+        public string Month_name { get; set; }
+        public int? Month_year { get; set; }
+        public int? Month_course { get; set; }
+        public int Class_id { get; set; }
         public string Status { get; set; }
-        public string ClassNameId { get; set; }
-        public int? TeacherId { get; set; }
-        public int? ClassRoom { get; set; }
-        public int? ClassYearIndex { get; set; }
-        public int? PaidId { get; set; }
+        public string Class_name_id { get; set; }
+        public int? Teacher_id { get; set; }
+        public int? Class_room { get; set; }
+        public int? Class_year_index { get; set; }
+        public int? Paid_id { get; set; }
         public int? Paid { get; set; }
-        public int? MonthlyId { get; set; }
+        public int? Monthly_id { get; set; }
         public DateTime? Timestamp { get; set; }
-        public int? StaffPaidId { get; set; }
-        public int? totalPaid { get; set; }
+        public int? Staff_paid_id { get; set; }
+        public int? total_paid { get; set; }
 
     }
 }

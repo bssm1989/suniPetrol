@@ -31,7 +31,7 @@
             });
             $('#paidBtn').click(function () {
                 var detailPaid  = new Object();
-                detailPaid.StudentId = @Model.FirstOrDefault().StudentId;
+                detailPaid.Student_id = @Model.FirstOrDefault().Student_id;
                 detailPaid.MonthIdAndPaid = callPaid(table);
                 detailPaid.numPaid = $("#numMoney").val() ;
                 //debugger;
@@ -47,8 +47,8 @@
                     success: function (result) {
                         debugger;
                             //CheckIfInvoiceFound(result);
-                        window.location.href = '/FoodPaid/printPaid?enrollPayID='+result.idpay;
-                           // window.location.href = '@Url.Action("paid","FoodPaid", new { StudentId = Model.FirstOrDefault().StudentId })';
+                        window.location.href = '/FoodPaid/printPaid?enrollPay_id='+result.idpay;
+                           // window.location.href = '@Url.Action("paid","FoodPaid", new { Student_id = Model.FirstOrDefault().Student_id })';
                         },
                         async: true,
                         processData: false
@@ -90,22 +90,22 @@
 <form id="formPaid">
 
     <div class="control-group">
-        <label for="studentId">รหัสนักเรียน</label>
+        <label for="Student_id">รหัสนักเรียน</label>
         <div class="controls">
-            @*<input type="text" class="form-control col-md-2" id="studentId" value="@Model.FirstOrDefault().StudentId">*@
+            @*<input type="text" class="form-control col-md-2" id="Student_id" value="@Model.FirstOrDefault().Student_id">*@
 
 
         </div>
     </div>
     <div class="control-group">
         <label for="name">ชื่อ - นามสกุล</label>
-        <input type="text" class="form-control" id="name" value="@Model.FirstOrDefault().StudentName @Model.FirstOrDefault().StudentLname">
+        <input type="text" class="form-control" id="name" value="@Model.FirstOrDefault().Student_name @Model.FirstOrDefault().Student_lname">
 
 
     </div>
     <div class="control-group">
         <label for="class">ชั้น</label>
-        <input type="text" class="form-control" id="class" value="@Model.FirstOrDefault().ClassNameId ">
+        <input type="text" class="form-control" id="class" value="@Model.FirstOrDefault().Class_name_id ">
 
 
     </div>
@@ -153,19 +153,19 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr id="@item.MonthlyId">
+                    <tr id="@item.Monthly_id">
 
-                        <td>@item.StudentId</td>
-                        <td>@item.MonthlyId</td>
-                        <td>@item.MonthName</td>
-                        <td>@item.MonthYear</td>
+                        <td>@item.Student_id</td>
+                        <td>@item.Monthly_id</td>
+                        <td>@item.Month_name</td>
+                        <td>@item.Month_year</td>
 
                         <td>@item.Status</td>
-                        <td>@item.ClassNameId/@item.ClassRoom</td>
-                        <td>@item.MonthCourse </td>
+                        <td>@item.Class_name_id/@item.Class_room</td>
+                        <td>@item.Month_course </td>
                         <td>@item.totalPaid</td>
                         <td>
-                            @(item.MonthCourse - item.totalPaid)
+                            @(item.Month_course - item.totalPaid)
 
                         </td>
                         <td>@item.Timestamp</td>

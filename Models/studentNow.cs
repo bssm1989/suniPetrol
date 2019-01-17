@@ -7,19 +7,19 @@ namespace santisart_app.Models
 {
     public class studentNow
     {
-        public int StudentId { get; set; }
-        public string StudentTitle { get; set; }
-        public string StudentName { get; set; }
-        public string StudentLname { get; set; }
-        public DateTime? StudentBirthday { get; set; }
-        public string StudentIdcard { get; set; }
-        public int? StudentPsisId { get; set; }
-        public string StudentStatus { get; set; }
-        public int ClassId { get; set; }
+        public int Student_id { get; set; }
+        public string Student_title { get; set; }
+        public string Student_name { get; set; }
+        public string Student_lname { get; set; }
+        public DateTime? Student_birthday { get; set; }
+        public string Student_idcard { get; set; }
+        public int? Student_psis_id { get; set; }
+        public string Student_status { get; set; }
+        public int Class_id { get; set; }
         public string Status { get; set; }
-        public string ClassNameId { get; set; }
-        public int? TeacherId { get; set; }
-        public int? ClassRoom { get; set; }
-        public int? ClassYearIndex { get; set; }
+        public string Class_name_id { get; set; }
+        public int? Teacher_id { get; set; }
+        public int? Class_room { get; set; }
+        public int? Class_year_index { get; set; }
     }
 }
