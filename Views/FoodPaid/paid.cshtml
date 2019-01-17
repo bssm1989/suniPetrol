@@ -3,37 +3,196 @@
 @{
     ViewData["Title"] = "Paid";
 }
-
+<style>
+     .tile h2 {
+        font-size: 30px;
+        line-height: 30px;
+        margin: 3px 0 7px;
+        font-weight: 700;
+    }
+    .fixed_height_390 {
+        height: 293px;
+    }
+</style>
 <h2>Details</h2>
 <head>
-    <script type="text/javascript" language="javascript">
+    
+</head>
+<h3>รายการการจ่าย</h3>
 
-        $(document).ready(function () {
 
-           var table= $('#datatable1').DataTable({  "pageLength": 50,  
-                select: {
-                    style: 'multi'
+<form id="formPaid">
+    <div class="col-md-3 col-xs-12 widget widget_tally_box">
+        <div class="x_panel fixed_height_390">
+            <div class="x_content">
+                <div class="flex">
+                    <ul class="list-inline widget_profile_box">
+                        <li>
+                            <a>
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <img src="~/images/user.png" class="img-circle profile_img"/>
+                            @*<img src="@Url.Content("~images/user.png")" class="img-circle profile_img" />*@
+
+                        </li>
+                        <li>
+                            <a>
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <h3 class="name">@Model.FirstOrDefault().Student_name</h3>
+                <h5 class="name">@Model.FirstOrDefault().Student_lname</h5>
+                <div class="flex">
+                    <ul class="list-inline count2">
+                        <li>
+                            <h3>@Model.FirstOrDefault().Class_name_id</h3>
+                            <span>ชั้น</span>
+                        </li>
+                        <li>
+                            <h3>@Model.FirstOrDefault().Student_id</h3>
+                            <span>รหัส</span>
+                        </li>
+                        <li>
+                            <h3>123</h3>
+                            <span>เลขที่</span>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+   
+  
+    <div class="control-group">
+        <label for="numMoney">จำนวนเงินที่เลือก</label>
+        <div class="input-group tile">
+
+            <h2>฿ <span id="viewMoney">0</span></h2>
+        </div>
+
+    </div>
+    <div class="control-group">
+
+        <label for="numMoney">จำนวนเงิน</label>
+        <div class="input-group">
+            <span class="input-group-addon">฿</span>
+            <input type="number" class="form-control" id="inMoney" aria-describedby="numberPaid" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" placeholder="จำนวนเงิน">
+        </div>
+    </div>
+
+    <button type="button" id="paidBtn" class="btn btn-primary">Submit</button>
+</form>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <table id="datatable1" class="table table-striped jambo_table bulk_action hover" role="grid" aria-describedby="datatable_info">
+            <thead>
+                <tr>
+
+                    <th class="sorting_asc">เดือน(ไทย)</th>
+                    <th class="sorting_asc">ปีการศึกษา</th>
+
+                    <th class="sorting_asc">ชั้น</th>
+                    <th class="sorting_asc">ค่าอาหาร</th>
+                    <th class="sorting_asc">จ่าย</th>
+                    <th class="sorting_asc">ยอดเหลือ</th>
+                    <th style="display:none;"></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr id="@item.Monthly_id">
+
+                        <td>@item.Month_name</td>
+                        <td>@item.Month_year</td>
+                        <td>@item.Class_name_id/@item.Class_room</td>
+                        <td class="font-weight-bold text-primary ">@Convert.ToDecimal(item.Month_course).ToString("#,##0.00") </td>
+                        <td class="font-weight-bold text-success ">@Convert.ToDecimal(item.totalPaid).ToString("#,##0.00")</td>
+                        <td class="font-weight-bold text-danger">
+                            @Convert.ToDecimal(item.Month_course - item.totalPaid).ToString("#,##0.00")   
+
+                        </td>
+                        <td style="display:none;">@(item.Month_course - item.totalPaid)</td>
+</tr>
                 }
-            })
-            $('#datatable1 tbody').mouseup(function () {
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- Button trigger modal -->
 
-               // callPaid(table);
+<script type="text/javascript" language="javascript">
 
+    $(document).ready(function () {
+        var sumdata = 0;
+        var table =$('#datatable1').DataTable({
+            "pageLength": 20,
+            select: {
+                style: 'multi'
+            }
+        });
+        //$('#datatable1 tbody').mouseup(function () {
+
+        //     callPaid(table);
+
+        //});
+        $('#button').click(function () {
+
+            var ids = $.map(table.rows('.selected').data(), function (item) {
+                return item[0]
             });
-            $('#button').click(function () {
+            console.log(ids)
+            //debugger;
+            alert(table.rows('.selected').data().length + ' row(s) selected');
+        });
+        //table.on('select.dt', function () {
+        //    var array = [];
+        //    debugger;
+        //    table.rows('.selected').every(function (rowIdx) {
+        //        array.push(table.row(rowIdx).id())
+        //    })
 
-                var ids = $.map(table.rows('.selected').data(), function (item) {
-                    return item[0]
-                });
-                console.log(ids)
-                //debugger;
-                alert(table.rows('.selected').data().length + ' row(s) selected');
-            });
-            $('#paidBtn').click(function () {
+        //    console.log("id" + array);
+        //    //callPaid(table)
+        //})
+        $('#datatable1').on('click', 'tr', function () {
+            $(this).toggleClass('selected');
+            dt = table.rows('.selected').data();
+            sumdata=0
+            for (i = 0; i < dt.length; i++) {
+                sumdata = parseInt(sumdata) + parseInt( dt[i][6]);
+            }
+            console.log(sumdata);
+            $('#viewMoney').text(sumdata.toLocaleString('en'))
+        });
+        //$('#datatable1')
+        //    .on('select', function (e, dt, type, indexes) {
+        //       // var rowData = table.rows(indexes).data().toArray();
+        //        console.log("jkl;");
+        //    })
+        //    .on('deselect', function (e, dt, type, indexes) {
+        //      //  var rowData = table.rows(indexes).data().toArray();
+        //        console.log('hjjjj');
+        //    });
+
+
+        $('#datatable1 tbody').on('click', 'td', function () {
+          
+            var data = table.row(this).data();
+            console.log('You clicked on ' + data[6] + '\'s row');
+
+        });
+        $('#paidBtn').click(function () {
                 var detailPaid  = new Object();
                 detailPaid.Student_id = @Model.FirstOrDefault().Student_id;
-                detailPaid.MonthIdAndPaid = callPaid(table);
-                detailPaid.numPaid = $("#numMoney").val() ;
+                detailPaid.MonthIdAndPaid = callPaid();
+            detailPaid.numPaid = $("#inMoney").val() ;
                 //debugger;
                 $.ajax({
                         type: 'POST',
@@ -53,129 +212,27 @@
                         async: true,
                         processData: false
                     });
-
+               
             });
-            table.on('select.dt', function () {
-                var array = [];
-
-                table.rows('.selected').every(function (rowIdx) {
-                    array.push(table.row(rowIdx).id())
-                })
-
-                console.log("id"+array);
-              //  callPaid(table)
-            })
-        });
-
-
-        function callPaid(table) {
-           // debugger;
+           
+        function callPaid() {
+            // debugger;
             var oData = table.rows('.selected').data();
             var txtal = [];
             table.rows('.selected').every(function (rowIdx) {
                 txtal.push(table.row(rowIdx).id())
             })
-           // alert(txtal);
+            // alert(txtal);
             return txtal;
         }
+    });
 
-    </script>
-</head>
-<h3>รายการการจ่าย</h3>
-<button type="button" class="btn btn-primary">เพิ่มรายการการจ่าย</button>
-<button id="button">btn</button>
-
-
-
-<form id="formPaid">
-
-    <div class="control-group">
-        <label for="Student_id">รหัสนักเรียน</label>
-        <div class="controls">
-            @*<input type="text" class="form-control col-md-2" id="Student_id" value="@Model.FirstOrDefault().Student_id">*@
+        
+    
+            
+            
 
 
-        </div>
-    </div>
-    <div class="control-group">
-        <label for="name">ชื่อ - นามสกุล</label>
-        <input type="text" class="form-control" id="name" value="@Model.FirstOrDefault().Student_name @Model.FirstOrDefault().Student_lname">
+        
 
-
-    </div>
-    <div class="control-group">
-        <label for="class">ชั้น</label>
-        <input type="text" class="form-control" id="class" value="@Model.FirstOrDefault().Class_name_id ">
-
-
-    </div>
-    <div class="control-group">
-        <label for="numMoney">จำนวนเงิน</label>
-        <div class="input-group">
-            <span class="input-group-addon">฿</span>
-            <input type="number" class="form-control" id="numMoney" aria-describedby="numberPaid" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" placeholder="จำนวนเงิน">
-
-        </div>
-
-    </div>
-    <div class="control-group">
-
-        <label for="numMoney">จำนวนเงิน</label>
-        <div class="input-group">
-            <span class="input-group-addon">฿</span>
-            <input type="number" class="form-control" id="viewMoney" aria-describedby="numberPaid" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" placeholder="จำนวนเงิน">
-        </div>
-    </div>
-
-    <button type="button" id="paidBtn" class="btn btn-primary">Submit</button>
-</form>
-<div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12">
-        <table id="datatable1" class="table table-striped jambo_table bulk_action" role="grid" aria-describedby="datatable_info">
-            <thead>
-                <tr>
-
-                    <th class="sorting_asc">รหัสนร.</th>
-                    <th class="sorting_asc">ลำดับเดือน</th>
-                    <th class="sorting_asc">เดือน(ไทย)</th>
-                    <th class="sorting_asc">ปีการศึกษา</th>
-
-                    <th class="sorting_asc">สถานะ</th>
-                    <th class="sorting_asc">ชั้น</th>
-                    <th class="sorting_asc">ค่าอาหาร</th>
-                    <th class="sorting_asc">จ่าย</th>
-                    <th class="sorting_asc">ยอดเหลือ</th>
-                    <th class="sorting_asc">วันที่บันทึก</th>
-
-
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr id="@item.Monthly_id">
-
-                        <td>@item.Student_id</td>
-                        <td>@item.Monthly_id</td>
-                        <td>@item.Month_name</td>
-                        <td>@item.Month_year</td>
-
-                        <td>@item.Status</td>
-                        <td>@item.Class_name_id/@item.Class_room</td>
-                        <td>@item.Month_course </td>
-                        <td>@item.totalPaid</td>
-                        <td>
-                            @(item.Month_course - item.totalPaid)
-
-                        </td>
-                        <td>@item.Timestamp</td>
-
-
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-</div>
-<h2>Index</h2>
-<!-- Button trigger modal -->
+</script>

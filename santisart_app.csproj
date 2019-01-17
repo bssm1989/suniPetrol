@@ -3245,6 +3245,8 @@
     <Content Include="Content\vendors\validator\multifield.js" />
     <Content Include="Content\vendors\validator\validator.js" />
     <Content Include="Global.asax" />
+    <Content Include="images\img.jpg" />
+    <Content Include="images\user.png" />
     <Content Include="Models\SantisartDatabaseServ.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SantisartDatabaseServ.edmx</DependentUpon>
@@ -4100,7 +4102,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="images\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

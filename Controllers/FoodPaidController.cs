@@ -323,10 +323,11 @@ namespace santisart_app.Controllers
         public ActionResult AddPaidStudent(AddPaidStudent model1)
         {
             int idPay = 0;
-            using (var transaction = db.Database.BeginTransaction())
-            {
-                try
-                {
+            if(model1.MonthIdAndPaid!=null)
+            //using (var transaction = db.Database.BeginTransaction())
+            //{
+            //    try
+            //    {
                     var cousePay = (from p in db.Monthly select p).ToList();
                     var EnrollPay = new Enroll_pay
                     {
@@ -416,14 +417,14 @@ namespace santisart_app.Controllers
                             db.Enroll_paid.Add(enrollPaid);
                             db.SaveChanges();
                         }
-                    }
-                    transaction.Commit();
-                }
-                catch (Exception ex)
-                {
-                    transaction.Rollback();
-                    throw;
-                }
+                //    }
+                //    transaction.Commit();
+                //}
+                //catch (Exception ex)
+                //{
+                //    transaction.Rollback();
+                //    throw;
+                //}
             }
 
 
