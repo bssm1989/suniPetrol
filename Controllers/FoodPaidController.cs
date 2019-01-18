@@ -301,7 +301,8 @@ namespace santisart_app.Controllers
                                              Paid_id = enpa.Paid_id,
                                              Paid = enpa.Paid == null ? 0 : enpa.Paid,
                                              Monthly_id = mo.Monthly_id,
-                                             Timestamp = enpa.Timestamp.HasValue ? enpa.Timestamp : DateTime.Parse("19/02/1989"),
+                                             Pay_id=enpa.Pay_id,
+                                             //Timestamp = enpa.Timestamp.HasValue ? enpa.Timestamp : DateTime.Parse("19/02/1989"),
                                              Staff_paid_id = enpa.Staff_paid_id == null ? 0 : enpa.Staff_paid_id
                                          }).ToList();
 
@@ -323,23 +324,27 @@ namespace santisart_app.Controllers
         public ActionResult AddPaidStudent(AddPaidStudent model1)
         {
             int idPay = 0;
-            if(model1.MonthIdAndPaid!=null)
-            //using (var transaction = db.Database.BeginTransaction())
-            //{
-            //    try
-            //    {
-                    var cousePay = (from p in db.Monthly select p).ToList();
+            if (model1.MonthIdAndPaid != null)
+                using (var transaction = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var cousePay = (from p in db.Monthly select p).ToList();
                     var EnrollPay = new Enroll_pay
                     {
                         Student_id = model1.Student_id,
                         Pay = model1.numPaid,
-                        Timestamp = DateTime.Now
-                    };
+                        Timestamp = DateTime.Now,
+                        Id_token=  Guid.NewGuid().ToString()
+
+        };
                     db.Enroll_pay.Add(EnrollPay);
                     db.SaveChanges();
-                    var idPayFir = (from x in db.Enroll_pay where x.Timestamp == EnrollPay.Timestamp select x.Pay_id);
+                   // var idPayFir = db.Enroll_pay.Where(x => x.Timestamp> EnrollPay.Timestamp).SingleOrDefault() ?.Paid_id;
+                    var idPayFir = db.Enroll_pay.Where(x => x.Id_token == EnrollPay.Id_token).Select(x => x.Pay_id).FirstOrDefault();
+                    //var idPayFir = (from x in db.Enroll_pay where x.Timestamp == EnrollPay.Timestamp select x.Pay_id);
                     List<viewPaid> couseUnpay = VpaidBystuFun(model1.Student_id);
-                    idPay = idPayFir.Single();
+                    idPay = idPayFir;
                     int stuPay = model1.numPaid;
                     int pay = 0;
                     if (model1.MonthIdAndPaid.Length > 0)
@@ -349,7 +354,7 @@ namespace santisart_app.Controllers
                         {
                             var MonthCouse = couseUnpay.Where(x => x.Monthly_id == i).Select(x => x.Month_course).Single();
                             var Class_id = couseUnpay.Where(x => x.Monthly_id == i).Select(x => x.Class_id).Single();
-                            var sumPaid = MonthCouse - couseUnpay.Where(x => x.Monthly_id == i).Select(x => x.Paid_sum).Single();
+                            var sumPaid = MonthCouse - couseUnpay.Where(x => x.Monthly_id == i).Select(x => x.totalPaid).Single();
                             if (stuPay > sumPaid)
                             {
                                 pay = (int)sumPaid;
@@ -417,15 +422,15 @@ namespace santisart_app.Controllers
                             db.Enroll_paid.Add(enrollPaid);
                             db.SaveChanges();
                         }
-                //    }
-                //    transaction.Commit();
-                //}
-                //catch (Exception ex)
-                //{
-                //    transaction.Rollback();
-                //    throw;
-                //}
-            }
+                        }
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
+                }
 
 
 

@@ -20,5 +20,6 @@ namespace santisart_app.Models
         public Nullable<int> Pay { get; set; }
         public Nullable<int> Staff_id { get; set; }
         public Nullable<System.DateTime> Timestamp { get; set; }
+        public string Id_token { get; set; }
     }
 }

@@ -35,6 +35,7 @@
     <Property Name="Pay" Type="int" />
     <Property Name="Staff_id" Type="int" />
     <Property Name="Timestamp" Type="datetime" />
+    <Property Name="Id_token" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Enroll_student_class">
     <Key>

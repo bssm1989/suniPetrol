@@ -25,6 +25,7 @@ namespace santisart_app.Models
         public int? Class_room { get; set; }
         public int? Class_year_index { get; set; }
         public int? Paid_id { get; set; }
+        public int? Pay_id { get; set; }
         public int? Paid { get; set; }
         public int? Monthly_id { get; set; }
         public DateTime? Timestamp { get; set; }

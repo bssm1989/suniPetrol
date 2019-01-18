@@ -30,7 +30,7 @@
 @{
     var Student_id = Model.FirstOrDefault().Student_id;
 }
-<h3>รายการการจ่าย</h3> <a class="btn btn-success" href="@Url.Action("printBill", "FoodPaid",new {Student_id=Model.FirstOrDefault().Student_id })">เพิ่มรายการการจ่าย</a>
+<h3>รายการการจ่าย</h3> <a class="btn btn-success" href="@Url.Action("printBill", "FoodPaid",new {enrollPay_id=Model.FirstOrDefault().Pay_id})">เพิ่มรายการการจ่าย</a>
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
