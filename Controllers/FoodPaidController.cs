@@ -114,14 +114,14 @@ namespace santisart_app.Controllers
                                                 .Select(y => new viewPaid
                                                 {
 
-                                                    Student_id = y.FirstOrDefault().Student_id,
+                                                    Student_id = y.FirstOrDefault().Student_id.HasValue?y.FirstOrDefault().Student_id.Value:0,
                                                     Student_title = y.FirstOrDefault().Student_title,
                                                     Student_name = y.FirstOrDefault().Student_name,
                                                     Student_lname = y.FirstOrDefault().Student_lname,
                                                     Month_name = y.FirstOrDefault().Month_name,
                                                     Month_year = y.FirstOrDefault().Month_year,
                                                     Month_course = y.FirstOrDefault().Month_course,
-                                                    Class_id = y.FirstOrDefault().Class_id,
+                                                    Class_id = y.FirstOrDefault().Class_id.HasValue?y.FirstOrDefault().Class_id.Value:0,
                                                     Status = y.FirstOrDefault().Status,
                                                     Class_name_id = y.FirstOrDefault().Class_name_id,
                                                     Teacher_id = y.FirstOrDefault().Teacher_id,
@@ -171,7 +171,7 @@ namespace santisart_app.Controllers
                                                 .Select(y => new viewPaid
                                                 {
 
-                                                    Student_id = y.FirstOrDefault().Student_id,
+                                                    Student_id = y.FirstOrDefault().Student_id.HasValue ? y.FirstOrDefault().Student_id.Value : 0,
                                                     Student_title = y.FirstOrDefault().Student_title,
                                                     Student_name = y.FirstOrDefault().Student_name,
                                                     Student_lname = y.FirstOrDefault().Student_lname,
@@ -179,7 +179,7 @@ namespace santisart_app.Controllers
                                                     Month_year = y.FirstOrDefault().Month_year,
                                                     Month_course = y.FirstOrDefault().Month_course,
                                                         // mustPay=y.FirstOrDefault().Month_course-( y.Sum(x => x.Paid) == null ? 0 : y.Sum(x => x.Paid)),
-                                                        Class_id = y.FirstOrDefault().Class_id,
+                                                        Class_id = y.FirstOrDefault().Class_id.HasValue ? y.FirstOrDefault().Class_id.Value : 0,
                                                     Status = y.FirstOrDefault().Status,
                                                     Class_name_id = y.FirstOrDefault().Class_name_id,
                                                     Teacher_id = y.FirstOrDefault().Teacher_id,
@@ -462,31 +462,72 @@ namespace santisart_app.Controllers
 
 
             List<viewdetail> listPay = VpaidBystubyMonId(enrollPay_id);
-            var detaiilStudent = (from st in db.Students.Where(x => x.Student_id == listPay.FirstOrDefault().Student_id)
-                                  join encl in db.Enroll_student_class on st.Student_id equals encl.Student_id into encll
-                                  from encl in encll.DefaultIfEmpty()
-                                  join cl in db.Class on encl.Class_id equals cl.Class_id into clli
-                                  from cl in clli.DefaultIfEmpty()
-                                  select new studentNow
-                                  {
-                                      Student_id = st.Student_id,
-                                      Student_title = st.Student_title,
-                                      Student_name = st.Student_name,
-                                      Student_lname = st.Student_lname,
-                                      Student_birthday = st.Student_birthday,
-                                      Student_idcard = st.Student_idcard,
-                                      Student_psis_id = st.Student_psis_id,
-                                      Student_status = st.Student_status,
-                                      Class_id = cl.Class_id,
-                                      Status = cl.Status_class,
-                                      Class_name_id = cl.Class_name_id,
-                                      Teacher_id = cl.Teacher_id,
-                                      Class_room = cl.Class_room,
-                                      Class_year_index = cl.Class_year_index
-                                  }).ToList().OrderByDescending(x => x.Class_id).First();
+            var detaiilStudent = db.Students.Where(x => x.Student_id == 591)
+                                    .Join(db.Enroll_student_class,
+                                        st => st.Student_id,
+                                        en => en.Student_id,
+                                        (st, en) => new
+                                        {
+                                            St = st,
+                                            En = en
+                                        })
+                                        .Join(db.Class,
+                                            cl => cl.En.Class_id,
+                                            sten => sten.Class_id,
+                                            (cl, sten) => new
+                                            {
+                                                Cl = cl,
+                                                St = sten
+                                            })
+                                            .OrderByDescending(x => x.St.Class_id).First();
+           var settoviewdetail= new studentNow
+           {
+                                                Student_id = detaiilStudent.Cl.St.Student_id,
+                                                Student_title = detaiilStudent.Cl.St.Student_title,
+                                                Student_name = detaiilStudent.Cl.St.Student_name,
+                                                Student_lname = detaiilStudent.Cl.St.Student_lname,
+                                                Student_birthday = detaiilStudent.Cl.St.Student_birthday,
+                                                Student_idcard = detaiilStudent.Cl.St.Student_idcard,
+                                                Student_psis_id = detaiilStudent.Cl.St.Student_psis_id,
+                                                Student_status = detaiilStudent.Cl.St.Student_status,
+                                                Class_id = detaiilStudent.St.Class_id,
+                                                Status = detaiilStudent.St.Status_class,
+                                                Class_name_id = detaiilStudent.St.Class_name_id,
+                                                Teacher_id = detaiilStudent.St.Teacher_id,
+                                                Class_room = detaiilStudent.St.Class_room,
+                                                Class_year_index = detaiilStudent.St.Class_year_index
+                                            };
+
+            ;
+            //var detaiilStudent =  db.Students
+            //                      .Where(x => x.Student_id == listPay.FirstOrDefault().Student_id)
+            //                      .Select(s => s.Student_name)
+            //                      .ToList();
+            //join encl in db.Enroll_student_class on st.Student_id equals encl.Student_id into encll
+            //from encl in encll.DefaultIfEmpty()
+            //join cl in db.Class on encl.Class_id equals cl.Class_id into clli
+            //from cl in clli.DefaultIfEmpty()
+            //select new studentNow
+            //{
+            //    Student_id = st.Student_id,
+            //    Student_title = st.Student_title,
+            //    Student_name = st.Student_name,
+            //    Student_lname = st.Student_lname,
+            //    Student_birthday = st.Student_birthday,
+            //    Student_idcard = st.Student_idcard,
+            //    Student_psis_id = st.Student_psis_id,
+            //    Student_status = st.Student_status,
+            //Class_id = cl.Class_id,
+            //Status = cl.Status_class,
+            //Class_name_id = cl.Class_name_id,
+            //Teacher_id = cl.Teacher_id,
+            //Class_room = cl.Class_room,
+            //Class_year_index = cl.Class_year_index
+            //}).ToList();
+            //.OrderByDescending(x => x.Class_id).First();
             BlogViewPrintBill detailBill = new BlogViewPrintBill
             {
-                detailStudent = detaiilStudent,
+                detailStudent = settoviewdetail,
                 studentPaid = listPay
             };
 
