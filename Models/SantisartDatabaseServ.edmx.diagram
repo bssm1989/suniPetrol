@@ -12,6 +12,7 @@
         <EntityTypeShape EntityType="santisar_Model.Monthly" Width="1.5" PointX="4.75" PointY="3.75" />
         <EntityTypeShape EntityType="santisar_Model.Students" Width="1.5" PointX="6.75" PointY="0.75" />
         <EntityTypeShape EntityType="santisar_Model.Enroll_pay" Width="1.5" PointX="7.375" PointY="4.75" />
+        <EntityTypeShape EntityType="santisar_Model.attendance" Width="1.5" PointX="7.375" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

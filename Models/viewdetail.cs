@@ -9,7 +9,7 @@ namespace santisart_app.Models
     {
        
         
-        public int Student_id { get; set; }
+        public int? Student_id { get; set; }
         public string Student_id_card { get; set; }
         public int? Student_psis_id { get; set; }
         public string Student_title { get; set; }
@@ -18,7 +18,7 @@ namespace santisart_app.Models
         public string Month_name { get; set; }
         public int? Month_year { get; set; }
         public int? Month_course { get; set; }
-        public int Class_id { get; set; }
+        public int? Class_id { get; set; }
         public string Status { get; set; }
         public string Class_name_id { get; set; }
         public int? Teacher_id { get; set; }

@@ -8,6 +8,7 @@
     <EntitySet Name="Monthly" EntityType="santisar_Model.Monthly" />
     <EntitySet Name="Students" EntityType="santisar_Model.Students" />
     <EntitySet Name="Enroll_pay" EntityType="santisar_Model.Enroll_pay" />
+    <EntitySet Name="attendance" EntityType="santisar_Model.attendance" />
   </EntityContainer>
   <EntityType Name="Class">
     <Key>
@@ -97,5 +98,16 @@
     <Property Name="Staff_id" Type="Int32" />
     <Property Name="Timestamp" Type="DateTime" Precision="3" />
     <Property Name="Id_token" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="attendance">
+    <Key>
+      <PropertyRef Name="att_id" />
+    </Key>
+    <Property Name="att_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Student_id" Type="Int32" />
+    <Property Name="Timestamp" Type="DateTime" Precision="3" />
+    <Property Name="Staff_id" Type="Int32" />
+    <Property Name="qira_id" Type="Int32" />
+    <Property Name="page" Type="Int32" />
   </EntityType>
 </Schema>
