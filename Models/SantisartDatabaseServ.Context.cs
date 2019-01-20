@@ -32,5 +32,6 @@ namespace santisart_app.Models
         public virtual DbSet<Monthly> Monthly { get; set; }
         public virtual DbSet<Students> Students { get; set; }
         public virtual DbSet<Enroll_pay> Enroll_pay { get; set; }
+        public virtual DbSet<attendance> attendance { get; set; }
     }
 }

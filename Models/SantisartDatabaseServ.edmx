@@ -5,6 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="santisar_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="attendance">
+          <Key>
+            <PropertyRef Name="att_id" />
+          </Key>
+          <Property Name="att_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Student_id" Type="int" />
+          <Property Name="Timestamp" Type="datetime" />
+          <Property Name="Staff_id" Type="int" />
+          <Property Name="qira_id" Type="int" />
+          <Property Name="page" Type="int" />
+        </EntityType>
         <EntityType Name="Class">
           <Key>
             <PropertyRef Name="Class_id" />
@@ -95,6 +106,7 @@
           <Property Name="Student_timestamp" Type="datetime" />
         </EntityType>
         <EntityContainer Name="santisar_ModelStoreContainer">
+          <EntitySet Name="attendance" EntityType="Self.attendance" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="Class" EntityType="Self.Class" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="Enroll_paid" EntityType="Self.Enroll_paid" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="Enroll_pay" EntityType="Self.Enroll_pay" Schema="santisart" store:Type="Tables" />
@@ -115,6 +127,7 @@
           <EntitySet Name="Monthly" EntityType="santisar_Model.Monthly" />
           <EntitySet Name="Students" EntityType="santisar_Model.Students" />
           <EntitySet Name="Enroll_pay" EntityType="santisar_Model.Enroll_pay" />
+          <EntitySet Name="attendance" EntityType="santisar_Model.attendance" />
         </EntityContainer>
         <EntityType Name="Class">
           <Key>
@@ -204,6 +217,17 @@
           <Property Name="Staff_id" Type="Int32" />
           <Property Name="Timestamp" Type="DateTime" Precision="3" />
           <Property Name="Id_token" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="attendance">
+          <Key>
+            <PropertyRef Name="att_id" />
+          </Key>
+          <Property Name="att_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Student_id" Type="Int32" />
+          <Property Name="Timestamp" Type="DateTime" Precision="3" />
+          <Property Name="Staff_id" Type="Int32" />
+          <Property Name="qira_id" Type="Int32" />
+          <Property Name="page" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -304,6 +328,18 @@
                 <ScalarProperty Name="Student_id" ColumnName="Student_id" />
                 <ScalarProperty Name="Paid_id" ColumnName="Paid_id" />
                 <ScalarProperty Name="Pay_id" ColumnName="Pay_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="attendance">
+            <EntityTypeMapping TypeName="santisar_Model.attendance">
+              <MappingFragment StoreEntitySet="attendance">
+                <ScalarProperty Name="page" ColumnName="page" />
+                <ScalarProperty Name="qira_id" ColumnName="qira_id" />
+                <ScalarProperty Name="Staff_id" ColumnName="Staff_id" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="Student_id" ColumnName="Student_id" />
+                <ScalarProperty Name="att_id" ColumnName="att_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

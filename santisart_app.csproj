@@ -3977,9 +3977,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AttendanceController.cs" />
     <Compile Include="Controllers\FoodPaidController.cs" />
     <Compile Include="Controllers\studentController.cs" />
     <Compile Include="Models\AddPaidStudent.cs" />
+    <Compile Include="Models\attendance.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\BlogViewPrintBill.cs" />
     <Compile Include="Models\Class.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
@@ -4102,6 +4106,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Attendance\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
