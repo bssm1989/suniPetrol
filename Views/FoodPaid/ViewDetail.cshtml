@@ -3,6 +3,11 @@
     ViewBag.Title = "รายการจ่ายเงินค่าอาหาร ของ";
 }
 <head>
+    <style>
+        .btn{
+            padding:2px 4px;
+        }
+    </style>
 
 </head>
 <div class="row">
@@ -41,11 +46,7 @@
                     <th>
                         @Html.DisplayNameFor(model => model.First().Class2.Class_room)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.First().Class2.Class_year_index)
-                    </th>
 
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -75,11 +76,7 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Class2.Class_room)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Class2.Class_year_index)
-                        </td>
-                        <td>
-                           @Html.ActionLink("Details", "Details", new { item.students.Student_id }) 
+                        
                     </tr>
                 }
             </tbody>
@@ -96,11 +93,11 @@
                 style: 'multi'
             }
         });
-        $('#datatable tbody').on('click', 'tr', function () {
-            var data = table.row(this).data();
-            alert('You clicked on ' + data[0] + '\'s row');
-            document.location.href = '?/foodpaid/Details?Student_id=' + data
-        });
+        //$('#datatable tbody').on('click', 'tr', function () {
+        //    var data = table.row(this).data();
+        //    alert('You clicked on ' + data[0] + '\'s row');
+        //    document.location.href = '?/foodpaid/Details?Student_id=' + data
+        //});
     });
 
 </script>
