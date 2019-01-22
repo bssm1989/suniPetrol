@@ -3969,6 +3969,7 @@
     <Content Include="Views\FoodPaid\View2.cshtml" />
     <Content Include="Views\FoodPaid\ViewDetail.cshtml" />
     <Content Include="Views\FoodPaid\Index.cshtml" />
+    <Content Include="Views\Attendance\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3980,18 +3981,32 @@
     <Compile Include="Controllers\AttendanceController.cs" />
     <Compile Include="Controllers\FoodPaidController.cs" />
     <Compile Include="Controllers\studentController.cs" />
+    <Compile Include="Models\viewStudentCrossAttday.cs" />
     <Compile Include="Models\AddPaidStudent.cs" />
+    <Compile Include="Models\attdanceClass.cs" />
     <Compile Include="Models\attendance.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\attendance_day.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BlogViewPrintBill.cs" />
     <Compile Include="Models\Class.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\C_enrollattstudent.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EnrollStudentAttdance.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Enroll_paid.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Enroll_pay.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Enroll_student_all_event.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Enroll_student_class.cs">
@@ -4017,6 +4032,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SantisartDatabaseServ.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\student2561.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\studentNow.cs" />
     <Compile Include="Models\Students.cs">
@@ -4106,7 +4124,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Attendance\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

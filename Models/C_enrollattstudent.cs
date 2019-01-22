@@ -12,15 +12,16 @@ namespace santisart_app.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class attendance
+    public partial class C_enrollattstudent
     {
-        public int att_id { get; set; }
-        public Nullable<int> Student_id { get; set; }
-        public Nullable<System.DateTime> datestamp { get; set; }
+        public int Student_id { get; set; }
+        public string Student_title { get; set; }
+        public string Student_name { get; set; }
+        public string Student_lname { get; set; }
+        public Nullable<int> att_id { get; set; }
         public Nullable<int> Staff_id { get; set; }
         public Nullable<int> qira_id { get; set; }
         public Nullable<int> page { get; set; }
         public Nullable<int> attday_id { get; set; }
-        public Nullable<System.DateTime> Timestamp_teach { get; set; }
     }
 }

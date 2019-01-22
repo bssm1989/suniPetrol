@@ -6,10 +6,24 @@
     </Key>
     <Property Name="att_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Student_id" Type="int" />
-    <Property Name="Timestamp" Type="datetime" />
+    <Property Name="datestamp" Type="date" />
     <Property Name="Staff_id" Type="int" />
     <Property Name="qira_id" Type="int" />
     <Property Name="page" Type="int" />
+    <Property Name="attday_id" Type="int" />
+    <Property Name="Timestamp_teach" Type="datetime" />
+  </EntityType>
+  <EntityType Name="attendance_day">
+    <Key>
+      <PropertyRef Name="attday_id" />
+    </Key>
+    <Property Name="attday_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="attday_date" Type="date" />
+    <Property Name="Timestamp" Type="datetime" />
+    <Property Name="status" Type="int" />
+    <Property Name="staff_id" Type="int" />
+    <Property Name="year_index" Type="int" />
+    <Property Name="Comment" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="Class">
     <Key>
@@ -47,6 +61,14 @@
     <Property Name="Staff_id" Type="int" />
     <Property Name="Timestamp" Type="datetime" />
     <Property Name="Id_token" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Enroll_student_all_event">
+    <Key>
+      <PropertyRef Name="Enrol_stu_class_id" />
+    </Key>
+    <Property Name="Student_id" Type="int" Nullable="false" />
+    <Property Name="Class_id" Type="int" Nullable="false" />
+    <Property Name="Enrol_stu_class_id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Enroll_student_class">
     <Key>
@@ -100,14 +122,133 @@
     <Property Name="Student_status" Type="varchar" MaxLength="25" />
     <Property Name="Student_timestamp" Type="datetime" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'santisar_.santisart._enrollattstudent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="_enrollattstudent">
+    <Key>
+      <PropertyRef Name="Student_id" />
+    </Key>
+    <Property Name="Student_id" Type="int" Nullable="false" />
+    <Property Name="Student_title" Type="varchar" MaxLength="10" />
+    <Property Name="Student_name" Type="varchar" MaxLength="100" />
+    <Property Name="Student_lname" Type="varchar" MaxLength="100" />
+    <Property Name="att_id" Type="int" />
+    <Property Name="Staff_id" Type="int" />
+    <Property Name="qira_id" Type="int" />
+    <Property Name="page" Type="int" />
+    <Property Name="attday_id" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'santisar_.santisart.EnrollStudentAttdance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="EnrollStudentAttdance">
+    <Key>
+      <PropertyRef Name="att_id" />
+    </Key>
+    <Property Name="Student_id" Type="int" />
+    <Property Name="Student_title" Type="varchar" MaxLength="10" />
+    <Property Name="Student_name" Type="varchar" MaxLength="100" />
+    <Property Name="Student_lname" Type="varchar" MaxLength="100" />
+    <Property Name="Student_birthday" Type="datetime" />
+    <Property Name="Student_idcard" Type="varchar" MaxLength="13" />
+    <Property Name="Student_psis_id" Type="int" />
+    <Property Name="Student_status" Type="varchar" MaxLength="25" />
+    <Property Name="Student_timestamp" Type="datetime" />
+    <Property Name="att_id" Type="int" Nullable="false" />
+    <Property Name="qira_id" Type="int" />
+    <Property Name="page" Type="int" />
+    <Property Name="Timestamp_teach" Type="datetime" />
+    <Property Name="attday_id" Type="int" />
+    <Property Name="attday_date" Type="date" />
+    <Property Name="status" Type="int" />
+    <Property Name="year_index" Type="int" />
+    <Property Name="Comment" Type="varchar" MaxLength="255" />
+    <Property Name="Staff_id" Type="int" />
+    <Property Name="datestamp" Type="date" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'santisar_.santisart.student2561' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="student2561">
+    <Key>
+      <PropertyRef Name="Student_id" />
+    </Key>
+    <Property Name="Student_id" Type="int" Nullable="false" />
+    <Property Name="Student_title" Type="varchar" MaxLength="10" />
+    <Property Name="Student_name" Type="varchar" MaxLength="100" />
+    <Property Name="Student_lname" Type="varchar" MaxLength="100" />
+    <Property Name="Student_birthday" Type="datetime" />
+    <Property Name="Student_idcard" Type="varchar" MaxLength="13" />
+    <Property Name="Student_psis_id" Type="int" />
+    <Property Name="Student_status" Type="varchar" MaxLength="25" />
+    <Property Name="Student_timestamp" Type="datetime" />
+    <Property Name="Class_name_id" Type="varchar" MaxLength="5" />
+    <Property Name="Class_room" Type="int" />
+    <Property Name="Class_year_index" Type="int" />
+    <Property Name="Teacher_id" Type="int" />
+  </EntityType>
   <EntityContainer Name="santisar_ModelStoreContainer">
     <EntitySet Name="attendance" EntityType="Self.attendance" Schema="santisart" store:Type="Tables" />
+    <EntitySet Name="attendance_day" EntityType="Self.attendance_day" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Class" EntityType="Self.Class" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Enroll_paid" EntityType="Self.Enroll_paid" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Enroll_pay" EntityType="Self.Enroll_pay" Schema="santisart" store:Type="Tables" />
+    <EntitySet Name="Enroll_student_all_event" EntityType="Self.Enroll_student_all_event" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Enroll_student_class" EntityType="Self.Enroll_student_class" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Food" EntityType="Self.Food" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Monthly" EntityType="Self.Monthly" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Students" EntityType="Self.Students" Schema="santisart" store:Type="Tables" />
+    <EntitySet Name="_enrollattstudent" EntityType="Self._enrollattstudent" store:Type="Views" store:Schema="santisart">
+      <DefiningQuery>SELECT 
+    [_enrollattstudent].[Student_id] AS [Student_id], 
+    [_enrollattstudent].[Student_title] AS [Student_title], 
+    [_enrollattstudent].[Student_name] AS [Student_name], 
+    [_enrollattstudent].[Student_lname] AS [Student_lname], 
+    [_enrollattstudent].[att_id] AS [att_id], 
+    [_enrollattstudent].[Staff_id] AS [Staff_id], 
+    [_enrollattstudent].[qira_id] AS [qira_id], 
+    [_enrollattstudent].[page] AS [page], 
+    [_enrollattstudent].[attday_id] AS [attday_id]
+    FROM [santisart].[_enrollattstudent] AS [_enrollattstudent]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="EnrollStudentAttdance" EntityType="Self.EnrollStudentAttdance" store:Type="Views" store:Schema="santisart">
+      <DefiningQuery>SELECT 
+    [EnrollStudentAttdance].[Student_id] AS [Student_id], 
+    [EnrollStudentAttdance].[Student_title] AS [Student_title], 
+    [EnrollStudentAttdance].[Student_name] AS [Student_name], 
+    [EnrollStudentAttdance].[Student_lname] AS [Student_lname], 
+    [EnrollStudentAttdance].[Student_birthday] AS [Student_birthday], 
+    [EnrollStudentAttdance].[Student_idcard] AS [Student_idcard], 
+    [EnrollStudentAttdance].[Student_psis_id] AS [Student_psis_id], 
+    [EnrollStudentAttdance].[Student_status] AS [Student_status], 
+    [EnrollStudentAttdance].[Student_timestamp] AS [Student_timestamp], 
+    [EnrollStudentAttdance].[att_id] AS [att_id], 
+    [EnrollStudentAttdance].[qira_id] AS [qira_id], 
+    [EnrollStudentAttdance].[page] AS [page], 
+    [EnrollStudentAttdance].[Timestamp_teach] AS [Timestamp_teach], 
+    [EnrollStudentAttdance].[attday_id] AS [attday_id], 
+    [EnrollStudentAttdance].[attday_date] AS [attday_date], 
+    [EnrollStudentAttdance].[status] AS [status], 
+    [EnrollStudentAttdance].[year_index] AS [year_index], 
+    [EnrollStudentAttdance].[Comment] AS [Comment], 
+    [EnrollStudentAttdance].[Staff_id] AS [Staff_id], 
+    [EnrollStudentAttdance].[datestamp] AS [datestamp]
+    FROM [santisart].[EnrollStudentAttdance] AS [EnrollStudentAttdance]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="student2561" EntityType="Self.student2561" store:Type="Views" store:Schema="santisart">
+      <DefiningQuery>SELECT 
+    [student2561].[Student_id] AS [Student_id], 
+    [student2561].[Student_title] AS [Student_title], 
+    [student2561].[Student_name] AS [Student_name], 
+    [student2561].[Student_lname] AS [Student_lname], 
+    [student2561].[Student_birthday] AS [Student_birthday], 
+    [student2561].[Student_idcard] AS [Student_idcard], 
+    [student2561].[Student_psis_id] AS [Student_psis_id], 
+    [student2561].[Student_status] AS [Student_status], 
+    [student2561].[Student_timestamp] AS [Student_timestamp], 
+    [student2561].[Class_name_id] AS [Class_name_id], 
+    [student2561].[Class_room] AS [Class_room], 
+    [student2561].[Class_year_index] AS [Class_year_index], 
+    [student2561].[Teacher_id] AS [Teacher_id]
+    FROM [santisart].[student2561] AS [student2561]</DefiningQuery>
+    </EntitySet>
   </EntityContainer>
 </Schema>

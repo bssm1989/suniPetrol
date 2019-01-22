@@ -8,7 +8,12 @@
     <EntitySet Name="Monthly" EntityType="santisar_Model.Monthly" />
     <EntitySet Name="Students" EntityType="santisar_Model.Students" />
     <EntitySet Name="Enroll_pay" EntityType="santisar_Model.Enroll_pay" />
+    <EntitySet Name="attendance_day" EntityType="santisar_Model.attendance_day" />
+    <EntitySet Name="Enroll_student_all_event" EntityType="santisar_Model.Enroll_student_all_event" />
+    <EntitySet Name="EnrollStudentAttdance" EntityType="santisar_Model.EnrollStudentAttdance" />
+    <EntitySet Name="student2561" EntityType="santisar_Model.student2561" />
     <EntitySet Name="attendance" EntityType="santisar_Model.attendance" />
+    <EntitySet Name="C_enrollattstudent" EntityType="santisar_Model.C_enrollattstudent" />
   </EntityContainer>
   <EntityType Name="Class">
     <Key>
@@ -99,15 +104,94 @@
     <Property Name="Timestamp" Type="DateTime" Precision="3" />
     <Property Name="Id_token" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
+  <EntityType Name="attendance_day">
+    <Key>
+      <PropertyRef Name="attday_id" />
+    </Key>
+    <Property Name="attday_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="attday_date" Type="DateTime" Precision="0" />
+    <Property Name="Timestamp" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="staff_id" Type="Int32" />
+    <Property Name="year_index" Type="Int32" />
+    <Property Name="Comment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Enroll_student_all_event">
+    <Key>
+      <PropertyRef Name="Enrol_stu_class_id" />
+    </Key>
+    <Property Name="Student_id" Type="Int32" Nullable="false" />
+    <Property Name="Class_id" Type="Int32" Nullable="false" />
+    <Property Name="Enrol_stu_class_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EnrollStudentAttdance">
+    <Key>
+      <PropertyRef Name="att_id" />
+    </Key>
+    <Property Name="Student_id" Type="Int32" />
+    <Property Name="Student_title" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Student_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Student_lname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Student_birthday" Type="DateTime" Precision="3" />
+    <Property Name="Student_idcard" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="Student_psis_id" Type="Int32" />
+    <Property Name="Student_status" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Student_timestamp" Type="DateTime" Precision="3" />
+    <Property Name="att_id" Type="Int32" Nullable="false" />
+    <Property Name="qira_id" Type="Int32" />
+    <Property Name="page" Type="Int32" />
+    <Property Name="Timestamp_teach" Type="DateTime" Precision="3" />
+    <Property Name="attday_id" Type="Int32" />
+    <Property Name="attday_date" Type="DateTime" Precision="0" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="year_index" Type="Int32" />
+    <Property Name="Comment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Staff_id" Type="Int32" />
+    <Property Name="datestamp" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="student2561">
+    <Key>
+      <PropertyRef Name="Student_id" />
+    </Key>
+    <Property Name="Student_id" Type="Int32" Nullable="false" />
+    <Property Name="Student_title" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Student_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Student_lname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Student_birthday" Type="DateTime" Precision="3" />
+    <Property Name="Student_idcard" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="Student_psis_id" Type="Int32" />
+    <Property Name="Student_status" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Student_timestamp" Type="DateTime" Precision="3" />
+    <Property Name="Class_name_id" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Class_room" Type="Int32" />
+    <Property Name="Class_year_index" Type="Int32" />
+    <Property Name="Teacher_id" Type="Int32" />
+  </EntityType>
   <EntityType Name="attendance">
     <Key>
       <PropertyRef Name="att_id" />
     </Key>
     <Property Name="att_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Student_id" Type="Int32" />
-    <Property Name="Timestamp" Type="DateTime" Precision="3" />
+    <Property Name="datestamp" Type="DateTime" Precision="0" />
     <Property Name="Staff_id" Type="Int32" />
     <Property Name="qira_id" Type="Int32" />
     <Property Name="page" Type="Int32" />
+    <Property Name="attday_id" Type="Int32" />
+    <Property Name="Timestamp_teach" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="C_enrollattstudent">
+    <Key>
+      <PropertyRef Name="Student_id" />
+    </Key>
+    <Property Name="Student_id" Type="Int32" Nullable="false" />
+    <Property Name="Student_title" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Student_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Student_lname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="att_id" Type="Int32" />
+    <Property Name="Staff_id" Type="Int32" />
+    <Property Name="qira_id" Type="Int32" />
+    <Property Name="page" Type="Int32" />
+    <Property Name="attday_id" Type="Int32" />
   </EntityType>
 </Schema>
