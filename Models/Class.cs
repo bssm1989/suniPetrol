@@ -15,7 +15,7 @@ namespace santisart_app.Models
     public partial class Class
     {
         public int Class_id { get; set; }
-        public string Status_class { get; set; }
+        public Nullable<int> Status_class { get; set; }
         public string Class_name_id { get; set; }
         public Nullable<int> Teacher_id { get; set; }
         public Nullable<int> Class_room { get; set; }

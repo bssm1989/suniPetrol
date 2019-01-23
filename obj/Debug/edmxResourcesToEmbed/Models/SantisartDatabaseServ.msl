@@ -1,18 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="santisar_ModelStoreContainer" CdmEntityContainer="santisar_Entities">
-    <EntitySetMapping Name="Class">
-      <EntityTypeMapping TypeName="santisar_Model.Class">
-        <MappingFragment StoreEntitySet="Class">
-          <ScalarProperty Name="Class_year_index" ColumnName="Class_year_index" />
-          <ScalarProperty Name="Class_room" ColumnName="Class_room" />
-          <ScalarProperty Name="Teacher_id" ColumnName="Teacher_id" />
-          <ScalarProperty Name="Class_name_id" ColumnName="Class_name_id" />
-          <ScalarProperty Name="Status_class" ColumnName="Status_class" />
-          <ScalarProperty Name="Class_id" ColumnName="Class_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Enroll_paid">
       <EntityTypeMapping TypeName="santisar_Model.Enroll_paid">
         <MappingFragment StoreEntitySet="Enroll_paid">
@@ -207,6 +195,18 @@
           <ScalarProperty Name="page" ColumnName="page" />
           <ScalarProperty Name="qira_id" ColumnName="qira_id" />
           <ScalarProperty Name="att_id" ColumnName="att_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Class">
+      <EntityTypeMapping TypeName="santisar_Model.Class">
+        <MappingFragment StoreEntitySet="Class">
+          <ScalarProperty Name="Class_year_index" ColumnName="Class_year_index" />
+          <ScalarProperty Name="Class_room" ColumnName="Class_room" />
+          <ScalarProperty Name="Teacher_id" ColumnName="Teacher_id" />
+          <ScalarProperty Name="Class_name_id" ColumnName="Class_name_id" />
+          <ScalarProperty Name="Status_class" ColumnName="Status_class" />
+          <ScalarProperty Name="Class_id" ColumnName="Class_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

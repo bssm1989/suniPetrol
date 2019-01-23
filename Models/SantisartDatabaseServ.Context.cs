@@ -25,7 +25,6 @@ namespace santisart_app.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Class> Class { get; set; }
         public virtual DbSet<Enroll_paid> Enroll_paid { get; set; }
         public virtual DbSet<Enroll_student_class> Enroll_student_class { get; set; }
         public virtual DbSet<Food> Food { get; set; }
@@ -39,5 +38,6 @@ namespace santisart_app.Models
         public virtual DbSet<C_enrollattstudent> C_enrollattstudent { get; set; }
         public virtual DbSet<student2561_copy1> student2561_copy1 { get; set; }
         public virtual DbSet<EnrollStudentAttdance> EnrollStudentAttdance { get; set; }
+        public virtual DbSet<Class> Class { get; set; }
     }
 }

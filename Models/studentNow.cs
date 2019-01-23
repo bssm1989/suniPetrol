@@ -16,7 +16,7 @@ namespace santisart_app.Models
         public int? Student_psis_id { get; set; }
         public string Student_status { get; set; }
         public int Class_id { get; set; }
-        public string Status { get; set; }
+        public int? Status { get; set; }
         public string Class_name_id { get; set; }
         public int? Teacher_id { get; set; }
         public int? Class_room { get; set; }

@@ -30,7 +30,7 @@
       <PropertyRef Name="Class_id" />
     </Key>
     <Property Name="Class_id" Type="int" Nullable="false" />
-    <Property Name="Status_class" Type="varchar" MaxLength="20" />
+    <Property Name="Status_class" Type="int" />
     <Property Name="Class_name_id" Type="varchar" MaxLength="5" />
     <Property Name="Teacher_id" Type="int" />
     <Property Name="Class_room" Type="int" />

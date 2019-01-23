@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ceec5178dd504a8b8061194f8dcf15e7" Name="Diagram1" ZoomLevel="117">
-        <EntityTypeShape EntityType="santisar_Model.Class" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="santisar_Model.Enroll_paid" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="santisar_Model.Enroll_student_class" Width="1.5" PointX="5.375" PointY="6.75" />
         <EntityTypeShape EntityType="santisar_Model.Food" Width="1.5" PointX="2.75" PointY="4.75" />
@@ -19,6 +18,7 @@
         <EntityTypeShape EntityType="santisar_Model.C_enrollattstudent" Width="1.5" PointX="7.375" PointY="9.75" />
         <EntityTypeShape EntityType="santisar_Model.student2561_copy1" Width="1.5" PointX="9.375" PointY="9.75" />
         <EntityTypeShape EntityType="santisar_Model.EnrollStudentAttdance" Width="1.5" PointX="11.375" PointY="9.75" />
+        <EntityTypeShape EntityType="santisar_Model.Class" Width="1.5" PointX="12.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

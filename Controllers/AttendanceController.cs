@@ -62,9 +62,8 @@ namespace santisart_app.Controllers
             var attbyclass = db.EnrollStudentAttdance.Where(x => x.Class_id ==classId);
             var studentbyclass = db.student2561.Where(x => x.Class_id == classId).ToList();
             var attbymonth = db.attendance_day;
-            var classList = db.Class;
             List<SelectListItem> listClass = new List<SelectListItem>();
-            foreach (var item in db.Class)
+            foreach (var item in db.Class.Where(x=>x.Status_class==1))
             {
                 listClass.Add(new SelectListItem
                 {
