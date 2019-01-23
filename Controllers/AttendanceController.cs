@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,7 @@ namespace santisart_app.Controllers
     {
         santisar_Entities db = new santisar_Entities();
         // GET: Attendance
-        public ActionResult Index()
+        public ActionResult Index(int? classId)
         {
             int month = DateTime.Now.Month;
             // class_ student id 
@@ -19,51 +20,80 @@ namespace santisart_app.Controllers
 
 
             //attendance by student_id
-            var attdance = db.attendance_day
-                .GroupJoin(db.C_enrollattstudent,
-                    left => left.attday_id, right => right.attday_id,
-                    (left, right) => new { TableA = right, TableB = left })
-                .SelectMany(p => p.TableA.DefaultIfEmpty(), (x, y) =>
-                    new { TableA = y, TableB = x.TableB }).OrderBy(x=>x.TableB.attday_id);
+            //var attdance = db.attendance_day
+            //    .GroupJoin(db.C_enrollattstudent,
+            //        left => left.attday_id, right => right.attday_id,
+            //        (left, right) => new { TableA = right, TableB = left })
+            //    .SelectMany(p => p.TableA.DefaultIfEmpty(), (x, y) =>
+            //        new { TableA = y, TableB = x.TableB }).OrderBy(x => x.TableB.attday_id);
             List<viewStudentCrossAttday> att = new List<viewStudentCrossAttday>();
-            foreach (var item in attdance)
-            {
-                att.Add(new viewStudentCrossAttday
-                {
-                    Student_id = item?.TableA?.Student_id??0,
-                    Student_title = item?.TableA?.Student_title??"" ,
-                    Student_name = item.TableA?.Student_name ??"",
-                    Student_lname = item.TableA?.Student_lname ?? "",
-                    att_id = item?.TableA?.att_id??0,
-                    Staff_id = item?.TableA?.Staff_id ?? 0,
-                   qira_id = item?.TableA?.qira_id ?? 0,
-                   page = item?.TableA?.page ?? 0,
-                   attday_id = item.TableB.attday_id,
-                   attday_date = item.TableB.attday_date,
-                   Timestamp = item.TableB.Timestamp,
-                   status = item.TableB.status,
-                   staff_id = item.TableB.staff_id,
-                   year_index = item.TableB.staff_id,
-                   Comment = item.TableB.Comment,
+            //foreach (var item in attdance)
+            //{
+            //    att.Add(new viewStudentCrossAttday
+            //    {
+            //        Student_id = item?.TableA?.Student_id??0,
+            //        Student_title = item?.TableA?.Student_title??"" ,
+            //        Student_name = item.TableA?.Student_name ??"",
+            //        Student_lname = item.TableA?.Student_lname ?? "",
+            //        att_id = item?.TableA?.att_id??0,
+            //        Staff_id = item?.TableA?.Staff_id ?? 0,
+            //       qira_id = item?.TableA?.qira_id ?? 0,
+            //       page = item?.TableA?.page ?? 0,
+            //       attday_id = item.TableB.attday_id,
+            //       attday_date = item.TableB.attday_date,
+            //       Timestamp = item.TableB.Timestamp,
+            //       status = item.TableB.status,
+            //       staff_id = item.TableB.staff_id,
+            //       year_index = item.TableB.staff_id,
+            //       Comment = item.TableB.Comment,
 
+            //    });
+            //}
+
+
+
+            //listStudentByclass.Add(new attdanceClass
+            //{
+            //    students = db.Students.Where(x => x.Student_id == 1).FirstOrDefault(),
+            //    attMonunt = att
+            //});
+            //    var att2 = att[0].TableA.attday_id;
+
+            var attbyclass = db.EnrollStudentAttdance.Where(x => x.Class_id ==classId);
+            var studentbyclass = db.student2561.Where(x => x.Class_id == classId).ToList();
+            var attbymonth = db.attendance_day;
+            var classList = db.Class;
+            List<SelectListItem> listClass = new List<SelectListItem>();
+            foreach (var item in db.Class)
+            {
+                listClass.Add(new SelectListItem
+                {
+                    Text = item.Class_name_id + "/" + item.Class_room,
+                    Value = item.Class_id.ToString()
                 });
             }
 
-
-
-            listStudentByclass.Add(new attdanceClass
+            // ViewBag.data = {attbyclass,student;
+            attdeanceBymonth valuepass = new attdeanceBymonth
             {
-                students = db.Students.Where(x => x.Student_id == 1).FirstOrDefault(),
-                attMonunt = att
-            });
-        //    var att2 = att[0].TableA.attday_id;
-           
+                attMonth = attbymonth.ToList(),
+                attStudent = attbyclass.ToList(),
+                studentByClass = studentbyclass.ToList(),
+                classList = listClass.ToList()
 
-            return View(listStudentByclass);
+
+            };
+            return View(valuepass);
         }
-        //public IEnumerable<C_enrollattstudent> studentsbyid()
+        //public IEnumerable studentsbyid()
         //{
-        //    return db.Students.Where(x => x.Student_id == 1);
+        //    var attdance = db.attendance_day
+        //        .GroupJoin(db.C_enrollattstudent,
+        //            left => left.attday_id, right => right.attday_id,
+        //            (left, right) => new { TableA = right, TableB = left })
+        //        .SelectMany(p => p.TableA.DefaultIfEmpty(), (x, y) =>
+        //            new { TableA = y, TableB = x.TableB }).OrderBy(x => x.TableB.attday_id);
+        //    return attdance;
         //}
 
     }

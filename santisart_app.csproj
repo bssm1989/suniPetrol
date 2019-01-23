@@ -3981,6 +3981,13 @@
     <Compile Include="Controllers\AttendanceController.cs" />
     <Compile Include="Controllers\FoodPaidController.cs" />
     <Compile Include="Controllers\studentController.cs" />
+    <Compile Include="Models\attdeanceBymonth.cs" />
+    <Compile Include="Models\EnrollStudentAttdance.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\student2561_copy1.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\viewStudentCrossAttday.cs" />
     <Compile Include="Models\AddPaidStudent.cs" />
     <Compile Include="Models\attdanceClass.cs" />
@@ -3995,9 +4002,6 @@
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\C_enrollattstudent.cs">
-      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EnrollStudentAttdance.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Enroll_paid.cs">

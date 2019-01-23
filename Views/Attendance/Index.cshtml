@@ -1,4 +1,4 @@
-﻿@model IEnumerable<santisart_app.Models.attdanceClass>
+﻿@model santisart_app.Models.attdeanceBymonth
 
 @{
     ViewBag.Title = "Index";
@@ -28,183 +28,83 @@
             margin: auto;
         }
 </style>
+
 <h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<form action="@Url.Action("index", "Attendance")">
+    <select name='myfield' onchange='this.form.submit()'>
+        <option selected>Milk</option>
+        <option>Coffee</option>
+        <option>Tea</option>
+    </select>
+    <noscript><input type="submit" value="Submit"></noscript>
+</form> <div class="col-lg-3">
+    <form action="@Url.Action("index", "Attendance")">
+
+        @Html.DropDownList("classId", (IEnumerable<SelectListItem>)Model.classList, new { @class = "form-control", onchange = "this.form.submit();" })
+
+        <noscript><input type="submit" value="Submit"></noscript>
+    </form>
+</div>
+<input type="button" id="goClass" class="btn btn-default" value="Go" />
 <table class="table table-bordered ">
     <thead>
-    <tr>
-
-        <th></th>
-        @foreach (var item in Model.FirstOrDefault().attMonunt)
-        {
-            <th class="rotate">
-                @*@item.attday_date!= null ? item.attday_date.ToString("MM/dd/yyyy"): "n/a"*@
-                @{
-                    var textdate = item.attday_date != null ? item.attday_date.Value.ToString("dd/MM/yyyy") : "n/a";
-
-                }
-                <div><span>@textdate</span></div>
-            </th>
-        }
-    </tr>
-        </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-     
         <tr>
-            <td>
-            @(item.students.Student_title+" "+ item.students.Student_name+" "+item.students.Student_lname)
+
+            <th></th>
+            @foreach (var item in Model.attMonth)
+            {
 
 
-            </td>
-            @foreach (var item2 in item.attMonunt)
-            { var colorTd = "cornflowerblue";
-                if (item2.Student_id == 0)
-                {
-                    colorTd = "crimson";
-                }
-            <td style="background-color:@colorTd">
-                
-                </td>
+
+
+                <th class="rotate">
+                    @*@item.attday_date!= null ? item.attday_date.ToString("MM/dd/yyyy"): "n/a"*@
+
+                    @{ var textdate = item.attday_date != null ? item.attday_date.Value.ToString("dd/MM/yyyy") : "n/a";
+
+
+                        <div><span>@textdate</span></div>
+                    }
+                </th>
             }
-            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.studentByClass)
+        {
+
+            <tr>
+                <td>
+                    @(item.Student_title + " " + item.Student_name + " " + item.Student_lname)
+
+
+                </td>
+                @foreach (var item2 in Model.attMonth)
+                {
+                    // var colorTd = "cornflowerblue";
+                    var cHeckTocolor = Model.attStudent.Where(x => x.Student_id == item.Student_id && x.attday_id == item2.attday_id).Select(x=>x.attday_id).FirstOrDefault();
+                    var cHeckTocolor2 = cHeckTocolor != null ? "cornflowerblue" : "crimson";
+                    //if (item2. == 0)
+                    //{
+                    //    colorTd = "crimson";
+                    //}
+                    <td style='background-color:@cHeckTocolor2 '></td>
+                }
+
             </tr>
         }
 
 
     </tbody>
 </table>
-        @*<table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Student_id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Student_title)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Student_name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Student_lname)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Student_birthday)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Student_idcard)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Student_psis_id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Student_status)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Student_timestamp)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.qira_id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.page)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Timestamp_teach)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.attday_id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.attday_date)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.status)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.year_index)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Comment)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Staff_id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.datestamp)
-                </th>
-                <th></th>
-            </tr>
+<script>
+    $(document).ready(function () {
+        $('#selectClass').click(function () {
 
-        @foreach (var item in Model) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Student_id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Student_title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Student_name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Student_lname)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Student_birthday)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Student_idcard)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Student_psis_id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Student_status)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Student_timestamp)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.qira_id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.page)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Timestamp_teach)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.attday_id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.attday_date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.status)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.year_index)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Comment)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Staff_id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.datestamp)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id=item.att_id }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.att_id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id=item.att_id })
-                </td>
-            </tr>
-        }
+        });
+</script>
 
-        </table>*@

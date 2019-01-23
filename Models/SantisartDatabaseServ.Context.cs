@@ -34,9 +34,10 @@ namespace santisart_app.Models
         public virtual DbSet<Enroll_pay> Enroll_pay { get; set; }
         public virtual DbSet<attendance_day> attendance_day { get; set; }
         public virtual DbSet<Enroll_student_all_event> Enroll_student_all_event { get; set; }
-        public virtual DbSet<EnrollStudentAttdance> EnrollStudentAttdance { get; set; }
         public virtual DbSet<student2561> student2561 { get; set; }
         public virtual DbSet<attendance> attendance { get; set; }
         public virtual DbSet<C_enrollattstudent> C_enrollattstudent { get; set; }
+        public virtual DbSet<student2561_copy1> student2561_copy1 { get; set; }
+        public virtual DbSet<EnrollStudentAttdance> EnrollStudentAttdance { get; set; }
     }
 }

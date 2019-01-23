@@ -14,10 +14,11 @@
         <EntityTypeShape EntityType="santisar_Model.Enroll_pay" Width="1.5" PointX="7.375" PointY="4.75" />
         <EntityTypeShape EntityType="santisar_Model.attendance_day" Width="1.5" PointX="9.75" PointY="0.75" />
         <EntityTypeShape EntityType="santisar_Model.Enroll_student_all_event" Width="1.5" PointX="0.75" PointY="9.75" />
-        <EntityTypeShape EntityType="santisar_Model.EnrollStudentAttdance" Width="1.5" PointX="2.75" PointY="9.75" />
         <EntityTypeShape EntityType="santisar_Model.student2561" Width="1.5" PointX="9.75" PointY="4.75" />
         <EntityTypeShape EntityType="santisar_Model.attendance" Width="1.5" PointX="5.375" PointY="9.75" />
         <EntityTypeShape EntityType="santisar_Model.C_enrollattstudent" Width="1.5" PointX="7.375" PointY="9.75" />
+        <EntityTypeShape EntityType="santisar_Model.student2561_copy1" Width="1.5" PointX="9.375" PointY="9.75" />
+        <EntityTypeShape EntityType="santisar_Model.EnrollStudentAttdance" Width="1.5" PointX="11.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

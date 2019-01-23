@@ -144,32 +144,29 @@ warning 6002: The table/view 'santisar_.santisart.EnrollStudentAttdance' does no
     <Key>
       <PropertyRef Name="att_id" />
     </Key>
+    <Property Name="att_id" Type="int" Nullable="false" />
+    <Property Name="qira_id" Type="int" />
+    <Property Name="page" Type="int" />
+    <Property Name="Staff_id" Type="int" />
     <Property Name="Student_id" Type="int" />
     <Property Name="Student_title" Type="varchar" MaxLength="10" />
     <Property Name="Student_name" Type="varchar" MaxLength="100" />
     <Property Name="Student_lname" Type="varchar" MaxLength="100" />
-    <Property Name="Student_birthday" Type="datetime" />
-    <Property Name="Student_idcard" Type="varchar" MaxLength="13" />
-    <Property Name="Student_psis_id" Type="int" />
-    <Property Name="Student_status" Type="varchar" MaxLength="25" />
     <Property Name="Student_timestamp" Type="datetime" />
-    <Property Name="att_id" Type="int" Nullable="false" />
-    <Property Name="qira_id" Type="int" />
-    <Property Name="page" Type="int" />
-    <Property Name="Timestamp_teach" Type="datetime" />
+    <Property Name="Class_name_id" Type="varchar" MaxLength="5" />
+    <Property Name="Class_room" Type="int" />
+    <Property Name="Class_year_index" Type="int" />
+    <Property Name="Teacher_id" Type="int" />
+    <Property Name="Class_id" Type="int" />
     <Property Name="attday_id" Type="int" />
     <Property Name="attday_date" Type="date" />
-    <Property Name="status" Type="int" />
-    <Property Name="year_index" Type="int" />
-    <Property Name="Comment" Type="varchar" MaxLength="255" />
-    <Property Name="Staff_id" Type="int" />
-    <Property Name="datestamp" Type="date" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'santisar_.santisart.student2561' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="student2561">
     <Key>
       <PropertyRef Name="Student_id" />
+      <PropertyRef Name="Class_id" />
     </Key>
     <Property Name="Student_id" Type="int" Nullable="false" />
     <Property Name="Student_title" Type="varchar" MaxLength="10" />
@@ -184,6 +181,29 @@ warning 6002: The table/view 'santisar_.santisart.student2561' does not have a p
     <Property Name="Class_room" Type="int" />
     <Property Name="Class_year_index" Type="int" />
     <Property Name="Teacher_id" Type="int" />
+    <Property Name="Class_id" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'santisar_.santisart.student2561_copy1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="student2561_copy1">
+    <Key>
+      <PropertyRef Name="Student_id" />
+      <PropertyRef Name="Class_id" />
+    </Key>
+    <Property Name="Student_id" Type="int" Nullable="false" />
+    <Property Name="Student_title" Type="varchar" MaxLength="10" />
+    <Property Name="Student_name" Type="varchar" MaxLength="100" />
+    <Property Name="Student_lname" Type="varchar" MaxLength="100" />
+    <Property Name="Student_birthday" Type="datetime" />
+    <Property Name="Student_idcard" Type="varchar" MaxLength="13" />
+    <Property Name="Student_psis_id" Type="int" />
+    <Property Name="Student_status" Type="varchar" MaxLength="25" />
+    <Property Name="Student_timestamp" Type="datetime" />
+    <Property Name="Class_name_id" Type="varchar" MaxLength="5" />
+    <Property Name="Class_room" Type="int" />
+    <Property Name="Class_year_index" Type="int" />
+    <Property Name="Teacher_id" Type="int" />
+    <Property Name="Class_id" Type="int" Nullable="false" />
   </EntityType>
   <EntityContainer Name="santisar_ModelStoreContainer">
     <EntitySet Name="attendance" EntityType="Self.attendance" Schema="santisart" store:Type="Tables" />
@@ -211,26 +231,22 @@ warning 6002: The table/view 'santisar_.santisart.student2561' does not have a p
     </EntitySet>
     <EntitySet Name="EnrollStudentAttdance" EntityType="Self.EnrollStudentAttdance" store:Type="Views" store:Schema="santisart">
       <DefiningQuery>SELECT 
+    [EnrollStudentAttdance].[att_id] AS [att_id], 
+    [EnrollStudentAttdance].[qira_id] AS [qira_id], 
+    [EnrollStudentAttdance].[page] AS [page], 
+    [EnrollStudentAttdance].[Staff_id] AS [Staff_id], 
     [EnrollStudentAttdance].[Student_id] AS [Student_id], 
     [EnrollStudentAttdance].[Student_title] AS [Student_title], 
     [EnrollStudentAttdance].[Student_name] AS [Student_name], 
     [EnrollStudentAttdance].[Student_lname] AS [Student_lname], 
-    [EnrollStudentAttdance].[Student_birthday] AS [Student_birthday], 
-    [EnrollStudentAttdance].[Student_idcard] AS [Student_idcard], 
-    [EnrollStudentAttdance].[Student_psis_id] AS [Student_psis_id], 
-    [EnrollStudentAttdance].[Student_status] AS [Student_status], 
     [EnrollStudentAttdance].[Student_timestamp] AS [Student_timestamp], 
-    [EnrollStudentAttdance].[att_id] AS [att_id], 
-    [EnrollStudentAttdance].[qira_id] AS [qira_id], 
-    [EnrollStudentAttdance].[page] AS [page], 
-    [EnrollStudentAttdance].[Timestamp_teach] AS [Timestamp_teach], 
+    [EnrollStudentAttdance].[Class_name_id] AS [Class_name_id], 
+    [EnrollStudentAttdance].[Class_room] AS [Class_room], 
+    [EnrollStudentAttdance].[Class_year_index] AS [Class_year_index], 
+    [EnrollStudentAttdance].[Teacher_id] AS [Teacher_id], 
+    [EnrollStudentAttdance].[Class_id] AS [Class_id], 
     [EnrollStudentAttdance].[attday_id] AS [attday_id], 
-    [EnrollStudentAttdance].[attday_date] AS [attday_date], 
-    [EnrollStudentAttdance].[status] AS [status], 
-    [EnrollStudentAttdance].[year_index] AS [year_index], 
-    [EnrollStudentAttdance].[Comment] AS [Comment], 
-    [EnrollStudentAttdance].[Staff_id] AS [Staff_id], 
-    [EnrollStudentAttdance].[datestamp] AS [datestamp]
+    [EnrollStudentAttdance].[attday_date] AS [attday_date]
     FROM [santisart].[EnrollStudentAttdance] AS [EnrollStudentAttdance]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="student2561" EntityType="Self.student2561" store:Type="Views" store:Schema="santisart">
@@ -247,8 +263,27 @@ warning 6002: The table/view 'santisar_.santisart.student2561' does not have a p
     [student2561].[Class_name_id] AS [Class_name_id], 
     [student2561].[Class_room] AS [Class_room], 
     [student2561].[Class_year_index] AS [Class_year_index], 
-    [student2561].[Teacher_id] AS [Teacher_id]
+    [student2561].[Teacher_id] AS [Teacher_id], 
+    [student2561].[Class_id] AS [Class_id]
     FROM [santisart].[student2561] AS [student2561]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="student2561_copy1" EntityType="Self.student2561_copy1" store:Type="Views" store:Schema="santisart">
+      <DefiningQuery>SELECT 
+    [student2561_copy1].[Student_id] AS [Student_id], 
+    [student2561_copy1].[Student_title] AS [Student_title], 
+    [student2561_copy1].[Student_name] AS [Student_name], 
+    [student2561_copy1].[Student_lname] AS [Student_lname], 
+    [student2561_copy1].[Student_birthday] AS [Student_birthday], 
+    [student2561_copy1].[Student_idcard] AS [Student_idcard], 
+    [student2561_copy1].[Student_psis_id] AS [Student_psis_id], 
+    [student2561_copy1].[Student_status] AS [Student_status], 
+    [student2561_copy1].[Student_timestamp] AS [Student_timestamp], 
+    [student2561_copy1].[Class_name_id] AS [Class_name_id], 
+    [student2561_copy1].[Class_room] AS [Class_room], 
+    [student2561_copy1].[Class_year_index] AS [Class_year_index], 
+    [student2561_copy1].[Teacher_id] AS [Teacher_id], 
+    [student2561_copy1].[Class_id] AS [Class_id]
+    FROM [santisart].[student2561_copy1] AS [student2561_copy1]</DefiningQuery>
     </EntitySet>
   </EntityContainer>
 </Schema>

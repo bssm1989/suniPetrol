@@ -27,5 +27,6 @@ namespace santisart_app.Models
         public Nullable<int> Class_room { get; set; }
         public Nullable<int> Class_year_index { get; set; }
         public Nullable<int> Teacher_id { get; set; }
+        public int Class_id { get; set; }
     }
 }
