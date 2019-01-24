@@ -31,17 +31,7 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<form action="@Url.Action("index", "Attendance")">
-    <select name='myfield' onchange='this.form.submit()'>
-        <option selected>Milk</option>
-        <option>Coffee</option>
-        <option>Tea</option>
-    </select>
-    <noscript><input type="submit" value="Submit"></noscript>
-</form> <div class="col-lg-3">
+<div class="col-lg-3">
     <form action="@Url.Action("index", "Attendance")">
 
         @Html.DropDownList("classId", (IEnumerable<SelectListItem>)Model.classList, new { @class = "form-control", onchange = "this.form.submit();" })
