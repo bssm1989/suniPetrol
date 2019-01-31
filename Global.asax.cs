@@ -20,6 +20,7 @@ namespace santisart_app
 
         protected void Application_Error(object sender, EventArgs e)
         {
+           // System.Diagnostics.Debugger.Break();
             var exception = Server.GetLastError();
             var httpContext = ((HttpApplication)sender).Context;
             httpContext.Response.Clear();

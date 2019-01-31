@@ -3970,6 +3970,11 @@
     <Content Include="Views\FoodPaid\ViewDetail.cshtml" />
     <Content Include="Views\FoodPaid\Index.cshtml" />
     <Content Include="Views\Attendance\Index.cshtml" />
+    <Content Include="Views\eduContest\Index.cshtml" />
+    <Content Include="Views\eduContest\Create.cshtml" />
+    <Content Include="Views\eduContest\Details.cshtml" />
+    <Content Include="Views\eduContest\Delete.cshtml" />
+    <Content Include="Views\eduContest\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3979,13 +3984,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AttendanceController.cs" />
+    <Compile Include="Controllers\eduContestController.cs" />
     <Compile Include="Controllers\FoodPaidController.cs" />
     <Compile Include="Controllers\studentController.cs" />
     <Compile Include="Models\attdeanceBymonth.cs" />
+    <Compile Include="Models\ContestEducationSchool.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\EnrollStudentAttdance.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Enroll_EduContest.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\student2561_copy1.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\student2561_food.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\studentEduContest2561.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\viewStudentCrossAttday.cs" />

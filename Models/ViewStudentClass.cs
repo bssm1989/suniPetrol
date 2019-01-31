@@ -8,7 +8,7 @@ namespace santisart_app.Models
 {
     public class ViewStudentClass
     {
-        public Students students { get; set; }
+        public student2561_food students { get; set; }
         public Class Class2 { get; set; }
     }
 }

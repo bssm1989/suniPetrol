@@ -19,6 +19,10 @@
         <EntityTypeShape EntityType="santisar_Model.student2561_copy1" Width="1.5" PointX="9.375" PointY="9.75" />
         <EntityTypeShape EntityType="santisar_Model.EnrollStudentAttdance" Width="1.5" PointX="11.375" PointY="9.75" />
         <EntityTypeShape EntityType="santisar_Model.Class" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="santisar_Model.student2561_food" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="santisar_Model.ContestEducationSchool" Width="1.5" PointX="12.375" PointY="3.75" />
+        <EntityTypeShape EntityType="santisar_Model.Enroll_EduContest" Width="1.5" PointX="12.375" PointY="6.75" />
+        <EntityTypeShape EntityType="santisar_Model.studentEduContest2561" Width="1.5" PointX="3.375" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

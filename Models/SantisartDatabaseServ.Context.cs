@@ -39,5 +39,9 @@ namespace santisart_app.Models
         public virtual DbSet<student2561_copy1> student2561_copy1 { get; set; }
         public virtual DbSet<EnrollStudentAttdance> EnrollStudentAttdance { get; set; }
         public virtual DbSet<Class> Class { get; set; }
+        public virtual DbSet<student2561_food> student2561_food { get; set; }
+        public virtual DbSet<ContestEducationSchool> ContestEducationSchool { get; set; }
+        public virtual DbSet<Enroll_EduContest> Enroll_EduContest { get; set; }
+        public virtual DbSet<studentEduContest2561> studentEduContest2561 { get; set; }
     }
 }

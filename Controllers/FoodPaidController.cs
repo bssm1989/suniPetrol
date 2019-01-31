@@ -138,13 +138,13 @@ namespace santisart_app.Controllers
         }
         public List<viewPaid> VpaidFun()
         {
-            List<viewdetail> vpaidStu = (from s in db.Students
-                                         from cl in db.Class
-                                         from en in db.Enroll_student_class.Where(x => s.Student_id == x.Student_id && cl.Class_id == x.Class_id)
-                                         from mo in db.Monthly.Where(x => cl.Class_year_index == x.Month_year)
+            
+            List<viewdetail> vpaidStu = (from s in db.student2561_food
+                                         
+                                         from mo in db.Monthly.Where(x => s.Class_year_index == x.Month_year).DefaultIfEmpty()
                                          from enpa in db.Enroll_paid.Where(x => s.Student_id == x.Student_id && mo.Monthly_id == x.Monthly_id).DefaultIfEmpty()
-                                             // where s.Student_id == Student_id
-                                         orderby mo descending
+                                              //where s.Student_id == Student_id
+                                         orderby mo.Monthly_id descending
                                          select new viewdetail
                                          {
                                              Student_id = s.Student_id,
@@ -154,12 +154,11 @@ namespace santisart_app.Controllers
                                              Month_name = mo.Month_name,
                                              Month_year = mo.Month_year,
                                              Month_course = mo.Month_course,
-                                             Class_id = cl.Class_id,
-                                             Status = cl.Status_class,
-                                             Class_name_id = cl.Class_name_id,
-                                             Teacher_id = cl.Teacher_id,
-                                             Class_room = cl.Class_room,
-                                             Class_year_index = cl.Class_year_index,
+                                             Class_id = s.Class_id,
+                                             Class_name_id = s.Class_name_id,
+                                             Teacher_id = s.Teacher_id,
+                                             Class_room = s.Class_room,
+                                             Class_year_index = s.Class_year_index,
                                              Paid_id = enpa.Paid_id,
                                              Paid = enpa.Paid == null ? 0 : enpa.Paid,
                                              Monthly_id = mo.Monthly_id,
@@ -212,6 +211,7 @@ namespace santisart_app.Controllers
                                           from encl in encll.DefaultIfEmpty()
                                           join cl in db.Class on encl.Class_id equals cl.Class_id into clli
                                           from cl in clli.DefaultIfEmpty()
+                                          orderby st
                                           select new studentNow
                                           {
                                               Student_id = st.Student_id,
@@ -315,7 +315,7 @@ namespace santisart_app.Controllers
                              join cl in db.Class on en.Class_id equals cl.Class_id
                              where cl.Class_year_index == 2561
                              select new { cl, en.Student_id } into intermediate
-                             join st in db.Students on intermediate.Student_id equals st.Student_id
+                             join st in db.student2561_food on intermediate.Student_id equals st.Student_id
 
                              select new ViewStudentClass { students = st, Class2 = intermediate.cl }).ToListAsync();
             return View(ps2);
