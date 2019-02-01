@@ -107,7 +107,7 @@ namespace santisart_app.Controllers
             try
             {
                 // TODO: Add delete logic here
-                var studentContest = new Enroll_EduContest { EduContest_id =Convert.ToInt32("EduContestId")};
+                var studentContest = new Enroll_EduContest { EduContest_id = EduContestId };
                 db.Enroll_EduContest.Attach(studentContest);
                 db.Enroll_EduContest.Remove(studentContest);
                 db.SaveChanges();
