@@ -4026,6 +4026,11 @@
     <Content Include="Views\eduContest\Details.cshtml" />
     <Content Include="Views\eduContest\Delete.cshtml" />
     <Content Include="Views\eduContest\Edit.cshtml" />
+    <Content Include="Views\studentEduContest2561\Create.cshtml" />
+    <Content Include="Views\studentEduContest2561\Delete.cshtml" />
+    <Content Include="Views\studentEduContest2561\Details.cshtml" />
+    <Content Include="Views\studentEduContest2561\Edit.cshtml" />
+    <Content Include="Views\studentEduContest2561\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4057,6 +4062,7 @@
     <Compile Include="Models\studentEduContest2561.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\studentEduContest2561Controller.cs" />
     <Compile Include="Models\viewStudentCrossAttday.cs" />
     <Compile Include="Models\AddPaidStudent.cs" />
     <Compile Include="Models\attdanceClass.cs" />

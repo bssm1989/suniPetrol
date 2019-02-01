@@ -102,7 +102,7 @@ namespace santisart_app.Controllers
 
         // POST: eduContest/Delete/5
         [HttpPost]
-        public ActionResult Delete(int EduContest_id, FormCollection collection)
+        public ActionResult Delete(int EduContestId, FormCollection collection)
         {
             try
             {

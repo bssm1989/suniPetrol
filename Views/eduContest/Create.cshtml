@@ -1,10 +1,10 @@
 ﻿@model santisart_app.Models.studentEduContest2561
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "เพิ่มนักเรียน";
 }
 
-<h2>Create</h2>
+<h2>เพิ่มนักเรียน</h2>
 <style>
     .ui-autocomplete {
         position: absolute;
@@ -40,9 +40,11 @@
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-    <h4>studentEduContest2561</h4>
+    <h4>งานวิชาการ ครั้งที่ 3</h4>
     <hr />
-    
+    <div>
+        @Html.ActionLink("กลับหน้าหลัก", "Index", null, new { @class = "btn bg-orange" })
+    </div>
     <div class="form-group">
 
         @Html.HiddenFor(model => model.Student_id)
@@ -129,9 +131,7 @@
 </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
 <script type="text/javascript" language="javascript">
     $(document).ready(function () {
