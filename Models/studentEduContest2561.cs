@@ -17,8 +17,11 @@ namespace santisart_app.Models
     {
         
         public int Student_id { get; set; }
+        [Display(Name = "คำนำหน้า")]
         public string Student_title { get; set; }
+        [Display(Name = "ชื่อ")]
         public string Student_name { get; set; }
+        [Display(Name = "นามสกุล")]
         public string Student_lname { get; set; }
         [Display(Name = "ชั้นเรียน")]
         public string Class_name_id { get; set; }
@@ -30,14 +33,14 @@ namespace santisart_app.Models
         public Nullable<int> Teacher_id { get; set; }
         [Display(Name = "รหัสชั้น")]
         public int Class_id { get; set; }
-        [Display(Name = "รหัสการแข่งขั้น")]
+        [Display(Name = "รหัสการแข่งขัน")]
         public int TypeContest_id { get; set; }
-        [Display(Name = "ชื่อการแข่งขั้น")]
+        [Display(Name = "รายการแข่งขัน")]
         public string NameContest { get; set; }
 
         public Nullable<int> Staff_id { get; set; }
         public Nullable<System.DateTime> Timestamp { get; set; }
-        [Display(Name = "ประเภทกลุ่ม")]
+        [Display(Name = "กลุ่มที่")]
         public Nullable<int> group { get; set; }
         public Nullable<System.DateTime> Day_contest { get; set; }
         [Display(Name = "ลำดับ")]

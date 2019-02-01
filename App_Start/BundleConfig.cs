@@ -184,6 +184,11 @@ namespace santisart_app.App_Start
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/vendors2/bootstrap/dist/css/bootstrap.min.css",
                       "~/Content/site.css"));
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
+            "~/Scripts/jquery-ui-{version}.js"));
+
+            bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
+                        "~/Content/themes/base/all.css"));
 
         }
     }
