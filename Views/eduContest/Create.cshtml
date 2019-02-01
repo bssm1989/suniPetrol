@@ -144,7 +144,7 @@
                 .appendTo(table);
         };
         $('#Student_name').autocomplete({
-            source: '/eduContest/getcountries',
+            source: '~/eduContest/getcountries',
             select: function (event, ui) {
                 //set tagids to save
                 $("#CountryId").val(ui.item.id);
@@ -162,7 +162,7 @@
         });
         $.ajax({
             type: "GET",
-            url: "/eduContest/getDepartment",
+            url: "~/eduContest/getDepartment",
             data: "{}",
             success: function (data) {
                 var s = '';
