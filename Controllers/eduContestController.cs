@@ -14,7 +14,7 @@ namespace santisart_app.Controllers
         public ActionResult Index()
         {
 
-            return View(db.studentEduContest2561);
+            return View(db.studentEduContest2561.OrderBy(x=>x.TypeContest_id).ThenBy(x=>x.group).ThenBy(x=>x.result));
         }
 
         // GET: eduContest/Details/5
