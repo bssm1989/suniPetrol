@@ -85,7 +85,7 @@ namespace santisart_app.Controllers
                     Student_id = Convert.ToInt32(collection["Student_id"])
                 });
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Redirect("http://27.254.81.243/plesk-site-preview/santisartwittaya.ac.th/educontest");
             }
             catch
             {
@@ -111,7 +111,7 @@ namespace santisart_app.Controllers
                 db.Enroll_EduContest.Attach(studentContest);
                 db.Enroll_EduContest.Remove(studentContest);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Redirect("http://27.254.81.243/plesk-site-preview/santisartwittaya.ac.th/educontest");
             }
             catch
             {
