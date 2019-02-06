@@ -58,11 +58,11 @@ namespace santisart_app.Controllers
                 });
 
                 db.SaveChanges();
-                return Content("<script>window.location = 'http://27.254.81.243/plesk-site-preview/santisartwittaya.ac.th/educontest';</script>");
+                return Redirect("http://27.254.81.243/plesk-site-preview/santisartwittaya.ac.th/educontest");
             }
             catch
             {
-                return Content("<script>window.location = 'http://27.254.81.243/plesk-site-preview/santisartwittaya.ac.th/educontest';</script>");
+                return Redirect("http://27.254.81.243/plesk-site-preview/santisartwittaya.ac.th/educontest");
             }
         }
 
@@ -84,8 +84,15 @@ namespace santisart_app.Controllers
                     Type_id = Convert.ToInt32(collection["NameContest"]),
                     Student_id = Convert.ToInt32(collection["Student_id"])
                 });
-                db.SaveChanges();
-                return Content("<script>window.location = 'http://27.254.81.243/plesk-site-preview/santisartwittaya.ac.th/educontest';</script>");
+                var result=db.Enroll_EduContest.SingleOrDefault(x => x.EduContest_id == Convert.ToInt32(collection["EduContest_id"]));
+                //var result = db.Books.SingleOrDefault(b => b.BookNumber == bookNumber);
+                if (result != null)
+                {
+                    result.Type_id = Convert.ToInt32(collection["NameContest"]);
+                    db.SaveChanges();
+                }
+               
+                return Redirect("http://27.254.81.243/plesk-site-preview/santisartwittaya.ac.th/educontest");
             }
             catch
             {
@@ -111,7 +118,7 @@ namespace santisart_app.Controllers
                 db.Enroll_EduContest.Attach(studentContest);
                 db.Enroll_EduContest.Remove(studentContest);
                 db.SaveChanges();
-                return Content("<script>window.location = 'http://27.254.81.243/plesk-site-preview/santisartwittaya.ac.th/educontest';</script>");
+                return Redirect("http://27.254.81.243/plesk-site-preview/santisartwittaya.ac.th/educontest");
             }
             catch
             {
