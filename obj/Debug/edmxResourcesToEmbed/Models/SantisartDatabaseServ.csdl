@@ -256,6 +256,7 @@
     <Property Name="Type_id" Type="Int32" />
     <Property Name="Student_id" Type="Int32" />
     <Property Name="Timestamp__" Type="DateTime" Precision="3" />
+    <Property Name="result" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="studentEduContest2561">
     <Key>
@@ -280,5 +281,6 @@
     <Property Name="group" Type="Int32" />
     <Property Name="Day_contest" Type="DateTime" Precision="0" />
     <Property Name="EduContest_id" Type="Int32" Nullable="false" />
+    <Property Name="result" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

@@ -55,6 +55,7 @@
     <Property Name="Type_id" Type="int" />
     <Property Name="Student_id" Type="int" />
     <Property Name="Timestamp&#xD;&#xA;" Type="datetime" />
+    <Property Name="result" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="Enroll_paid">
     <Key>
@@ -272,6 +273,7 @@ warning 6002: The table/view 'santisar_.santisart.studentEduContest2561' does no
     <Property Name="group" Type="int" />
     <Property Name="Day_contest" Type="date" />
     <Property Name="EduContest_id" Type="int" Nullable="false" />
+    <Property Name="result" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityContainer Name="santisar_ModelStoreContainer">
     <EntitySet Name="attendance" EntityType="Self.attendance" Schema="santisart" store:Type="Tables" />
@@ -390,7 +392,8 @@ warning 6002: The table/view 'santisar_.santisart.studentEduContest2561' does no
     [studentEduContest2561].[Timestamp] AS [Timestamp], 
     [studentEduContest2561].[group] AS [group], 
     [studentEduContest2561].[Day_contest] AS [Day_contest], 
-    [studentEduContest2561].[EduContest_id] AS [EduContest_id]
+    [studentEduContest2561].[EduContest_id] AS [EduContest_id], 
+    [studentEduContest2561].[result] AS [result]
     FROM [santisart].[studentEduContest2561] AS [studentEduContest2561]</DefiningQuery>
     </EntitySet>
   </EntityContainer>

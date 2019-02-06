@@ -18,5 +18,6 @@ namespace santisart_app.Models
         public Nullable<int> Type_id { get; set; }
         public Nullable<int> Student_id { get; set; }
         public Nullable<System.DateTime> Timestamp__ { get; set; }
+        public string result { get; set; }
     }
 }

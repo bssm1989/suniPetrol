@@ -245,6 +245,7 @@
     <EntitySetMapping Name="Enroll_EduContest">
       <EntityTypeMapping TypeName="santisar_Model.Enroll_EduContest">
         <MappingFragment StoreEntitySet="Enroll_EduContest">
+          <ScalarProperty Name="result" ColumnName="result" />
           <ScalarProperty Name="Timestamp__" ColumnName="Timestamp&#xD;&#xA;" />
           <ScalarProperty Name="Student_id" ColumnName="Student_id" />
           <ScalarProperty Name="Type_id" ColumnName="Type_id" />
@@ -255,6 +256,7 @@
     <EntitySetMapping Name="studentEduContest2561">
       <EntityTypeMapping TypeName="santisar_Model.studentEduContest2561">
         <MappingFragment StoreEntitySet="studentEduContest2561">
+          <ScalarProperty Name="result" ColumnName="result" />
           <ScalarProperty Name="EduContest_id" ColumnName="EduContest_id" />
           <ScalarProperty Name="Day_contest" ColumnName="Day_contest" />
           <ScalarProperty Name="group" ColumnName="group" />

@@ -11,39 +11,25 @@ namespace santisart_app.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class studentEduContest2561
     {
-        
         public int Student_id { get; set; }
-        [Display(Name = "คำนำหน้า")]
         public string Student_title { get; set; }
-        [Display(Name = "ชื่อ")]
         public string Student_name { get; set; }
-        [Display(Name = "นามสกุล")]
         public string Student_lname { get; set; }
-        [Display(Name = "ชั้นเรียน")]
         public string Class_name_id { get; set; }
-        [Display(Name = "ห้อง")]
         public Nullable<int> Class_room { get; set; }
-        [Display(Name = "ปีการศึกษา")]
         public Nullable<int> Class_year_index { get; set; }
-        [Display(Name = "รหัสครู")]
         public Nullable<int> Teacher_id { get; set; }
-        [Display(Name = "รหัสชั้น")]
         public int Class_id { get; set; }
-        [Display(Name = "รหัสการแข่งขัน")]
         public int TypeContest_id { get; set; }
-        [Display(Name = "รายการแข่งขัน")]
         public string NameContest { get; set; }
-
         public Nullable<int> Staff_id { get; set; }
         public Nullable<System.DateTime> Timestamp { get; set; }
-        [Display(Name = "กลุ่มที่")]
         public Nullable<int> group { get; set; }
         public Nullable<System.DateTime> Day_contest { get; set; }
-        [Display(Name = "ลำดับ")]
         public int EduContest_id { get; set; }
+        public string result { get; set; }
     }
 }

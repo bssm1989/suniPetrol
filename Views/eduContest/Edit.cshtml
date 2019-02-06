@@ -35,7 +35,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>studentEduContest2561</h4>
+        <h4>แก้ไขรายละเอียด</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Student_id)
@@ -129,8 +129,29 @@
         <div class="form-group">
             @Html.LabelFor(model => model.NameContest, htmlAttributes: new { @class = "control-label  col-md-2 col-sm-2" })
             <div class="col-md-10">
-                <select class="form-control" id="NameContest" name="NameContest"><option value="@Model.EduContest_id">@Model.NameContest</option></select>
+                <select class="form-control" id="NameContest" name="NameContest">@*<option value="@Model.EduContest_id" selected>@Model.NameContest</option>*@</select>
                 @Html.ValidationMessageFor(model => model.NameContest, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @{ 
+            var resultlist =new[] { "อันดับ 1", "อันดับ 2", "อันดับ 3", "ชมเชย" };
+            var selected = "";
+        }
+        <div class="form-group">
+            @Html.LabelFor(model => model.result, htmlAttributes: new { @class = "control-label  col-md-2 col-sm-2" })
+            <div class="col-md-10">
+                <select class="form-control" id="result" name="result">
+                    @foreach (var item in resultlist)
+                    {if (item == Model.result)
+                    {
+                        selected = "selected";
+                    }
+                    else { selected = ""; }
+                    
+                    <option value="@item" @selected>@item</option>
+
+                    }
+                @Html.ValidationMessageFor(model => model.result, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -183,9 +204,15 @@
             url: "getDepartment",
             data: "{}",
             success: function (data) {
-                var s = '';
+                var s = ''; 
+                var selected="@Model.NameContest";
                 for (var i = 0; i < data.length; i++) {
-                    s += '<option value="' + data[i].DepartmentID + '">' + data[i].DepartmentName + '</option>';
+                    if (parseInt( data[i].DepartmentID) ==@Model.TypeContest_id) {
+                        selected = "selected";
+                    } else {
+                        selected = '';
+                    }
+                    s += '<option value="' + data[i].DepartmentID + '" ' + selected+'>' + data[i].DepartmentName + '</option>';
                 }
                 $("#NameContest").html(s);
             },

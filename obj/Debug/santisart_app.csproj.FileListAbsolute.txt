@@ -86,7 +86,6 @@ C:\Users\mumee\source\repos\santisart_app\santisart_app\obj\Debug\santisart_app.
 C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\Rotativa.dll
 C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\roslyn\System.IO.FileSystem.dll
 C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\roslyn\System.IO.FileSystem.Primitives.dll
-C:\Users\mumee\source\repos\santisart_app\santisart_app\obj\Debug\santisart_app.csprojAssemblyReference.cache
 C:\Users\mumee\Downloads\santisart_app\santisart_app\santisart_app\bin\santisart_app.dll.config
 C:\Users\mumee\Downloads\santisart_app\santisart_app\santisart_app\bin\santisart_app.dll
 C:\Users\mumee\Downloads\santisart_app\santisart_app\santisart_app\bin\santisart_app.pdb
@@ -177,3 +176,4 @@ C:\Users\mumee\Downloads\santisart_app\santisart_app\santisart_app\obj\Debug\san
 C:\Users\mumee\Downloads\santisart_app\santisart_app\santisart_app\obj\Debug\santisart_app.dll
 C:\Users\mumee\Downloads\santisart_app\santisart_app\santisart_app\obj\Debug\santisart_app.pdb
 C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\NinjaNye.SearchExtensions.dll
+C:\Users\mumee\source\repos\santisart_app\santisart_app\obj\Debug\santisart_app.csprojAssemblyReference.cache

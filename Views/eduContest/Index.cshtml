@@ -38,8 +38,11 @@
                     <th class="col-lg-1 col-sm-1 col-md-1">
                         @Html.DisplayNameFor(model => model.group)
                     </th>
+                    <th>
+    ผลการแข่งขัน
+</th>
                     <th >
-                        @Html.DisplayNameFor(model => model.Day_contest)
+                        วันแข่งขัน
                     </th>
                     <th></th>
                 </tr>
@@ -64,17 +67,20 @@
                             @Html.DisplayFor(modelItem => item.NameContest)
                         </td>
                         
-                 
+                        
                         <td>
                             @Html.DisplayFor(modelItem => item.group)
+                        </td> 
+                        <td>
+                            @Html.DisplayFor(modelItem => item.result)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Day_contest)
                         </td>
                         <td>
-                            @*@Html.ActionLink("Edit", "Edit", new { item.EduContest_id }) |*@
-                            @Html.ActionLink("รายละเอียด", "Details", new {item.EduContest_id  }) |
-                            @Html.ActionLink("ลบ", "Delete", new { EduContestId=item.EduContest_id })
+                            @Html.ActionLink("Edit", "Edit", new { item.EduContest_id }, new { @class = "btn btn-primary btn-xs" }) 
+                            @Html.ActionLink("รายละเอียด", "Details", new {item.EduContest_id  }, new { @class = "btn btn-info btn-xs" } ) 
+                            @Html.ActionLink("ลบ", "Delete", new { EduContestId=item.EduContest_id }, new { @class = "btn btn-danger btn-xs" } )
                         </td>
                     </tr>
                 }
@@ -106,7 +112,7 @@
                 api.column(groupColumn, { page: 'current' }).data().each(function (group, i) {
                     if (last !== group) {
                         $(rows).eq(i).before(
-                            '<tr class="group"><td colspan="6"><strong>' + group + '</strong></td></tr>'
+                            '<tr class="group"><td colspan="7"><strong>' + group + '</strong></td></tr>'
                         );
 
                         last = group;

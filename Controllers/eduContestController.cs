@@ -54,6 +54,7 @@ namespace santisart_app.Controllers
                 {
                     Student_id = Convert.ToInt32(collection["Student_id"]),
                     Type_id = Convert.ToInt32(collection["NameContest"]),
+                    result= collection["result"],
                     Timestamp__ = DateTime.Now
                 });
 
@@ -89,6 +90,7 @@ namespace santisart_app.Controllers
                 if (result != null)
                 {
                     result.Type_id = Convert.ToInt32(collection["NameContest"]);
+                    result.result = collection["result"];
                     db.SaveChanges();
                 }
                
