@@ -58,11 +58,11 @@ namespace santisart_app.Controllers
                 });
 
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Redirect("http://27.254.81.243/plesk-site-preview/santisartwittaya.ac.th/educontest");
             }
             catch
             {
-                return View();
+                return Redirect("http://27.254.81.243/plesk-site-preview/santisartwittaya.ac.th/educontest");
             }
         }
 
