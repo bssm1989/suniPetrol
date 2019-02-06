@@ -79,12 +79,12 @@ namespace santisart_app.Controllers
             try
             {
                 // TODO: Add update logic here
-                db.Enroll_EduContest.Add(new Enroll_EduContest
-                {
-                    Type_id = Convert.ToInt32(collection["NameContest"]),
-                    Student_id = Convert.ToInt32(collection["Student_id"])
-                });
-                var result=db.Enroll_EduContest.SingleOrDefault(x => x.EduContest_id == Convert.ToInt32(collection["EduContest_id"]));
+                //db.Enroll_EduContest.Add(new Enroll_EduContest
+                //{
+                //    Type_id = Convert.ToInt32(collection["NameContest"]),
+                //    Student_id = Convert.ToInt32(collection["Student_id"])
+                //});
+                var result=db.Enroll_EduContest.SingleOrDefault(x => x.EduContest_id == EduContest_id);
                 //var result = db.Books.SingleOrDefault(b => b.BookNumber == bookNumber);
                 if (result != null)
                 {
