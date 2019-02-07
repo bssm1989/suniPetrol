@@ -55,7 +55,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Student_title, htmlAttributes: new { @class = "control-label  col-md-2 col-sm-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Student_title, new { htmlAttributes = new { @class = "form-control" , @disabled = "disabled" } })
+            @Html.EditorFor(model => model.Student_title, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
             @Html.ValidationMessageFor(model => model.Student_title, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -69,7 +69,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Student_lname, htmlAttributes: new { @class = "control-label  col-md-2 col-sm-2",  })
+        @Html.LabelFor(model => model.Student_lname, htmlAttributes: new { @class = "control-label  col-md-2 col-sm-2", })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Student_lname, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
             @Html.ValidationMessageFor(model => model.Student_lname, "", new { @class = "text-danger" })
@@ -87,25 +87,25 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Class_room, htmlAttributes: new { @class = "control-label  col-md-2 col-sm-2" })
         <div class="col-md-10">
-            
+
             @Html.EditorFor(model => model.Class_room, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
             @Html.ValidationMessageFor(model => model.Class_room, "", new { @class = "text-danger" })
         </div>
     </div>
 
-   
 
 
-        
-      
-            @Html.HiddenFor(model => model.Class_id)
-           
-     
-  
 
-       
-            @Html.HiddenFor(model => model.TypeContest_id)
-      
+
+
+    @Html.HiddenFor(model => model.Class_id)
+
+
+
+
+
+    @Html.HiddenFor(model => model.TypeContest_id)
+
 
 
     <div class="form-group">
@@ -116,11 +116,29 @@
         </div>
     </div>
 
+    @{
+        var resultlist = new[] { "อันดับ 1", "อันดับ 2", "อันดับ 3", "ชมเชย" };
+        var selected = "";
+    }
+    <div class="form-group">
+        @Html.LabelFor(model => model.result, htmlAttributes: new { @class = "control-label  col-md-2 col-sm-2" })
+        <div class="col-md-10">
+            <select class="form-control" id="result" name="result">
+                @foreach (var item in resultlist)
+                {
+                   
+
+                    <option value="@item" >@item</option>
+
+                }
+                </select>
+                @Html.ValidationMessageFor(model => model.result, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
 
-   
 
-   
+
 
 
     <div class="form-group">
