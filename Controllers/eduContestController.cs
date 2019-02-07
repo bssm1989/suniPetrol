@@ -59,11 +59,11 @@ namespace santisart_app.Controllers
                 });
 
                 db.SaveChanges();
-                return Redirect("http://27.254.81.243/plesk-site-preview/santisartwittaya.ac.th/educontest");
+                return Redirect("27.254.81.243/plesk-site-preview/santisartwittaya.ac.th/educontest");
             }
             catch
             {
-                return Redirect("http://27.254.81.243/plesk-site-preview/santisartwittaya.ac.th/educontest");
+                return Redirect("27.254.81.243/plesk-site-preview/santisartwittaya.ac.th/educontest");
             }
         }
 
@@ -94,7 +94,7 @@ namespace santisart_app.Controllers
                     db.SaveChanges();
                 }
                
-                return Redirect("http://27.254.81.243/plesk-site-preview/santisartwittaya.ac.th/educontest");
+                return Redirect("27.254.81.243/plesk-site-preview/santisartwittaya.ac.th/educontest");
             }
             catch
             {
@@ -120,7 +120,7 @@ namespace santisart_app.Controllers
                 db.Enroll_EduContest.Attach(studentContest);
                 db.Enroll_EduContest.Remove(studentContest);
                 db.SaveChanges();
-                return Redirect("http://27.254.81.243/plesk-site-preview/santisartwittaya.ac.th/educontest");
+                return Redirect("27.254.81.243/plesk-site-preview/santisartwittaya.ac.th/educontest");
             }
             catch
             {
