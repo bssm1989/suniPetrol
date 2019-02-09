@@ -51,6 +51,7 @@
                 @{var numIndex = 0; }
                     @foreach (var item in Model)
                     {
+                        item.Student_title = item.Student_title.Replace("ด.ช.", "เด็กชาย").Replace("ด.ญ.", "เด็กหญิง");
                         numIndex++;
                     <tr>
                         <td>
@@ -103,7 +104,7 @@
                 { "visible": false, "targets": groupColumn }
             ],
             "order": [[groupColumn, 'asc']],
-            "displayLength": 25,
+            "displayLength": 3,
             "drawCallback": function (settings) {
                 var api = this.api();
                 var rows = api.rows({ page: 'current' }).nodes();
