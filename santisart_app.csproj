@@ -1,5 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SSDTUnitTestPath Condition="'$(SSDTUnitTestPath)' == ''">$(VsInstallRoot)\Common7\IDE\Extensions\Microsoft\SQLDB</SSDTUnitTestPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SSDTPath Condition="'$(SSDTPath)' == ''">$(VsInstallRoot)\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\130</SSDTPath>
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.2.7.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.7.0\build\Microsoft.Net.Compilers.props')" />
@@ -3982,6 +3988,7 @@
       <DependentUpon>SantisartDatabaseServ.edmx</DependentUpon>
     </Content>
     <Content Include="App_Browsers\qt.browser" />
+    <Content Include="Models\app.config" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
@@ -4031,6 +4038,51 @@
     <Content Include="Views\studentEduContest2561\Details.cshtml" />
     <Content Include="Views\studentEduContest2561\Edit.cshtml" />
     <Content Include="Views\studentEduContest2561\Index.cshtml" />
+    <Content Include="Views\Employee_copy1\Create.cshtml" />
+    <Content Include="Views\Employee_copy1\Delete.cshtml" />
+    <Content Include="Views\Employee_copy1\Details.cshtml" />
+    <Content Include="Views\Employee_copy1\Edit.cshtml" />
+    <Content Include="Views\Employee_copy1\Index.cshtml" />
+    <Content Include="Views\Enroll_Emp_Pos_copy1\Create.cshtml" />
+    <Content Include="Views\Enroll_Emp_Pos_copy1\Delete.cshtml" />
+    <Content Include="Views\Enroll_Emp_Pos_copy1\Details.cshtml" />
+    <Content Include="Views\Enroll_Emp_Pos_copy1\Edit.cshtml" />
+    <Content Include="Views\Enroll_Emp_Pos_copy1\Index.cshtml" />
+    <Content Include="Views\TestStudentCourses\Create.cshtml" />
+    <Content Include="Views\TestStudentCourses\Delete.cshtml" />
+    <Content Include="Views\TestStudentCourses\Details.cshtml" />
+    <Content Include="Views\TestStudentCourses\Edit.cshtml" />
+    <Content Include="Views\TestStudentCourses\Index.cshtml" />
+    <Content Include="Views\TestCourses\Create.cshtml" />
+    <Content Include="Views\TestCourses\Delete.cshtml" />
+    <Content Include="Views\TestCourses\Details.cshtml" />
+    <Content Include="Views\TestCourses\Edit.cshtml" />
+    <Content Include="Views\TestCourses\Index.cshtml" />
+    <Content Include="Views\TestStudents\Create.cshtml" />
+    <Content Include="Views\TestStudents\Delete.cshtml" />
+    <Content Include="Views\TestStudents\Details.cshtml" />
+    <Content Include="Views\TestStudents\Edit.cshtml" />
+    <Content Include="Views\TestStudents\Index.cshtml" />
+    <Content Include="Views\xTestStudents\Create.cshtml" />
+    <Content Include="Views\xTestStudents\Delete.cshtml" />
+    <Content Include="Views\xTestStudents\Details.cshtml" />
+    <Content Include="Views\xTestStudents\Edit.cshtml" />
+    <Content Include="Views\xTestStudents\Index.cshtml" />
+    <Content Include="Views\xTestEnrollments\Create.cshtml" />
+    <Content Include="Views\xTestEnrollments\Delete.cshtml" />
+    <Content Include="Views\xTestEnrollments\Details.cshtml" />
+    <Content Include="Views\xTestEnrollments\Edit.cshtml" />
+    <Content Include="Views\xTestEnrollments\Index.cshtml" />
+    <Content Include="Views\Enroll_Emp_Pos\Create.cshtml" />
+    <Content Include="Views\Enroll_Emp_Pos\Delete.cshtml" />
+    <Content Include="Views\Enroll_Emp_Pos\Details.cshtml" />
+    <Content Include="Views\Enroll_Emp_Pos\Edit.cshtml" />
+    <Content Include="Views\Enroll_Emp_Pos\Index.cshtml" />
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4041,10 +4093,37 @@
   <ItemGroup>
     <Compile Include="Controllers\AttendanceController.cs" />
     <Compile Include="Controllers\eduContestController.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
+    <Compile Include="Controllers\Employee_copy1Controller.cs" />
+    <Compile Include="Controllers\Enroll_Emp_PosController.cs" />
+    <Compile Include="Controllers\Enroll_Emp_Pos_copy1Controller.cs" />
     <Compile Include="Controllers\FoodPaidController.cs" />
     <Compile Include="Controllers\studentController.cs" />
+    <Compile Include="Controllers\TestCoursesController.cs" />
+    <Compile Include="Controllers\TestStudentCoursesController.cs" />
+    <Compile Include="Controllers\TestStudentsController.cs" />
+    <Compile Include="Controllers\xTestEnrollmentsController.cs" />
+    <Compile Include="Controllers\xTestStudentsController.cs" />
     <Compile Include="Models\attdeanceBymonth.cs" />
+    <Compile Include="Models\attendance.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\attendance_day.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Class.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ContestEducationSchool.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C_enrollattstudent.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Employee.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Employee_copy1.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EnrollStudentAttdance.cs">
@@ -4053,30 +4132,10 @@
     <Compile Include="Models\Enroll_EduContest.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\student2561_copy1.cs">
+    <Compile Include="Models\Enroll_Emp_Pos.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\student2561_food.cs">
-      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\studentEduContest2561.cs">
-      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\studentEduContest2561Controller.cs" />
-    <Compile Include="Models\viewStudentCrossAttday.cs" />
-    <Compile Include="Models\AddPaidStudent.cs" />
-    <Compile Include="Models\attdanceClass.cs" />
-    <Compile Include="Models\attendance.cs">
-      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\attendance_day.cs">
-      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BlogViewPrintBill.cs" />
-    <Compile Include="Models\Class.cs">
-      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\C_enrollattstudent.cs">
+    <Compile Include="Models\Enroll_Emp_Pos_copy1.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Enroll_paid.cs">
@@ -4097,6 +4156,50 @@
     <Compile Include="Models\Monthly.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Position.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\student2561.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\student2561_copy1.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\student2561_food.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\studentEduContest2561.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\studentEduContest2561Controller.cs" />
+    <Compile Include="Models\Students.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TestCourse.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TestCourseInstructor.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TestDepartment.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TestInstructor.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TestStudent.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TestStudentCourse.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewEmpPos.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\viewStudentCrossAttday.cs" />
+    <Compile Include="Models\AddPaidStudent.cs" />
+    <Compile Include="Models\attdanceClass.cs" />
+    <Compile Include="Models\BlogViewPrintBill.cs" />
     <Compile Include="Models\SantisartDatabaseServ.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -4112,18 +4215,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SantisartDatabaseServ.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\student2561.cs">
-      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\studentNow.cs" />
-    <Compile Include="Models\Students.cs">
-      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\viewdetail.cs" />
     <Compile Include="Models\ViewDetailPaide.cs" />
     <Compile Include="Models\viewPaid.cs" />
     <Compile Include="Models\ViewPrintInvoise.cs" />
     <Compile Include="Models\ViewStudentClass.cs" />
+    <Compile Include="Models\xTestCourse.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\xTestEnrollment.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\xTestStudent.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -4211,6 +4317,21 @@
   <ItemGroup>
     <TypeScriptCompile Include="Content\vendors\moment\moment.d.ts" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup Condition="$(VisualStudioVersion) == '15.0'">
+    <Reference Include="Microsoft.Data.Tools.Schema.Sql, Version=13.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>$(SSDTPath)\Microsoft.Data.Tools.Schema.Sql.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Schema.Sql.UnitTesting, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>$(SSDTUnitTestPath)\Microsoft.Data.Tools.Schema.Sql.UnitTesting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>$(SSDTUnitTestPath)\Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -4235,4 +4356,9 @@
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.7.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.7.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
+  <PropertyGroup>
+    <SsdtUnitTestVersion>3.1</SsdtUnitTestVersion>
+  </PropertyGroup>
+  <Import Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="$(VisualStudioVersion) != '15.0' And '$(SQLDBExtensionsRefPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="$(VisualStudioVersion) != '15.0' And '$(SQLDBExtensionsRefPath)' == ''" />
 </Project>

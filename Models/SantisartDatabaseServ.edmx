@@ -5,6 +5,84 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="santisar_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TestCourse">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TestCourseInstructor">
+          <Key>
+            <PropertyRef Name="CourseId" />
+            <PropertyRef Name="InstructorId" />
+          </Key>
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="InstructorId" Type="int" Nullable="false" />
+          <Property Name="timestamp" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TestDepartment">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DepartmentLocation" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="InstructorId" Type="int" />
+        </EntityType>
+        <EntityType Name="TestInstructor">
+          <Key>
+            <PropertyRef Name="InstructorId" />
+          </Key>
+          <Property Name="InstructorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TestStudent">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TestStudentCourse">
+          <Key>
+            <PropertyRef Name="StudentCourseId" />
+          </Key>
+          <Property Name="StudentCourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="xTestCourse">
+          <Key>
+            <PropertyRef Name="CourseID" />
+          </Key>
+          <Property Name="CourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Credits" Type="int" />
+        </EntityType>
+        <EntityType Name="xTestEnrollment">
+          <Key>
+            <PropertyRef Name="EnrollmentID" />
+          </Key>
+          <Property Name="EnrollmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Grade" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="xTestStudent">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EnrollmentDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="attendance">
           <Key>
             <PropertyRef Name="att_id" />
@@ -52,6 +130,40 @@
           <Property Name="group" Type="int" />
           <Property Name="Day_contest" Type="date" />
         </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpTitle" Type="varchar" MaxLength="20" />
+          <Property Name="EmpName" Type="varchar" MaxLength="150" />
+          <Property Name="EmpLname" Type="varchar" MaxLength="150" />
+          <Property Name="EmpBirthday" Type="date" />
+          <Property Name="EmpIdcard" Type="int" />
+          <Property Name="EmpPsis_id" Type="int" />
+          <Property Name="EmpStatus" Type="int" />
+          <Property Name="EmpTimestamp" Type="datetime" />
+          <Property Name="EmpTelephone" Type="char" MaxLength="20" />
+          <Property Name="Empbank_id" Type="char" MaxLength="30" />
+          <Property Name="EmpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpGender" Type="int" />
+        </EntityType>
+        <EntityType Name="Employee_copy1">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpTitle" Type="varchar" MaxLength="20" />
+          <Property Name="EmpName" Type="varchar" MaxLength="150" />
+          <Property Name="EmpLname" Type="varchar" MaxLength="150" />
+          <Property Name="EmpBirthday" Type="date" />
+          <Property Name="EmpIdcard" Type="int" />
+          <Property Name="EmpPsis_id" Type="int" />
+          <Property Name="EmpStatus" Type="int" />
+          <Property Name="EmpTimestamp" Type="datetime" />
+          <Property Name="EmpTelephone" Type="char" MaxLength="20" />
+          <Property Name="Empbank_id" Type="char" MaxLength="30" />
+          <Property Name="EmpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpGender" Type="char" MaxLength="10" />
+        </EntityType>
         <EntityType Name="Enroll_EduContest">
           <Key>
             <PropertyRef Name="EduContest_id" />
@@ -61,6 +173,26 @@
           <Property Name="Student_id" Type="int" />
           <Property Name="Timestamp&#xD;&#xA;" Type="datetime" />
           <Property Name="result" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Enroll_Emp_Pos">
+          <Key>
+            <PropertyRef Name="EnrEmpPosId" />
+          </Key>
+          <Property Name="Employee_id" Type="int" />
+          <Property Name="Position_id" Type="int" />
+          <Property Name="EnrEmpPosStatus" Type="int" />
+          <Property Name="EnrEmpPosTimestamp" Type="datetime" />
+          <Property Name="EnrEmpPosId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Enroll_Emp_Pos_copy1">
+          <Key>
+            <PropertyRef Name="EnrEmpPosId" />
+          </Key>
+          <Property Name="Employee_id" Type="int" />
+          <Property Name="Position_id" Type="int" />
+          <Property Name="EnrEmpPosStatus" Type="int" />
+          <Property Name="EnrEmpPosTimestamp" Type="datetime" />
+          <Property Name="EnrEmpPosId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Enroll_paid">
           <Key>
@@ -133,6 +265,14 @@
           <Property Name="Month_course" Type="int" />
           <Property Name="Month_status" Type="bit" />
           <Property Name="Month_yearindex" Type="int" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="PosId" />
+          </Key>
+          <Property Name="PosName" Type="varchar" MaxLength="50" />
+          <Property Name="PosLevel" Type="int" />
+          <Property Name="PosId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Students">
           <Key>
@@ -280,18 +420,207 @@ warning 6002: The table/view 'santisar_.santisart.studentEduContest2561' does no
           <Property Name="EduContest_id" Type="int" Nullable="false" />
           <Property Name="result" Type="varchar" MaxLength="255" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewEmpPos">
+          <Key>
+            <PropertyRef Name="EnrEmpPosId" />
+          </Key>
+          <Property Name="EmpTitle" Type="varchar" MaxLength="20" />
+          <Property Name="EmpName" Type="varchar" MaxLength="150" />
+          <Property Name="EmpLname" Type="varchar" MaxLength="150" />
+          <Property Name="EmpBirthday" Type="date" />
+          <Property Name="EmpIdcard" Type="int" />
+          <Property Name="EmpPsis_id" Type="int" />
+          <Property Name="EmpStatus" Type="int" />
+          <Property Name="EmpTimestamp" Type="datetime" />
+          <Property Name="EmpTelephone" Type="char" MaxLength="20" />
+          <Property Name="Empbank_id" Type="char" MaxLength="30" />
+          <Property Name="EmpId" Type="int" />
+          <Property Name="EmpGender" Type="int" />
+          <Property Name="EnrEmpPosId" Type="int" Nullable="false" />
+          <Property Name="EnrEmpPosStatus" Type="int" />
+          <Property Name="EnrEmpPosTimestamp" Type="datetime" />
+          <Property Name="PosName" Type="varchar" MaxLength="50" />
+          <Property Name="PosLevel" Type="int" />
+          <Property Name="PosId" Type="int" />
+        </EntityType>
+        <Association Name="FK_Course_Department_DepartmentID">
+          <End Role="TestDepartment" Type="Self.TestDepartment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TestCourse" Type="Self.TestCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestDepartment">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="TestCourse">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseInstructor_Course_CourseId">
+          <End Role="TestCourse" Type="Self.TestCourse" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TestCourseInstructor" Type="Self.TestCourseInstructor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestCourse">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="TestCourseInstructor">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseInstructor_Instructor_InstructorId">
+          <End Role="TestInstructor" Type="Self.TestInstructor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TestCourseInstructor" Type="Self.TestCourseInstructor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestInstructor">
+              <PropertyRef Name="InstructorId" />
+            </Principal>
+            <Dependent Role="TestCourseInstructor">
+              <PropertyRef Name="InstructorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Enrollment_dbo_Course_CourseID">
+          <End Role="xTestCourse" Type="Self.xTestCourse" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="xTestEnrollment" Type="Self.xTestEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="xTestCourse">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="xTestEnrollment">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Enrollment_dbo_Student_StudentID">
+          <End Role="xTestStudent" Type="Self.xTestStudent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="xTestEnrollment" Type="Self.xTestEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="xTestStudent">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="xTestEnrollment">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Department_Instructor_InstructorId">
+          <End Role="TestInstructor" Type="Self.TestInstructor" Multiplicity="0..1" />
+          <End Role="TestDepartment" Type="Self.TestDepartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestInstructor">
+              <PropertyRef Name="InstructorId" />
+            </Principal>
+            <Dependent Role="TestDepartment">
+              <PropertyRef Name="InstructorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_emp_enr">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Enroll_Emp_Pos" Type="Self.Enroll_Emp_Pos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="Enroll_Emp_Pos">
+              <PropertyRef Name="Employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_enr_pos">
+          <End Role="Position" Type="Self.Position" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Enroll_Emp_Pos" Type="Self.Enroll_Emp_Pos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="Enroll_Emp_Pos">
+              <PropertyRef Name="Position_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentCourse_Course_CourseId">
+          <End Role="TestCourse" Type="Self.TestCourse" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TestStudentCourse" Type="Self.TestStudentCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestCourse">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="TestStudentCourse">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentCourse_Student_StudentId">
+          <End Role="TestStudent" Type="Self.TestStudent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TestStudentCourse" Type="Self.TestStudentCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestStudent">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="TestStudentCourse">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="positions">
+          <End Role="Employee_copy1" Type="Self.Employee_copy1" Multiplicity="0..1" />
+          <End Role="Enroll_Emp_Pos_copy1" Type="Self.Enroll_Emp_Pos_copy1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_copy1">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="Enroll_Emp_Pos_copy1">
+              <PropertyRef Name="Employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="santisar_ModelStoreContainer">
+          <EntitySet Name="TestCourse" EntityType="Self.TestCourse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestCourseInstructor" EntityType="Self.TestCourseInstructor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestDepartment" EntityType="Self.TestDepartment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestInstructor" EntityType="Self.TestInstructor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestStudent" EntityType="Self.TestStudent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestStudentCourse" EntityType="Self.TestStudentCourse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="xTestCourse" EntityType="Self.xTestCourse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="xTestEnrollment" EntityType="Self.xTestEnrollment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="xTestStudent" EntityType="Self.xTestStudent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="attendance" EntityType="Self.attendance" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="attendance_day" EntityType="Self.attendance_day" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="Class" EntityType="Self.Class" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="ContestEducationSchool" EntityType="Self.ContestEducationSchool" Schema="santisart" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="santisart" store:Type="Tables" />
+          <EntitySet Name="Employee_copy1" EntityType="Self.Employee_copy1" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="Enroll_EduContest" EntityType="Self.Enroll_EduContest" Schema="santisart" store:Type="Tables" />
+          <EntitySet Name="Enroll_Emp_Pos" EntityType="Self.Enroll_Emp_Pos" Schema="santisart" store:Type="Tables" />
+          <EntitySet Name="Enroll_Emp_Pos_copy1" EntityType="Self.Enroll_Emp_Pos_copy1" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="Enroll_paid" EntityType="Self.Enroll_paid" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="Enroll_pay" EntityType="Self.Enroll_pay" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="Enroll_student_all_event" EntityType="Self.Enroll_student_all_event" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="Enroll_student_class" EntityType="Self.Enroll_student_class" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="Food" EntityType="Self.Food" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="Monthly" EntityType="Self.Monthly" Schema="santisart" store:Type="Tables" />
+          <EntitySet Name="Position" EntityType="Self.Position" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="Students" EntityType="Self.Students" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="_enrollattstudent" EntityType="Self._enrollattstudent" store:Type="Views" store:Schema="santisart">
             <DefiningQuery>SELECT 
@@ -401,6 +730,72 @@ warning 6002: The table/view 'santisar_.santisart.studentEduContest2561' does no
     [studentEduContest2561].[result] AS [result]
     FROM [santisart].[studentEduContest2561] AS [studentEduContest2561]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="ViewEmpPos" EntityType="Self.ViewEmpPos" store:Type="Views" store:Schema="santisart">
+            <DefiningQuery>SELECT 
+    [ViewEmpPos].[EmpTitle] AS [EmpTitle], 
+    [ViewEmpPos].[EmpName] AS [EmpName], 
+    [ViewEmpPos].[EmpLname] AS [EmpLname], 
+    [ViewEmpPos].[EmpBirthday] AS [EmpBirthday], 
+    [ViewEmpPos].[EmpIdcard] AS [EmpIdcard], 
+    [ViewEmpPos].[EmpPsis_id] AS [EmpPsis_id], 
+    [ViewEmpPos].[EmpStatus] AS [EmpStatus], 
+    [ViewEmpPos].[EmpTimestamp] AS [EmpTimestamp], 
+    [ViewEmpPos].[EmpTelephone] AS [EmpTelephone], 
+    [ViewEmpPos].[Empbank_id] AS [Empbank_id], 
+    [ViewEmpPos].[EmpId] AS [EmpId], 
+    [ViewEmpPos].[EmpGender] AS [EmpGender], 
+    [ViewEmpPos].[EnrEmpPosId] AS [EnrEmpPosId], 
+    [ViewEmpPos].[EnrEmpPosStatus] AS [EnrEmpPosStatus], 
+    [ViewEmpPos].[EnrEmpPosTimestamp] AS [EnrEmpPosTimestamp], 
+    [ViewEmpPos].[PosName] AS [PosName], 
+    [ViewEmpPos].[PosLevel] AS [PosLevel], 
+    [ViewEmpPos].[PosId] AS [PosId]
+    FROM [santisart].[ViewEmpPos] AS [ViewEmpPos]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Course_Department_DepartmentID" Association="Self.FK_Course_Department_DepartmentID">
+            <End Role="TestDepartment" EntitySet="TestDepartment" />
+            <End Role="TestCourse" EntitySet="TestCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseInstructor_Course_CourseId" Association="Self.FK_CourseInstructor_Course_CourseId">
+            <End Role="TestCourse" EntitySet="TestCourse" />
+            <End Role="TestCourseInstructor" EntitySet="TestCourseInstructor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseInstructor_Instructor_InstructorId" Association="Self.FK_CourseInstructor_Instructor_InstructorId">
+            <End Role="TestInstructor" EntitySet="TestInstructor" />
+            <End Role="TestCourseInstructor" EntitySet="TestCourseInstructor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Enrollment_dbo_Course_CourseID" Association="Self.FK_dbo_Enrollment_dbo_Course_CourseID">
+            <End Role="xTestCourse" EntitySet="xTestCourse" />
+            <End Role="xTestEnrollment" EntitySet="xTestEnrollment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Enrollment_dbo_Student_StudentID" Association="Self.FK_dbo_Enrollment_dbo_Student_StudentID">
+            <End Role="xTestStudent" EntitySet="xTestStudent" />
+            <End Role="xTestEnrollment" EntitySet="xTestEnrollment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_Instructor_InstructorId" Association="Self.FK_Department_Instructor_InstructorId">
+            <End Role="TestInstructor" EntitySet="TestInstructor" />
+            <End Role="TestDepartment" EntitySet="TestDepartment" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_emp_enr" Association="Self.Fk_emp_enr">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Enroll_Emp_Pos" EntitySet="Enroll_Emp_Pos" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_enr_pos" Association="Self.Fk_enr_pos">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="Enroll_Emp_Pos" EntitySet="Enroll_Emp_Pos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentCourse_Course_CourseId" Association="Self.FK_StudentCourse_Course_CourseId">
+            <End Role="TestCourse" EntitySet="TestCourse" />
+            <End Role="TestStudentCourse" EntitySet="TestStudentCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentCourse_Student_StudentId" Association="Self.FK_StudentCourse_Student_StudentId">
+            <End Role="TestStudent" EntitySet="TestStudent" />
+            <End Role="TestStudentCourse" EntitySet="TestStudentCourse" />
+          </AssociationSet>
+          <AssociationSet Name="positions" Association="Self.positions">
+            <End Role="Employee_copy1" EntitySet="Employee_copy1" />
+            <End Role="Enroll_Emp_Pos_copy1" EntitySet="Enroll_Emp_Pos_copy1" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -425,7 +820,66 @@ warning 6002: The table/view 'santisar_.santisart.studentEduContest2561' does no
           <EntitySet Name="ContestEducationSchool" EntityType="santisar_Model.ContestEducationSchool" />
           <EntitySet Name="Enroll_EduContest" EntityType="santisar_Model.Enroll_EduContest" />
           <EntitySet Name="studentEduContest2561" EntityType="santisar_Model.studentEduContest2561" />
-        </EntityContainer>
+          <EntitySet Name="ViewEmpPos" EntityType="santisar_Model.ViewEmpPos" />
+          <EntitySet Name="Employee_copy1" EntityType="santisar_Model.Employee_copy1" />
+          <EntitySet Name="Enroll_Emp_Pos_copy1" EntityType="santisar_Model.Enroll_Emp_Pos_copy1" />
+          <AssociationSet Name="positions" Association="santisar_Model.positions">
+            <End Role="Employee_copy1" EntitySet="Employee_copy1" />
+            <End Role="Enroll_Emp_Pos_copy1" EntitySet="Enroll_Emp_Pos_copy1" />
+          </AssociationSet>
+          <EntitySet Name="TestCourse" EntityType="santisar_Model.TestCourse" />
+          <EntitySet Name="TestCourseInstructor" EntityType="santisar_Model.TestCourseInstructor" />
+          <EntitySet Name="TestDepartment" EntityType="santisar_Model.TestDepartment" />
+          <EntitySet Name="TestInstructor" EntityType="santisar_Model.TestInstructor" />
+          <EntitySet Name="TestStudent" EntityType="santisar_Model.TestStudent" />
+          <EntitySet Name="TestStudentCourse" EntityType="santisar_Model.TestStudentCourse" />
+          <AssociationSet Name="FK_Course_Department_DepartmentID" Association="santisar_Model.FK_Course_Department_DepartmentID">
+            <End Role="TestDepartment" EntitySet="TestDepartment" />
+            <End Role="TestCourse" EntitySet="TestCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseInstructor_Course_CourseId" Association="santisar_Model.FK_CourseInstructor_Course_CourseId">
+            <End Role="TestCourse" EntitySet="TestCourse" />
+            <End Role="TestCourseInstructor" EntitySet="TestCourseInstructor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentCourse_Course_CourseId" Association="santisar_Model.FK_StudentCourse_Course_CourseId">
+            <End Role="TestCourse" EntitySet="TestCourse" />
+            <End Role="TestStudentCourse" EntitySet="TestStudentCourse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseInstructor_Instructor_InstructorId" Association="santisar_Model.FK_CourseInstructor_Instructor_InstructorId">
+            <End Role="TestInstructor" EntitySet="TestInstructor" />
+            <End Role="TestCourseInstructor" EntitySet="TestCourseInstructor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_Instructor_InstructorId" Association="santisar_Model.FK_Department_Instructor_InstructorId">
+            <End Role="TestInstructor" EntitySet="TestInstructor" />
+            <End Role="TestDepartment" EntitySet="TestDepartment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentCourse_Student_StudentId" Association="santisar_Model.FK_StudentCourse_Student_StudentId">
+            <End Role="TestStudent" EntitySet="TestStudent" />
+            <End Role="TestStudentCourse" EntitySet="TestStudentCourse" />
+          </AssociationSet>
+          <EntitySet Name="xTestCourse" EntityType="santisar_Model.xTestCourse" />
+          <EntitySet Name="xTestEnrollment" EntityType="santisar_Model.xTestEnrollment" />
+          <EntitySet Name="xTestStudent" EntityType="santisar_Model.xTestStudent" />
+          <AssociationSet Name="FK_dbo_Enrollment_dbo_Course_CourseID" Association="santisar_Model.FK_dbo_Enrollment_dbo_Course_CourseID">
+            <End Role="xTestCourse" EntitySet="xTestCourse" />
+            <End Role="xTestEnrollment" EntitySet="xTestEnrollment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Enrollment_dbo_Student_StudentID" Association="santisar_Model.FK_dbo_Enrollment_dbo_Student_StudentID">
+            <End Role="xTestStudent" EntitySet="xTestStudent" />
+            <End Role="xTestEnrollment" EntitySet="xTestEnrollment" />
+          </AssociationSet>
+          <EntitySet Name="Employee" EntityType="santisar_Model.Employee" />
+          <EntitySet Name="Enroll_Emp_Pos" EntityType="santisar_Model.Enroll_Emp_Pos" />
+          <EntitySet Name="Position" EntityType="santisar_Model.Position" />
+          <AssociationSet Name="Fk_emp_enr" Association="santisar_Model.Fk_emp_enr">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Enroll_Emp_Pos" EntitySet="Enroll_Emp_Pos" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_enr_pos" Association="santisar_Model.Fk_enr_pos">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="Enroll_Emp_Pos" EntitySet="Enroll_Emp_Pos" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="Enroll_paid">
           <Key>
             <PropertyRef Name="Paid_id" />
@@ -671,6 +1125,7 @@ warning 6002: The table/view 'santisar_.santisart.studentEduContest2561' does no
             <PropertyRef Name="TypeContest_id" />
             <PropertyRef Name="EduContest_id" />
           </Key>
+          <Property Name="EduContest_id" Type="Int32" Nullable="false" />
           <Property Name="Student_id" Type="Int32" Nullable="false" />
           <Property Name="Student_title" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Student_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -686,10 +1141,344 @@ warning 6002: The table/view 'santisar_.santisart.studentEduContest2561' does no
           <Property Name="Timestamp" Type="DateTime" Precision="3" />
           <Property Name="group" Type="Int32" />
           <Property Name="Day_contest" Type="DateTime" Precision="0" />
-          <Property Name="EduContest_id" Type="Int32" Nullable="false" />
           <Property Name="result" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
-      </Schema>
+        <EntityType Name="ViewEmpPos">
+          <Key>
+            <PropertyRef Name="EnrEmpPosId" />
+          </Key>
+          <Property Name="EmpTitle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EmpName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="EmpLname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="EmpBirthday" Type="DateTime" Precision="0" />
+          <Property Name="EmpIdcard" Type="Int32" />
+          <Property Name="EmpPsis_id" Type="Int32" />
+          <Property Name="EmpStatus" Type="Int32" />
+          <Property Name="EmpTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="EmpTelephone" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Empbank_id" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="EmpId" Type="Int32" />
+          <Property Name="EmpGender" Type="Int32" />
+          <Property Name="EnrEmpPosId" Type="Int32" Nullable="false" />
+          <Property Name="EnrEmpPosStatus" Type="Int32" />
+          <Property Name="EnrEmpPosTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="PosName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PosLevel" Type="Int32" />
+          <Property Name="PosId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Employee_copy1">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpTitle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EmpName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="EmpLname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="EmpBirthday" Type="DateTime" Precision="0" />
+          <Property Name="EmpIdcard" Type="Int32" />
+          <Property Name="EmpPsis_id" Type="Int32" />
+          <Property Name="EmpStatus" Type="Int32" />
+          <Property Name="EmpTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="EmpTelephone" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Empbank_id" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="EmpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpGender" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Enroll_Emp_Pos_copy1" Relationship="santisar_Model.positions" FromRole="Employee_copy1" ToRole="Enroll_Emp_Pos_copy1" />
+        </EntityType>
+        <EntityType Name="Enroll_Emp_Pos_copy1">
+          <Key>
+            <PropertyRef Name="EnrEmpPosId" />
+          </Key>
+          <Property Name="Employee_id" Type="Int32" />
+          <Property Name="Position_id" Type="Int32" />
+          <Property Name="EnrEmpPosStatus" Type="Int32" />
+          <Property Name="EnrEmpPosTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="EnrEmpPosId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Employee_copy1" Relationship="santisar_Model.positions" FromRole="Enroll_Emp_Pos_copy1" ToRole="Employee_copy1" />
+        </EntityType>
+        <Association Name="positions">
+          <End Type="santisar_Model.Employee_copy1" Role="Employee_copy1" Multiplicity="0..1" />
+          <End Type="santisar_Model.Enroll_Emp_Pos_copy1" Role="Enroll_Emp_Pos_copy1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_copy1">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="Enroll_Emp_Pos_copy1">
+              <PropertyRef Name="Employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TestCourse">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TestDepartment" Relationship="santisar_Model.FK_Course_Department_DepartmentID" FromRole="TestCourse" ToRole="TestDepartment" />
+          <NavigationProperty Name="TestCourseInstructor" Relationship="santisar_Model.FK_CourseInstructor_Course_CourseId" FromRole="TestCourse" ToRole="TestCourseInstructor" />
+          <NavigationProperty Name="TestStudentCourse" Relationship="santisar_Model.FK_StudentCourse_Course_CourseId" FromRole="TestCourse" ToRole="TestStudentCourse" />
+        </EntityType>
+        <EntityType Name="TestCourseInstructor">
+          <Key>
+            <PropertyRef Name="CourseId" />
+            <PropertyRef Name="InstructorId" />
+          </Key>
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="InstructorId" Type="Int32" Nullable="false" />
+          <Property Name="timestamp" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TestCourse" Relationship="santisar_Model.FK_CourseInstructor_Course_CourseId" FromRole="TestCourseInstructor" ToRole="TestCourse" />
+          <NavigationProperty Name="TestInstructor" Relationship="santisar_Model.FK_CourseInstructor_Instructor_InstructorId" FromRole="TestCourseInstructor" ToRole="TestInstructor" />
+        </EntityType>
+        <EntityType Name="TestDepartment">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentLocation" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InstructorId" Type="Int32" />
+          <NavigationProperty Name="TestCourse" Relationship="santisar_Model.FK_Course_Department_DepartmentID" FromRole="TestDepartment" ToRole="TestCourse" />
+          <NavigationProperty Name="TestInstructor" Relationship="santisar_Model.FK_Department_Instructor_InstructorId" FromRole="TestDepartment" ToRole="TestInstructor" />
+        </EntityType>
+        <EntityType Name="TestInstructor">
+          <Key>
+            <PropertyRef Name="InstructorId" />
+          </Key>
+          <Property Name="InstructorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TestCourseInstructor" Relationship="santisar_Model.FK_CourseInstructor_Instructor_InstructorId" FromRole="TestInstructor" ToRole="TestCourseInstructor" />
+          <NavigationProperty Name="TestDepartment" Relationship="santisar_Model.FK_Department_Instructor_InstructorId" FromRole="TestInstructor" ToRole="TestDepartment" />
+        </EntityType>
+        <EntityType Name="TestStudent">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TestStudentCourse" Relationship="santisar_Model.FK_StudentCourse_Student_StudentId" FromRole="TestStudent" ToRole="TestStudentCourse" />
+        </EntityType>
+        <EntityType Name="TestStudentCourse">
+          <Key>
+            <PropertyRef Name="StudentCourseId" />
+          </Key>
+          <Property Name="StudentCourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TestCourse" Relationship="santisar_Model.FK_StudentCourse_Course_CourseId" FromRole="TestStudentCourse" ToRole="TestCourse" />
+          <NavigationProperty Name="TestStudent" Relationship="santisar_Model.FK_StudentCourse_Student_StudentId" FromRole="TestStudentCourse" ToRole="TestStudent" />
+        </EntityType>
+        <Association Name="FK_Course_Department_DepartmentID">
+          <End Type="santisar_Model.TestDepartment" Role="TestDepartment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="santisar_Model.TestCourse" Role="TestCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestDepartment">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="TestCourse">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseInstructor_Course_CourseId">
+          <End Type="santisar_Model.TestCourse" Role="TestCourse" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="santisar_Model.TestCourseInstructor" Role="TestCourseInstructor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestCourse">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="TestCourseInstructor">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentCourse_Course_CourseId">
+          <End Type="santisar_Model.TestCourse" Role="TestCourse" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="santisar_Model.TestStudentCourse" Role="TestStudentCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestCourse">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="TestStudentCourse">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseInstructor_Instructor_InstructorId">
+          <End Type="santisar_Model.TestInstructor" Role="TestInstructor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="santisar_Model.TestCourseInstructor" Role="TestCourseInstructor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestInstructor">
+              <PropertyRef Name="InstructorId" />
+            </Principal>
+            <Dependent Role="TestCourseInstructor">
+              <PropertyRef Name="InstructorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Department_Instructor_InstructorId">
+          <End Type="santisar_Model.TestInstructor" Role="TestInstructor" Multiplicity="0..1" />
+          <End Type="santisar_Model.TestDepartment" Role="TestDepartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestInstructor">
+              <PropertyRef Name="InstructorId" />
+            </Principal>
+            <Dependent Role="TestDepartment">
+              <PropertyRef Name="InstructorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentCourse_Student_StudentId">
+          <End Type="santisar_Model.TestStudent" Role="TestStudent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="santisar_Model.TestStudentCourse" Role="TestStudentCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestStudent">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="TestStudentCourse">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="xTestCourse">
+          <Key>
+            <PropertyRef Name="CourseID" />
+          </Key>
+          <Property Name="CourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Credits" Type="Int32" />
+          <NavigationProperty Name="xTestEnrollment" Relationship="santisar_Model.FK_dbo_Enrollment_dbo_Course_CourseID" FromRole="xTestCourse" ToRole="xTestEnrollment" />
+        </EntityType>
+        <EntityType Name="xTestEnrollment">
+          <Key>
+            <PropertyRef Name="EnrollmentID" />
+          </Key>
+          <Property Name="EnrollmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Grade" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="xTestCourse" Relationship="santisar_Model.FK_dbo_Enrollment_dbo_Course_CourseID" FromRole="xTestEnrollment" ToRole="xTestCourse" />
+          <NavigationProperty Name="xTestStudent" Relationship="santisar_Model.FK_dbo_Enrollment_dbo_Student_StudentID" FromRole="xTestEnrollment" ToRole="xTestStudent" />
+        </EntityType>
+        <EntityType Name="xTestStudent">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EnrollmentDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="xTestEnrollment" Relationship="santisar_Model.FK_dbo_Enrollment_dbo_Student_StudentID" FromRole="xTestStudent" ToRole="xTestEnrollment" />
+        </EntityType>
+        <Association Name="FK_dbo_Enrollment_dbo_Course_CourseID">
+          <End Type="santisar_Model.xTestCourse" Role="xTestCourse" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="santisar_Model.xTestEnrollment" Role="xTestEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="xTestCourse">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="xTestEnrollment">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Enrollment_dbo_Student_StudentID">
+          <End Type="santisar_Model.xTestStudent" Role="xTestStudent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="santisar_Model.xTestEnrollment" Role="xTestEnrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="xTestStudent">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="xTestEnrollment">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpTitle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EmpName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="EmpLname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="EmpBirthday" Type="DateTime" Precision="0" />
+          <Property Name="EmpIdcard" Type="Int32" />
+          <Property Name="EmpPsis_id" Type="Int32" />
+          <Property Name="EmpStatus" Type="Int32" />
+          <Property Name="EmpTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="EmpTelephone" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Empbank_id" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="EmpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpGender" Type="Int32" />
+          <NavigationProperty Name="Enroll_Emp_Pos" Relationship="santisar_Model.Fk_emp_enr" FromRole="Employee" ToRole="Enroll_Emp_Pos" />
+        </EntityType>
+        <EntityType Name="Enroll_Emp_Pos">
+          <Key>
+            <PropertyRef Name="EnrEmpPosId" />
+          </Key>
+          <Property Name="Employee_id" Type="Int32" />
+          <Property Name="Position_id" Type="Int32" />
+          <Property Name="EnrEmpPosStatus" Type="Int32" />
+          <Property Name="EnrEmpPosTimestamp" Type="DateTime" Precision="3" />
+          <Property Name="EnrEmpPosId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Employee" Relationship="santisar_Model.Fk_emp_enr" FromRole="Enroll_Emp_Pos" ToRole="Employee" />
+          <NavigationProperty Name="Position" Relationship="santisar_Model.Fk_enr_pos" FromRole="Enroll_Emp_Pos" ToRole="Position" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="PosId" />
+          </Key>
+          <Property Name="PosName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PosLevel" Type="Int32" />
+          <Property Name="PosId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Enroll_Emp_Pos" Relationship="santisar_Model.Fk_enr_pos" FromRole="Position" ToRole="Enroll_Emp_Pos" />
+        </EntityType>
+        <Association Name="Fk_emp_enr">
+          <End Type="santisar_Model.Employee" Role="Employee" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="santisar_Model.Enroll_Emp_Pos" Role="Enroll_Emp_Pos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="Enroll_Emp_Pos">
+              <PropertyRef Name="Employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_enr_pos">
+          <End Type="santisar_Model.Position" Role="Position" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="santisar_Model.Enroll_Emp_Pos" Role="Enroll_Emp_Pos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="Enroll_Emp_Pos">
+              <PropertyRef Name="Position_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -970,7 +1759,184 @@ warning 6002: The table/view 'santisar_.santisart.studentEduContest2561' does no
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="ViewEmpPos">
+            <EntityTypeMapping TypeName="santisar_Model.ViewEmpPos">
+              <MappingFragment StoreEntitySet="ViewEmpPos">
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="PosLevel" ColumnName="PosLevel" />
+                <ScalarProperty Name="PosName" ColumnName="PosName" />
+                <ScalarProperty Name="EnrEmpPosTimestamp" ColumnName="EnrEmpPosTimestamp" />
+                <ScalarProperty Name="EnrEmpPosStatus" ColumnName="EnrEmpPosStatus" />
+                <ScalarProperty Name="EnrEmpPosId" ColumnName="EnrEmpPosId" />
+                <ScalarProperty Name="EmpGender" ColumnName="EmpGender" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="Empbank_id" ColumnName="Empbank_id" />
+                <ScalarProperty Name="EmpTelephone" ColumnName="EmpTelephone" />
+                <ScalarProperty Name="EmpTimestamp" ColumnName="EmpTimestamp" />
+                <ScalarProperty Name="EmpStatus" ColumnName="EmpStatus" />
+                <ScalarProperty Name="EmpPsis_id" ColumnName="EmpPsis_id" />
+                <ScalarProperty Name="EmpIdcard" ColumnName="EmpIdcard" />
+                <ScalarProperty Name="EmpBirthday" ColumnName="EmpBirthday" />
+                <ScalarProperty Name="EmpLname" ColumnName="EmpLname" />
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+                <ScalarProperty Name="EmpTitle" ColumnName="EmpTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee_copy1">
+            <EntityTypeMapping TypeName="santisar_Model.Employee_copy1">
+              <MappingFragment StoreEntitySet="Employee_copy1">
+                <ScalarProperty Name="EmpGender" ColumnName="EmpGender" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="Empbank_id" ColumnName="Empbank_id" />
+                <ScalarProperty Name="EmpTelephone" ColumnName="EmpTelephone" />
+                <ScalarProperty Name="EmpTimestamp" ColumnName="EmpTimestamp" />
+                <ScalarProperty Name="EmpStatus" ColumnName="EmpStatus" />
+                <ScalarProperty Name="EmpPsis_id" ColumnName="EmpPsis_id" />
+                <ScalarProperty Name="EmpIdcard" ColumnName="EmpIdcard" />
+                <ScalarProperty Name="EmpBirthday" ColumnName="EmpBirthday" />
+                <ScalarProperty Name="EmpLname" ColumnName="EmpLname" />
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+                <ScalarProperty Name="EmpTitle" ColumnName="EmpTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enroll_Emp_Pos_copy1">
+            <EntityTypeMapping TypeName="santisar_Model.Enroll_Emp_Pos_copy1">
+              <MappingFragment StoreEntitySet="Enroll_Emp_Pos_copy1">
+                <ScalarProperty Name="EnrEmpPosId" ColumnName="EnrEmpPosId" />
+                <ScalarProperty Name="EnrEmpPosTimestamp" ColumnName="EnrEmpPosTimestamp" />
+                <ScalarProperty Name="EnrEmpPosStatus" ColumnName="EnrEmpPosStatus" />
+                <ScalarProperty Name="Position_id" ColumnName="Position_id" />
+                <ScalarProperty Name="Employee_id" ColumnName="Employee_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestCourse">
+            <EntityTypeMapping TypeName="santisar_Model.TestCourse">
+              <MappingFragment StoreEntitySet="TestCourse">
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestCourseInstructor">
+            <EntityTypeMapping TypeName="santisar_Model.TestCourseInstructor">
+              <MappingFragment StoreEntitySet="TestCourseInstructor">
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="InstructorId" ColumnName="InstructorId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestDepartment">
+            <EntityTypeMapping TypeName="santisar_Model.TestDepartment">
+              <MappingFragment StoreEntitySet="TestDepartment">
+                <ScalarProperty Name="InstructorId" ColumnName="InstructorId" />
+                <ScalarProperty Name="DepartmentLocation" ColumnName="DepartmentLocation" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestInstructor">
+            <EntityTypeMapping TypeName="santisar_Model.TestInstructor">
+              <MappingFragment StoreEntitySet="TestInstructor">
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="InstructorId" ColumnName="InstructorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestStudent">
+            <EntityTypeMapping TypeName="santisar_Model.TestStudent">
+              <MappingFragment StoreEntitySet="TestStudent">
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestStudentCourse">
+            <EntityTypeMapping TypeName="santisar_Model.TestStudentCourse">
+              <MappingFragment StoreEntitySet="TestStudentCourse">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="StudentCourseId" ColumnName="StudentCourseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="xTestCourse">
+            <EntityTypeMapping TypeName="santisar_Model.xTestCourse">
+              <MappingFragment StoreEntitySet="xTestCourse">
+                <ScalarProperty Name="Credits" ColumnName="Credits" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="xTestEnrollment">
+            <EntityTypeMapping TypeName="santisar_Model.xTestEnrollment">
+              <MappingFragment StoreEntitySet="xTestEnrollment">
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="EnrollmentID" ColumnName="EnrollmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="xTestStudent">
+            <EntityTypeMapping TypeName="santisar_Model.xTestStudent">
+              <MappingFragment StoreEntitySet="xTestStudent">
+                <ScalarProperty Name="EnrollmentDate" ColumnName="EnrollmentDate" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="santisar_Model.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmpGender" ColumnName="EmpGender" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="Empbank_id" ColumnName="Empbank_id" />
+                <ScalarProperty Name="EmpTelephone" ColumnName="EmpTelephone" />
+                <ScalarProperty Name="EmpTimestamp" ColumnName="EmpTimestamp" />
+                <ScalarProperty Name="EmpStatus" ColumnName="EmpStatus" />
+                <ScalarProperty Name="EmpPsis_id" ColumnName="EmpPsis_id" />
+                <ScalarProperty Name="EmpIdcard" ColumnName="EmpIdcard" />
+                <ScalarProperty Name="EmpBirthday" ColumnName="EmpBirthday" />
+                <ScalarProperty Name="EmpLname" ColumnName="EmpLname" />
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+                <ScalarProperty Name="EmpTitle" ColumnName="EmpTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enroll_Emp_Pos">
+            <EntityTypeMapping TypeName="santisar_Model.Enroll_Emp_Pos">
+              <MappingFragment StoreEntitySet="Enroll_Emp_Pos">
+                <ScalarProperty Name="EnrEmpPosId" ColumnName="EnrEmpPosId" />
+                <ScalarProperty Name="EnrEmpPosTimestamp" ColumnName="EnrEmpPosTimestamp" />
+                <ScalarProperty Name="EnrEmpPosStatus" ColumnName="EnrEmpPosStatus" />
+                <ScalarProperty Name="Position_id" ColumnName="Position_id" />
+                <ScalarProperty Name="Employee_id" ColumnName="Employee_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Position">
+            <EntityTypeMapping TypeName="santisar_Model.Position">
+              <MappingFragment StoreEntitySet="Position">
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="PosLevel" ColumnName="PosLevel" />
+                <ScalarProperty Name="PosName" ColumnName="PosName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

@@ -1,0 +1,42 @@
+﻿@model santisart_app.Models.xTestEnrollment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>xTestEnrollment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Grade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.xTestCourse.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.xTestCourse.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.xTestStudent.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.xTestStudent.LastName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EnrollmentID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

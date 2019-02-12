@@ -19,6 +19,65 @@
     <EntitySet Name="ContestEducationSchool" EntityType="santisar_Model.ContestEducationSchool" />
     <EntitySet Name="Enroll_EduContest" EntityType="santisar_Model.Enroll_EduContest" />
     <EntitySet Name="studentEduContest2561" EntityType="santisar_Model.studentEduContest2561" />
+    <EntitySet Name="ViewEmpPos" EntityType="santisar_Model.ViewEmpPos" />
+    <EntitySet Name="Employee_copy1" EntityType="santisar_Model.Employee_copy1" />
+    <EntitySet Name="Enroll_Emp_Pos_copy1" EntityType="santisar_Model.Enroll_Emp_Pos_copy1" />
+    <AssociationSet Name="positions" Association="santisar_Model.positions">
+      <End Role="Employee_copy1" EntitySet="Employee_copy1" />
+      <End Role="Enroll_Emp_Pos_copy1" EntitySet="Enroll_Emp_Pos_copy1" />
+    </AssociationSet>
+    <EntitySet Name="TestCourse" EntityType="santisar_Model.TestCourse" />
+    <EntitySet Name="TestCourseInstructor" EntityType="santisar_Model.TestCourseInstructor" />
+    <EntitySet Name="TestDepartment" EntityType="santisar_Model.TestDepartment" />
+    <EntitySet Name="TestInstructor" EntityType="santisar_Model.TestInstructor" />
+    <EntitySet Name="TestStudent" EntityType="santisar_Model.TestStudent" />
+    <EntitySet Name="TestStudentCourse" EntityType="santisar_Model.TestStudentCourse" />
+    <AssociationSet Name="FK_Course_Department_DepartmentID" Association="santisar_Model.FK_Course_Department_DepartmentID">
+      <End Role="TestDepartment" EntitySet="TestDepartment" />
+      <End Role="TestCourse" EntitySet="TestCourse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CourseInstructor_Course_CourseId" Association="santisar_Model.FK_CourseInstructor_Course_CourseId">
+      <End Role="TestCourse" EntitySet="TestCourse" />
+      <End Role="TestCourseInstructor" EntitySet="TestCourseInstructor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentCourse_Course_CourseId" Association="santisar_Model.FK_StudentCourse_Course_CourseId">
+      <End Role="TestCourse" EntitySet="TestCourse" />
+      <End Role="TestStudentCourse" EntitySet="TestStudentCourse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CourseInstructor_Instructor_InstructorId" Association="santisar_Model.FK_CourseInstructor_Instructor_InstructorId">
+      <End Role="TestInstructor" EntitySet="TestInstructor" />
+      <End Role="TestCourseInstructor" EntitySet="TestCourseInstructor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Department_Instructor_InstructorId" Association="santisar_Model.FK_Department_Instructor_InstructorId">
+      <End Role="TestInstructor" EntitySet="TestInstructor" />
+      <End Role="TestDepartment" EntitySet="TestDepartment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentCourse_Student_StudentId" Association="santisar_Model.FK_StudentCourse_Student_StudentId">
+      <End Role="TestStudent" EntitySet="TestStudent" />
+      <End Role="TestStudentCourse" EntitySet="TestStudentCourse" />
+    </AssociationSet>
+    <EntitySet Name="xTestCourse" EntityType="santisar_Model.xTestCourse" />
+    <EntitySet Name="xTestEnrollment" EntityType="santisar_Model.xTestEnrollment" />
+    <EntitySet Name="xTestStudent" EntityType="santisar_Model.xTestStudent" />
+    <AssociationSet Name="FK_dbo_Enrollment_dbo_Course_CourseID" Association="santisar_Model.FK_dbo_Enrollment_dbo_Course_CourseID">
+      <End Role="xTestCourse" EntitySet="xTestCourse" />
+      <End Role="xTestEnrollment" EntitySet="xTestEnrollment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Enrollment_dbo_Student_StudentID" Association="santisar_Model.FK_dbo_Enrollment_dbo_Student_StudentID">
+      <End Role="xTestStudent" EntitySet="xTestStudent" />
+      <End Role="xTestEnrollment" EntitySet="xTestEnrollment" />
+    </AssociationSet>
+    <EntitySet Name="Employee" EntityType="santisar_Model.Employee" />
+    <EntitySet Name="Enroll_Emp_Pos" EntityType="santisar_Model.Enroll_Emp_Pos" />
+    <EntitySet Name="Position" EntityType="santisar_Model.Position" />
+    <AssociationSet Name="Fk_emp_enr" Association="santisar_Model.Fk_emp_enr">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Enroll_Emp_Pos" EntitySet="Enroll_Emp_Pos" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_enr_pos" Association="santisar_Model.Fk_enr_pos">
+      <End Role="Position" EntitySet="Position" />
+      <End Role="Enroll_Emp_Pos" EntitySet="Enroll_Emp_Pos" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Enroll_paid">
     <Key>
@@ -265,6 +324,7 @@
       <PropertyRef Name="TypeContest_id" />
       <PropertyRef Name="EduContest_id" />
     </Key>
+    <Property Name="EduContest_id" Type="Int32" Nullable="false" />
     <Property Name="Student_id" Type="Int32" Nullable="false" />
     <Property Name="Student_title" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="Student_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -280,7 +340,341 @@
     <Property Name="Timestamp" Type="DateTime" Precision="3" />
     <Property Name="group" Type="Int32" />
     <Property Name="Day_contest" Type="DateTime" Precision="0" />
-    <Property Name="EduContest_id" Type="Int32" Nullable="false" />
     <Property Name="result" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
+  <EntityType Name="ViewEmpPos">
+    <Key>
+      <PropertyRef Name="EnrEmpPosId" />
+    </Key>
+    <Property Name="EmpTitle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EmpName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="EmpLname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="EmpBirthday" Type="DateTime" Precision="0" />
+    <Property Name="EmpIdcard" Type="Int32" />
+    <Property Name="EmpPsis_id" Type="Int32" />
+    <Property Name="EmpStatus" Type="Int32" />
+    <Property Name="EmpTimestamp" Type="DateTime" Precision="3" />
+    <Property Name="EmpTelephone" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="Empbank_id" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="EmpId" Type="Int32" />
+    <Property Name="EmpGender" Type="Int32" />
+    <Property Name="EnrEmpPosId" Type="Int32" Nullable="false" />
+    <Property Name="EnrEmpPosStatus" Type="Int32" />
+    <Property Name="EnrEmpPosTimestamp" Type="DateTime" Precision="3" />
+    <Property Name="PosName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PosLevel" Type="Int32" />
+    <Property Name="PosId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Employee_copy1">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpTitle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EmpName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="EmpLname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="EmpBirthday" Type="DateTime" Precision="0" />
+    <Property Name="EmpIdcard" Type="Int32" />
+    <Property Name="EmpPsis_id" Type="Int32" />
+    <Property Name="EmpStatus" Type="Int32" />
+    <Property Name="EmpTimestamp" Type="DateTime" Precision="3" />
+    <Property Name="EmpTelephone" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="Empbank_id" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="EmpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpGender" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Enroll_Emp_Pos_copy1" Relationship="santisar_Model.positions" FromRole="Employee_copy1" ToRole="Enroll_Emp_Pos_copy1" />
+  </EntityType>
+  <EntityType Name="Enroll_Emp_Pos_copy1">
+    <Key>
+      <PropertyRef Name="EnrEmpPosId" />
+    </Key>
+    <Property Name="Employee_id" Type="Int32" />
+    <Property Name="Position_id" Type="Int32" />
+    <Property Name="EnrEmpPosStatus" Type="Int32" />
+    <Property Name="EnrEmpPosTimestamp" Type="DateTime" Precision="3" />
+    <Property Name="EnrEmpPosId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Employee_copy1" Relationship="santisar_Model.positions" FromRole="Enroll_Emp_Pos_copy1" ToRole="Employee_copy1" />
+  </EntityType>
+  <Association Name="positions">
+    <End Type="santisar_Model.Employee_copy1" Role="Employee_copy1" Multiplicity="0..1" />
+    <End Type="santisar_Model.Enroll_Emp_Pos_copy1" Role="Enroll_Emp_Pos_copy1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee_copy1">
+        <PropertyRef Name="EmpId" />
+      </Principal>
+      <Dependent Role="Enroll_Emp_Pos_copy1">
+        <PropertyRef Name="Employee_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TestCourse">
+    <Key>
+      <PropertyRef Name="CourseId" />
+    </Key>
+    <Property Name="CourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TestDepartment" Relationship="santisar_Model.FK_Course_Department_DepartmentID" FromRole="TestCourse" ToRole="TestDepartment" />
+    <NavigationProperty Name="TestCourseInstructor" Relationship="santisar_Model.FK_CourseInstructor_Course_CourseId" FromRole="TestCourse" ToRole="TestCourseInstructor" />
+    <NavigationProperty Name="TestStudentCourse" Relationship="santisar_Model.FK_StudentCourse_Course_CourseId" FromRole="TestCourse" ToRole="TestStudentCourse" />
+  </EntityType>
+  <EntityType Name="TestCourseInstructor">
+    <Key>
+      <PropertyRef Name="CourseId" />
+      <PropertyRef Name="InstructorId" />
+    </Key>
+    <Property Name="CourseId" Type="Int32" Nullable="false" />
+    <Property Name="InstructorId" Type="Int32" Nullable="false" />
+    <Property Name="timestamp" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TestCourse" Relationship="santisar_Model.FK_CourseInstructor_Course_CourseId" FromRole="TestCourseInstructor" ToRole="TestCourse" />
+    <NavigationProperty Name="TestInstructor" Relationship="santisar_Model.FK_CourseInstructor_Instructor_InstructorId" FromRole="TestCourseInstructor" ToRole="TestInstructor" />
+  </EntityType>
+  <EntityType Name="TestDepartment">
+    <Key>
+      <PropertyRef Name="DepartmentId" />
+    </Key>
+    <Property Name="DepartmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentLocation" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InstructorId" Type="Int32" />
+    <NavigationProperty Name="TestCourse" Relationship="santisar_Model.FK_Course_Department_DepartmentID" FromRole="TestDepartment" ToRole="TestCourse" />
+    <NavigationProperty Name="TestInstructor" Relationship="santisar_Model.FK_Department_Instructor_InstructorId" FromRole="TestDepartment" ToRole="TestInstructor" />
+  </EntityType>
+  <EntityType Name="TestInstructor">
+    <Key>
+      <PropertyRef Name="InstructorId" />
+    </Key>
+    <Property Name="InstructorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TestCourseInstructor" Relationship="santisar_Model.FK_CourseInstructor_Instructor_InstructorId" FromRole="TestInstructor" ToRole="TestCourseInstructor" />
+    <NavigationProperty Name="TestDepartment" Relationship="santisar_Model.FK_Department_Instructor_InstructorId" FromRole="TestInstructor" ToRole="TestDepartment" />
+  </EntityType>
+  <EntityType Name="TestStudent">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TestStudentCourse" Relationship="santisar_Model.FK_StudentCourse_Student_StudentId" FromRole="TestStudent" ToRole="TestStudentCourse" />
+  </EntityType>
+  <EntityType Name="TestStudentCourse">
+    <Key>
+      <PropertyRef Name="StudentCourseId" />
+    </Key>
+    <Property Name="StudentCourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseId" Type="Int32" Nullable="false" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TestCourse" Relationship="santisar_Model.FK_StudentCourse_Course_CourseId" FromRole="TestStudentCourse" ToRole="TestCourse" />
+    <NavigationProperty Name="TestStudent" Relationship="santisar_Model.FK_StudentCourse_Student_StudentId" FromRole="TestStudentCourse" ToRole="TestStudent" />
+  </EntityType>
+  <Association Name="FK_Course_Department_DepartmentID">
+    <End Type="santisar_Model.TestDepartment" Role="TestDepartment" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="santisar_Model.TestCourse" Role="TestCourse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TestDepartment">
+        <PropertyRef Name="DepartmentId" />
+      </Principal>
+      <Dependent Role="TestCourse">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CourseInstructor_Course_CourseId">
+    <End Type="santisar_Model.TestCourse" Role="TestCourse" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="santisar_Model.TestCourseInstructor" Role="TestCourseInstructor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TestCourse">
+        <PropertyRef Name="CourseId" />
+      </Principal>
+      <Dependent Role="TestCourseInstructor">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentCourse_Course_CourseId">
+    <End Type="santisar_Model.TestCourse" Role="TestCourse" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="santisar_Model.TestStudentCourse" Role="TestStudentCourse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TestCourse">
+        <PropertyRef Name="CourseId" />
+      </Principal>
+      <Dependent Role="TestStudentCourse">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CourseInstructor_Instructor_InstructorId">
+    <End Type="santisar_Model.TestInstructor" Role="TestInstructor" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="santisar_Model.TestCourseInstructor" Role="TestCourseInstructor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TestInstructor">
+        <PropertyRef Name="InstructorId" />
+      </Principal>
+      <Dependent Role="TestCourseInstructor">
+        <PropertyRef Name="InstructorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Department_Instructor_InstructorId">
+    <End Type="santisar_Model.TestInstructor" Role="TestInstructor" Multiplicity="0..1" />
+    <End Type="santisar_Model.TestDepartment" Role="TestDepartment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TestInstructor">
+        <PropertyRef Name="InstructorId" />
+      </Principal>
+      <Dependent Role="TestDepartment">
+        <PropertyRef Name="InstructorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentCourse_Student_StudentId">
+    <End Type="santisar_Model.TestStudent" Role="TestStudent" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="santisar_Model.TestStudentCourse" Role="TestStudentCourse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TestStudent">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="TestStudentCourse">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="xTestCourse">
+    <Key>
+      <PropertyRef Name="CourseID" />
+    </Key>
+    <Property Name="CourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Credits" Type="Int32" />
+    <NavigationProperty Name="xTestEnrollment" Relationship="santisar_Model.FK_dbo_Enrollment_dbo_Course_CourseID" FromRole="xTestCourse" ToRole="xTestEnrollment" />
+  </EntityType>
+  <EntityType Name="xTestEnrollment">
+    <Key>
+      <PropertyRef Name="EnrollmentID" />
+    </Key>
+    <Property Name="EnrollmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Grade" Type="Decimal" Precision="3" Scale="2" />
+    <Property Name="CourseID" Type="Int32" Nullable="false" />
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="xTestCourse" Relationship="santisar_Model.FK_dbo_Enrollment_dbo_Course_CourseID" FromRole="xTestEnrollment" ToRole="xTestCourse" />
+    <NavigationProperty Name="xTestStudent" Relationship="santisar_Model.FK_dbo_Enrollment_dbo_Student_StudentID" FromRole="xTestEnrollment" ToRole="xTestStudent" />
+  </EntityType>
+  <EntityType Name="xTestStudent">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EnrollmentDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="xTestEnrollment" Relationship="santisar_Model.FK_dbo_Enrollment_dbo_Student_StudentID" FromRole="xTestStudent" ToRole="xTestEnrollment" />
+  </EntityType>
+  <Association Name="FK_dbo_Enrollment_dbo_Course_CourseID">
+    <End Type="santisar_Model.xTestCourse" Role="xTestCourse" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="santisar_Model.xTestEnrollment" Role="xTestEnrollment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="xTestCourse">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="xTestEnrollment">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Enrollment_dbo_Student_StudentID">
+    <End Type="santisar_Model.xTestStudent" Role="xTestStudent" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="santisar_Model.xTestEnrollment" Role="xTestEnrollment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="xTestStudent">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="xTestEnrollment">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpTitle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EmpName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="EmpLname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="EmpBirthday" Type="DateTime" Precision="0" />
+    <Property Name="EmpIdcard" Type="Int32" />
+    <Property Name="EmpPsis_id" Type="Int32" />
+    <Property Name="EmpStatus" Type="Int32" />
+    <Property Name="EmpTimestamp" Type="DateTime" Precision="3" />
+    <Property Name="EmpTelephone" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="Empbank_id" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="EmpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpGender" Type="Int32" />
+    <NavigationProperty Name="Enroll_Emp_Pos" Relationship="santisar_Model.Fk_emp_enr" FromRole="Employee" ToRole="Enroll_Emp_Pos" />
+  </EntityType>
+  <EntityType Name="Enroll_Emp_Pos">
+    <Key>
+      <PropertyRef Name="EnrEmpPosId" />
+    </Key>
+    <Property Name="Employee_id" Type="Int32" />
+    <Property Name="Position_id" Type="Int32" />
+    <Property Name="EnrEmpPosStatus" Type="Int32" />
+    <Property Name="EnrEmpPosTimestamp" Type="DateTime" Precision="3" />
+    <Property Name="EnrEmpPosId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Employee" Relationship="santisar_Model.Fk_emp_enr" FromRole="Enroll_Emp_Pos" ToRole="Employee" />
+    <NavigationProperty Name="Position" Relationship="santisar_Model.Fk_enr_pos" FromRole="Enroll_Emp_Pos" ToRole="Position" />
+  </EntityType>
+  <EntityType Name="Position">
+    <Key>
+      <PropertyRef Name="PosId" />
+    </Key>
+    <Property Name="PosName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PosLevel" Type="Int32" />
+    <Property Name="PosId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Enroll_Emp_Pos" Relationship="santisar_Model.Fk_enr_pos" FromRole="Position" ToRole="Enroll_Emp_Pos" />
+  </EntityType>
+  <Association Name="Fk_emp_enr">
+    <End Type="santisar_Model.Employee" Role="Employee" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="santisar_Model.Enroll_Emp_Pos" Role="Enroll_Emp_Pos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmpId" />
+      </Principal>
+      <Dependent Role="Enroll_Emp_Pos">
+        <PropertyRef Name="Employee_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_enr_pos">
+    <End Type="santisar_Model.Position" Role="Position" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="santisar_Model.Enroll_Emp_Pos" Role="Enroll_Emp_Pos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="PosId" />
+      </Principal>
+      <Dependent Role="Enroll_Emp_Pos">
+        <PropertyRef Name="Position_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>
