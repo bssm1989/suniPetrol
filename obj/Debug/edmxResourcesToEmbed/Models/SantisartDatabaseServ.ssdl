@@ -114,6 +114,14 @@
     <Property Name="Class_room" Type="int" />
     <Property Name="Class_year_index" Type="int" />
   </EntityType>
+  <EntityType Name="ClassInSchool">
+    <Key>
+      <PropertyRef Name="ClassID" />
+    </Key>
+    <Property Name="ClassShortName" Type="varchar" MaxLength="5" />
+    <Property Name="ClassName" Type="varchar" MaxLength="20" />
+    <Property Name="ClassID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
   <EntityType Name="ContestEducationSchool">
     <Key>
       <PropertyRef Name="TypeContest_id" />
@@ -124,6 +132,23 @@
     <Property Name="Timestamp" Type="datetime" />
     <Property Name="group" Type="int" />
     <Property Name="Day_contest" Type="date" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="CourseId" />
+    </Key>
+    <Property Name="CourseName" Type="varchar" MaxLength="100" />
+    <Property Name="CourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CourseType" Type="varchar" MaxLength="50" />
+    <Property Name="CourseStatus" Type="int" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="Depart_Id" />
+    </Key>
+    <Property Name="DepartName" Type="varchar" MaxLength="50" />
+    <Property Name="DepartStatus" Type="varchar" MaxLength="50" />
+    <Property Name="Depart_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="Employee">
     <Key>
@@ -231,6 +256,19 @@
     <Property Name="Class_id" Type="int" Nullable="false" />
     <Property Name="Enrol_stu_class_id" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="EnrollCouse">
+    <Key>
+      <PropertyRef Name="EnrollCouseID" />
+    </Key>
+    <Property Name="CouseTxtId" Type="varchar" MaxLength="10" />
+    <Property Name="CouseId" Type="int" />
+    <Property Name="DepartId" Type="int" />
+    <Property Name="CouseTime" Type="int" />
+    <Property Name="CouseWeight&#xD;&#xA;" Type="real" />
+    <Property Name="ClassId" Type="int" />
+    <Property Name="semester&#xD;&#xA;" Type="int" />
+    <Property Name="EnrollCouseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
   <EntityType Name="Food">
     <Key>
       <PropertyRef Name="Food_id" />
@@ -282,6 +320,13 @@
     <Property Name="Student_psis_id" Type="int" />
     <Property Name="Student_status" Type="varchar" MaxLength="25" />
     <Property Name="Student_timestamp" Type="datetime" />
+  </EntityType>
+  <EntityType Name="YearEdu">
+    <Key>
+      <PropertyRef Name="YearEduId" />
+    </Key>
+    <Property Name="yearName" Type="int" />
+    <Property Name="YearEduId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'santisar_.santisart._enrollattstudent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -440,6 +485,20 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
     <Property Name="PosLevel" Type="int" />
     <Property Name="PosId" Type="int" />
   </EntityType>
+  <Association Name="FK_class1">
+    <End Role="ClassInSchool" Type="Self.ClassInSchool" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EnrollCouse" Type="Self.EnrollCouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClassInSchool">
+        <PropertyRef Name="ClassID" />
+      </Principal>
+      <Dependent Role="EnrollCouse">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Course_Department_DepartmentID">
     <End Role="TestDepartment" Type="Self.TestDepartment" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -482,6 +541,20 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="Fk_couse1">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EnrollCouse" Type="Self.EnrollCouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseId" />
+      </Principal>
+      <Dependent Role="EnrollCouse">
+        <PropertyRef Name="CouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_dbo_Enrollment_dbo_Course_CourseID">
     <End Role="xTestCourse" Type="Self.xTestCourse" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -507,6 +580,20 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
       </Principal>
       <Dependent Role="xTestEnrollment">
         <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_depart1">
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EnrollCouse" Type="Self.EnrollCouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Depart_Id" />
+      </Principal>
+      <Dependent Role="EnrollCouse">
+        <PropertyRef Name="DepartId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -603,7 +690,10 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
     <EntitySet Name="attendance" EntityType="Self.attendance" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="attendance_day" EntityType="Self.attendance_day" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Class" EntityType="Self.Class" Schema="santisart" store:Type="Tables" />
+    <EntitySet Name="ClassInSchool" EntityType="Self.ClassInSchool" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="ContestEducationSchool" EntityType="Self.ContestEducationSchool" Schema="santisart" store:Type="Tables" />
+    <EntitySet Name="Course" EntityType="Self.Course" Schema="santisart" store:Type="Tables" />
+    <EntitySet Name="Department" EntityType="Self.Department" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Employee" EntityType="Self.Employee" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Employee_copy1" EntityType="Self.Employee_copy1" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Enroll_EduContest" EntityType="Self.Enroll_EduContest" Schema="santisart" store:Type="Tables" />
@@ -613,10 +703,12 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
     <EntitySet Name="Enroll_pay" EntityType="Self.Enroll_pay" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Enroll_student_all_event" EntityType="Self.Enroll_student_all_event" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Enroll_student_class" EntityType="Self.Enroll_student_class" Schema="santisart" store:Type="Tables" />
+    <EntitySet Name="EnrollCouse" EntityType="Self.EnrollCouse" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Food" EntityType="Self.Food" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Monthly" EntityType="Self.Monthly" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Position" EntityType="Self.Position" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Students" EntityType="Self.Students" Schema="santisart" store:Type="Tables" />
+    <EntitySet Name="YearEdu" EntityType="Self.YearEdu" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="_enrollattstudent" EntityType="Self._enrollattstudent" store:Type="Views" store:Schema="santisart">
       <DefiningQuery>SELECT 
     [_enrollattstudent].[Student_id] AS [Student_id], 
@@ -747,6 +839,10 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
     [ViewEmpPos].[PosId] AS [PosId]
     FROM [santisart].[ViewEmpPos] AS [ViewEmpPos]</DefiningQuery>
     </EntitySet>
+    <AssociationSet Name="FK_class1" Association="Self.FK_class1">
+      <End Role="ClassInSchool" EntitySet="ClassInSchool" />
+      <End Role="EnrollCouse" EntitySet="EnrollCouse" />
+    </AssociationSet>
     <AssociationSet Name="FK_Course_Department_DepartmentID" Association="Self.FK_Course_Department_DepartmentID">
       <End Role="TestDepartment" EntitySet="TestDepartment" />
       <End Role="TestCourse" EntitySet="TestCourse" />
@@ -759,6 +855,10 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
       <End Role="TestInstructor" EntitySet="TestInstructor" />
       <End Role="TestCourseInstructor" EntitySet="TestCourseInstructor" />
     </AssociationSet>
+    <AssociationSet Name="Fk_couse1" Association="Self.Fk_couse1">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="EnrollCouse" EntitySet="EnrollCouse" />
+    </AssociationSet>
     <AssociationSet Name="FK_dbo_Enrollment_dbo_Course_CourseID" Association="Self.FK_dbo_Enrollment_dbo_Course_CourseID">
       <End Role="xTestCourse" EntitySet="xTestCourse" />
       <End Role="xTestEnrollment" EntitySet="xTestEnrollment" />
@@ -766,6 +866,10 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
     <AssociationSet Name="FK_dbo_Enrollment_dbo_Student_StudentID" Association="Self.FK_dbo_Enrollment_dbo_Student_StudentID">
       <End Role="xTestStudent" EntitySet="xTestStudent" />
       <End Role="xTestEnrollment" EntitySet="xTestEnrollment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_depart1" Association="Self.FK_depart1">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="EnrollCouse" EntitySet="EnrollCouse" />
     </AssociationSet>
     <AssociationSet Name="FK_Department_Instructor_InstructorId" Association="Self.FK_Department_Instructor_InstructorId">
       <End Role="TestInstructor" EntitySet="TestInstructor" />

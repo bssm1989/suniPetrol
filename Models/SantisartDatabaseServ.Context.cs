@@ -58,5 +58,10 @@ namespace santisart_app.Models
         public virtual DbSet<Employee> Employee { get; set; }
         public virtual DbSet<Enroll_Emp_Pos> Enroll_Emp_Pos { get; set; }
         public virtual DbSet<Position> Position { get; set; }
+        public virtual DbSet<ClassInSchool> ClassInSchool { get; set; }
+        public virtual DbSet<Course> Course { get; set; }
+        public virtual DbSet<Department> Department { get; set; }
+        public virtual DbSet<EnrollCouse> EnrollCouse { get; set; }
+        public virtual DbSet<YearEdu> YearEdu { get; set; }
     }
 }

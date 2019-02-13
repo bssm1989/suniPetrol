@@ -78,6 +78,23 @@
       <End Role="Position" EntitySet="Position" />
       <End Role="Enroll_Emp_Pos" EntitySet="Enroll_Emp_Pos" />
     </AssociationSet>
+    <EntitySet Name="ClassInSchool" EntityType="santisar_Model.ClassInSchool" />
+    <EntitySet Name="Course" EntityType="santisar_Model.Course" />
+    <EntitySet Name="Department" EntityType="santisar_Model.Department" />
+    <EntitySet Name="EnrollCouse" EntityType="santisar_Model.EnrollCouse" />
+    <EntitySet Name="YearEdu" EntityType="santisar_Model.YearEdu" />
+    <AssociationSet Name="FK_class1" Association="santisar_Model.FK_class1">
+      <End Role="ClassInSchool" EntitySet="ClassInSchool" />
+      <End Role="EnrollCouse" EntitySet="EnrollCouse" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_couse1" Association="santisar_Model.Fk_couse1">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="EnrollCouse" EntitySet="EnrollCouse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_depart1" Association="santisar_Model.FK_depart1">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="EnrollCouse" EntitySet="EnrollCouse" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Enroll_paid">
     <Key>
@@ -674,6 +691,99 @@
       </Principal>
       <Dependent Role="Enroll_Emp_Pos">
         <PropertyRef Name="Position_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ClassInSchool">
+    <Key>
+      <PropertyRef Name="ClassID" />
+    </Key>
+    <Property Name="ClassShortName" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="ClassName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ClassID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="EnrollCouse" Relationship="santisar_Model.FK_class1" FromRole="ClassInSchool" ToRole="EnrollCouse" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="CourseId" />
+    </Key>
+    <Property Name="CourseName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CourseStatus" Type="Int32" />
+    <NavigationProperty Name="EnrollCouse" Relationship="santisar_Model.Fk_couse1" FromRole="Course" ToRole="EnrollCouse" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="Depart_Id" />
+    </Key>
+    <Property Name="DepartName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DepartStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Depart_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="EnrollCouse" Relationship="santisar_Model.FK_depart1" FromRole="Department" ToRole="EnrollCouse" />
+  </EntityType>
+  <EntityType Name="EnrollCouse">
+    <Key>
+      <PropertyRef Name="EnrollCouseID" />
+    </Key>
+    <Property Name="CouseTxtId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CouseId" Type="Int32" />
+    <Property Name="DepartId" Type="Int32" />
+    <Property Name="CouseTime" Type="Int32" />
+    <Property Name="CouseWeight__" Type="Single" />
+    <Property Name="ClassId" Type="Int32" />
+    <Property Name="semester__" Type="Int32" />
+    <Property Name="EnrollCouseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="ClassInSchool" Relationship="santisar_Model.FK_class1" FromRole="EnrollCouse" ToRole="ClassInSchool" />
+    <NavigationProperty Name="Course" Relationship="santisar_Model.Fk_couse1" FromRole="EnrollCouse" ToRole="Course" />
+    <NavigationProperty Name="Department" Relationship="santisar_Model.FK_depart1" FromRole="EnrollCouse" ToRole="Department" />
+  </EntityType>
+  <EntityType Name="YearEdu">
+    <Key>
+      <PropertyRef Name="YearEduId" />
+    </Key>
+    <Property Name="yearName" Type="Int32" />
+    <Property Name="YearEduId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <Association Name="FK_class1">
+    <End Type="santisar_Model.ClassInSchool" Role="ClassInSchool" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="santisar_Model.EnrollCouse" Role="EnrollCouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClassInSchool">
+        <PropertyRef Name="ClassID" />
+      </Principal>
+      <Dependent Role="EnrollCouse">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_couse1">
+    <End Type="santisar_Model.Course" Role="Course" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="santisar_Model.EnrollCouse" Role="EnrollCouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseId" />
+      </Principal>
+      <Dependent Role="EnrollCouse">
+        <PropertyRef Name="CouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_depart1">
+    <End Type="santisar_Model.Department" Role="Department" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="santisar_Model.EnrollCouse" Role="EnrollCouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Depart_Id" />
+      </Principal>
+      <Dependent Role="EnrollCouse">
+        <PropertyRef Name="DepartId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

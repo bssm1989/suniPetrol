@@ -4083,6 +4083,11 @@
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\EnrollCouses\Create.cshtml" />
+    <Content Include="Views\EnrollCouses\Delete.cshtml" />
+    <Content Include="Views\EnrollCouses\Details.cshtml" />
+    <Content Include="Views\EnrollCouses\Edit.cshtml" />
+    <Content Include="Views\EnrollCouses\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4095,6 +4100,7 @@
     <Compile Include="Controllers\eduContestController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\Employee_copy1Controller.cs" />
+    <Compile Include="Controllers\EnrollCousesController.cs" />
     <Compile Include="Controllers\Enroll_Emp_PosController.cs" />
     <Compile Include="Controllers\Enroll_Emp_Pos_copy1Controller.cs" />
     <Compile Include="Controllers\FoodPaidController.cs" />
@@ -4114,16 +4120,28 @@
     <Compile Include="Models\Class.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ClassInSchool.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ContestEducationSchool.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Course.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\C_enrollattstudent.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Department.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Employee.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Employee_copy1.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EnrollCouse.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EnrollStudentAttdance.cs">
@@ -4228,6 +4246,9 @@
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\xTestStudent.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\YearEdu.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
