@@ -3994,6 +3994,10 @@
     <Content Include="App_Browsers\qt.browser" />
     <Content Include="Models\app.config" />
     <Content Include="ExcelTemp\Test.xlsx" />
+    <Content Include="ExcelTemp\Book4.xlsx" />
+    <Content Include="ExcelTemp\Book5.xlsx" />
+    <Content Include="ExcelTemp\Test2.xlsx" />
+    <Content Include="ExcelTemp\Test3.xlsx" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />

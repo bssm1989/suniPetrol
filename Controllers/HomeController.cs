@@ -19,7 +19,7 @@ namespace santisart_app.Controllers
             string xAxis = "Time";
             string yAxis = "Value";
             var application = new Microsoft.Office.Interop.Excel.Application();
-            string pathExcel = HttpRuntime.AppDomainAppPath + V;
+            string pathExcel = Server.MapPath("ExcelTemp\\Book5.xlsx");// + V;
            // string fileName = application.StartupPath + @"\ExcelTemp\Test.xlsm";//C:\Users\mumee\source\repos\santisart_app\santisart_app\ExcelTemp\Test.xlsx "\\ExcelTemp\\Test.xlsx";
             var workbook = application.Workbooks.Open(pathExcel);
             var worksheet = workbook.Worksheets[1] as
