@@ -59,11 +59,11 @@ namespace santisart_app.Controllers
                 });
 
                 db.SaveChanges();
-                return Redirect("http://27.254.81.243/plesk-site-preview/santisartwittaya.ac.th/educontest/index");
+                return View("index");
             }
             catch
             {
-                return Redirect("http://27.254.81.243/plesk-site-preview/santisartwittaya.ac.th/educontest/index");
+                return View("index");
             }
         }
 
@@ -85,7 +85,7 @@ namespace santisart_app.Controllers
                 //    Type_id = Convert.ToInt32(collection["NameContest"]),
                 //    Student_id = Convert.ToInt32(collection["Student_id"])
                 //});
-                var result=db.Enroll_EduContest.SingleOrDefault(x => x.EduContest_id == EduContest_id);
+                var result = db.Enroll_EduContest.SingleOrDefault(x => x.EduContest_id == EduContest_id);
                 //var result = db.Books.SingleOrDefault(b => b.BookNumber == bookNumber);
                 if (result != null)
                 {
@@ -93,8 +93,8 @@ namespace santisart_app.Controllers
                     result.result = collection["result"];
                     db.SaveChanges();
                 }
-               
-                return Redirect("http://27.254.81.243/plesk-site-preview/santisartwittaya.ac.th/educontest/index");
+
+                return View("index");
             }
             catch
             {
@@ -120,7 +120,7 @@ namespace santisart_app.Controllers
                 db.Enroll_EduContest.Attach(studentContest);
                 db.Enroll_EduContest.Remove(studentContest);
                 db.SaveChanges();
-                return Redirect("http://27.254.81.243/plesk-site-preview/santisartwittaya.ac.th/educontest/index");
+                return View("index");
             }
             catch
             {
