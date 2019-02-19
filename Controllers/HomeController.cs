@@ -3,6 +3,8 @@ using System.Web.Mvc;
 using static System.Net.Mime.MediaTypeNames;
 using Microsoft.Office.Interop.Excel;
 using System.Web;
+using OfficeOpenXml;
+using System.Linq;
 
 namespace santisart_app.Controllers
 {
@@ -46,10 +48,35 @@ namespace santisart_app.Controllers
             // //// Save.
             // workbook.Save();
             // workbook.Close();
-            FileStream fs1 = new FileStream(Server.MapPath("ExcelTemp\\test.txt"), FileMode.OpenOrCreate, FileAccess.Write);
-            StreamWriter writer = new StreamWriter(fs1);
-            writer.Write(Server.MapPath("ExcelTemp\\test.txt"));
-            writer.Close();
+            FileInfo excel = new FileInfo(Server.MapPath(@"ExcelTemp\Test.xlsx"));
+            using (var package = new ExcelPackage(excel))
+            {
+                var workbook = package.Workbook;
+
+                //*** Sheet 1
+                var worksheet = workbook.Worksheets.First();
+
+                
+                worksheet.Cells["Y6"].Value = "บัสซาม";
+                worksheet.Cells["B2"].Value = System.DateTime.Now;
+                package.Save();
+                
+            }
+            //using (var package = new ExcelPackage())
+            //{
+            //    var workbook = package.Workbook;
+
+            //    //*** Sheet 1
+            //    var worksheet = workbook.Worksheets.Add("Sheet1");
+            //    worksheet.Cells["A1"].Value = "ThaiCreate.Com";
+            //    worksheet.Cells["B2"].Value = "2017";
+
+            //    package.SaveAs(new FileInfo(Server.MapPath(@"ExcelTemp/myExcel.xlsx")));
+            //}
+            //FileStream fs1 = new FileStream(Server.MapPath("ExcelTemp\\test.txt"), FileMode.OpenOrCreate, FileAccess.Write);
+            //StreamWriter writer = new StreamWriter(fs1);
+            //writer.Write(Server.MapPath("ExcelTemp\\test.txt"));
+            //writer.Close();
             return View();
         }
 

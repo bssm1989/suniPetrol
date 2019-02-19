@@ -200,3 +200,5 @@ C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\tr\Microsoft.Build.r
 C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\zh-Hans\Microsoft.Build.resources.dll
 C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\zh-Hant\Microsoft.Build.resources.dll
 C:\Users\mumee\source\repos\santisart_app\santisart_app\obj\Debug\santisart_app.csprojAssemblyReference.cache
+C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\EPPlus.dll
+C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\EPPlus.xml
