@@ -202,3 +202,12 @@ C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\zh-Hant\Microsoft.Bu
 C:\Users\mumee\source\repos\santisart_app\santisart_app\obj\Debug\santisart_app.csprojAssemblyReference.cache
 C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\EPPlus.dll
 C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\EPPlus.xml
+C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\Spire.Common.dll
+C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\Spire.License.dll
+C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\Spire.Pdf.dll
+C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\Spire.XLS.dll
+C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\Microsoft.mshtml.dll
+C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\Spire.Common.xml
+C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\Spire.License.xml
+C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\Spire.Pdf.xml
+C:\Users\mumee\source\repos\santisart_app\santisart_app\bin\Spire.XLS.xml

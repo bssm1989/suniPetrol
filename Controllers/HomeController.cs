@@ -1,10 +1,12 @@
 ﻿using System.IO;
 using System.Web.Mvc;
 using static System.Net.Mime.MediaTypeNames;
-using Microsoft.Office.Interop.Excel;
 using System.Web;
 using OfficeOpenXml;
 using System.Linq;
+using Spire.Xls.Converter;
+using Spire.Pdf;
+using Spire.Xls;
 
 namespace santisart_app.Controllers
 {
@@ -21,7 +23,7 @@ namespace santisart_app.Controllers
             // string xAxis = "Time";
             // string yAxis = "Value";
             // var application = new Microsoft.Office.Interop.Excel.Application();
-            // string pathExcel = Server.MapPath("ExcelTemp\\Book5.xlsx");// + V;
+             string pathExcel = Server.MapPath("ExcelTemp\\Book5.xlsx");// + V;
             //// string fileName = application.StartupPath + @"\ExcelTemp\Test.xlsm";//C:\Users\mumee\source\repos\santisart_app\santisart_app\ExcelTemp\Test.xlsx "\\ExcelTemp\\Test.xlsx";
             // var workbook = application.Workbooks.Open(pathExcel);
             // var worksheet = workbook.Worksheets[1] as
@@ -49,6 +51,7 @@ namespace santisart_app.Controllers
             // workbook.Save();
             // workbook.Close();
             FileInfo excel = new FileInfo(Server.MapPath(@"ExcelTemp\Test.xlsx"));
+            string excel2 = Server.MapPath(@"ExcelTemp\Test.xlsx");
             using (var package = new ExcelPackage(excel))
             {
                 var workbook = package.Workbook;
@@ -56,11 +59,23 @@ namespace santisart_app.Controllers
                 //*** Sheet 1
                 var worksheet = workbook.Worksheets.First();
 
-                
+                Workbook excelFile = new Workbook();
                 worksheet.Cells["Y6"].Value = "บัสซาม";
                 worksheet.Cells["B2"].Value = System.DateTime.Now;
                 package.Save();
-                
+                MemoryStream pdfMemoryStream = new MemoryStream();
+
+                // Spire.XLS to open XLSX workbook stream created by EPPlus
+                excelFile.LoadFromFile(excel2, ExcelVersion.Version2016);
+
+                // Spire.PDF to convert XLSX to PDF, I read it has limited functionality (total pages, rows, etc...).
+                //PdfConverter pdfConverter = new PdfConverter(excelFile);
+                //PdfConverterSettings settings = new PdfConverterSettings();
+                Worksheet sheet = excelFile.Worksheets[0];
+
+                sheet.SaveToPdf(Server.MapPath("ExcelTemp\\excel2.pdf"));
+               
+                System.Diagnostics.Process.Start(Server.MapPath("ExcelTemp\\excel2.pdf"));
             }
             //using (var package = new ExcelPackage())
             //{
