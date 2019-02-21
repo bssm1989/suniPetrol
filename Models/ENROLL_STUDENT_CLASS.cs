@@ -14,8 +14,9 @@ namespace santisart_app.Models
     
     public partial class Enroll_student_class
     {
-        public int Student_id { get; set; }
-        public int Class_id { get; set; }
+        public Nullable<int> Student_id { get; set; }
+        public Nullable<int> Class_id { get; set; }
         public int Enrol_stu_class_id { get; set; }
+        public Nullable<System.DateTime> Timestamp { get; set; }
     }
 }

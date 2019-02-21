@@ -27,25 +27,8 @@
         <EntityTypeShape EntityType="santisar_Model.Employee_copy1" Width="1.5" PointX="15.375" PointY="7" />
         <EntityTypeShape EntityType="santisar_Model.Enroll_Emp_Pos_copy1" Width="1.5" PointX="17.625" PointY="7.625" />
         <AssociationConnector Association="santisar_Model.positions" />
-        <EntityTypeShape EntityType="santisar_Model.TestCourse" Width="1.5" PointX="14.375" PointY="19.5" />
-        <EntityTypeShape EntityType="santisar_Model.TestCourseInstructor" Width="1.5" PointX="16.625" PointY="18.25" />
-        <EntityTypeShape EntityType="santisar_Model.TestDepartment" Width="1.5" PointX="12.125" PointY="19.5" />
-        <EntityTypeShape EntityType="santisar_Model.TestInstructor" Width="1.5" PointX="9.875" PointY="16.75" />
-        <EntityTypeShape EntityType="santisar_Model.TestStudent" Width="1.5" PointX="14.375" PointY="22.625" />
-        <EntityTypeShape EntityType="santisar_Model.TestStudentCourse" Width="1.5" PointX="16.625" PointY="21.625" />
-        <AssociationConnector Association="santisar_Model.FK_Course_Department_DepartmentID" />
-        <AssociationConnector Association="santisar_Model.FK_CourseInstructor_Course_CourseId" />
-        <AssociationConnector Association="santisar_Model.FK_StudentCourse_Course_CourseId" />
-        <AssociationConnector Association="santisar_Model.FK_CourseInstructor_Instructor_InstructorId" />
-        <AssociationConnector Association="santisar_Model.FK_Department_Instructor_InstructorId" />
-        <AssociationConnector Association="santisar_Model.FK_StudentCourse_Student_StudentId" />
-        <EntityTypeShape EntityType="santisar_Model.xTestCourse" Width="1.5" PointX="16.5" PointY="15.25" />
-        <EntityTypeShape EntityType="santisar_Model.xTestEnrollment" Width="1.5" PointX="18.75" PointY="12" />
-        <EntityTypeShape EntityType="santisar_Model.xTestStudent" Width="1.5" PointX="16.5" PointY="12.125" />
-        <AssociationConnector Association="santisar_Model.FK_dbo_Enrollment_dbo_Course_CourseID" />
-        <AssociationConnector Association="santisar_Model.FK_dbo_Enrollment_dbo_Student_StudentID" />
         <EntityTypeShape EntityType="santisar_Model.Employee" Width="1.5" PointX="24.25" PointY="8.5" />
-        <EntityTypeShape EntityType="santisar_Model.Enroll_Emp_Pos" Width="1.5" PointX="22" PointY="8.5" />
+        <EntityTypeShape EntityType="santisar_Model.Enroll_Emp_Pos" Width="1.5" PointX="22.125" PointY="7.625" />
         <EntityTypeShape EntityType="santisar_Model.Position" Width="1.5" PointX="19.75" PointY="8.5" />
         <AssociationConnector Association="santisar_Model.Fk_emp_enr" />
         <AssociationConnector Association="santisar_Model.Fk_enr_pos" />
@@ -57,6 +40,11 @@
         <AssociationConnector Association="santisar_Model.FK_class1" />
         <AssociationConnector Association="santisar_Model.Fk_couse1" />
         <AssociationConnector Association="santisar_Model.FK_depart1" />
+        <EntityTypeShape EntityType="santisar_Model.EnrollStudentCouse" Width="1.5" PointX="26.5" PointY="3.375" />
+        <EntityTypeShape EntityType="santisar_Model.View_Couse" Width="1.5" PointX="13.375" PointY="11.75" />
+        <AssociationConnector Association="santisar_Model.Fk_TeacherId" />
+        <AssociationConnector Association="santisar_Model.Fk_EnrCouseId" />
+        <AssociationConnector Association="santisar_Model.Fk_student" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

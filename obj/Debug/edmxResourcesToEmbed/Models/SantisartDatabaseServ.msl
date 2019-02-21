@@ -19,6 +19,7 @@
     <EntitySetMapping Name="Enroll_student_class">
       <EntityTypeMapping TypeName="santisar_Model.Enroll_student_class">
         <MappingFragment StoreEntitySet="Enroll_student_class">
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
           <ScalarProperty Name="Enrol_stu_class_id" ColumnName="Enrol_stu_class_id" />
           <ScalarProperty Name="Class_id" ColumnName="Class_id" />
           <ScalarProperty Name="Student_id" ColumnName="Student_id" />
@@ -329,92 +330,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TestCourse">
-      <EntityTypeMapping TypeName="santisar_Model.TestCourse">
-        <MappingFragment StoreEntitySet="TestCourse">
-          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
-          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
-          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TestCourseInstructor">
-      <EntityTypeMapping TypeName="santisar_Model.TestCourseInstructor">
-        <MappingFragment StoreEntitySet="TestCourseInstructor">
-          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
-          <ScalarProperty Name="InstructorId" ColumnName="InstructorId" />
-          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TestDepartment">
-      <EntityTypeMapping TypeName="santisar_Model.TestDepartment">
-        <MappingFragment StoreEntitySet="TestDepartment">
-          <ScalarProperty Name="InstructorId" ColumnName="InstructorId" />
-          <ScalarProperty Name="DepartmentLocation" ColumnName="DepartmentLocation" />
-          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
-          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TestInstructor">
-      <EntityTypeMapping TypeName="santisar_Model.TestInstructor">
-        <MappingFragment StoreEntitySet="TestInstructor">
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="InstructorId" ColumnName="InstructorId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TestStudent">
-      <EntityTypeMapping TypeName="santisar_Model.TestStudent">
-        <MappingFragment StoreEntitySet="TestStudent">
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TestStudentCourse">
-      <EntityTypeMapping TypeName="santisar_Model.TestStudentCourse">
-        <MappingFragment StoreEntitySet="TestStudentCourse">
-          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
-          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
-          <ScalarProperty Name="StudentCourseId" ColumnName="StudentCourseId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="xTestCourse">
-      <EntityTypeMapping TypeName="santisar_Model.xTestCourse">
-        <MappingFragment StoreEntitySet="xTestCourse">
-          <ScalarProperty Name="Credits" ColumnName="Credits" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="xTestEnrollment">
-      <EntityTypeMapping TypeName="santisar_Model.xTestEnrollment">
-        <MappingFragment StoreEntitySet="xTestEnrollment">
-          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
-          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
-          <ScalarProperty Name="Grade" ColumnName="Grade" />
-          <ScalarProperty Name="EnrollmentID" ColumnName="EnrollmentID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="xTestStudent">
-      <EntityTypeMapping TypeName="santisar_Model.xTestStudent">
-        <MappingFragment StoreEntitySet="xTestStudent">
-          <ScalarProperty Name="EnrollmentDate" ColumnName="EnrollmentDate" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Employee">
       <EntityTypeMapping TypeName="santisar_Model.Employee">
         <MappingFragment StoreEntitySet="Employee">
@@ -484,6 +399,7 @@
     <EntitySetMapping Name="EnrollCouse">
       <EntityTypeMapping TypeName="santisar_Model.EnrollCouse">
         <MappingFragment StoreEntitySet="EnrollCouse">
+          <ScalarProperty Name="CouseExcel" ColumnName="CouseExcel" />
           <ScalarProperty Name="EnrollCouseID" ColumnName="EnrollCouseID" />
           <ScalarProperty Name="semester__" ColumnName="semester&#xD;&#xA;" />
           <ScalarProperty Name="ClassId" ColumnName="ClassId" />
@@ -500,6 +416,40 @@
         <MappingFragment StoreEntitySet="YearEdu">
           <ScalarProperty Name="YearEduId" ColumnName="YearEduId" />
           <ScalarProperty Name="yearName" ColumnName="yearName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EnrollStudentCouse">
+      <EntityTypeMapping TypeName="santisar_Model.EnrollStudentCouse">
+        <MappingFragment StoreEntitySet="EnrollStudentCouse">
+          <ScalarProperty Name="Semester" ColumnName="Semester" />
+          <ScalarProperty Name="Staff" ColumnName="Staff" />
+          <ScalarProperty Name="YearEdu" ColumnName="YearEdu" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          <ScalarProperty Name="TeacerId" ColumnName="TeacerId" />
+          <ScalarProperty Name="Grade" ColumnName="Grade" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="EnrollCouseId" ColumnName="EnrollCouseId" />
+          <ScalarProperty Name="studentId" ColumnName="studentId" />
+          <ScalarProperty Name="EnrollStudentCouseId" ColumnName="EnrollStudentCouseId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_Couse">
+      <EntityTypeMapping TypeName="santisar_Model.View_Couse">
+        <MappingFragment StoreEntitySet="View_Couse">
+          <ScalarProperty Name="CourseStatus" ColumnName="CourseStatus" />
+          <ScalarProperty Name="CourseType" ColumnName="CourseType" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="CouseId" ColumnName="CouseId" />
+          <ScalarProperty Name="CouseExcel" ColumnName="CouseExcel" />
+          <ScalarProperty Name="EnrollCouseID" ColumnName="EnrollCouseID" />
+          <ScalarProperty Name="semester__" ColumnName="semester&#xD;&#xA;" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="CouseWeight__" ColumnName="CouseWeight&#xD;&#xA;" />
+          <ScalarProperty Name="CouseTime" ColumnName="CouseTime" />
+          <ScalarProperty Name="DepartId" ColumnName="DepartId" />
+          <ScalarProperty Name="CouseTxtId" ColumnName="CouseTxtId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

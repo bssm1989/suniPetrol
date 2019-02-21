@@ -4073,31 +4073,6 @@
     <Content Include="Views\Enroll_Emp_Pos_copy1\Details.cshtml" />
     <Content Include="Views\Enroll_Emp_Pos_copy1\Edit.cshtml" />
     <Content Include="Views\Enroll_Emp_Pos_copy1\Index.cshtml" />
-    <Content Include="Views\TestStudentCourses\Create.cshtml" />
-    <Content Include="Views\TestStudentCourses\Delete.cshtml" />
-    <Content Include="Views\TestStudentCourses\Details.cshtml" />
-    <Content Include="Views\TestStudentCourses\Edit.cshtml" />
-    <Content Include="Views\TestStudentCourses\Index.cshtml" />
-    <Content Include="Views\TestCourses\Create.cshtml" />
-    <Content Include="Views\TestCourses\Delete.cshtml" />
-    <Content Include="Views\TestCourses\Details.cshtml" />
-    <Content Include="Views\TestCourses\Edit.cshtml" />
-    <Content Include="Views\TestCourses\Index.cshtml" />
-    <Content Include="Views\TestStudents\Create.cshtml" />
-    <Content Include="Views\TestStudents\Delete.cshtml" />
-    <Content Include="Views\TestStudents\Details.cshtml" />
-    <Content Include="Views\TestStudents\Edit.cshtml" />
-    <Content Include="Views\TestStudents\Index.cshtml" />
-    <Content Include="Views\xTestStudents\Create.cshtml" />
-    <Content Include="Views\xTestStudents\Delete.cshtml" />
-    <Content Include="Views\xTestStudents\Details.cshtml" />
-    <Content Include="Views\xTestStudents\Edit.cshtml" />
-    <Content Include="Views\xTestStudents\Index.cshtml" />
-    <Content Include="Views\xTestEnrollments\Create.cshtml" />
-    <Content Include="Views\xTestEnrollments\Delete.cshtml" />
-    <Content Include="Views\xTestEnrollments\Details.cshtml" />
-    <Content Include="Views\xTestEnrollments\Edit.cshtml" />
-    <Content Include="Views\xTestEnrollments\Index.cshtml" />
     <Content Include="Views\Enroll_Emp_Pos\Create.cshtml" />
     <Content Include="Views\Enroll_Emp_Pos\Delete.cshtml" />
     <Content Include="Views\Enroll_Emp_Pos\Details.cshtml" />
@@ -4113,6 +4088,11 @@
     <Content Include="Views\EnrollCouses\Details.cshtml" />
     <Content Include="Views\EnrollCouses\Edit.cshtml" />
     <Content Include="Views\EnrollCouses\Index.cshtml" />
+    <Content Include="Views\EnrollStudentCouses\Create.cshtml" />
+    <Content Include="Views\EnrollStudentCouses\Delete.cshtml" />
+    <Content Include="Views\EnrollStudentCouses\Details.cshtml" />
+    <Content Include="Views\EnrollStudentCouses\Edit.cshtml" />
+    <Content Include="Views\EnrollStudentCouses\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4126,15 +4106,11 @@
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\Employee_copy1Controller.cs" />
     <Compile Include="Controllers\EnrollCousesController.cs" />
+    <Compile Include="Controllers\EnrollStudentCousesController.cs" />
     <Compile Include="Controllers\Enroll_Emp_PosController.cs" />
     <Compile Include="Controllers\Enroll_Emp_Pos_copy1Controller.cs" />
     <Compile Include="Controllers\FoodPaidController.cs" />
     <Compile Include="Controllers\studentController.cs" />
-    <Compile Include="Controllers\TestCoursesController.cs" />
-    <Compile Include="Controllers\TestStudentCoursesController.cs" />
-    <Compile Include="Controllers\TestStudentsController.cs" />
-    <Compile Include="Controllers\xTestEnrollmentsController.cs" />
-    <Compile Include="Controllers\xTestStudentsController.cs" />
     <Compile Include="Models\attdeanceBymonth.cs" />
     <Compile Include="Models\attendance.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
@@ -4170,6 +4146,9 @@
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EnrollStudentAttdance.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EnrollStudentCouse.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Enroll_EduContest.cs">
@@ -4218,24 +4197,6 @@
     <Compile Include="Models\Students.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TestCourse.cs">
-      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TestCourseInstructor.cs">
-      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TestDepartment.cs">
-      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TestInstructor.cs">
-      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TestStudent.cs">
-      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TestStudentCourse.cs">
-      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ViewEmpPos.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
@@ -4264,13 +4225,7 @@
     <Compile Include="Models\viewPaid.cs" />
     <Compile Include="Models\ViewPrintInvoise.cs" />
     <Compile Include="Models\ViewStudentClass.cs" />
-    <Compile Include="Models\xTestCourse.cs">
-      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\xTestEnrollment.cs">
-      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\xTestStudent.cs">
+    <Compile Include="Models\View_Couse.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\YearEdu.cs">

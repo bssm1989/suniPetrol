@@ -1,83 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="santisar_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="TestCourse">
-    <Key>
-      <PropertyRef Name="CourseId" />
-    </Key>
-    <Property Name="CourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CourseName" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="DepartmentId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="TestCourseInstructor">
-    <Key>
-      <PropertyRef Name="CourseId" />
-      <PropertyRef Name="InstructorId" />
-    </Key>
-    <Property Name="CourseId" Type="int" Nullable="false" />
-    <Property Name="InstructorId" Type="int" Nullable="false" />
-    <Property Name="timestamp" Type="datetime" />
-  </EntityType>
-  <EntityType Name="TestDepartment">
-    <Key>
-      <PropertyRef Name="DepartmentId" />
-    </Key>
-    <Property Name="DepartmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="DepartmentName" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="DepartmentLocation" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="InstructorId" Type="int" />
-  </EntityType>
-  <EntityType Name="TestInstructor">
-    <Key>
-      <PropertyRef Name="InstructorId" />
-    </Key>
-    <Property Name="InstructorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="TestStudent">
-    <Key>
-      <PropertyRef Name="StudentId" />
-    </Key>
-    <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="TestStudentCourse">
-    <Key>
-      <PropertyRef Name="StudentCourseId" />
-    </Key>
-    <Property Name="StudentCourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CourseId" Type="int" Nullable="false" />
-    <Property Name="StudentId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="xTestCourse">
-    <Key>
-      <PropertyRef Name="CourseID" />
-    </Key>
-    <Property Name="CourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Title" Type="nvarchar" MaxLength="50" />
-    <Property Name="Credits" Type="int" />
-  </EntityType>
-  <EntityType Name="xTestEnrollment">
-    <Key>
-      <PropertyRef Name="EnrollmentID" />
-    </Key>
-    <Property Name="EnrollmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Grade" Type="decimal" Precision="3" Scale="2" />
-    <Property Name="CourseID" Type="int" Nullable="false" />
-    <Property Name="StudentID" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="xTestStudent">
-    <Key>
-      <PropertyRef Name="StudentID" />
-    </Key>
-    <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
-    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
-    <Property Name="EnrollmentDate" Type="datetime" />
-  </EntityType>
   <EntityType Name="attendance">
     <Key>
       <PropertyRef Name="att_id" />
@@ -252,9 +174,10 @@
     <Key>
       <PropertyRef Name="Enrol_stu_class_id" />
     </Key>
-    <Property Name="Student_id" Type="int" Nullable="false" />
-    <Property Name="Class_id" Type="int" Nullable="false" />
-    <Property Name="Enrol_stu_class_id" Type="int" Nullable="false" />
+    <Property Name="Student_id" Type="int" />
+    <Property Name="Class_id" Type="int" />
+    <Property Name="Enrol_stu_class_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Timestamp" Type="datetime" />
   </EntityType>
   <EntityType Name="EnrollCouse">
     <Key>
@@ -268,6 +191,22 @@
     <Property Name="ClassId" Type="int" />
     <Property Name="semester&#xD;&#xA;" Type="int" />
     <Property Name="EnrollCouseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CouseExcel" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="EnrollStudentCouse">
+    <Key>
+      <PropertyRef Name="EnrollStudentCouseId" />
+    </Key>
+    <Property Name="EnrollStudentCouseId" Type="int" Nullable="false" />
+    <Property Name="studentId" Type="int" />
+    <Property Name="EnrollCouseId" Type="int" />
+    <Property Name="Score" Type="float" />
+    <Property Name="Grade" Type="float" />
+    <Property Name="TeacerId" Type="int" />
+    <Property Name="Timestamp" Type="datetime" />
+    <Property Name="YearEdu" Type="int" />
+    <Property Name="Staff" Type="int" />
+    <Property Name="Semester" Type="int" />
   </EntityType>
   <EntityType Name="Food">
     <Key>
@@ -461,6 +400,25 @@ warning 6002: The table/view 'santisar_.santisart.studentEduContest2561' does no
     <Property Name="result" Type="varchar" MaxLength="255" />
   </EntityType>
   <!--Errors Found During Generation:
+warning 6002: The table/view 'santisar_.santisart.View_Couse' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="View_Couse">
+    <Key>
+      <PropertyRef Name="EnrollCouseID" />
+    </Key>
+    <Property Name="CouseTxtId" Type="varchar" MaxLength="10" />
+    <Property Name="DepartId" Type="int" />
+    <Property Name="CouseTime" Type="int" />
+    <Property Name="CouseWeight&#xD;&#xA;" Type="real" />
+    <Property Name="ClassId" Type="int" />
+    <Property Name="semester&#xD;&#xA;" Type="int" />
+    <Property Name="EnrollCouseID" Type="int" Nullable="false" />
+    <Property Name="CouseExcel" Type="varchar" MaxLength="15" />
+    <Property Name="CouseId" Type="int" />
+    <Property Name="CourseName" Type="varchar" MaxLength="100" />
+    <Property Name="CourseType" Type="varchar" MaxLength="50" />
+    <Property Name="CourseStatus" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
 warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="ViewEmpPos">
     <Key>
@@ -499,48 +457,6 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Course_Department_DepartmentID">
-    <End Role="TestDepartment" Type="Self.TestDepartment" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="TestCourse" Type="Self.TestCourse" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TestDepartment">
-        <PropertyRef Name="DepartmentId" />
-      </Principal>
-      <Dependent Role="TestCourse">
-        <PropertyRef Name="DepartmentId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CourseInstructor_Course_CourseId">
-    <End Role="TestCourse" Type="Self.TestCourse" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="TestCourseInstructor" Type="Self.TestCourseInstructor" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TestCourse">
-        <PropertyRef Name="CourseId" />
-      </Principal>
-      <Dependent Role="TestCourseInstructor">
-        <PropertyRef Name="CourseId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CourseInstructor_Instructor_InstructorId">
-    <End Role="TestInstructor" Type="Self.TestInstructor" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="TestCourseInstructor" Type="Self.TestCourseInstructor" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TestInstructor">
-        <PropertyRef Name="InstructorId" />
-      </Principal>
-      <Dependent Role="TestCourseInstructor">
-        <PropertyRef Name="InstructorId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="Fk_couse1">
     <End Role="Course" Type="Self.Course" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -555,34 +471,6 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_dbo_Enrollment_dbo_Course_CourseID">
-    <End Role="xTestCourse" Type="Self.xTestCourse" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="xTestEnrollment" Type="Self.xTestEnrollment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="xTestCourse">
-        <PropertyRef Name="CourseID" />
-      </Principal>
-      <Dependent Role="xTestEnrollment">
-        <PropertyRef Name="CourseID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_dbo_Enrollment_dbo_Student_StudentID">
-    <End Role="xTestStudent" Type="Self.xTestStudent" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="xTestEnrollment" Type="Self.xTestEnrollment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="xTestStudent">
-        <PropertyRef Name="StudentID" />
-      </Principal>
-      <Dependent Role="xTestEnrollment">
-        <PropertyRef Name="StudentID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_depart1">
     <End Role="Department" Type="Self.Department" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -594,18 +482,6 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
       </Principal>
       <Dependent Role="EnrollCouse">
         <PropertyRef Name="DepartId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Department_Instructor_InstructorId">
-    <End Role="TestInstructor" Type="Self.TestInstructor" Multiplicity="0..1" />
-    <End Role="TestDepartment" Type="Self.TestDepartment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TestInstructor">
-        <PropertyRef Name="InstructorId" />
-      </Principal>
-      <Dependent Role="TestDepartment">
-        <PropertyRef Name="InstructorId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -637,31 +513,45 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_StudentCourse_Course_CourseId">
-    <End Role="TestCourse" Type="Self.TestCourse" Multiplicity="1">
+  <Association Name="Fk_EnrCouseId">
+    <End Role="EnrollCouse" Type="Self.EnrollCouse" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="TestStudentCourse" Type="Self.TestStudentCourse" Multiplicity="*" />
+    <End Role="EnrollStudentCouse" Type="Self.EnrollStudentCouse" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="TestCourse">
-        <PropertyRef Name="CourseId" />
+      <Principal Role="EnrollCouse">
+        <PropertyRef Name="EnrollCouseID" />
       </Principal>
-      <Dependent Role="TestStudentCourse">
-        <PropertyRef Name="CourseId" />
+      <Dependent Role="EnrollStudentCouse">
+        <PropertyRef Name="EnrollCouseId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_StudentCourse_Student_StudentId">
-    <End Role="TestStudent" Type="Self.TestStudent" Multiplicity="1">
+  <Association Name="Fk_student">
+    <End Role="Students" Type="Self.Students" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="TestStudentCourse" Type="Self.TestStudentCourse" Multiplicity="*" />
+    <End Role="EnrollStudentCouse" Type="Self.EnrollStudentCouse" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="TestStudent">
-        <PropertyRef Name="StudentId" />
+      <Principal Role="Students">
+        <PropertyRef Name="Student_id" />
       </Principal>
-      <Dependent Role="TestStudentCourse">
-        <PropertyRef Name="StudentId" />
+      <Dependent Role="EnrollStudentCouse">
+        <PropertyRef Name="studentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_TeacherId">
+    <End Role="Enroll_Emp_Pos" Type="Self.Enroll_Emp_Pos" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EnrollStudentCouse" Type="Self.EnrollStudentCouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Enroll_Emp_Pos">
+        <PropertyRef Name="EnrEmpPosId" />
+      </Principal>
+      <Dependent Role="EnrollStudentCouse">
+        <PropertyRef Name="TeacerId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -678,15 +568,6 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="santisar_ModelStoreContainer">
-    <EntitySet Name="TestCourse" EntityType="Self.TestCourse" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TestCourseInstructor" EntityType="Self.TestCourseInstructor" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TestDepartment" EntityType="Self.TestDepartment" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TestInstructor" EntityType="Self.TestInstructor" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TestStudent" EntityType="Self.TestStudent" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TestStudentCourse" EntityType="Self.TestStudentCourse" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="xTestCourse" EntityType="Self.xTestCourse" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="xTestEnrollment" EntityType="Self.xTestEnrollment" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="xTestStudent" EntityType="Self.xTestStudent" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="attendance" EntityType="Self.attendance" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="attendance_day" EntityType="Self.attendance_day" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Class" EntityType="Self.Class" Schema="santisart" store:Type="Tables" />
@@ -704,6 +585,7 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
     <EntitySet Name="Enroll_student_all_event" EntityType="Self.Enroll_student_all_event" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Enroll_student_class" EntityType="Self.Enroll_student_class" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="EnrollCouse" EntityType="Self.EnrollCouse" Schema="santisart" store:Type="Tables" />
+    <EntitySet Name="EnrollStudentCouse" EntityType="Self.EnrollStudentCouse" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Food" EntityType="Self.Food" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Monthly" EntityType="Self.Monthly" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Position" EntityType="Self.Position" Schema="santisart" store:Type="Tables" />
@@ -817,6 +699,26 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
     [studentEduContest2561].[result] AS [result]
     FROM [santisart].[studentEduContest2561] AS [studentEduContest2561]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="View_Couse" EntityType="Self.View_Couse" store:Type="Views" store:Schema="santisart">
+      <DefiningQuery>SELECT 
+    [View_Couse].[CouseTxtId] AS [CouseTxtId], 
+    [View_Couse].[DepartId] AS [DepartId], 
+    [View_Couse].[CouseTime] AS [CouseTime], 
+    [View_Couse].[CouseWeight
+] AS [CouseWeight
+], 
+    [View_Couse].[ClassId] AS [ClassId], 
+    [View_Couse].[semester
+] AS [semester
+], 
+    [View_Couse].[EnrollCouseID] AS [EnrollCouseID], 
+    [View_Couse].[CouseExcel] AS [CouseExcel], 
+    [View_Couse].[CouseId] AS [CouseId], 
+    [View_Couse].[CourseName] AS [CourseName], 
+    [View_Couse].[CourseType] AS [CourseType], 
+    [View_Couse].[CourseStatus] AS [CourseStatus]
+    FROM [santisart].[View_Couse] AS [View_Couse]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="ViewEmpPos" EntityType="Self.ViewEmpPos" store:Type="Views" store:Schema="santisart">
       <DefiningQuery>SELECT 
     [ViewEmpPos].[EmpTitle] AS [EmpTitle], 
@@ -843,37 +745,13 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
       <End Role="ClassInSchool" EntitySet="ClassInSchool" />
       <End Role="EnrollCouse" EntitySet="EnrollCouse" />
     </AssociationSet>
-    <AssociationSet Name="FK_Course_Department_DepartmentID" Association="Self.FK_Course_Department_DepartmentID">
-      <End Role="TestDepartment" EntitySet="TestDepartment" />
-      <End Role="TestCourse" EntitySet="TestCourse" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CourseInstructor_Course_CourseId" Association="Self.FK_CourseInstructor_Course_CourseId">
-      <End Role="TestCourse" EntitySet="TestCourse" />
-      <End Role="TestCourseInstructor" EntitySet="TestCourseInstructor" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CourseInstructor_Instructor_InstructorId" Association="Self.FK_CourseInstructor_Instructor_InstructorId">
-      <End Role="TestInstructor" EntitySet="TestInstructor" />
-      <End Role="TestCourseInstructor" EntitySet="TestCourseInstructor" />
-    </AssociationSet>
     <AssociationSet Name="Fk_couse1" Association="Self.Fk_couse1">
       <End Role="Course" EntitySet="Course" />
       <End Role="EnrollCouse" EntitySet="EnrollCouse" />
     </AssociationSet>
-    <AssociationSet Name="FK_dbo_Enrollment_dbo_Course_CourseID" Association="Self.FK_dbo_Enrollment_dbo_Course_CourseID">
-      <End Role="xTestCourse" EntitySet="xTestCourse" />
-      <End Role="xTestEnrollment" EntitySet="xTestEnrollment" />
-    </AssociationSet>
-    <AssociationSet Name="FK_dbo_Enrollment_dbo_Student_StudentID" Association="Self.FK_dbo_Enrollment_dbo_Student_StudentID">
-      <End Role="xTestStudent" EntitySet="xTestStudent" />
-      <End Role="xTestEnrollment" EntitySet="xTestEnrollment" />
-    </AssociationSet>
     <AssociationSet Name="FK_depart1" Association="Self.FK_depart1">
       <End Role="Department" EntitySet="Department" />
       <End Role="EnrollCouse" EntitySet="EnrollCouse" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Department_Instructor_InstructorId" Association="Self.FK_Department_Instructor_InstructorId">
-      <End Role="TestInstructor" EntitySet="TestInstructor" />
-      <End Role="TestDepartment" EntitySet="TestDepartment" />
     </AssociationSet>
     <AssociationSet Name="Fk_emp_enr" Association="Self.Fk_emp_enr">
       <End Role="Employee" EntitySet="Employee" />
@@ -883,13 +761,17 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
       <End Role="Position" EntitySet="Position" />
       <End Role="Enroll_Emp_Pos" EntitySet="Enroll_Emp_Pos" />
     </AssociationSet>
-    <AssociationSet Name="FK_StudentCourse_Course_CourseId" Association="Self.FK_StudentCourse_Course_CourseId">
-      <End Role="TestCourse" EntitySet="TestCourse" />
-      <End Role="TestStudentCourse" EntitySet="TestStudentCourse" />
+    <AssociationSet Name="Fk_EnrCouseId" Association="Self.Fk_EnrCouseId">
+      <End Role="EnrollCouse" EntitySet="EnrollCouse" />
+      <End Role="EnrollStudentCouse" EntitySet="EnrollStudentCouse" />
     </AssociationSet>
-    <AssociationSet Name="FK_StudentCourse_Student_StudentId" Association="Self.FK_StudentCourse_Student_StudentId">
-      <End Role="TestStudent" EntitySet="TestStudent" />
-      <End Role="TestStudentCourse" EntitySet="TestStudentCourse" />
+    <AssociationSet Name="Fk_student" Association="Self.Fk_student">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="EnrollStudentCouse" EntitySet="EnrollStudentCouse" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_TeacherId" Association="Self.Fk_TeacherId">
+      <End Role="Enroll_Emp_Pos" EntitySet="Enroll_Emp_Pos" />
+      <End Role="EnrollStudentCouse" EntitySet="EnrollStudentCouse" />
     </AssociationSet>
     <AssociationSet Name="positions" Association="Self.positions">
       <End Role="Employee_copy1" EntitySet="Employee_copy1" />

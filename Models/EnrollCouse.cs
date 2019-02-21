@@ -14,6 +14,12 @@ namespace santisart_app.Models
     
     public partial class EnrollCouse
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public EnrollCouse()
+        {
+            this.EnrollStudentCouse = new HashSet<EnrollStudentCouse>();
+        }
+    
         public string CouseTxtId { get; set; }
         public Nullable<int> CouseId { get; set; }
         public Nullable<int> DepartId { get; set; }
@@ -22,9 +28,12 @@ namespace santisart_app.Models
         public Nullable<int> ClassId { get; set; }
         public Nullable<int> semester__ { get; set; }
         public int EnrollCouseID { get; set; }
+        public string CouseExcel { get; set; }
     
         public virtual ClassInSchool ClassInSchool { get; set; }
         public virtual Course Course { get; set; }
         public virtual Department Department { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EnrollStudentCouse> EnrollStudentCouse { get; set; }
     }
 }

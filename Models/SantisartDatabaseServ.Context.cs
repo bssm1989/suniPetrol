@@ -46,15 +46,6 @@ namespace santisart_app.Models
         public virtual DbSet<ViewEmpPos> ViewEmpPos { get; set; }
         public virtual DbSet<Employee_copy1> Employee_copy1 { get; set; }
         public virtual DbSet<Enroll_Emp_Pos_copy1> Enroll_Emp_Pos_copy1 { get; set; }
-        public virtual DbSet<TestCourse> TestCourse { get; set; }
-        public virtual DbSet<TestCourseInstructor> TestCourseInstructor { get; set; }
-        public virtual DbSet<TestDepartment> TestDepartment { get; set; }
-        public virtual DbSet<TestInstructor> TestInstructor { get; set; }
-        public virtual DbSet<TestStudent> TestStudent { get; set; }
-        public virtual DbSet<TestStudentCourse> TestStudentCourse { get; set; }
-        public virtual DbSet<xTestCourse> xTestCourse { get; set; }
-        public virtual DbSet<xTestEnrollment> xTestEnrollment { get; set; }
-        public virtual DbSet<xTestStudent> xTestStudent { get; set; }
         public virtual DbSet<Employee> Employee { get; set; }
         public virtual DbSet<Enroll_Emp_Pos> Enroll_Emp_Pos { get; set; }
         public virtual DbSet<Position> Position { get; set; }
@@ -63,5 +54,7 @@ namespace santisart_app.Models
         public virtual DbSet<Department> Department { get; set; }
         public virtual DbSet<EnrollCouse> EnrollCouse { get; set; }
         public virtual DbSet<YearEdu> YearEdu { get; set; }
+        public virtual DbSet<EnrollStudentCouse> EnrollStudentCouse { get; set; }
+        public virtual DbSet<View_Couse> View_Couse { get; set; }
     }
 }

@@ -14,6 +14,12 @@ namespace santisart_app.Models
     
     public partial class Students
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Students()
+        {
+            this.EnrollStudentCouse = new HashSet<EnrollStudentCouse>();
+        }
+    
         public int Student_id { get; set; }
         public string Student_title { get; set; }
         public string Student_name { get; set; }
@@ -23,5 +29,8 @@ namespace santisart_app.Models
         public Nullable<int> Student_psis_id { get; set; }
         public string Student_status { get; set; }
         public Nullable<System.DateTime> Student_timestamp { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EnrollStudentCouse> EnrollStudentCouse { get; set; }
     }
 }
