@@ -15,6 +15,11 @@ namespace santisart_app.Controllers
         private santisar_Entities db = new santisar_Entities();
 
         // GET: EnrollStudentCouses
+        public ActionResult IndexById(int? id)
+        {
+            var enrollStudentCouse = db.EnrollStudentCouse.Where(x=>x.studentId==id).Include(e => e.Enroll_Emp_Pos).Include(e => e.EnrollCouse).Include(e => e.Students);
+            return View(enrollStudentCouse.ToList());
+        }
         public ActionResult Index()
         {
             var enrollStudentCouse = db.EnrollStudentCouse.Include(e => e.Enroll_Emp_Pos).Include(e => e.EnrollCouse).Include(e => e.Students);

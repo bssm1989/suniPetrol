@@ -4093,6 +4093,12 @@
     <Content Include="Views\EnrollStudentCouses\Details.cshtml" />
     <Content Include="Views\EnrollStudentCouses\Edit.cshtml" />
     <Content Include="Views\EnrollStudentCouses\Index.cshtml" />
+    <Content Include="Views\EnrollFinishStudents\Create.cshtml" />
+    <Content Include="Views\EnrollFinishStudents\Delete.cshtml" />
+    <Content Include="Views\EnrollFinishStudents\Details.cshtml" />
+    <Content Include="Views\EnrollFinishStudents\Edit.cshtml" />
+    <Content Include="Views\EnrollFinishStudents\Index.cshtml" />
+    <Content Include="Views\EnrollStudentCouses\IndexById.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4104,11 +4110,10 @@
     <Compile Include="Controllers\AttendanceController.cs" />
     <Compile Include="Controllers\eduContestController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
-    <Compile Include="Controllers\Employee_copy1Controller.cs" />
     <Compile Include="Controllers\EnrollCousesController.cs" />
+    <Compile Include="Controllers\EnrollFinishStudentsController.cs" />
     <Compile Include="Controllers\EnrollStudentCousesController.cs" />
     <Compile Include="Controllers\Enroll_Emp_PosController.cs" />
-    <Compile Include="Controllers\Enroll_Emp_Pos_copy1Controller.cs" />
     <Compile Include="Controllers\FoodPaidController.cs" />
     <Compile Include="Controllers\studentController.cs" />
     <Compile Include="Models\attdeanceBymonth.cs" />
@@ -4139,10 +4144,10 @@
     <Compile Include="Models\Employee.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Employee_copy1.cs">
+    <Compile Include="Models\EnrollCouse.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EnrollCouse.cs">
+    <Compile Include="Models\EnrollFinishStudent.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EnrollStudentAttdance.cs">
@@ -4157,9 +4162,6 @@
     <Compile Include="Models\Enroll_Emp_Pos.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Enroll_Emp_Pos_copy1.cs">
-      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Enroll_paid.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
@@ -4170,6 +4172,9 @@
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Enroll_student_class.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FinishType.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Food.cs">

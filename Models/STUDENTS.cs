@@ -18,6 +18,7 @@ namespace santisart_app.Models
         public Students()
         {
             this.EnrollStudentCouse = new HashSet<EnrollStudentCouse>();
+            this.EnrollFinishStudent = new HashSet<EnrollFinishStudent>();
         }
     
         public int Student_id { get; set; }
@@ -32,5 +33,7 @@ namespace santisart_app.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EnrollStudentCouse> EnrollStudentCouse { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EnrollFinishStudent> EnrollFinishStudent { get; set; }
     }
 }
