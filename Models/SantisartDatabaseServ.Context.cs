@@ -56,5 +56,7 @@ namespace santisart_app.Models
         public virtual DbSet<View_Couse> View_Couse { get; set; }
         public virtual DbSet<EnrollFinishStudent> EnrollFinishStudent { get; set; }
         public virtual DbSet<FinishType> FinishType { get; set; }
+        public virtual DbSet<EnrollFamilyStudent> EnrollFamilyStudent { get; set; }
+        public virtual DbSet<Family> Family { get; set; }
     }
 }

@@ -143,7 +143,7 @@ namespace santisart_app.Controllers
                                          
                                          from mo in db.Monthly.Where(x => s.Class_year_index == x.Month_year).DefaultIfEmpty()
                                          from enpa in db.Enroll_paid.Where(x => s.Student_id == x.Student_id && mo.Monthly_id == x.Monthly_id).DefaultIfEmpty()
-                                              //where s.Student_id == Student_id
+                                             //where s.Student_id == Student_id
                                          orderby mo.Monthly_id descending
                                          select new viewdetail
                                          {
@@ -162,7 +162,7 @@ namespace santisart_app.Controllers
                                              Paid_id = enpa.Paid_id,
                                              Paid = enpa.Paid == null ? 0 : enpa.Paid,
                                              Monthly_id = mo.Monthly_id,
-                                             Timestamp = enpa.Timestamp.HasValue ? enpa.Timestamp : DateTime.Parse("19/02/1989"),
+                                             //Timestamp = enpa.Timestamp.HasValue ? enpa.Timestamp : DateTime.Parse("19/02/1989"),
                                              Staff_paid_id = enpa.Staff_paid_id == null ? 0 : enpa.Staff_paid_id
                                          }).ToList();
             List<viewPaid> vpaidBystu = (vpaidStu.GroupBy(x => new { x.Monthly_id, x.Student_id })
@@ -211,7 +211,7 @@ namespace santisart_app.Controllers
                                           from encl in encll.DefaultIfEmpty()
                                           join cl in db.Class on encl.Class_id equals cl.Class_id into clli
                                           from cl in clli.DefaultIfEmpty()
-                                          orderby st
+                                          //orderby st.
                                           select new studentNow
                                           {
                                               Student_id = st.Student_id,
@@ -254,9 +254,10 @@ namespace santisart_app.Controllers
                 // detailinvoice.studentInvoise.(item);
             }
 
+            ViewBag.TotalStudents = detailinvoice;
 
-
-            return new ViewAsPdf("invoiceAllStudent", detailinvoice)
+            //return new ViewAsPdf("invoiceAllStudent", detailinvoice)
+            return new ViewAsPdf()
             {
                 PageSize = Rotativa.Options.Size.A5,
                 // PageOrientation = Rotativa.AspNetCore.Options.Orientation.Landscape
@@ -268,6 +269,7 @@ namespace santisart_app.Controllers
             //return View(detailinvoice);
             //vpaidStu.GroupBy(x => x.Monthly_id).Select(x=>new {col1=x.Key(y=>y.)
         }
+        
         public List<viewdetail> VpaidBystubyMonId(int monId)
         {
 

@@ -29,6 +29,8 @@ namespace santisart_app.Models
         public Nullable<int> semester__ { get; set; }
         public int EnrollCouseID { get; set; }
         public string CouseExcel { get; set; }
+        public string ExcelAdress { get; set; }
+        public Nullable<int> IndexSort { get; set; }
     
         public virtual ClassInSchool ClassInSchool { get; set; }
         public virtual Course Course { get; set; }

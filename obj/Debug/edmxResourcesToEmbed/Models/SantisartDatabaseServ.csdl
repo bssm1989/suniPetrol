@@ -72,6 +72,16 @@
       <End Role="FinishType" EntitySet="FinishType" />
       <End Role="EnrollFinishStudent" EntitySet="EnrollFinishStudent" />
     </AssociationSet>
+    <EntitySet Name="EnrollFamilyStudent" EntityType="santisar_Model.EnrollFamilyStudent" />
+    <EntitySet Name="Family" EntityType="santisar_Model.Family" />
+    <AssociationSet Name="Fk_enroll_fam" Association="santisar_Model.Fk_enroll_fam">
+      <End Role="Family" EntitySet="Family" />
+      <End Role="EnrollFamilyStudent" EntitySet="EnrollFamilyStudent" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_enroll_Studnet" Association="santisar_Model.Fk_enroll_Studnet">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="EnrollFamilyStudent" EntitySet="EnrollFamilyStudent" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Enroll_paid">
     <Key>
@@ -141,6 +151,11 @@
     <Property Name="Student_timestamp" Type="DateTime" Precision="3" />
     <NavigationProperty Name="EnrollStudentCouse" Relationship="santisar_Model.Fk_student" FromRole="Students" ToRole="EnrollStudentCouse" />
     <NavigationProperty Name="EnrollFinishStudent" Relationship="santisar_Model.Fk_finish_student" FromRole="Students" ToRole="EnrollFinishStudent" />
+    <Property Name="Student_ArabName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Student_OldSchool" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Studnet_Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Student_firsttime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="EnrollFamilyStudent" Relationship="santisar_Model.Fk_enroll_Studnet" FromRole="Students" ToRole="EnrollFamilyStudent" />
   </EntityType>
   <EntityType Name="Enroll_pay">
     <Key>
@@ -475,6 +490,8 @@
     <NavigationProperty Name="Department" Relationship="santisar_Model.FK_depart1" FromRole="EnrollCouse" ToRole="Department" />
     <Property Name="CouseExcel" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="EnrollStudentCouse" Relationship="santisar_Model.Fk_EnrCouseId" FromRole="EnrollCouse" ToRole="EnrollStudentCouse" />
+    <Property Name="ExcelAdress" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="IndexSort" Type="Int32" />
   </EntityType>
   <EntityType Name="YearEdu">
     <Key>
@@ -654,6 +671,18 @@
     <Property Name="FinishCouse" Type="Int32" />
     <NavigationProperty Name="Students" Relationship="santisar_Model.Fk_finish_student" FromRole="EnrollFinishStudent" ToRole="Students" />
     <NavigationProperty Name="FinishType" Relationship="santisar_Model.Fk_finsh_form" FromRole="EnrollFinishStudent" ToRole="FinishType" />
+    <Property Name="DayRequstFinish" Type="DateTime" Precision="3" />
+    <Property Name="DayFinished" Type="DateTime" Precision="3" />
+    <Property Name="DayToFinished" Type="DateTime" Precision="3" />
+    <Property Name="Reader" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Physical" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Activity" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="CouseBasic" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="CouseAdd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Reader2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Activity2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="physical2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="ExcelForm" Type="Int32" />
   </EntityType>
   <EntityType Name="FinishType">
     <Key>
@@ -689,6 +718,66 @@
       </Principal>
       <Dependent Role="EnrollFinishStudent">
         <PropertyRef Name="FinishTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="EnrollFamilyStudent">
+    <Key>
+      <PropertyRef Name="EnrollFamStudentId" />
+    </Key>
+    <Property Name="EnrollFamStudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentId" Type="Int32" />
+    <Property Name="FamilyId" Type="Int32" />
+    <Property Name="TypeFamily" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Timestamp" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="staftId" Type="Int32" />
+    <NavigationProperty Name="Family" Relationship="santisar_Model.Fk_enroll_fam" FromRole="EnrollFamilyStudent" ToRole="Family" />
+    <NavigationProperty Name="Students" Relationship="santisar_Model.Fk_enroll_Studnet" FromRole="EnrollFamilyStudent" ToRole="Students" />
+  </EntityType>
+  <EntityType Name="Family">
+    <Key>
+      <PropertyRef Name="FamilyId" />
+    </Key>
+    <Property Name="FamilyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fam_Title" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Fam_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Fam_Lname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="birthday" Type="DateTime" Precision="0" />
+    <Property Name="Career" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Income" Type="Int32" />
+    <Property Name="Education" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Timestam" Type="DateTime" Precision="3" />
+    <Property Name="Staft" Type="Int32" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Idcard" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="EnrollFamilyStudent" Relationship="santisar_Model.Fk_enroll_fam" FromRole="Family" ToRole="EnrollFamilyStudent" />
+  </EntityType>
+  <Association Name="Fk_enroll_fam">
+    <End Type="santisar_Model.Family" Role="Family" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="santisar_Model.EnrollFamilyStudent" Role="EnrollFamilyStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Family">
+        <PropertyRef Name="FamilyId" />
+      </Principal>
+      <Dependent Role="EnrollFamilyStudent">
+        <PropertyRef Name="FamilyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_enroll_Studnet">
+    <End Type="santisar_Model.Students" Role="Students" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="santisar_Model.EnrollFamilyStudent" Role="EnrollFamilyStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="Student_id" />
+      </Principal>
+      <Dependent Role="EnrollFamilyStudent">
+        <PropertyRef Name="StudentId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

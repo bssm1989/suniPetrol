@@ -8,6 +8,7 @@ namespace santisart_app.Models
 {
     public class ViewPrintInvoise
     {
+    
         public List<studentNow> detailStudent { get; set; }
         public List<List<viewPaid>> studentInvoise { get; set; }
     }

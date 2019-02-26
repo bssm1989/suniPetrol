@@ -21,6 +21,18 @@ namespace santisart_app.Models
         public Nullable<int> Staff { get; set; }
         public int FinishId { get; set; }
         public Nullable<int> FinishCouse { get; set; }
+        public Nullable<System.DateTime> DayRequstFinish { get; set; }
+        public Nullable<System.DateTime> DayFinished { get; set; }
+        public Nullable<System.DateTime> DayToFinished { get; set; }
+        public string Reader { get; set; }
+        public string Physical { get; set; }
+        public string Activity { get; set; }
+        public string CouseBasic { get; set; }
+        public string CouseAdd { get; set; }
+        public string Reader2 { get; set; }
+        public string Activity2 { get; set; }
+        public string physical2 { get; set; }
+        public Nullable<int> ExcelForm { get; set; }
     
         public virtual Students Students { get; set; }
         public virtual FinishType FinishType { get; set; }

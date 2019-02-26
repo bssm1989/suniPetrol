@@ -57,7 +57,29 @@ div class="row">
             </tr>
         </thead>
         <tbody>
-           
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item..FoodId</td>
+                    <td>@item.FoodIdStudent</td>
+                    <td>@item.FoodTitle</td>
+                    <td>@item.FoodName</td>
+                    <td>@item.FoodLastname</td>
+                    <td>@item.FoodMonthTh</td>
+                    <td>@item.FoodMonthIndex</td>
+                    <td>@item.FoodPaid</td>
+                    <td>@item.FoodFullPaid</td>
+                    <td>@item.FoodClass</td>
+                    <td>@item.FoodYear</td>
+                    <td>@item.FoodTimesatamp</td>
+                    <td>@item.FoodUpdate</td>
+                    <td>@item.FoodPaidId</td>
+                    <td>
+                        <a asp-action="Details"
+                           asp-route-id="@item.FoodIdStudent">Detials</a>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>

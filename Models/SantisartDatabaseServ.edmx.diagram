@@ -46,6 +46,10 @@
         <EntityTypeShape EntityType="santisar_Model.FinishType" Width="1.5" PointX="9.375" PointY="14" />
         <AssociationConnector Association="santisar_Model.Fk_finish_student" />
         <AssociationConnector Association="santisar_Model.Fk_finsh_form" />
+        <EntityTypeShape EntityType="santisar_Model.EnrollFamilyStudent" Width="1.5" PointX="5" PointY="0.5" />
+        <EntityTypeShape EntityType="santisar_Model.Family" Width="1.5" PointX="6.375" PointY="20.375" />
+        <AssociationConnector Association="santisar_Model.Fk_enroll_fam" />
+        <AssociationConnector Association="santisar_Model.Fk_enroll_Studnet" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

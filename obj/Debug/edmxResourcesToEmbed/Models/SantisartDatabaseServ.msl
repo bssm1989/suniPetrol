@@ -61,6 +61,10 @@
     <EntitySetMapping Name="Students">
       <EntityTypeMapping TypeName="santisar_Model.Students">
         <MappingFragment StoreEntitySet="Students">
+          <ScalarProperty Name="Student_firsttime" ColumnName="Student_firsttime" />
+          <ScalarProperty Name="Studnet_Gender" ColumnName="Studnet_Gender" />
+          <ScalarProperty Name="Student_OldSchool" ColumnName="Student_OldSchool" />
+          <ScalarProperty Name="Student_ArabName" ColumnName="Student_ArabName" />
           <ScalarProperty Name="Student_timestamp" ColumnName="Student_timestamp" />
           <ScalarProperty Name="Student_status" ColumnName="Student_status" />
           <ScalarProperty Name="Student_psis_id" ColumnName="Student_psis_id" />
@@ -370,6 +374,8 @@
     <EntitySetMapping Name="EnrollCouse">
       <EntityTypeMapping TypeName="santisar_Model.EnrollCouse">
         <MappingFragment StoreEntitySet="EnrollCouse">
+          <ScalarProperty Name="IndexSort" ColumnName="IndexSort" />
+          <ScalarProperty Name="ExcelAdress" ColumnName="ExcelAdress" />
           <ScalarProperty Name="CouseExcel" ColumnName="CouseExcel" />
           <ScalarProperty Name="EnrollCouseID" ColumnName="EnrollCouseID" />
           <ScalarProperty Name="semester__" ColumnName="semester&#xD;&#xA;" />
@@ -461,6 +467,18 @@
     <EntitySetMapping Name="EnrollFinishStudent">
       <EntityTypeMapping TypeName="santisar_Model.EnrollFinishStudent">
         <MappingFragment StoreEntitySet="EnrollFinishStudent">
+          <ScalarProperty Name="ExcelForm" ColumnName="ExcelForm" />
+          <ScalarProperty Name="physical2" ColumnName="physical2" />
+          <ScalarProperty Name="Activity2" ColumnName="Activity2" />
+          <ScalarProperty Name="Reader2" ColumnName="Reader2" />
+          <ScalarProperty Name="CouseAdd" ColumnName="CouseAdd" />
+          <ScalarProperty Name="CouseBasic" ColumnName="CouseBasic" />
+          <ScalarProperty Name="Activity" ColumnName="Activity" />
+          <ScalarProperty Name="Physical" ColumnName="Physical" />
+          <ScalarProperty Name="Reader" ColumnName="Reader" />
+          <ScalarProperty Name="DayToFinished" ColumnName="DayToFinished" />
+          <ScalarProperty Name="DayFinished" ColumnName="DayFinished" />
+          <ScalarProperty Name="DayRequstFinish" ColumnName="DayRequstFinish" />
           <ScalarProperty Name="FinishCouse" ColumnName="FinishCouse" />
           <ScalarProperty Name="FinishId" ColumnName="FinishId" />
           <ScalarProperty Name="Staff" ColumnName="Staff" />
@@ -477,6 +495,37 @@
           <ScalarProperty Name="FinishFormID" ColumnName="FinishFormID" />
           <ScalarProperty Name="FormIndex" ColumnName="FormIndex" />
           <ScalarProperty Name="FormName" ColumnName="FormName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EnrollFamilyStudent">
+      <EntityTypeMapping TypeName="santisar_Model.EnrollFamilyStudent">
+        <MappingFragment StoreEntitySet="EnrollFamilyStudent">
+          <ScalarProperty Name="staftId" ColumnName="staftId" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          <ScalarProperty Name="TypeFamily" ColumnName="TypeFamily" />
+          <ScalarProperty Name="FamilyId" ColumnName="FamilyId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="EnrollFamStudentId" ColumnName="EnrollFamStudentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Family">
+      <EntityTypeMapping TypeName="santisar_Model.Family">
+        <MappingFragment StoreEntitySet="Family">
+          <ScalarProperty Name="Idcard" ColumnName="Idcard" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Staft" ColumnName="Staft" />
+          <ScalarProperty Name="Timestam" ColumnName="Timestam" />
+          <ScalarProperty Name="Education" ColumnName="Education" />
+          <ScalarProperty Name="Income" ColumnName="Income" />
+          <ScalarProperty Name="Career" ColumnName="Career" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="Fam_Lname" ColumnName="Fam_Lname" />
+          <ScalarProperty Name="Fam_Name" ColumnName="Fam_Name" />
+          <ScalarProperty Name="Fam_Title" ColumnName="Fam_Title" />
+          <ScalarProperty Name="FamilyId" ColumnName="FamilyId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -170,6 +170,20 @@
           <Property Name="semester&#xD;&#xA;" Type="int" />
           <Property Name="EnrollCouseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CouseExcel" Type="varchar" MaxLength="15" />
+          <Property Name="ExcelAdress" Type="varchar" MaxLength="10" />
+          <Property Name="IndexSort" Type="int" />
+        </EntityType>
+        <EntityType Name="EnrollFamilyStudent">
+          <Key>
+            <PropertyRef Name="EnrollFamStudentId" />
+          </Key>
+          <Property Name="EnrollFamStudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentId" Type="int" />
+          <Property Name="FamilyId" Type="int" />
+          <Property Name="TypeFamily" Type="varchar" MaxLength="100" />
+          <Property Name="Timestamp" Type="datetime" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+          <Property Name="staftId" Type="int" />
         </EntityType>
         <EntityType Name="EnrollFinishStudent">
           <Key>
@@ -182,6 +196,18 @@
           <Property Name="Staff" Type="int" />
           <Property Name="FinishId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FinishCouse" Type="int" />
+          <Property Name="DayRequstFinish" Type="datetime" />
+          <Property Name="DayFinished" Type="datetime" />
+          <Property Name="DayToFinished" Type="datetime" />
+          <Property Name="Reader" Type="varchar" MaxLength="15" />
+          <Property Name="Physical" Type="varchar" MaxLength="15" />
+          <Property Name="Activity" Type="varchar" MaxLength="15" />
+          <Property Name="CouseBasic" Type="varchar" MaxLength="15" />
+          <Property Name="CouseAdd" Type="varchar" MaxLength="15" />
+          <Property Name="Reader2" Type="varchar" MaxLength="15" />
+          <Property Name="Activity2" Type="varchar" MaxLength="15" />
+          <Property Name="physical2" Type="varchar" MaxLength="15" />
+          <Property Name="ExcelForm" Type="int" />
         </EntityType>
         <EntityType Name="EnrollStudentCouse">
           <Key>
@@ -197,6 +223,23 @@
           <Property Name="YearEdu" Type="int" />
           <Property Name="Staff" Type="int" />
           <Property Name="Semester" Type="int" />
+        </EntityType>
+        <EntityType Name="Family">
+          <Key>
+            <PropertyRef Name="FamilyId" />
+          </Key>
+          <Property Name="FamilyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fam_Title" Type="varchar" MaxLength="20" />
+          <Property Name="Fam_Name" Type="varchar" MaxLength="150" />
+          <Property Name="Fam_Lname" Type="varchar" MaxLength="150" />
+          <Property Name="birthday" Type="date" />
+          <Property Name="Career" Type="varchar" MaxLength="100" />
+          <Property Name="Income" Type="int" />
+          <Property Name="Education" Type="varchar" MaxLength="100" />
+          <Property Name="Timestam" Type="datetime" />
+          <Property Name="Staft" Type="int" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="Idcard" Type="varchar" MaxLength="13" />
         </EntityType>
         <EntityType Name="FinishType">
           <Key>
@@ -257,6 +300,10 @@
           <Property Name="Student_psis_id" Type="int" />
           <Property Name="Student_status" Type="varchar" MaxLength="25" />
           <Property Name="Student_timestamp" Type="datetime" />
+          <Property Name="Student_ArabName" Type="varchar" MaxLength="150" />
+          <Property Name="Student_OldSchool" Type="varchar" MaxLength="255" />
+          <Property Name="Studnet_Gender" Type="varchar" MaxLength="10" />
+          <Property Name="Student_firsttime" Type="datetime" />
         </EntityType>
         <EntityType Name="YearEdu">
           <Key>
@@ -564,6 +611,34 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="Fk_enroll_fam">
+          <End Role="Family" Type="Self.Family" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EnrollFamilyStudent" Type="Self.EnrollFamilyStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Family">
+              <PropertyRef Name="FamilyId" />
+            </Principal>
+            <Dependent Role="EnrollFamilyStudent">
+              <PropertyRef Name="FamilyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_enroll_Studnet">
+          <End Role="Students" Type="Self.Students" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EnrollFamilyStudent" Type="Self.EnrollFamilyStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Student_id" />
+            </Principal>
+            <Dependent Role="EnrollFamilyStudent">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="Fk_finish_student">
           <End Role="Students" Type="Self.Students" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -636,8 +711,10 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
           <EntitySet Name="Enroll_student_all_event" EntityType="Self.Enroll_student_all_event" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="Enroll_student_class" EntityType="Self.Enroll_student_class" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="EnrollCouse" EntityType="Self.EnrollCouse" Schema="santisart" store:Type="Tables" />
+          <EntitySet Name="EnrollFamilyStudent" EntityType="Self.EnrollFamilyStudent" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="EnrollFinishStudent" EntityType="Self.EnrollFinishStudent" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="EnrollStudentCouse" EntityType="Self.EnrollStudentCouse" Schema="santisart" store:Type="Tables" />
+          <EntitySet Name="Family" EntityType="Self.Family" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="FinishType" EntityType="Self.FinishType" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="Food" EntityType="Self.Food" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="Monthly" EntityType="Self.Monthly" Schema="santisart" store:Type="Tables" />
@@ -852,6 +929,14 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
             <End Role="EnrollCouse" EntitySet="EnrollCouse" />
             <End Role="EnrollStudentCouse" EntitySet="EnrollStudentCouse" />
           </AssociationSet>
+          <AssociationSet Name="Fk_enroll_fam" Association="Self.Fk_enroll_fam">
+            <End Role="Family" EntitySet="Family" />
+            <End Role="EnrollFamilyStudent" EntitySet="EnrollFamilyStudent" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_enroll_Studnet" Association="Self.Fk_enroll_Studnet">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="EnrollFamilyStudent" EntitySet="EnrollFamilyStudent" />
+          </AssociationSet>
           <AssociationSet Name="Fk_finish_student" Association="Self.Fk_finish_student">
             <End Role="Students" EntitySet="Students" />
             <End Role="EnrollFinishStudent" EntitySet="EnrollFinishStudent" />
@@ -945,6 +1030,16 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
             <End Role="FinishType" EntitySet="FinishType" />
             <End Role="EnrollFinishStudent" EntitySet="EnrollFinishStudent" />
           </AssociationSet>
+          <EntitySet Name="EnrollFamilyStudent" EntityType="santisar_Model.EnrollFamilyStudent" />
+          <EntitySet Name="Family" EntityType="santisar_Model.Family" />
+          <AssociationSet Name="Fk_enroll_fam" Association="santisar_Model.Fk_enroll_fam">
+            <End Role="Family" EntitySet="Family" />
+            <End Role="EnrollFamilyStudent" EntitySet="EnrollFamilyStudent" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_enroll_Studnet" Association="santisar_Model.Fk_enroll_Studnet">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="EnrollFamilyStudent" EntitySet="EnrollFamilyStudent" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Enroll_paid">
           <Key>
@@ -1014,6 +1109,11 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
           <Property Name="Student_timestamp" Type="DateTime" Precision="3" />
           <NavigationProperty Name="EnrollStudentCouse" Relationship="santisar_Model.Fk_student" FromRole="Students" ToRole="EnrollStudentCouse" />
           <NavigationProperty Name="EnrollFinishStudent" Relationship="santisar_Model.Fk_finish_student" FromRole="Students" ToRole="EnrollFinishStudent" />
+          <Property Name="Student_ArabName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Student_OldSchool" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Studnet_Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Student_firsttime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="EnrollFamilyStudent" Relationship="santisar_Model.Fk_enroll_Studnet" FromRole="Students" ToRole="EnrollFamilyStudent" />
         </EntityType>
         <EntityType Name="Enroll_pay">
           <Key>
@@ -1348,6 +1448,8 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
           <NavigationProperty Name="Department" Relationship="santisar_Model.FK_depart1" FromRole="EnrollCouse" ToRole="Department" />
           <Property Name="CouseExcel" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="EnrollStudentCouse" Relationship="santisar_Model.Fk_EnrCouseId" FromRole="EnrollCouse" ToRole="EnrollStudentCouse" />
+          <Property Name="ExcelAdress" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IndexSort" Type="Int32" />
         </EntityType>
         <EntityType Name="YearEdu">
           <Key>
@@ -1527,6 +1629,18 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
           <Property Name="FinishCouse" Type="Int32" />
           <NavigationProperty Name="Students" Relationship="santisar_Model.Fk_finish_student" FromRole="EnrollFinishStudent" ToRole="Students" />
           <NavigationProperty Name="FinishType" Relationship="santisar_Model.Fk_finsh_form" FromRole="EnrollFinishStudent" ToRole="FinishType" />
+          <Property Name="DayRequstFinish" Type="DateTime" Precision="3" />
+          <Property Name="DayFinished" Type="DateTime" Precision="3" />
+          <Property Name="DayToFinished" Type="DateTime" Precision="3" />
+          <Property Name="Reader" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Physical" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Activity" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CouseBasic" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CouseAdd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Reader2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Activity2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="physical2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ExcelForm" Type="Int32" />
         </EntityType>
         <EntityType Name="FinishType">
           <Key>
@@ -1562,6 +1676,66 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
             </Principal>
             <Dependent Role="EnrollFinishStudent">
               <PropertyRef Name="FinishTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EnrollFamilyStudent">
+          <Key>
+            <PropertyRef Name="EnrollFamStudentId" />
+          </Key>
+          <Property Name="EnrollFamStudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="Int32" />
+          <Property Name="FamilyId" Type="Int32" />
+          <Property Name="TypeFamily" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Timestamp" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="staftId" Type="Int32" />
+          <NavigationProperty Name="Family" Relationship="santisar_Model.Fk_enroll_fam" FromRole="EnrollFamilyStudent" ToRole="Family" />
+          <NavigationProperty Name="Students" Relationship="santisar_Model.Fk_enroll_Studnet" FromRole="EnrollFamilyStudent" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="Family">
+          <Key>
+            <PropertyRef Name="FamilyId" />
+          </Key>
+          <Property Name="FamilyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fam_Title" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fam_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Fam_Lname" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="birthday" Type="DateTime" Precision="0" />
+          <Property Name="Career" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Income" Type="Int32" />
+          <Property Name="Education" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Timestam" Type="DateTime" Precision="3" />
+          <Property Name="Staft" Type="Int32" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Idcard" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EnrollFamilyStudent" Relationship="santisar_Model.Fk_enroll_fam" FromRole="Family" ToRole="EnrollFamilyStudent" />
+        </EntityType>
+        <Association Name="Fk_enroll_fam">
+          <End Type="santisar_Model.Family" Role="Family" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="santisar_Model.EnrollFamilyStudent" Role="EnrollFamilyStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Family">
+              <PropertyRef Name="FamilyId" />
+            </Principal>
+            <Dependent Role="EnrollFamilyStudent">
+              <PropertyRef Name="FamilyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_enroll_Studnet">
+          <End Type="santisar_Model.Students" Role="Students" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="santisar_Model.EnrollFamilyStudent" Role="EnrollFamilyStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Student_id" />
+            </Principal>
+            <Dependent Role="EnrollFamilyStudent">
+              <PropertyRef Name="StudentId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1631,6 +1805,10 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
           <EntitySetMapping Name="Students">
             <EntityTypeMapping TypeName="santisar_Model.Students">
               <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="Student_firsttime" ColumnName="Student_firsttime" />
+                <ScalarProperty Name="Studnet_Gender" ColumnName="Studnet_Gender" />
+                <ScalarProperty Name="Student_OldSchool" ColumnName="Student_OldSchool" />
+                <ScalarProperty Name="Student_ArabName" ColumnName="Student_ArabName" />
                 <ScalarProperty Name="Student_timestamp" ColumnName="Student_timestamp" />
                 <ScalarProperty Name="Student_status" ColumnName="Student_status" />
                 <ScalarProperty Name="Student_psis_id" ColumnName="Student_psis_id" />
@@ -1940,6 +2118,8 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
           <EntitySetMapping Name="EnrollCouse">
             <EntityTypeMapping TypeName="santisar_Model.EnrollCouse">
               <MappingFragment StoreEntitySet="EnrollCouse">
+                <ScalarProperty Name="IndexSort" ColumnName="IndexSort" />
+                <ScalarProperty Name="ExcelAdress" ColumnName="ExcelAdress" />
                 <ScalarProperty Name="CouseExcel" ColumnName="CouseExcel" />
                 <ScalarProperty Name="EnrollCouseID" ColumnName="EnrollCouseID" />
                 <ScalarProperty Name="semester__" ColumnName="semester&#xD;&#xA;" />
@@ -2031,6 +2211,18 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
           <EntitySetMapping Name="EnrollFinishStudent">
             <EntityTypeMapping TypeName="santisar_Model.EnrollFinishStudent">
               <MappingFragment StoreEntitySet="EnrollFinishStudent">
+                <ScalarProperty Name="ExcelForm" ColumnName="ExcelForm" />
+                <ScalarProperty Name="physical2" ColumnName="physical2" />
+                <ScalarProperty Name="Activity2" ColumnName="Activity2" />
+                <ScalarProperty Name="Reader2" ColumnName="Reader2" />
+                <ScalarProperty Name="CouseAdd" ColumnName="CouseAdd" />
+                <ScalarProperty Name="CouseBasic" ColumnName="CouseBasic" />
+                <ScalarProperty Name="Activity" ColumnName="Activity" />
+                <ScalarProperty Name="Physical" ColumnName="Physical" />
+                <ScalarProperty Name="Reader" ColumnName="Reader" />
+                <ScalarProperty Name="DayToFinished" ColumnName="DayToFinished" />
+                <ScalarProperty Name="DayFinished" ColumnName="DayFinished" />
+                <ScalarProperty Name="DayRequstFinish" ColumnName="DayRequstFinish" />
                 <ScalarProperty Name="FinishCouse" ColumnName="FinishCouse" />
                 <ScalarProperty Name="FinishId" ColumnName="FinishId" />
                 <ScalarProperty Name="Staff" ColumnName="Staff" />
@@ -2047,6 +2239,37 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
                 <ScalarProperty Name="FinishFormID" ColumnName="FinishFormID" />
                 <ScalarProperty Name="FormIndex" ColumnName="FormIndex" />
                 <ScalarProperty Name="FormName" ColumnName="FormName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnrollFamilyStudent">
+            <EntityTypeMapping TypeName="santisar_Model.EnrollFamilyStudent">
+              <MappingFragment StoreEntitySet="EnrollFamilyStudent">
+                <ScalarProperty Name="staftId" ColumnName="staftId" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="TypeFamily" ColumnName="TypeFamily" />
+                <ScalarProperty Name="FamilyId" ColumnName="FamilyId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="EnrollFamStudentId" ColumnName="EnrollFamStudentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Family">
+            <EntityTypeMapping TypeName="santisar_Model.Family">
+              <MappingFragment StoreEntitySet="Family">
+                <ScalarProperty Name="Idcard" ColumnName="Idcard" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Staft" ColumnName="Staft" />
+                <ScalarProperty Name="Timestam" ColumnName="Timestam" />
+                <ScalarProperty Name="Education" ColumnName="Education" />
+                <ScalarProperty Name="Income" ColumnName="Income" />
+                <ScalarProperty Name="Career" ColumnName="Career" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="Fam_Lname" ColumnName="Fam_Lname" />
+                <ScalarProperty Name="Fam_Name" ColumnName="Fam_Name" />
+                <ScalarProperty Name="Fam_Title" ColumnName="Fam_Title" />
+                <ScalarProperty Name="FamilyId" ColumnName="FamilyId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
