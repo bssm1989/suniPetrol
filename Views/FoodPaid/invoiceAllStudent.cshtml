@@ -1,10 +1,24 @@
-﻿@model IEnumerable<santisart_app.Models.ViewPrintInvoise>
+﻿﻿@model IEnumerable<santisart_app.Models.ViewPrintInvoise>
 @{
     Layout = null;
 }
 <header>
+    <link href="https://fonts.googleapis.com/css?family=Sarabun" rel="stylesheet">
     <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
         <style>
+
+            /* ใช้ทั้งเว็บไซต์ */
+            body {
+                font-family: 'Sarabun', sans-serif;
+            }
+            /* ใช้เฉพาะหัวข้อ */
+            h1, h2, h3, h4, h5, h6 {
+                font-family: 'Sarabun', sans-serif;
+            }
+
+            p {
+            }
+
             table.minimalistBlack {
                 border: 3px solid #000000;
                 width: 100%;
@@ -78,12 +92,12 @@
                             <tr>
                                 <td style="width: 78px;">เลขที่</td>
                                 <td style="width: 68px;">No.</td>
-                                <td style="width: 100px; text-align: left; padding-left: 30px;">inv002</td>
+                                <td style="width: 100px; text-align: left; padding-left: 30px;">inv010</td>
                             </tr>
                             <tr>
                                 <td style="width: 78px;">วันที่</td>
                                 <td style="width: 68px;">Date</td>
-                                <td style="width: 100px;">29/11/2561</td>
+                                <td style="width: 100px;">28/02/2562</td>
                             </tr>
                         </tbody>
                     </table>
@@ -134,7 +148,7 @@
 
                     <tr style="height: 24px;">
                         <td style="width: 97px; height: 24px;">&nbsp;@index</td>
-                        <td style="width: 633px; height: 24px;">&nbsp;ค่าอาหารประจำเดือน @items.Month_name พ.ศ.@items.Month_year</td>
+                        <td style="width: 633px; height: 24px;">&nbsp;ค่าอาหารประจำเดือน @items.Month_name พ.ศ.@items.Month_yearindex</td>
                         <td style="width: 138px; height: 24px; text-align: center;">&nbsp;@Convert.ToDecimal(items.Month_course).ToString("#,##0.00")</td>
                         <td style="width: 123px; height: 24px; text-align: center;">@Convert.ToDecimal(sub).ToString("#,##0.00")</td>
 

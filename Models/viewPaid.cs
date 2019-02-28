@@ -28,5 +28,6 @@ namespace santisart_app.Models
         public DateTime? Timestamp { get; set; }
         public int? Staff_paid_id { get; set; }
         public int? totalPaid { get; set; }
+        public int? Month_yearindex { get; set; }
     }
 }

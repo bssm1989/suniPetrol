@@ -176,6 +176,7 @@ namespace santisart_app.Controllers
                                                     Student_lname = y.FirstOrDefault().Student_lname,
                                                     Month_name = y.FirstOrDefault().Month_name,
                                                     Month_year = y.FirstOrDefault().Month_year,
+                                                    Month_yearindex=y.FirstOrDefault().Month_yearindex,
                                                     Month_course = y.FirstOrDefault().Month_course,
                                                         // mustPay=y.FirstOrDefault().Month_course-( y.Sum(x => x.Paid) == null ? 0 : y.Sum(x => x.Paid)),
                                                         Class_id = y.FirstOrDefault().Class_id.HasValue ? y.FirstOrDefault().Class_id.Value : 0,

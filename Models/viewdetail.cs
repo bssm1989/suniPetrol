@@ -17,6 +17,7 @@ namespace santisart_app.Models
         public string Student_lname { get; set; }
         public string Month_name { get; set; }
         public int? Month_year { get; set; }
+        public int? Month_yearindex { get; set; }
         public int? Month_course { get; set; }
         public int? Class_id { get; set; }
         public int? Status { get; set; }
