@@ -16,8 +16,7 @@ namespace santisart_app.Controllers
          
         public ActionResult Index()
         {
-            Session["UserId"] = "";
-Session["UserName"]="";
+            
             //string topLeft = "A1";
             //string bottomRight = "A4";
             //string graphTitle = "Graph Title";

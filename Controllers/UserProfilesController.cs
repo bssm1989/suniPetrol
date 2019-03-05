@@ -21,8 +21,9 @@ namespace santisart_app.Controllers
         }
         public ActionResult Login(string ReturnUrl)
         {
-            var returnUrl = Server.UrlEncode(Request.Url.PathAndQuery);
-            Response.Redirect("~/login.aspx?ReturnURL=" + returnUrl);
+            
+            Session["PageUrl"] = ReturnUrl;
+            //Response.Redirect("~/login.aspx?ReturnURL=" + returnUrl);
             return View();
         }
 
@@ -39,13 +40,38 @@ namespace santisart_app.Controllers
                     {
                         Session["UserID"] = obj.EmpId.ToString();
                         Session["UserName"] = obj.UserName.ToString();
-                        return RedirectToAction("UserDashBoard");
+                       Session["Room"] = db.Enroll_RoomSession_Emp.Where(x => x.userid == obj.EmpId).Include(e=>e.RoomSession).ToList();
+                        if (Session["PageUrl"] == null)
+                        {
+                            return Redirect("/Home");
+                        }else if(Session["PageUrl"].ToString() == "" )
+                            return Redirect("/Home");
+                        else
+                        {
+                            return Redirect(
+                                Session["PageUrl"].ToString());
+                        }
+
                     }
                 }
             }
+            
             return View(objUser);
         }
-
+        public ActionResult Logout(string ReturnUrl)
+        {
+            Session["UserID"] = "";
+            Session["UserName"] = "";
+            if (ReturnUrl == "" || ReturnUrl == null)
+            {
+                return View("Login");
+            }
+            else
+            {
+                return Redirect(
+                    Session["PageUrl"].ToString());
+            }
+        }
         public ActionResult UserDashBoard()
         {
             if (Session["UserID"] != null)
@@ -152,13 +178,6 @@ namespace santisart_app.Controllers
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        
     }
 }

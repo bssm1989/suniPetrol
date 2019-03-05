@@ -115,6 +115,12 @@
                                 <li>
                                     <a href='@Url.Action("Index", "Attendance")'><i class="fa fa-edit"></i> Attendance <span class="fa fa-chevron-down"></span></a>
                                 </li>
+                                @{ if (true)
+                                    {
+
+                                    }
+                                }
+                                
                                 <li><a href='@Url.Action("viewDetail","FoodPaid")'><i class="fa fa-edit"></i> ค่าอาหารนักเรียน <span class="fa fa-chevron-down"></span></a>                 </li>
                                 <li><a href='@Url.Action("Index", "EnrollRoomSessionEmp")'><i class="fa fa-edit"></i> ตั้งค่าสิทธิห้อง <span class="fa fa-chevron-down"></span></a>           </li>
                                 <li><a href='@Url.Action("Index", "EnrollFinishStudents")'><i class="fa fa-edit"></i> ผลสัมฤทธิ์ทางการเรียน <span class="fa fa-chevron-down"></span></a>     </li>
@@ -149,13 +155,15 @@
                         </div>
                         
                         <ul class="nav navbar-nav navbar-right">
-                            @{ if (Session["Userid"] == null || Session["UserId"] == "")
+                            @{  var returnUrl ="";
+                                     returnUrl = Server.UrlEncode(Request.Url.PathAndQuery);
+                                if (Session["UserID"] == null || Session["UserId"].ToString() == "")
                                 {
-                                    var returnUrl = Server.UrlEncode(Request.Url.PathAndQuery);
-                                   // Response.Redirect("/login?ReturnURL=" + returnUrl);
+
+                                    // Response.Redirect("/login?ReturnURL=" + returnUrl);
                                     <li class="" style="margin-top:10px;">
                                         <button class="btn btn-primary"
-                                                onclick="location.href='UserProfiles/login?ReturnUrl=@returnUrl'">
+                                                onclick="location.href='@Url.Action("Login","UserProfiles")?ReturnUrl=@returnUrl'">
                                                 
                                             Login
                                         </button>
@@ -165,7 +173,7 @@
                                 {
                                     <li class="">
                                         <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                            <img src="images/img.jpg" alt=""> @Session["UserName"]
+                                            <img src="images/img.jpg" alt=""> @Session["UserName"].ToString()
                                             <span class=" fa fa-angle-down"></span>
                                         </a>
                                         <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -177,7 +185,7 @@
                                                 </a>
                                             </li>
                                             <li><a href="javascript:;">Help</a></li>
-                                            <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                            <li><a href="UserProfiles/logout?ReturnUrl=@returnUrl"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                                         </ul>
                                     </li>
                                 }
