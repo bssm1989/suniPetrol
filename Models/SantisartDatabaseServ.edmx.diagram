@@ -50,6 +50,10 @@
         <EntityTypeShape EntityType="santisar_Model.Family" Width="1.5" PointX="6.375" PointY="20.375" />
         <AssociationConnector Association="santisar_Model.Fk_enroll_fam" />
         <AssociationConnector Association="santisar_Model.Fk_enroll_Studnet" />
+        <EntityTypeShape EntityType="santisar_Model.Enroll_RoomSession_Emp" Width="1.5" PointX="26.5" PointY="9.125" />
+        <EntityTypeShape EntityType="santisar_Model.RoomSession" Width="1.5" PointX="24.25" PointY="13.5" />
+        <AssociationConnector Association="santisar_Model.Fk_emp" />
+        <AssociationConnector Association="santisar_Model.Fk_room" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

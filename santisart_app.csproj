@@ -4100,6 +4100,18 @@
     <Content Include="Views\EnrollFinishStudents\Index.cshtml" />
     <Content Include="Views\EnrollStudentCouses\IndexById.cshtml" />
     <Content Include="Views\FoodPaid\invoiceAllStudent2.cshtml" />
+    <Content Include="Views\UserProfiles\Create.cshtml" />
+    <Content Include="Views\UserProfiles\Delete.cshtml" />
+    <Content Include="Views\UserProfiles\Details.cshtml" />
+    <Content Include="Views\UserProfiles\Edit.cshtml" />
+    <Content Include="Views\UserProfiles\Index.cshtml" />
+    <Content Include="Views\UserProfiles\Login.cshtml" />
+    <Content Include="Views\UserProfiles\UserDashBoard.cshtml" />
+    <Content Include="Views\EnrollRoomSessionEmp\Create.cshtml" />
+    <Content Include="Views\EnrollRoomSessionEmp\Delete.cshtml" />
+    <Content Include="Views\EnrollRoomSessionEmp\Details.cshtml" />
+    <Content Include="Views\EnrollRoomSessionEmp\Edit.cshtml" />
+    <Content Include="Views\EnrollRoomSessionEmp\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4113,10 +4125,12 @@
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\EnrollCousesController.cs" />
     <Compile Include="Controllers\EnrollFinishStudentsController.cs" />
+    <Compile Include="Controllers\EnrollRoomSessionEmpController.cs" />
     <Compile Include="Controllers\EnrollStudentCousesController.cs" />
     <Compile Include="Controllers\Enroll_Emp_PosController.cs" />
     <Compile Include="Controllers\FoodPaidController.cs" />
     <Compile Include="Controllers\studentController.cs" />
+    <Compile Include="Controllers\UserProfilesController.cs" />
     <Compile Include="Models\attdeanceBymonth.cs" />
     <Compile Include="Models\attendance.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
@@ -4172,6 +4186,9 @@
     <Compile Include="Models\Enroll_pay.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Enroll_RoomSession_Emp.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Enroll_student_all_event.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
@@ -4193,6 +4210,9 @@
     <Compile Include="Models\Position.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RoomSession.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\student2561.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
@@ -4207,6 +4227,9 @@
     </Compile>
     <Compile Include="Models\studentEduContest2561Controller.cs" />
     <Compile Include="Models\Students.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserProfile.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ViewEmpPos.cs">

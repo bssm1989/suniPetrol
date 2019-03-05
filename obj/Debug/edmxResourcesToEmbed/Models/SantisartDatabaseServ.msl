@@ -308,6 +308,8 @@
     <EntitySetMapping Name="Employee">
       <EntityTypeMapping TypeName="santisar_Model.Employee">
         <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="EmpGender" ColumnName="EmpGender" />
           <ScalarProperty Name="EmpId" ColumnName="EmpId" />
           <ScalarProperty Name="Empbank_id" ColumnName="Empbank_id" />
@@ -526,6 +528,40 @@
           <ScalarProperty Name="Fam_Name" ColumnName="Fam_Name" />
           <ScalarProperty Name="Fam_Title" ColumnName="Fam_Title" />
           <ScalarProperty Name="FamilyId" ColumnName="FamilyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserProfile">
+      <EntityTypeMapping TypeName="santisar_Model.UserProfile">
+        <MappingFragment StoreEntitySet="UserProfile">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Enroll_RoomSession_Emp">
+      <EntityTypeMapping TypeName="santisar_Model.Enroll_RoomSession_Emp">
+        <MappingFragment StoreEntitySet="Enroll_RoomSession_Emp">
+          <ScalarProperty Name="RoomSessionId" ColumnName="RoomSessionId" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="staft" ColumnName="staft" />
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="EnrollRoomEmpId" ColumnName="EnrollRoomEmpId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomSession">
+      <EntityTypeMapping TypeName="santisar_Model.RoomSession">
+        <MappingFragment StoreEntitySet="RoomSession">
+          <ScalarProperty Name="RoomSessionId" ColumnName="RoomSessionId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          <ScalarProperty Name="RoomName" ColumnName="RoomName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

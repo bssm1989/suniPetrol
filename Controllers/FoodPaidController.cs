@@ -87,7 +87,7 @@ namespace santisart_app.Controllers
                                          from en in db.Enroll_student_class.Where(x => s.Student_id == x.Student_id && cl.Class_id == x.Class_id)
                                          from mo in db.Monthly.Where(x => cl.Class_year_index == x.Month_year)
                                          from enpa in db.Enroll_paid.Where(x => s.Student_id == x.Student_id && mo.Monthly_id == x.Monthly_id).DefaultIfEmpty()
-                                         where s.Student_id == Student_id
+                                         //where s.Student_id == Student_id
                                          orderby mo.Monthly_id descending
                                          select new viewdetail
                                          {
@@ -97,6 +97,7 @@ namespace santisart_app.Controllers
                                              Student_lname = s.Student_lname,
                                              Month_name = mo.Month_name,
                                              Month_year = mo.Month_year,
+                                             Month_yearindex =mo.Month_yearindex,
                                              Month_course = mo.Month_course,
                                              Class_id = cl.Class_id,
                                              Status = cl.Status_class,
@@ -120,6 +121,7 @@ namespace santisart_app.Controllers
                                                     Student_lname = y.FirstOrDefault().Student_lname,
                                                     Month_name = y.FirstOrDefault().Month_name,
                                                     Month_year = y.FirstOrDefault().Month_year,
+                                                    Month_yearindex=y.FirstOrDefault().Month_yearindex,
                                                     Month_course = y.FirstOrDefault().Month_course,
                                                     Class_id = y.FirstOrDefault().Class_id.HasValue?y.FirstOrDefault().Class_id.Value:0,
                                                     Status = y.FirstOrDefault().Status,
@@ -141,7 +143,10 @@ namespace santisart_app.Controllers
             
             List<viewdetail> vpaidStu = (from s in db.student2561_food
                                          
-                                         from mo in db.Monthly.Where(x => s.Class_year_index == x.Month_year).DefaultIfEmpty()
+                                         from cl in db.Class
+                                         from en in db.Enroll_student_class.Where(x => s.Student_id == x.Student_id && cl.Class_id == x.Class_id)
+
+                                         from mo in db.Monthly.Where(x => cl.Class_year_index == x.Month_year)
                                          from enpa in db.Enroll_paid.Where(x => s.Student_id == x.Student_id && mo.Monthly_id == x.Monthly_id).DefaultIfEmpty()
                                              //where s.Student_id == Student_id
                                          orderby mo.Monthly_id descending
@@ -154,6 +159,7 @@ namespace santisart_app.Controllers
                                              Month_name = mo.Month_name,
                                              Month_year = mo.Month_year,
                                              Month_course = mo.Month_course,
+                                             Month_yearindex=mo.Month_yearindex,
                                              Class_id = s.Class_id,
                                              Class_name_id = s.Class_name_id,
                                              Teacher_id = s.Teacher_id,
@@ -177,6 +183,7 @@ namespace santisart_app.Controllers
                                                     Month_name = y.FirstOrDefault().Month_name,
                                                     Month_year = y.FirstOrDefault().Month_year,
                                                     Month_yearindex=y.FirstOrDefault().Month_yearindex,
+                                                    
                                                     Month_course = y.FirstOrDefault().Month_course,
                                                         // mustPay=y.FirstOrDefault().Month_course-( y.Sum(x => x.Paid) == null ? 0 : y.Sum(x => x.Paid)),
                                                         Class_id = y.FirstOrDefault().Class_id.HasValue ? y.FirstOrDefault().Class_id.Value : 0,
@@ -192,7 +199,7 @@ namespace santisart_app.Controllers
                                                 })
 
                                                ).ToList();
-            return vpaidBystu.Where(x => x.Month_course - x.totalPaid != 0).ToList();
+                return vpaidBystu.Where(x => x.Month_course - x.totalPaid != 0).ToList();
         }
         [AllowAnonymous]
         public ActionResult invoiceAllStudent()
@@ -260,7 +267,7 @@ namespace santisart_app.Controllers
             //return new ViewAsPdf("invoiceAllStudent", detailinvoice)
             return new ViewAsPdf()
             {
-                PageSize = Rotativa.Options.Size.A5,
+                PageSize = Rotativa.Options.Size.A4,
                 // PageOrientation = Rotativa.AspNetCore.Options.Orientation.Landscape
             };
             //if (vpaid == null)

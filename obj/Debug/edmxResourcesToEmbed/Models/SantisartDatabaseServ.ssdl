@@ -88,6 +88,8 @@
     <Property Name="Empbank_id" Type="char" MaxLength="30" />
     <Property Name="EmpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="EmpGender" Type="int" />
+    <Property Name="Password" Type="varchar" MaxLength="20" />
+    <Property Name="UserName" Type="varchar" MaxLength="30" />
   </EntityType>
   <EntityType Name="Enroll_EduContest">
     <Key>
@@ -134,6 +136,18 @@
     <Property Name="Staff_id" Type="int" />
     <Property Name="Timestamp" Type="datetime" />
     <Property Name="Id_token" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Enroll_RoomSession_Emp">
+    <Key>
+      <PropertyRef Name="EnrollRoomEmpId" />
+    </Key>
+    <Property Name="EnrollRoomEmpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="int" />
+    <Property Name="timestamp" Type="datetime" />
+    <Property Name="staft" Type="varchar" MaxLength="255" />
+    <Property Name="status" Type="varchar" MaxLength="255" />
+    <Property Name="value" Type="varchar" MaxLength="255" />
+    <Property Name="RoomSessionId" Type="int" />
   </EntityType>
   <EntityType Name="Enroll_student_all_event">
     <Key>
@@ -282,6 +296,16 @@
     <Property Name="PosLevel" Type="int" />
     <Property Name="PosId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
+  <EntityType Name="RoomSession">
+    <Key>
+      <PropertyRef Name="RoomSessionId" />
+    </Key>
+    <Property Name="RoomName" Type="varchar" MaxLength="255" />
+    <Property Name="Timestamp" Type="datetime" />
+    <Property Name="Value" Type="int" />
+    <Property Name="Status" Type="int" />
+    <Property Name="RoomSessionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
   <EntityType Name="Students">
     <Key>
       <PropertyRef Name="Student_id" />
@@ -299,6 +323,15 @@
     <Property Name="Student_OldSchool" Type="varchar" MaxLength="255" />
     <Property Name="Studnet_Gender" Type="varchar" MaxLength="10" />
     <Property Name="Student_firsttime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
   </EntityType>
   <EntityType Name="YearEdu">
     <Key>
@@ -564,6 +597,20 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="Fk_emp">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Enroll_RoomSession_Emp" Type="Self.Enroll_RoomSession_Emp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmpId" />
+      </Principal>
+      <Dependent Role="Enroll_RoomSession_Emp">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="Fk_emp_enr">
     <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -662,6 +709,20 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="Fk_room">
+    <End Role="RoomSession" Type="Self.RoomSession" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Enroll_RoomSession_Emp" Type="Self.Enroll_RoomSession_Emp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomSession">
+        <PropertyRef Name="RoomSessionId" />
+      </Principal>
+      <Dependent Role="Enroll_RoomSession_Emp">
+        <PropertyRef Name="RoomSessionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="Fk_student">
     <End Role="Students" Type="Self.Students" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -703,6 +764,7 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
     <EntitySet Name="Enroll_Emp_Pos" EntityType="Self.Enroll_Emp_Pos" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Enroll_paid" EntityType="Self.Enroll_paid" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Enroll_pay" EntityType="Self.Enroll_pay" Schema="santisart" store:Type="Tables" />
+    <EntitySet Name="Enroll_RoomSession_Emp" EntityType="Self.Enroll_RoomSession_Emp" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Enroll_student_all_event" EntityType="Self.Enroll_student_all_event" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Enroll_student_class" EntityType="Self.Enroll_student_class" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="EnrollCouse" EntityType="Self.EnrollCouse" Schema="santisart" store:Type="Tables" />
@@ -714,7 +776,9 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
     <EntitySet Name="Food" EntityType="Self.Food" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Monthly" EntityType="Self.Monthly" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Position" EntityType="Self.Position" Schema="santisart" store:Type="Tables" />
+    <EntitySet Name="RoomSession" EntityType="Self.RoomSession" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Students" EntityType="Self.Students" Schema="santisart" store:Type="Tables" />
+    <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="YearEdu" EntityType="Self.YearEdu" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="_enrollattstudent" EntityType="Self._enrollattstudent" store:Type="Views" store:Schema="santisart">
       <DefiningQuery>SELECT 
@@ -912,6 +976,10 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
       <End Role="Department" EntitySet="Department" />
       <End Role="EnrollCouse" EntitySet="EnrollCouse" />
     </AssociationSet>
+    <AssociationSet Name="Fk_emp" Association="Self.Fk_emp">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Enroll_RoomSession_Emp" EntitySet="Enroll_RoomSession_Emp" />
+    </AssociationSet>
     <AssociationSet Name="Fk_emp_enr" Association="Self.Fk_emp_enr">
       <End Role="Employee" EntitySet="Employee" />
       <End Role="Enroll_Emp_Pos" EntitySet="Enroll_Emp_Pos" />
@@ -939,6 +1007,10 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
     <AssociationSet Name="Fk_finsh_form" Association="Self.Fk_finsh_form">
       <End Role="FinishType" EntitySet="FinishType" />
       <End Role="EnrollFinishStudent" EntitySet="EnrollFinishStudent" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_room" Association="Self.Fk_room">
+      <End Role="RoomSession" EntitySet="RoomSession" />
+      <End Role="Enroll_RoomSession_Emp" EntitySet="Enroll_RoomSession_Emp" />
     </AssociationSet>
     <AssociationSet Name="Fk_student" Association="Self.Fk_student">
       <End Role="Students" EntitySet="Students" />

@@ -13,10 +13,11 @@ namespace santisart_app.Controllers
     public class HomeController : Controller
     {
         private const string V = @"ExcelTemp\Book5.xlsx";
-
+         
         public ActionResult Index()
         {
-
+            Session["UserId"] = "";
+Session["UserName"]="";
             //string topLeft = "A1";
             //string bottomRight = "A4";
             //string graphTitle = "Graph Title";
