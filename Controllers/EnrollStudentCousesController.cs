@@ -17,7 +17,14 @@ namespace santisart_app.Controllers
         // GET: EnrollStudentCouses
         public ActionResult IndexById(int? id)
         {
-            var enrollStudentCouse = db.EnrollStudentCouse.Where(x=>x.studentId==id).Include(e => e.Enroll_Emp_Pos).Include(e => e.EnrollCouse).Include(e => e.Students);
+            var enrollStudentCouse = db.EnrollStudentCouse
+                                        .Where(x=>x.studentId==id)
+                                        .Include(e => e.Enroll_Emp_Pos)
+                                        .Include(e => e.EnrollCouse)
+                                        .Include(e => e.Students)
+                                        .OrderBy(x=>x.EnrollCouse.ClassId)
+                                        .ThenBy(x=>x.EnrollCouse.CouseId);
+            ViewBag.studentCouse = enrollStudentCouse.ToList();
             return View(enrollStudentCouse.ToList());
         }
         public ActionResult Index()
