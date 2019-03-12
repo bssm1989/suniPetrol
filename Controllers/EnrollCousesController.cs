@@ -17,7 +17,7 @@ namespace santisart_app.Controllers
         // GET: EnrollCouses
         public ActionResult Index()
         {
-            var enrollCouse = db.EnrollCouse.Include(e => e.ClassInSchool).Include(e => e.Course).Include(e => e.Department);
+            var enrollCouse = db.EnrollCouse.Include(e => e.Employee).Include(e => e.ClassInSchool).Include(e => e.Course).Include(e => e.Department);
             return View(enrollCouse.ToList());
         }
 

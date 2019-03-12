@@ -12,21 +12,22 @@ namespace santisart_app.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class YearEdu
+    public partial class EnrollYearSemester
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public YearEdu()
+        public EnrollYearSemester()
         {
-            this.EnrollYearSemester = new HashSet<EnrollYearSemester>();
+            this.EnrollEmpCouse = new HashSet<EnrollEmpCouse>();
         }
     
-        public Nullable<int> yearName { get; set; }
-        public int YearEduId { get; set; }
-        public Nullable<int> YearNameEng { get; set; }
+        public Nullable<int> YearEduId { get; set; }
+        public Nullable<int> Semester { get; set; }
+        public int EnrollYearSemesterId { get; set; }
         public Nullable<System.DateTime> StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
     
+        public virtual YearEdu YearEdu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EnrollYearSemester> EnrollYearSemester { get; set; }
+        public virtual ICollection<EnrollEmpCouse> EnrollEmpCouse { get; set; }
     }
 }

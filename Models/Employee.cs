@@ -17,8 +17,10 @@ namespace santisart_app.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Employee()
         {
-            this.Enroll_Emp_Pos = new HashSet<Enroll_Emp_Pos>();
             this.Enroll_RoomSession_Emp = new HashSet<Enroll_RoomSession_Emp>();
+            this.Enroll_Emp_Pos = new HashSet<Enroll_Emp_Pos>();
+            this.EnrollCouse = new HashSet<EnrollCouse>();
+            this.EnrollEmpCouse = new HashSet<EnrollEmpCouse>();
         }
     
         public string EmpTitle { get; set; }
@@ -37,8 +39,12 @@ namespace santisart_app.Models
         public string UserName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Enroll_RoomSession_Emp> Enroll_RoomSession_Emp { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Enroll_Emp_Pos> Enroll_Emp_Pos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Enroll_RoomSession_Emp> Enroll_RoomSession_Emp { get; set; }
+        public virtual ICollection<EnrollCouse> EnrollCouse { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EnrollEmpCouse> EnrollEmpCouse { get; set; }
     }
 }

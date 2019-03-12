@@ -14,7 +14,6 @@ namespace santisart_app.Models
     
     public partial class studentEduContest2561
     {
-        public int EduContest_id { get; set; }
         public int Student_id { get; set; }
         public string Student_title { get; set; }
         public string Student_name { get; set; }
@@ -30,6 +29,7 @@ namespace santisart_app.Models
         public Nullable<System.DateTime> Timestamp { get; set; }
         public Nullable<int> group { get; set; }
         public Nullable<System.DateTime> Day_contest { get; set; }
+        public int EduContest_id { get; set; }
         public string result { get; set; }
     }
 }

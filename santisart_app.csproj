@@ -215,6 +215,7 @@
     <Content Include="Content\js\custom.min.js" />
     <Content Include="Content\js\custom_2.js" />
     <Content Include="Content\js\gentelella_trainingis.js" />
+    <Content Include="Content\ScripJs\vue-app.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -3315,6 +3316,7 @@
     <Content Include="Content\vendors\validator\index.html" />
     <Content Include="Content\vendors\validator\multifield.js" />
     <Content Include="Content\vendors\validator\validator.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\img.jpg" />
     <Content Include="images\user.png" />
@@ -4014,6 +4016,9 @@
     <Content Include="ExcelTemp\Book5.xlsx" />
     <Content Include="ExcelTemp\Test2.xlsx" />
     <Content Include="ExcelTemp\Test3.xlsx" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
@@ -4030,6 +4035,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\nprogress.js" />
     <Content Include="Scripts\nprogress.min.js" />
@@ -4037,13 +4043,63 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
-    <Content Include="Views\student\Index.cshtml" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Views\Attendance\Index.cshtml" />
+    <Content Include="Views\eduContest\Create.cshtml" />
+    <Content Include="Views\eduContest\Delete.cshtml" />
+    <Content Include="Views\eduContest\Details.cshtml" />
+    <Content Include="Views\eduContest\Edit.cshtml" />
+    <Content Include="Views\eduContest\Index.cshtml" />
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\Employee_copy1\Create.cshtml" />
+    <Content Include="Views\Employee_copy1\Delete.cshtml" />
+    <Content Include="Views\Employee_copy1\Details.cshtml" />
+    <Content Include="Views\Employee_copy1\Edit.cshtml" />
+    <Content Include="Views\Employee_copy1\Index.cshtml" />
+    <Content Include="Views\EnrollCouses\Create.cshtml" />
+    <Content Include="Views\EnrollCouses\Delete.cshtml" />
+    <Content Include="Views\EnrollCouses\Details.cshtml" />
+    <Content Include="Views\EnrollCouses\Edit.cshtml" />
+    <Content Include="Views\EnrollCouses\Index.cshtml" />
+    <Content Include="Views\EnrollFinishStudents\Create.cshtml" />
+    <Content Include="Views\EnrollFinishStudents\Delete.cshtml" />
+    <Content Include="Views\EnrollFinishStudents\Details.cshtml" />
+    <Content Include="Views\EnrollFinishStudents\Edit.cshtml" />
+    <Content Include="Views\EnrollFinishStudents\Index.cshtml" />
+    <Content Include="Views\EnrollRoomSessionEmp\Create.cshtml" />
+    <Content Include="Views\EnrollRoomSessionEmp\Delete.cshtml" />
+    <Content Include="Views\EnrollRoomSessionEmp\Details.cshtml" />
+    <Content Include="Views\EnrollRoomSessionEmp\Edit.cshtml" />
+    <Content Include="Views\EnrollRoomSessionEmp\Index.cshtml" />
+    <Content Include="Views\EnrollStudentCouses\Create.cshtml" />
+    <Content Include="Views\EnrollStudentCouses\Delete.cshtml" />
+    <Content Include="Views\EnrollStudentCouses\Details.cshtml" />
+    <Content Include="Views\EnrollStudentCouses\Edit.cshtml" />
+    <Content Include="Views\EnrollStudentCouses\Index.cshtml" />
+    <Content Include="Views\EnrollStudentCouses\IndexById.cshtml" />
+    <Content Include="Views\Enroll_Emp_Pos\Create.cshtml" />
+    <Content Include="Views\Enroll_Emp_Pos\Delete.cshtml" />
+    <Content Include="Views\Enroll_Emp_Pos\Details.cshtml" />
+    <Content Include="Views\Enroll_Emp_Pos\Edit.cshtml" />
+    <Content Include="Views\Enroll_Emp_Pos\Index.cshtml" />
+    <Content Include="Views\Enroll_Emp_Pos_copy1\Create.cshtml" />
+    <Content Include="Views\Enroll_Emp_Pos_copy1\Delete.cshtml" />
+    <Content Include="Views\Enroll_Emp_Pos_copy1\Details.cshtml" />
+    <Content Include="Views\Enroll_Emp_Pos_copy1\Edit.cshtml" />
+    <Content Include="Views\Enroll_Emp_Pos_copy1\Index.cshtml" />
+    <Content Include="Views\Error\InternalServerError.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\FoodPaid\DemoViewAsPDF.cshtml" />
     <Content Include="Views\FoodPaid\Details.cshtml" />
+    <Content Include="Views\FoodPaid\Index.cshtml" />
     <Content Include="Views\FoodPaid\Index1.cshtml" />
     <Content Include="Views\FoodPaid\invoiceAllStudent.cshtml" />
+    <Content Include="Views\FoodPaid\invoiceAllStudent2.cshtml" />
     <Content Include="Views\FoodPaid\modalPaid.cshtml" />
     <Content Include="Views\FoodPaid\paid.cshtml" />
     <Content Include="Views\FoodPaid\printBill.cshtml" />
@@ -4051,55 +4107,17 @@
     <Content Include="Views\FoodPaid\View1.cshtml" />
     <Content Include="Views\FoodPaid\View2.cshtml" />
     <Content Include="Views\FoodPaid\ViewDetail.cshtml" />
-    <Content Include="Views\FoodPaid\Index.cshtml" />
-    <Content Include="Views\Attendance\Index.cshtml" />
-    <Content Include="Views\eduContest\Index.cshtml" />
-    <Content Include="Views\eduContest\Create.cshtml" />
-    <Content Include="Views\eduContest\Details.cshtml" />
-    <Content Include="Views\eduContest\Delete.cshtml" />
-    <Content Include="Views\eduContest\Edit.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_ControlSidebar.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Sidebar.cshtml" />
     <Content Include="Views\studentEduContest2561\Create.cshtml" />
     <Content Include="Views\studentEduContest2561\Delete.cshtml" />
     <Content Include="Views\studentEduContest2561\Details.cshtml" />
     <Content Include="Views\studentEduContest2561\Edit.cshtml" />
     <Content Include="Views\studentEduContest2561\Index.cshtml" />
-    <Content Include="Views\Employee_copy1\Create.cshtml" />
-    <Content Include="Views\Employee_copy1\Delete.cshtml" />
-    <Content Include="Views\Employee_copy1\Details.cshtml" />
-    <Content Include="Views\Employee_copy1\Edit.cshtml" />
-    <Content Include="Views\Employee_copy1\Index.cshtml" />
-    <Content Include="Views\Enroll_Emp_Pos_copy1\Create.cshtml" />
-    <Content Include="Views\Enroll_Emp_Pos_copy1\Delete.cshtml" />
-    <Content Include="Views\Enroll_Emp_Pos_copy1\Details.cshtml" />
-    <Content Include="Views\Enroll_Emp_Pos_copy1\Edit.cshtml" />
-    <Content Include="Views\Enroll_Emp_Pos_copy1\Index.cshtml" />
-    <Content Include="Views\Enroll_Emp_Pos\Create.cshtml" />
-    <Content Include="Views\Enroll_Emp_Pos\Delete.cshtml" />
-    <Content Include="Views\Enroll_Emp_Pos\Details.cshtml" />
-    <Content Include="Views\Enroll_Emp_Pos\Edit.cshtml" />
-    <Content Include="Views\Enroll_Emp_Pos\Index.cshtml" />
-    <Content Include="Views\Employees\Create.cshtml" />
-    <Content Include="Views\Employees\Delete.cshtml" />
-    <Content Include="Views\Employees\Details.cshtml" />
-    <Content Include="Views\Employees\Edit.cshtml" />
-    <Content Include="Views\Employees\Index.cshtml" />
-    <Content Include="Views\EnrollCouses\Create.cshtml" />
-    <Content Include="Views\EnrollCouses\Delete.cshtml" />
-    <Content Include="Views\EnrollCouses\Details.cshtml" />
-    <Content Include="Views\EnrollCouses\Edit.cshtml" />
-    <Content Include="Views\EnrollCouses\Index.cshtml" />
-    <Content Include="Views\EnrollStudentCouses\Create.cshtml" />
-    <Content Include="Views\EnrollStudentCouses\Delete.cshtml" />
-    <Content Include="Views\EnrollStudentCouses\Details.cshtml" />
-    <Content Include="Views\EnrollStudentCouses\Edit.cshtml" />
-    <Content Include="Views\EnrollStudentCouses\Index.cshtml" />
-    <Content Include="Views\EnrollFinishStudents\Create.cshtml" />
-    <Content Include="Views\EnrollFinishStudents\Delete.cshtml" />
-    <Content Include="Views\EnrollFinishStudents\Details.cshtml" />
-    <Content Include="Views\EnrollFinishStudents\Edit.cshtml" />
-    <Content Include="Views\EnrollFinishStudents\Index.cshtml" />
-    <Content Include="Views\EnrollStudentCouses\IndexById.cshtml" />
-    <Content Include="Views\FoodPaid\invoiceAllStudent2.cshtml" />
+    <Content Include="Views\student\Index.cshtml" />
     <Content Include="Views\UserProfiles\Create.cshtml" />
     <Content Include="Views\UserProfiles\Delete.cshtml" />
     <Content Include="Views\UserProfiles\Details.cshtml" />
@@ -4107,11 +4125,8 @@
     <Content Include="Views\UserProfiles\Index.cshtml" />
     <Content Include="Views\UserProfiles\Login.cshtml" />
     <Content Include="Views\UserProfiles\UserDashBoard.cshtml" />
-    <Content Include="Views\EnrollRoomSessionEmp\Create.cshtml" />
-    <Content Include="Views\EnrollRoomSessionEmp\Delete.cshtml" />
-    <Content Include="Views\EnrollRoomSessionEmp\Details.cshtml" />
-    <Content Include="Views\EnrollRoomSessionEmp\Edit.cshtml" />
-    <Content Include="Views\EnrollRoomSessionEmp\Index.cshtml" />
+    <Content Include="Views\web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4162,6 +4177,9 @@
     <Compile Include="Models\EnrollCouse.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EnrollEmpCouse.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\EnrollFamilyStudent.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
@@ -4172,6 +4190,9 @@
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EnrollStudentCouse.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EnrollYearSemester.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Enroll_EduContest.cs">
@@ -4227,6 +4248,9 @@
     </Compile>
     <Compile Include="Models\studentEduContest2561Controller.cs" />
     <Compile Include="Models\Students.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Students_food.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserProfile.cs">
@@ -4327,15 +4351,6 @@
     <Content Include="Content\js\plugins\slimscroll\jquery.slimscroll.min.js" />
     <Content Include="Content\js\plugins\validator\validator.js" />
     <Content Include="Content\js\plugins\validator\validator.min.js" />
-    <Content Include="Views\web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Error\InternalServerError.cshtml" />
-    <Content Include="Views\Error\NotFound.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_ControlSidebar.cshtml" />
-    <Content Include="Views\Shared\_Header.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Shared\_Sidebar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />

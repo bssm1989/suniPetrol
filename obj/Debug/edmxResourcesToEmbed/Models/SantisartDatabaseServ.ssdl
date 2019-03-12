@@ -181,6 +181,17 @@
     <Property Name="CouseExcel" Type="varchar" MaxLength="15" />
     <Property Name="ExcelAdress" Type="varchar" MaxLength="10" />
     <Property Name="IndexSort" Type="int" />
+    <Property Name="EmpId" Type="int" />
+  </EntityType>
+  <EntityType Name="EnrollEmpCouse">
+    <Key>
+      <PropertyRef Name="EnrollEmpCouseId" />
+    </Key>
+    <Property Name="EnCouseId" Type="int" />
+    <Property Name="EnEmpCosTimestamp" Type="datetime" />
+    <Property Name="EnrollEmpCouseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EnEmpId" Type="int" />
+    <Property Name="EnYearSemId" Type="int" />
   </EntityType>
   <EntityType Name="EnrollFamilyStudent">
     <Key>
@@ -232,6 +243,16 @@
     <Property Name="YearEdu" Type="int" />
     <Property Name="Staff" Type="int" />
     <Property Name="Semester" Type="int" />
+  </EntityType>
+  <EntityType Name="EnrollYearSemester">
+    <Key>
+      <PropertyRef Name="EnrollYearSemesterId" />
+    </Key>
+    <Property Name="YearEduId" Type="int" />
+    <Property Name="Semester" Type="int" />
+    <Property Name="EnrollYearSemesterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="EndDate" Type="date" />
   </EntityType>
   <EntityType Name="Family">
     <Key>
@@ -324,6 +345,20 @@
     <Property Name="Studnet_Gender" Type="varchar" MaxLength="10" />
     <Property Name="Student_firsttime" Type="datetime" />
   </EntityType>
+  <EntityType Name="Students_food">
+    <Key>
+      <PropertyRef Name="Student_id" />
+    </Key>
+    <Property Name="Student_id" Type="int" Nullable="false" />
+    <Property Name="Student_title" Type="varchar" MaxLength="10" />
+    <Property Name="Student_name" Type="varchar" MaxLength="100" />
+    <Property Name="Student_lname" Type="varchar" MaxLength="100" />
+    <Property Name="Student_birthday" Type="datetime" />
+    <Property Name="Student_idcard" Type="varchar" MaxLength="13" />
+    <Property Name="Student_psis_id" Type="int" />
+    <Property Name="Student_status" Type="varchar" MaxLength="25" />
+    <Property Name="Student_timestamp" Type="datetime" />
+  </EntityType>
   <EntityType Name="UserProfile">
     <Key>
       <PropertyRef Name="UserId" />
@@ -339,6 +374,9 @@
     </Key>
     <Property Name="yearName" Type="int" />
     <Property Name="YearEduId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="YearNameEng" Type="int" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="EndDate" Type="date" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'santisar_.santisart._enrollattstudent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -556,9 +594,7 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
     <Property Name="PosId" Type="int" />
   </EntityType>
   <Association Name="FK_class1">
-    <End Role="ClassInSchool" Type="Self.ClassInSchool" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
+    <End Role="ClassInSchool" Type="Self.ClassInSchool" Multiplicity="0..1" />
     <End Role="EnrollCouse" Type="Self.EnrollCouse" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ClassInSchool">
@@ -622,6 +658,32 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
       </Principal>
       <Dependent Role="Enroll_Emp_Pos">
         <PropertyRef Name="Employee_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_emp2">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EnrollEmpCouse" Type="Self.EnrollEmpCouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmpId" />
+      </Principal>
+      <Dependent Role="EnrollEmpCouse">
+        <PropertyRef Name="EnEmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_emp4">
+    <End Role="EnrollEmpCouse" Type="Self.EnrollEmpCouse" Multiplicity="0..1" />
+    <End Role="EnrollCouse" Type="Self.EnrollCouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EnrollEmpCouse">
+        <PropertyRef Name="EnrollEmpCouseId" />
+      </Principal>
+      <Dependent Role="EnrollCouse">
+        <PropertyRef Name="EmpId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -737,17 +799,31 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="Fk_TeacherId">
-    <End Role="Enroll_Emp_Pos" Type="Self.Enroll_Emp_Pos" Multiplicity="0..1">
+  <Association Name="Fk_Year">
+    <End Role="YearEdu" Type="Self.YearEdu" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="EnrollStudentCouse" Type="Self.EnrollStudentCouse" Multiplicity="*" />
+    <End Role="EnrollYearSemester" Type="Self.EnrollYearSemester" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Enroll_Emp_Pos">
-        <PropertyRef Name="EnrEmpPosId" />
+      <Principal Role="YearEdu">
+        <PropertyRef Name="YearEduId" />
       </Principal>
-      <Dependent Role="EnrollStudentCouse">
-        <PropertyRef Name="TeacerId" />
+      <Dependent Role="EnrollYearSemester">
+        <PropertyRef Name="YearEduId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_year2">
+    <End Role="EnrollYearSemester" Type="Self.EnrollYearSemester" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EnrollEmpCouse" Type="Self.EnrollEmpCouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EnrollYearSemester">
+        <PropertyRef Name="EnrollYearSemesterId" />
+      </Principal>
+      <Dependent Role="EnrollEmpCouse">
+        <PropertyRef Name="EnYearSemId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -768,9 +844,11 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
     <EntitySet Name="Enroll_student_all_event" EntityType="Self.Enroll_student_all_event" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Enroll_student_class" EntityType="Self.Enroll_student_class" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="EnrollCouse" EntityType="Self.EnrollCouse" Schema="santisart" store:Type="Tables" />
+    <EntitySet Name="EnrollEmpCouse" EntityType="Self.EnrollEmpCouse" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="EnrollFamilyStudent" EntityType="Self.EnrollFamilyStudent" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="EnrollFinishStudent" EntityType="Self.EnrollFinishStudent" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="EnrollStudentCouse" EntityType="Self.EnrollStudentCouse" Schema="santisart" store:Type="Tables" />
+    <EntitySet Name="EnrollYearSemester" EntityType="Self.EnrollYearSemester" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Family" EntityType="Self.Family" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="FinishType" EntityType="Self.FinishType" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Food" EntityType="Self.Food" Schema="santisart" store:Type="Tables" />
@@ -778,6 +856,7 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
     <EntitySet Name="Position" EntityType="Self.Position" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="RoomSession" EntityType="Self.RoomSession" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="Students" EntityType="Self.Students" Schema="santisart" store:Type="Tables" />
+    <EntitySet Name="Students_food" EntityType="Self.Students_food" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="YearEdu" EntityType="Self.YearEdu" Schema="santisart" store:Type="Tables" />
     <EntitySet Name="_enrollattstudent" EntityType="Self._enrollattstudent" store:Type="Views" store:Schema="santisart">
@@ -984,6 +1063,14 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
       <End Role="Employee" EntitySet="Employee" />
       <End Role="Enroll_Emp_Pos" EntitySet="Enroll_Emp_Pos" />
     </AssociationSet>
+    <AssociationSet Name="Fk_emp2" Association="Self.Fk_emp2">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="EnrollEmpCouse" EntitySet="EnrollEmpCouse" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_emp4" Association="Self.Fk_emp4">
+      <End Role="EnrollEmpCouse" EntitySet="EnrollEmpCouse" />
+      <End Role="EnrollCouse" EntitySet="EnrollCouse" />
+    </AssociationSet>
     <AssociationSet Name="Fk_enr_pos" Association="Self.Fk_enr_pos">
       <End Role="Position" EntitySet="Position" />
       <End Role="Enroll_Emp_Pos" EntitySet="Enroll_Emp_Pos" />
@@ -1016,9 +1103,13 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
       <End Role="Students" EntitySet="Students" />
       <End Role="EnrollStudentCouse" EntitySet="EnrollStudentCouse" />
     </AssociationSet>
-    <AssociationSet Name="Fk_TeacherId" Association="Self.Fk_TeacherId">
-      <End Role="Enroll_Emp_Pos" EntitySet="Enroll_Emp_Pos" />
-      <End Role="EnrollStudentCouse" EntitySet="EnrollStudentCouse" />
+    <AssociationSet Name="Fk_Year" Association="Self.Fk_Year">
+      <End Role="YearEdu" EntitySet="YearEdu" />
+      <End Role="EnrollYearSemester" EntitySet="EnrollYearSemester" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_year2" Association="Self.Fk_year2">
+      <End Role="EnrollYearSemester" EntitySet="EnrollYearSemester" />
+      <End Role="EnrollEmpCouse" EntitySet="EnrollEmpCouse" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

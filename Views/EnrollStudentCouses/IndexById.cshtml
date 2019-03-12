@@ -1,7 +1,12 @@
 ﻿@model IEnumerable<santisart_app.Models.EnrollStudentCouse>
 @using System.Linq
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.8/dist/vue.js"></script>
+<div id="vue-app">
+    {{message}}
+</div>
+<script src="~/Content/ScripJs/vue-app.js"></script>
 <div class="right" role="main">
-    <h2>@Model.First().Students.Student_title) @Model.First().Students.Student_name</h2>
+    <h2>@Model.First().Students.Student_title @Model.First().Students.Student_name @Model.First().Students.Student_lname</h2>
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
@@ -56,13 +61,14 @@
                                 <table class="table table-striped">
                                     <tr>
 
-                                        
+
                                         <th>
                                             @Html.DisplayNameFor(model => model.EnrollCouse.CouseTxtId)
                                         </th>
                                         <th>
                                             @Html.DisplayNameFor(model => model.EnrollCouse.Course.CourseName)
-                                        </th><th>
+                                        </th>
+                                        <th>
                                             @Html.DisplayNameFor(model => model.Score)
                                         </th>
                                         <th>
@@ -79,13 +85,14 @@
                                     {
                                         <tr>
 
-                                            
+
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.EnrollCouse.CouseTxtId)
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.EnrollCouse.Course.CourseName)
-                                            </td> <td>
+                                            </td>
+                                            <td>
                                                 @Html.DisplayFor(modelItem => item.Score)
                                             </td>
                                             <td>
@@ -105,7 +112,7 @@
                                 </table>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             }

@@ -25,7 +25,6 @@ namespace santisart_app.Models
         public Nullable<int> Staff { get; set; }
         public Nullable<int> Semester { get; set; }
     
-        public virtual Enroll_Emp_Pos Enroll_Emp_Pos { get; set; }
         public virtual EnrollCouse EnrollCouse { get; set; }
         public virtual Students Students { get; set; }
     }
