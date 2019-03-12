@@ -4127,6 +4127,11 @@
     <Content Include="Views\UserProfiles\UserDashBoard.cshtml" />
     <Content Include="Views\web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\EnrollEmpCouses\Create.cshtml" />
+    <Content Include="Views\EnrollEmpCouses\Delete.cshtml" />
+    <Content Include="Views\EnrollEmpCouses\Details.cshtml" />
+    <Content Include="Views\EnrollEmpCouses\Edit.cshtml" />
+    <Content Include="Views\EnrollEmpCouses\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4139,6 +4144,7 @@
     <Compile Include="Controllers\eduContestController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\EnrollCousesController.cs" />
+    <Compile Include="Controllers\EnrollEmpCousesController.cs" />
     <Compile Include="Controllers\EnrollFinishStudentsController.cs" />
     <Compile Include="Controllers\EnrollRoomSessionEmpController.cs" />
     <Compile Include="Controllers\EnrollStudentCousesController.cs" />
