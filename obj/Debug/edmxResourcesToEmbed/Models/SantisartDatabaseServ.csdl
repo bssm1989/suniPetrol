@@ -20,7 +20,6 @@
     <EntitySet Name="EnrollCouse" EntityType="santisar_Model.EnrollCouse" />
     <EntitySet Name="EnrollFamilyStudent" EntityType="santisar_Model.EnrollFamilyStudent" />
     <EntitySet Name="EnrollFinishStudent" EntityType="santisar_Model.EnrollFinishStudent" />
-    <EntitySet Name="EnrollStudentCouse" EntityType="santisar_Model.EnrollStudentCouse" />
     <EntitySet Name="Family" EntityType="santisar_Model.Family" />
     <EntitySet Name="FinishType" EntityType="santisar_Model.FinishType" />
     <EntitySet Name="Food" EntityType="santisar_Model.Food" />
@@ -70,10 +69,6 @@
       <End Role="RoomSession" EntitySet="RoomSession" />
       <End Role="Enroll_RoomSession_Emp" EntitySet="Enroll_RoomSession_Emp" />
     </AssociationSet>
-    <AssociationSet Name="Fk_EnrCouseId" Association="santisar_Model.Fk_EnrCouseId">
-      <End Role="EnrollCouse" EntitySet="EnrollCouse" />
-      <End Role="EnrollStudentCouse" EntitySet="EnrollStudentCouse" />
-    </AssociationSet>
     <AssociationSet Name="Fk_enroll_fam" Association="santisar_Model.Fk_enroll_fam">
       <End Role="Family" EntitySet="Family" />
       <End Role="EnrollFamilyStudent" EntitySet="EnrollFamilyStudent" />
@@ -89,10 +84,6 @@
     <AssociationSet Name="Fk_finsh_form" Association="santisar_Model.Fk_finsh_form">
       <End Role="FinishType" EntitySet="FinishType" />
       <End Role="EnrollFinishStudent" EntitySet="EnrollFinishStudent" />
-    </AssociationSet>
-    <AssociationSet Name="Fk_student" Association="santisar_Model.Fk_student">
-      <End Role="Students" EntitySet="Students" />
-      <End Role="EnrollStudentCouse" EntitySet="EnrollStudentCouse" />
     </AssociationSet>
     <EntitySet Name="EnrollYearSemester" EntityType="santisar_Model.EnrollYearSemester" />
     <AssociationSet Name="Fk_Year" Association="santisar_Model.Fk_Year">
@@ -115,6 +106,32 @@
     <AssociationSet Name="Fk_emp4" Association="santisar_Model.Fk_emp4">
       <End Role="EnrollEmpCouse" EntitySet="EnrollEmpCouse" />
       <End Role="EnrollCouse" EntitySet="EnrollCouse" />
+    </AssociationSet>
+    <EntitySet Name="EnrollClass" EntityType="santisar_Model.EnrollClass" />
+    <AssociationSet Name="C__fk_class" Association="santisar_Model.C__fk_class">
+      <End Role="ClassInSchool" EntitySet="ClassInSchool" />
+      <End Role="EnrollClass" EntitySet="EnrollClass" />
+    </AssociationSet>
+    <AssociationSet Name="fk_class" Association="santisar_Model.fk_class">
+      <End Role="EnrollClass" EntitySet="EnrollClass" />
+      <End Role="Enroll_student_class" EntitySet="Enroll_student_class" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_student2" Association="santisar_Model.Fk_student2">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="Enroll_student_class" EntitySet="Enroll_student_class" />
+    </AssociationSet>
+    <EntitySet Name="EnrollStudentCouse" EntityType="santisar_Model.EnrollStudentCouse" />
+    <AssociationSet Name="Fk_enrollStudent" Association="santisar_Model.Fk_enrollStudent">
+      <End Role="Enroll_student_class" EntitySet="Enroll_student_class" />
+      <End Role="EnrollStudentCouse" EntitySet="EnrollStudentCouse" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_EnrCouseId" Association="santisar_Model.Fk_EnrCouseId">
+      <End Role="EnrollCouse" EntitySet="EnrollCouse" />
+      <End Role="EnrollStudentCouse" EntitySet="EnrollStudentCouse" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_yearSem" Association="santisar_Model.Fk_yearSem">
+      <End Role="EnrollYearSemester" EntitySet="EnrollYearSemester" />
+      <End Role="EnrollStudentCouse" EntitySet="EnrollStudentCouse" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="UserProfile">
@@ -170,6 +187,7 @@
     <Property Name="ClassName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="ClassID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="EnrollCouse" Relationship="santisar_Model.FK_class1" FromRole="ClassInSchool" ToRole="EnrollCouse" />
+    <NavigationProperty Name="EnrollClass" Relationship="santisar_Model.C__fk_class" FromRole="ClassInSchool" ToRole="EnrollClass" />
   </EntityType>
   <EntityType Name="ContestEducationSchool">
     <Key>
@@ -302,6 +320,9 @@
     <Property Name="Class_id" Type="Int32" />
     <Property Name="Enrol_stu_class_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Timestamp" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="EnrollClass" Relationship="santisar_Model.fk_class" FromRole="Enroll_student_class" ToRole="EnrollClass" />
+    <NavigationProperty Name="Students" Relationship="santisar_Model.Fk_student2" FromRole="Enroll_student_class" ToRole="Students" />
+    <NavigationProperty Name="EnrollStudentCouse" Relationship="santisar_Model.Fk_enrollStudent" FromRole="Enroll_student_class" ToRole="EnrollStudentCouse" />
   </EntityType>
   <EntityType Name="EnrollCouse">
     <Key>
@@ -323,9 +344,10 @@
     <NavigationProperty Name="Course" Relationship="santisar_Model.Fk_couse1" FromRole="EnrollCouse" ToRole="Course" />
     <NavigationProperty Name="Department" Relationship="santisar_Model.FK_depart1" FromRole="EnrollCouse" ToRole="Department" />
     <NavigationProperty Name="Employee" Relationship="santisar_Model.Fk_emp1" FromRole="EnrollCouse" ToRole="Employee" />
-    <NavigationProperty Name="EnrollStudentCouse" Relationship="santisar_Model.Fk_EnrCouseId" FromRole="EnrollCouse" ToRole="EnrollStudentCouse" />
     <NavigationProperty Name="EnrollEmpCouse" Relationship="santisar_Model.Fk_enCouse" FromRole="EnrollCouse" ToRole="EnrollEmpCouse" />
     <NavigationProperty Name="EnrollEmpCouse1" Relationship="santisar_Model.Fk_emp4" FromRole="EnrollCouse" ToRole="EnrollEmpCouse" />
+    <NavigationProperty Name="EnrollStudentCouse" Relationship="santisar_Model.Fk_EnrCouseId" FromRole="EnrollCouse" ToRole="EnrollStudentCouse" />
+    <Property Name="Timestamp" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="EnrollFamilyStudent">
     <Key>
@@ -366,23 +388,6 @@
     <Property Name="ExcelForm" Type="Int32" />
     <NavigationProperty Name="Students" Relationship="santisar_Model.Fk_finish_student" FromRole="EnrollFinishStudent" ToRole="Students" />
     <NavigationProperty Name="FinishType" Relationship="santisar_Model.Fk_finsh_form" FromRole="EnrollFinishStudent" ToRole="FinishType" />
-  </EntityType>
-  <EntityType Name="EnrollStudentCouse">
-    <Key>
-      <PropertyRef Name="EnrollStudentCouseId" />
-    </Key>
-    <Property Name="EnrollStudentCouseId" Type="Int32" Nullable="false" />
-    <Property Name="studentId" Type="Int32" />
-    <Property Name="EnrollCouseId" Type="Int32" />
-    <Property Name="Score" Type="Double" />
-    <Property Name="Grade" Type="Double" />
-    <Property Name="TeacerId" Type="Int32" />
-    <Property Name="Timestamp" Type="DateTime" Precision="3" />
-    <Property Name="YearEdu" Type="Int32" />
-    <Property Name="Staff" Type="Int32" />
-    <Property Name="Semester" Type="Int32" />
-    <NavigationProperty Name="EnrollCouse" Relationship="santisar_Model.Fk_EnrCouseId" FromRole="EnrollStudentCouse" ToRole="EnrollCouse" />
-    <NavigationProperty Name="Students" Relationship="santisar_Model.Fk_student" FromRole="EnrollStudentCouse" ToRole="Students" />
   </EntityType>
   <EntityType Name="Family">
     <Key>
@@ -480,7 +485,7 @@
     <Property Name="Student_firsttime" Type="DateTime" Precision="3" />
     <NavigationProperty Name="EnrollFamilyStudent" Relationship="santisar_Model.Fk_enroll_Studnet" FromRole="Students" ToRole="EnrollFamilyStudent" />
     <NavigationProperty Name="EnrollFinishStudent" Relationship="santisar_Model.Fk_finish_student" FromRole="Students" ToRole="EnrollFinishStudent" />
-    <NavigationProperty Name="EnrollStudentCouse" Relationship="santisar_Model.Fk_student" FromRole="Students" ToRole="EnrollStudentCouse" />
+    <NavigationProperty Name="Enroll_student_class" Relationship="santisar_Model.Fk_student2" FromRole="Students" ToRole="Enroll_student_class" />
   </EntityType>
   <EntityType Name="Students_food">
     <Key>
@@ -818,20 +823,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="Fk_EnrCouseId">
-    <End Type="santisar_Model.EnrollCouse" Role="EnrollCouse" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="santisar_Model.EnrollStudentCouse" Role="EnrollStudentCouse" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="EnrollCouse">
-        <PropertyRef Name="EnrollCouseID" />
-      </Principal>
-      <Dependent Role="EnrollStudentCouse">
-        <PropertyRef Name="EnrollCouseId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="Fk_enroll_fam">
     <End Type="santisar_Model.Family" Role="Family" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -888,20 +879,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="Fk_student">
-    <End Type="santisar_Model.Students" Role="Students" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="santisar_Model.EnrollStudentCouse" Role="EnrollStudentCouse" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Students">
-        <PropertyRef Name="Student_id" />
-      </Principal>
-      <Dependent Role="EnrollStudentCouse">
-        <PropertyRef Name="studentId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="EnrollYearSemester">
     <Key>
       <PropertyRef Name="EnrollYearSemesterId" />
@@ -913,6 +890,7 @@
     <Property Name="EndDate" Type="DateTime" Precision="0" />
     <NavigationProperty Name="YearEdu" Relationship="santisar_Model.Fk_Year" FromRole="EnrollYearSemester" ToRole="YearEdu" />
     <NavigationProperty Name="EnrollEmpCouse" Relationship="santisar_Model.Fk_year2" FromRole="EnrollYearSemester" ToRole="EnrollEmpCouse" />
+    <NavigationProperty Name="EnrollStudentCouse" Relationship="santisar_Model.Fk_yearSem" FromRole="EnrollYearSemester" ToRole="EnrollStudentCouse" />
   </EntityType>
   <Association Name="Fk_Year">
     <End Type="santisar_Model.YearEdu" Role="YearEdu" Multiplicity="0..1">
@@ -993,6 +971,123 @@
       </Principal>
       <Dependent Role="EnrollCouse">
         <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="EnrollClass">
+    <Key>
+      <PropertyRef Name="EnrollClass_id" />
+    </Key>
+    <Property Name="Status_class" Type="Int32" />
+    <Property Name="ClassSchoolid" Type="Int32" />
+    <Property Name="Teacher_id" Type="Int32" />
+    <Property Name="Class_room" Type="Int32" />
+    <Property Name="Class_year_index" Type="Int32" />
+    <Property Name="EnrollClass_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="ClassInSchool" Relationship="santisar_Model.C__fk_class" FromRole="EnrollClass" ToRole="ClassInSchool" />
+    <NavigationProperty Name="Enroll_student_class" Relationship="santisar_Model.fk_class" FromRole="EnrollClass" ToRole="Enroll_student_class" />
+  </EntityType>
+  <Association Name="C__fk_class">
+    <End Type="santisar_Model.ClassInSchool" Role="ClassInSchool" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="santisar_Model.EnrollClass" Role="EnrollClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClassInSchool">
+        <PropertyRef Name="ClassID" />
+      </Principal>
+      <Dependent Role="EnrollClass">
+        <PropertyRef Name="ClassSchoolid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_class">
+    <End Type="santisar_Model.EnrollClass" Role="EnrollClass" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="santisar_Model.Enroll_student_class" Role="Enroll_student_class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EnrollClass">
+        <PropertyRef Name="EnrollClass_id" />
+      </Principal>
+      <Dependent Role="Enroll_student_class">
+        <PropertyRef Name="Class_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_student2">
+    <End Type="santisar_Model.Students" Role="Students" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="santisar_Model.Enroll_student_class" Role="Enroll_student_class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="Student_id" />
+      </Principal>
+      <Dependent Role="Enroll_student_class">
+        <PropertyRef Name="Student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="EnrollStudentCouse">
+    <Key>
+      <PropertyRef Name="EnrollStudentCouseId" />
+    </Key>
+    <Property Name="EnrollStudentCouseId" Type="Int32" Nullable="false" />
+    <Property Name="studentId" Type="Int32" />
+    <Property Name="EnrollCouseId" Type="Int32" />
+    <Property Name="Score" Type="Double" />
+    <Property Name="Grade" Type="Double" />
+    <Property Name="TeacerId" Type="Int32" />
+    <Property Name="Timestamp" Type="DateTime" Precision="3" />
+    <Property Name="YearEdu" Type="Int32" />
+    <Property Name="Staff" Type="Int32" />
+    <Property Name="Semester" Type="Int32" />
+    <Property Name="EnrollStudentClassId" Type="Int32" />
+    <Property Name="EnYearSemId" Type="Int32" />
+    <NavigationProperty Name="Enroll_student_class" Relationship="santisar_Model.Fk_enrollStudent" FromRole="EnrollStudentCouse" ToRole="Enroll_student_class" />
+    <NavigationProperty Name="EnrollCouse" Relationship="santisar_Model.Fk_EnrCouseId" FromRole="EnrollStudentCouse" ToRole="EnrollCouse" />
+    <NavigationProperty Name="EnrollYearSemester" Relationship="santisar_Model.Fk_yearSem" FromRole="EnrollStudentCouse" ToRole="EnrollYearSemester" />
+  </EntityType>
+  <Association Name="Fk_enrollStudent">
+    <End Type="santisar_Model.Enroll_student_class" Role="Enroll_student_class" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="santisar_Model.EnrollStudentCouse" Role="EnrollStudentCouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Enroll_student_class">
+        <PropertyRef Name="Enrol_stu_class_id" />
+      </Principal>
+      <Dependent Role="EnrollStudentCouse">
+        <PropertyRef Name="EnrollStudentClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_EnrCouseId">
+    <End Type="santisar_Model.EnrollCouse" Role="EnrollCouse" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="santisar_Model.EnrollStudentCouse" Role="EnrollStudentCouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EnrollCouse">
+        <PropertyRef Name="EnrollCouseID" />
+      </Principal>
+      <Dependent Role="EnrollStudentCouse">
+        <PropertyRef Name="EnrollCouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_yearSem">
+    <End Type="santisar_Model.EnrollYearSemester" Role="EnrollYearSemester" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="santisar_Model.EnrollStudentCouse" Role="EnrollStudentCouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EnrollYearSemester">
+        <PropertyRef Name="EnrollYearSemesterId" />
+      </Principal>
+      <Dependent Role="EnrollStudentCouse">
+        <PropertyRef Name="EnYearSemId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

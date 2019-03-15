@@ -4132,6 +4132,7 @@
     <Content Include="Views\EnrollEmpCouses\Details.cshtml" />
     <Content Include="Views\EnrollEmpCouses\Edit.cshtml" />
     <Content Include="Views\EnrollEmpCouses\Index.cshtml" />
+    <Content Include="Views\EnrollCouses\EditList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4178,6 +4179,9 @@
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Employee.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EnrollClass.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EnrollCouse.cs">

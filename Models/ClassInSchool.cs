@@ -18,6 +18,7 @@ namespace santisart_app.Models
         public ClassInSchool()
         {
             this.EnrollCouse = new HashSet<EnrollCouse>();
+            this.EnrollClass = new HashSet<EnrollClass>();
         }
     
         public string ClassShortName { get; set; }
@@ -26,5 +27,7 @@ namespace santisart_app.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EnrollCouse> EnrollCouse { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EnrollClass> EnrollClass { get; set; }
     }
 }

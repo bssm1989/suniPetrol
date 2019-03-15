@@ -20,7 +20,7 @@ namespace santisart_app.Controllers
             var enrollStudentCouse = db.EnrollStudentCouse
                                         .Where(x=>x.studentId==id)
                                         .Include(e => e.EnrollCouse)
-                                        .Include(e => e.Students)
+                                        .Include(e => e.Enroll_student_class)
                                         .OrderBy(x=>x.EnrollCouse.ClassId)
                                         .ThenBy(x=>x.EnrollCouse.CouseId);
             ViewBag.studentCouse = enrollStudentCouse.ToList();
@@ -28,7 +28,9 @@ namespace santisart_app.Controllers
         }
         public ActionResult Index()
         {
-            var enrollStudentCouse = db.EnrollStudentCouse.Include(e => e.EnrollCouse).Include(e => e.Students);
+            var enrollStudentCouse = db.EnrollStudentCouse
+                                        .Include(e => e.EnrollCouse)
+                                        .Include(e => e.Enroll_student_class);
             return View(enrollStudentCouse.ToList());
         }
 

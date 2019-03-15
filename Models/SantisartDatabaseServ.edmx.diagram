@@ -23,7 +23,6 @@
         <EntityTypeShape EntityType="santisar_Model.EnrollCouse" Width="1.5" PointX="3" PointY="4.625" />
         <EntityTypeShape EntityType="santisar_Model.EnrollFamilyStudent" Width="1.5" PointX="8.25" PointY="10.5" />
         <EntityTypeShape EntityType="santisar_Model.EnrollFinishStudent" Width="1.5" PointX="11.25" PointY="9.25" />
-        <EntityTypeShape EntityType="santisar_Model.EnrollStudentCouse" Width="1.5" PointX="8.25" PointY="5.125" />
         <EntityTypeShape EntityType="santisar_Model.Family" Width="1.5" PointX="6" PointY="15" />
         <EntityTypeShape EntityType="santisar_Model.FinishType" Width="1.5" PointX="9" PointY="14.875" />
         <EntityTypeShape EntityType="santisar_Model.Food" Width="1.5" PointX="13.75" PointY="14.75" />
@@ -49,12 +48,10 @@
         <AssociationConnector Association="santisar_Model.Fk_emp1" />
         <AssociationConnector Association="santisar_Model.Fk_enr_pos" />
         <AssociationConnector Association="santisar_Model.Fk_room" />
-        <AssociationConnector Association="santisar_Model.Fk_EnrCouseId" />
         <AssociationConnector Association="santisar_Model.Fk_enroll_fam" />
         <AssociationConnector Association="santisar_Model.Fk_enroll_Studnet" />
         <AssociationConnector Association="santisar_Model.Fk_finish_student" />
         <AssociationConnector Association="santisar_Model.Fk_finsh_form" />
-        <AssociationConnector Association="santisar_Model.Fk_student" />
         <EntityTypeShape EntityType="santisar_Model.EnrollYearSemester" Width="1.5" PointX="5" PointY="22.75" />
         <AssociationConnector Association="santisar_Model.Fk_Year" />
         <EntityTypeShape EntityType="santisar_Model.EnrollEmpCouse" Width="1.5" PointX="13.25" PointY="19.625" />
@@ -62,6 +59,14 @@
         <AssociationConnector Association="santisar_Model.Fk_enCouse" />
         <AssociationConnector Association="santisar_Model.Fk_year2" />
         <AssociationConnector Association="santisar_Model.Fk_emp4" />
+        <EntityTypeShape EntityType="santisar_Model.EnrollClass" Width="1.5" PointX="3" PointY="19.125" />
+        <AssociationConnector Association="santisar_Model.C__fk_class" />
+        <AssociationConnector Association="santisar_Model.fk_class" />
+        <AssociationConnector Association="santisar_Model.Fk_student2" />
+        <EntityTypeShape EntityType="santisar_Model.EnrollStudentCouse" Width="1.5" PointX="20" PointY="10.125" />
+        <AssociationConnector Association="santisar_Model.Fk_enrollStudent" />
+        <AssociationConnector Association="santisar_Model.Fk_EnrCouseId" />
+        <AssociationConnector Association="santisar_Model.Fk_yearSem" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

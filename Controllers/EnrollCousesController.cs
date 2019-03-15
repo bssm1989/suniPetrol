@@ -17,10 +17,59 @@ namespace santisart_app.Controllers
         // GET: EnrollCouses
         public ActionResult Index()
         {
-            var enrollCouse = db.EnrollCouse.Include(e => e.Employee).Include(e => e.ClassInSchool).Include(e => e.Course).Include(e => e.Department);
+            var enrollCouse = db.EnrollCouse
+                .Include(e => e.Employee)
+                .Include(e => e.ClassInSchool)
+                .Include(e => e.Course)
+                .Include(e => e.Department)
+                .OrderBy(x=>x.ClassInSchool.ClassID)
+                .ThenBy(x=>x.semester__)
+                .ThenBy(x=>x.CouseId);
             return View(enrollCouse.ToList());
         }
+        public ActionResult EditList()
+        {
+            var enrollCouse = db.EnrollCouse
+                .Where(xx=>xx.ClassInSchool.ClassShortName=="ป.1")
+                .Include(e => e.Employee)
+                .Include(e => e.ClassInSchool)
+                .Include(e => e.Course)
+                .Include(e => e.Department)
+                .OrderBy(x => x.IndexSort)
+                .ThenBy(x => x.semester__)
+                .ThenBy(x => x.CouseId);
+          
+            ViewBag.ClassId = new SelectList(db.ClassInSchool, "ClassID", "ClassShortName");
+            ViewBag.CouseId = new SelectList(db.Course, "CourseId", "CourseName");
+            ViewBag.DepartId = new SelectList(db.Department, "Depart_Id", "DepartName");
 
+            return View(enrollCouse.ToList());
+        }
+        [HttpPost]
+        public ActionResult EditList(List<EnrollCouse> EnrollCouse)
+        {
+            foreach (var item in EnrollCouse)
+            {
+                //EnrollCouse EditListEdit = db.EnrollCouse.Find(item.EnrollCouseID);
+                if (ModelState.IsValid)
+                {
+                    EnrollCouse EditListEdit = db.EnrollCouse.Find(item.EnrollCouseID);
+                    EditListEdit.EnrollCouseID = item.EnrollCouseID;
+                    EditListEdit.ClassId= item.ClassId;
+                    EditListEdit.CouseTxtId = item.CouseTxtId;
+                    EditListEdit.CouseTime = item.CouseTime;
+                    EditListEdit.CouseWeight__ = item.CouseWeight__;
+                    EditListEdit.IndexSort = item.IndexSort;
+                    
+                    //db.Entry(item).State = EntityState.Modified;
+                    //db.SaveChanges();
+                   
+                }
+               
+            }
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
         // GET: EnrollCouses/Details/5
         public ActionResult Details(int? id)
         {

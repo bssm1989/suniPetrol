@@ -17,7 +17,12 @@ namespace santisart_app.Controllers
         // GET: EnrollEmpCouses
         public ActionResult Index()
         {
-            var enrollEmpCouse = db.EnrollEmpCouse.Include(e => e.Employee).Include(e => e.EnrollCouse).Include(e => e.EnrollYearSemester);
+            var enrollEmpCouse = db.EnrollEmpCouse
+                .Include(e => e.Employee)
+                .Include(e => e.EnrollCouse)
+                .Include(e => e.EnrollYearSemester)
+                .OrderBy(x=>x.EnrollYearSemester.YearEdu.yearName)
+                .ThenBy(x=>x.EnrollCouse.CouseId);
             return View(enrollEmpCouse.ToList());
         }
 

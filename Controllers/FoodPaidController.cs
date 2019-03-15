@@ -87,7 +87,7 @@ namespace santisart_app.Controllers
                                          from en in db.Enroll_student_class.Where(x => s.Student_id == x.Student_id && cl.Class_id == x.Class_id)
                                          from mo in db.Monthly.Where(x => cl.Class_year_index == x.Month_year)
                                          from enpa in db.Enroll_paid.Where(x => s.Student_id == x.Student_id && mo.Monthly_id == x.Monthly_id).DefaultIfEmpty()
-                                         //where s.Student_id == Student_id
+                                         where s.Student_id == Student_id
                                          orderby mo.Monthly_id descending
                                          select new viewdetail
                                          {
