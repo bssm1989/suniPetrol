@@ -4133,6 +4133,7 @@
     <Content Include="Views\EnrollEmpCouses\Edit.cshtml" />
     <Content Include="Views\EnrollEmpCouses\Index.cshtml" />
     <Content Include="Views\EnrollCouses\EditList.cshtml" />
+    <Content Include="Views\EnrollEmpCouses\AddClassRoom.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

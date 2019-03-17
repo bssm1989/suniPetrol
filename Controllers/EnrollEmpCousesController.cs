@@ -25,7 +25,21 @@ namespace santisart_app.Controllers
                 .ThenBy(x=>x.EnrollCouse.CouseId);
             return View(enrollEmpCouse.ToList());
         }
-
+        public ActionResult AddClassRoom(int? id)
+        {
+            EnrollEmpCouse EnEmpCoues = db.EnrollEmpCouse.Find(id);
+            ViewBag.Emp = db.Employee.Find(EnEmpCoues.EnEmpId);
+            ViewBag.Couse = db.EnrollCouse.Find(EnEmpCoues.EnCouseId);
+            return View(db.EnrollClass.Where(x => 
+            x.ClassSchoolid == EnEmpCoues.EnrollCouse.ClassInSchool.ClassID
+            && x.Status_class==1)
+            .ToList());
+        }
+        [HttpPost]
+        public ActionResult AddClassRoom(List<EnrollStudentCouse>enrollStudentsCouse)
+        {
+            return View();
+        }
         // GET: EnrollEmpCouses/Details/5
         public ActionResult Details(int? id)
         {

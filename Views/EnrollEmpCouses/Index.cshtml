@@ -54,6 +54,7 @@
             @Html.DisplayFor(modelItem => item.EnEmpCosTimestamp)
         </td>
         <td>
+            @Html.ActionLink("เพิ่มชั้นเรียน", "AddClassRoom", new { id=item.EnrollEmpCouseId }) |
             @Html.ActionLink("Edit", "Edit", new { id=item.EnrollEmpCouseId }) |
             @Html.ActionLink("Details", "Details", new { id=item.EnrollEmpCouseId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.EnrollEmpCouseId })

@@ -35,8 +35,8 @@ namespace santisart_app.Controllers
                 .Include(e => e.ClassInSchool)
                 .Include(e => e.Course)
                 .Include(e => e.Department)
-                .OrderBy(x => x.IndexSort)
-                .ThenBy(x => x.semester__)
+                .OrderBy(x => x.semester__)
+                .ThenBy(x => x.IndexSort)
                 .ThenBy(x => x.CouseId);
           
             ViewBag.ClassId = new SelectList(db.ClassInSchool, "ClassID", "ClassShortName");
@@ -60,7 +60,7 @@ namespace santisart_app.Controllers
                     EditListEdit.CouseTime = item.CouseTime;
                     EditListEdit.CouseWeight__ = item.CouseWeight__;
                     EditListEdit.IndexSort = item.IndexSort;
-                    
+                    EditListEdit.Timestamp = System.DateTime.Now;
                     //db.Entry(item).State = EntityState.Modified;
                     //db.SaveChanges();
                    
