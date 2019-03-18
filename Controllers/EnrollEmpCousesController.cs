@@ -30,15 +30,80 @@ namespace santisart_app.Controllers
             EnrollEmpCouse EnEmpCoues = db.EnrollEmpCouse.Find(id);
             ViewBag.Emp = db.Employee.Find(EnEmpCoues.EnEmpId);
             ViewBag.Couse = db.EnrollCouse.Find(EnEmpCoues.EnCouseId);
-            return View(db.EnrollClass.Where(x => 
-            x.ClassSchoolid == EnEmpCoues.EnrollCouse.ClassInSchool.ClassID
-            && x.Status_class==1)
+            ViewBag.EnEmpCouseId = id;
+            return View(db.EnrollClass.Where(x => x.ClassSchoolid == EnEmpCoues.EnrollCouse.ClassInSchool.ClassID&& x.Status_class==1)
             .ToList());
         }
         [HttpPost]
-        public ActionResult AddClassRoom(List<EnrollStudentCouse>enrollStudentsCouse)
+        public ActionResult AddClassRoom(List<EnrollEmpCouseClass> EnrollEmpCouseClass2)
         {
-            return View();
+
+            //EnrollCouse EditListEdit = db.EnrollCouse.Find(item.EnrollCouseID);
+            //IEnumerable<EnrollEmpCouseClass> getFirst = EnrollEmpCouseClass.Where(x => x.EnClassId != 0 && x.EnClassId != null);
+            var firstRow = EnrollEmpCouseClass2.First();
+                //int itemGEtClassId = EnrollEmpCouseClass2.First().Status  ?? default(int);//EnrollClass_id
+                int itemGEtClassId = firstRow.Status ?? default(int);
+            int itemGetEnempCouseId=firstRow.EnEmpCouseId ?? default(int);//EnrollClass_id
+            //var  getDataEnEmpCouseClass = db.EnrollEmpCouseClass.Where(y => y.EnEmpCouseId==7).ToList();
+            //var getDataEnEmpCouseClass = db.EnrollEmpCouseClass.Where(x => x.EnrollClass.ClassSchoolid == itemGEtClassId ).ToList();
+            var getDataEnEmpCouseClass = db.EnrollEmpCouseClass.Where(x => x.EnrollClass.ClassSchoolid == itemGEtClassId && x.EnEmpCouseId == itemGetEnempCouseId).ToList();
+            //var getDataEnEmpCouseClass = db.EnrollEmpCouseClass.Where(x => x.EnrollClass.ClassSchoolid == itemGEtClassId && x.EnEmpCouseId == EnrollEmpCouseClass2.First().EnEmpCouseId).ToList();
+            var countClassIdInEnEmpCouseClass = EnrollEmpCouseClass2.Where(x => x.EnClassId != 0&&x.EnClassId!=null).Count();
+                if (ModelState.IsValid)
+                {//มีมาก่อนแล้ว
+                if (getDataEnEmpCouseClass.Count() >= countClassIdInEnEmpCouseClass)
+                {
+                    IEnumerable<EnrollEmpCouseClass> getdata = db.EnrollEmpCouseClass.Where(y => y.EnrollClass.ClassSchoolid == itemGEtClassId &&y.EnEmpCouseId == itemGetEnempCouseId && y.EnrollClass.Status_class==1);
+                    foreach (var item in getdata)
+                    {
+                        if (EnrollEmpCouseClass2.Where(x => x.EnClassId == item.EnClassId).Count()>0)
+                        {
+                         
+                            
+                            item.Status = 1;
+                            item.Timestamp = System.DateTime.Now;
+                            
+                        }
+                        else
+                        { item.Status = 0;
+                            item.Timestamp = System.DateTime.Now;
+                            
+
+                        }
+                    }
+                    db.SaveChanges();
+                }
+                else
+              
+                    foreach (var item in EnrollEmpCouseClass2)
+                    {
+                        IEnumerable< EnrollEmpCouseClass > getData = db.EnrollEmpCouseClass.Where(x => x.EnClassId == item.EnClassId && x.EnEmpCouseId == itemGetEnempCouseId);
+                        if (getData.Count()>0)
+                        {
+                            EnrollEmpCouseClass  getRow=db.EnrollEmpCouseClass.Find(getData.First().EnrollEmpCouseClassId);
+                            getRow.Status = 1;
+                            getRow.Timestamp = System.DateTime.Now;
+                            
+                        }
+                        else
+                        {if (item.EnClassId != null)
+                            {
+
+                                db.EnrollEmpCouseClass.Add(new EnrollEmpCouseClass
+                                {
+                                    EnClassId = item.EnClassId,
+                                    EnEmpCouseId = item.EnEmpCouseId,
+                                    Status = 1,
+                                    Timestamp = System.DateTime.Now
+                                });
+                            }
+                           
+                        }
+                    }
+                db.SaveChanges();
+            }
+                   
+            return RedirectToAction("Index");
         }
         // GET: EnrollEmpCouses/Details/5
         public ActionResult Details(int? id)
@@ -215,13 +280,13 @@ namespace santisart_app.Controllers
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
     }
 }

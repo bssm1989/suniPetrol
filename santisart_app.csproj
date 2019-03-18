@@ -4191,6 +4191,9 @@
     <Compile Include="Models\EnrollEmpCouse.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EnrollEmpCouseClass.cs">
+      <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\EnrollFamilyStudent.cs">
       <DependentUpon>SantisartDatabaseServ.tt</DependentUpon>
     </Compile>

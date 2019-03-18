@@ -133,6 +133,19 @@
       <End Role="EnrollYearSemester" EntitySet="EnrollYearSemester" />
       <End Role="EnrollStudentCouse" EntitySet="EnrollStudentCouse" />
     </AssociationSet>
+    <EntitySet Name="EnrollEmpCouseClass" EntityType="santisar_Model.EnrollEmpCouseClass" />
+    <AssociationSet Name="Fk_EnClass" Association="santisar_Model.Fk_EnClass">
+      <End Role="EnrollClass" EntitySet="EnrollClass" />
+      <End Role="EnrollEmpCouseClass" EntitySet="EnrollEmpCouseClass" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_EmpCouse" Association="santisar_Model.Fk_EmpCouse">
+      <End Role="EnrollEmpCouse" EntitySet="EnrollEmpCouse" />
+      <End Role="EnrollEmpCouseClass" EntitySet="EnrollEmpCouseClass" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_EmpCouseClass" Association="santisar_Model.Fk_EmpCouseClass">
+      <End Role="EnrollEmpCouseClass" EntitySet="EnrollEmpCouseClass" />
+      <End Role="EnrollStudentCouse" EntitySet="EnrollStudentCouse" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="UserProfile">
     <Key>
@@ -919,6 +932,7 @@
     <NavigationProperty Name="EnrollCouse" Relationship="santisar_Model.Fk_enCouse" FromRole="EnrollEmpCouse" ToRole="EnrollCouse" />
     <NavigationProperty Name="EnrollYearSemester" Relationship="santisar_Model.Fk_year2" FromRole="EnrollEmpCouse" ToRole="EnrollYearSemester" />
     <NavigationProperty Name="EnrollCouse1" Relationship="santisar_Model.Fk_emp4" FromRole="EnrollEmpCouse" ToRole="EnrollCouse" />
+    <NavigationProperty Name="EnrollEmpCouseClass" Relationship="santisar_Model.Fk_EmpCouse" FromRole="EnrollEmpCouse" ToRole="EnrollEmpCouseClass" />
   </EntityType>
   <Association Name="Fk_emp2">
     <End Type="santisar_Model.Employee" Role="Employee" Multiplicity="0..1">
@@ -986,6 +1000,7 @@
     <Property Name="EnrollClass_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="ClassInSchool" Relationship="santisar_Model.C__fk_class" FromRole="EnrollClass" ToRole="ClassInSchool" />
     <NavigationProperty Name="Enroll_student_class" Relationship="santisar_Model.fk_class" FromRole="EnrollClass" ToRole="Enroll_student_class" />
+    <NavigationProperty Name="EnrollEmpCouseClass" Relationship="santisar_Model.Fk_EnClass" FromRole="EnrollClass" ToRole="EnrollEmpCouseClass" />
   </EntityType>
   <Association Name="C__fk_class">
     <End Type="santisar_Model.ClassInSchool" Role="ClassInSchool" Multiplicity="0..1">
@@ -1048,6 +1063,9 @@
     <NavigationProperty Name="Enroll_student_class" Relationship="santisar_Model.Fk_enrollStudent" FromRole="EnrollStudentCouse" ToRole="Enroll_student_class" />
     <NavigationProperty Name="EnrollCouse" Relationship="santisar_Model.Fk_EnrCouseId" FromRole="EnrollStudentCouse" ToRole="EnrollCouse" />
     <NavigationProperty Name="EnrollYearSemester" Relationship="santisar_Model.Fk_yearSem" FromRole="EnrollStudentCouse" ToRole="EnrollYearSemester" />
+    <Property Name="EnEmpCouseId" Type="Int32" />
+    <Property Name="EnEmpCouseClassId" Type="Int32" />
+    <NavigationProperty Name="EnrollEmpCouseClass" Relationship="santisar_Model.Fk_EmpCouseClass" FromRole="EnrollStudentCouse" ToRole="EnrollEmpCouseClass" />
   </EntityType>
   <Association Name="Fk_enrollStudent">
     <End Type="santisar_Model.Enroll_student_class" Role="Enroll_student_class" Multiplicity="0..1">
@@ -1088,6 +1106,59 @@
       </Principal>
       <Dependent Role="EnrollStudentCouse">
         <PropertyRef Name="EnYearSemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="EnrollEmpCouseClass">
+    <Key>
+      <PropertyRef Name="EnrollEmpCouseClassId" />
+    </Key>
+    <Property Name="EnrollEmpCouseClassId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EnEmpCouseId" Type="Int32" />
+    <Property Name="EnClassId" Type="Int32" />
+    <Property Name="Timestamp" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="EnrollClass" Relationship="santisar_Model.Fk_EnClass" FromRole="EnrollEmpCouseClass" ToRole="EnrollClass" />
+    <NavigationProperty Name="EnrollEmpCouse" Relationship="santisar_Model.Fk_EmpCouse" FromRole="EnrollEmpCouseClass" ToRole="EnrollEmpCouse" />
+    <NavigationProperty Name="EnrollStudentCouse" Relationship="santisar_Model.Fk_EmpCouseClass" FromRole="EnrollEmpCouseClass" ToRole="EnrollStudentCouse" />
+    <Property Name="Status" Type="Int32" />
+  </EntityType>
+  <Association Name="Fk_EnClass">
+    <End Type="santisar_Model.EnrollClass" Role="EnrollClass" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="santisar_Model.EnrollEmpCouseClass" Role="EnrollEmpCouseClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EnrollClass">
+        <PropertyRef Name="EnrollClass_id" />
+      </Principal>
+      <Dependent Role="EnrollEmpCouseClass">
+        <PropertyRef Name="EnClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_EmpCouse">
+    <End Type="santisar_Model.EnrollEmpCouse" Role="EnrollEmpCouse" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="santisar_Model.EnrollEmpCouseClass" Role="EnrollEmpCouseClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EnrollEmpCouse">
+        <PropertyRef Name="EnrollEmpCouseId" />
+      </Principal>
+      <Dependent Role="EnrollEmpCouseClass">
+        <PropertyRef Name="EnEmpCouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_EmpCouseClass">
+    <End Type="santisar_Model.EnrollEmpCouseClass" Role="EnrollEmpCouseClass" Multiplicity="0..1" />
+    <End Type="santisar_Model.EnrollStudentCouse" Role="EnrollStudentCouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EnrollEmpCouseClass">
+        <PropertyRef Name="EnrollEmpCouseClassId" />
+      </Principal>
+      <Dependent Role="EnrollStudentCouse">
+        <PropertyRef Name="EnEmpCouseClassId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

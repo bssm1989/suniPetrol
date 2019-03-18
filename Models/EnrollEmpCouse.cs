@@ -18,6 +18,7 @@ namespace santisart_app.Models
         public EnrollEmpCouse()
         {
             this.EnrollCouse1 = new HashSet<EnrollCouse>();
+            this.EnrollEmpCouseClass = new HashSet<EnrollEmpCouseClass>();
         }
     
         public Nullable<int> EnCouseId { get; set; }
@@ -31,5 +32,7 @@ namespace santisart_app.Models
         public virtual EnrollYearSemester EnrollYearSemester { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EnrollCouse> EnrollCouse1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EnrollEmpCouseClass> EnrollEmpCouseClass { get; set; }
     }
 }

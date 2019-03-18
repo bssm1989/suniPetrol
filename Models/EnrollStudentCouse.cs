@@ -26,9 +26,12 @@ namespace santisart_app.Models
         public Nullable<int> Semester { get; set; }
         public Nullable<int> EnrollStudentClassId { get; set; }
         public Nullable<int> EnYearSemId { get; set; }
+        public Nullable<int> EnEmpCouseId { get; set; }
+        public Nullable<int> EnEmpCouseClassId { get; set; }
     
         public virtual Enroll_student_class Enroll_student_class { get; set; }
         public virtual EnrollCouse EnrollCouse { get; set; }
         public virtual EnrollYearSemester EnrollYearSemester { get; set; }
+        public virtual EnrollEmpCouseClass EnrollEmpCouseClass { get; set; }
     }
 }

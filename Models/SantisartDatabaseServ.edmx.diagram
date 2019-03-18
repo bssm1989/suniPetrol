@@ -67,6 +67,10 @@
         <AssociationConnector Association="santisar_Model.Fk_enrollStudent" />
         <AssociationConnector Association="santisar_Model.Fk_EnrCouseId" />
         <AssociationConnector Association="santisar_Model.Fk_yearSem" />
+        <EntityTypeShape EntityType="santisar_Model.EnrollEmpCouseClass" Width="1.5" PointX="15.5" PointY="20.625" />
+        <AssociationConnector Association="santisar_Model.Fk_EnClass" />
+        <AssociationConnector Association="santisar_Model.Fk_EmpCouse" />
+        <AssociationConnector Association="santisar_Model.Fk_EmpCouseClass" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

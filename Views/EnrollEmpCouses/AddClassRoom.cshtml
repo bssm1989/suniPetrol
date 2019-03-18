@@ -10,7 +10,8 @@
 </div>
 <h1></h1>
 @using (Html.BeginForm())
-{ var indexClass = 0;
+{
+    var indexClass = 0;
 
 
     <table class="table">
@@ -30,20 +31,42 @@
                 @Html.DisplayNameFor(model => model.ClassInSchool.ClassShortName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EnrollClass_id)
+                @Html.DisplayNameFor(model => model.EnrollClass_id) 
             </th>
             
         </tr>
 
+      
         @foreach (var item in Model)
-        {
+            {
             <tr>
-                <input type="hidden" value="@ViewBag.Emp.EmpId" name="EnrollStudentCouse[@indexClass].TeacerId" />
-                <input type="hidden" value="@ViewBag.Couse.EnrollCouseId" name="EnrollStudentCouse[@indexClass].EnrollCouseId" />
-                <td>
-                    @Html.CheckBox(item.EnrollClass_id.ToString())
-                </td>
                 
+                <input type="hidden" value="@ViewBag.EnEmpCouseId" name="EnrollEmpCouseClass2[@indexClass].EnEmpCouseId" />
+                <input type="hidden" value="@item.ClassSchoolid" name="EnrollEmpCouseClass2[@indexClass].Status"/>
+                <td>
+                    @if (item.EnrollEmpCouseClass.Where(z=>z.Status!=0&&z.EnEmpCouseId== ViewBag.EnEmpCouseId).Count() > 0)
+                    {
+                        @Html.CheckBox(item.EnrollClass_id.ToString(), new
+                                       {
+                                           @class = "form-control",
+                                           Name = "EnrollEmpCouseClass2[" + indexClass + "].EnClassId",
+                                           Value= item.EnrollClass_id,
+                                           @checked = "checked"
+                                       })
+                    }
+                    else
+                    {
+                        @Html.CheckBox(item.EnrollClass_id.ToString(), new
+                                      {
+                                          @class = "form-control",
+                                          Name = "EnrollEmpCouseClass2[" + indexClass + "].EnClassId",
+                                          Value= item.EnrollClass_id
+                                      })
+                    }
+
+                </td>
+
+
                 <td>
                     @Html.DisplayFor(modelItem => item.Teacher_id)
                 </td>
@@ -59,10 +82,11 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.EnrollClass_id)
                 </td>
-               
-            </tr>
-        }
 
+
+            </tr>
+            indexClass++; }
+            
     </table>
     <div class="form-group text-left">
         <input type="submit" class="btn btn-primary" value="Submit" />

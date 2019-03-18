@@ -210,6 +210,16 @@
           <Property Name="EnEmpId" Type="int" />
           <Property Name="EnYearSemId" Type="int" />
         </EntityType>
+        <EntityType Name="EnrollEmpCouseClass">
+          <Key>
+            <PropertyRef Name="EnrollEmpCouseClassId" />
+          </Key>
+          <Property Name="EnrollEmpCouseClassId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EnEmpCouseId" Type="int" />
+          <Property Name="EnClassId" Type="int" />
+          <Property Name="Timestamp" Type="date" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
         <EntityType Name="EnrollFamilyStudent">
           <Key>
             <PropertyRef Name="EnrollFamStudentId" />
@@ -262,6 +272,8 @@
           <Property Name="Semester" Type="int" />
           <Property Name="EnrollStudentClassId" Type="int" />
           <Property Name="EnYearSemId" Type="int" />
+          <Property Name="EnEmpCouseId" Type="int" />
+          <Property Name="EnEmpCouseClassId" Type="int" />
         </EntityType>
         <EntityType Name="EnrollYearSemester">
           <Key>
@@ -666,6 +678,20 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="Fk_couse2">
+          <End Role="EnrollCouse" Type="Self.EnrollCouse" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EnrollEmpCouse" Type="Self.EnrollEmpCouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnrollCouse">
+              <PropertyRef Name="EnrollCouseID" />
+            </Principal>
+            <Dependent Role="EnrollEmpCouse">
+              <PropertyRef Name="EnCouseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_depart1">
           <End Role="Department" Type="Self.Department" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -722,15 +748,43 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Fk_emp4">
-          <End Role="EnrollEmpCouse" Type="Self.EnrollEmpCouse" Multiplicity="0..1" />
-          <End Role="EnrollCouse" Type="Self.EnrollCouse" Multiplicity="*" />
+        <Association Name="Fk_EmpCouse">
+          <End Role="EnrollEmpCouse" Type="Self.EnrollEmpCouse" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EnrollEmpCouseClass" Type="Self.EnrollEmpCouseClass" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EnrollEmpCouse">
               <PropertyRef Name="EnrollEmpCouseId" />
             </Principal>
-            <Dependent Role="EnrollCouse">
-              <PropertyRef Name="EmpId" />
+            <Dependent Role="EnrollEmpCouseClass">
+              <PropertyRef Name="EnEmpCouseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_EmpCouseClass">
+          <End Role="EnrollEmpCouseClass" Type="Self.EnrollEmpCouseClass" Multiplicity="0..1" />
+          <End Role="EnrollStudentCouse" Type="Self.EnrollStudentCouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnrollEmpCouseClass">
+              <PropertyRef Name="EnrollEmpCouseClassId" />
+            </Principal>
+            <Dependent Role="EnrollStudentCouse">
+              <PropertyRef Name="EnEmpCouseClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_EnClass">
+          <End Role="EnrollClass" Type="Self.EnrollClass" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EnrollEmpCouseClass" Type="Self.EnrollEmpCouseClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnrollClass">
+              <PropertyRef Name="EnrollClass_id" />
+            </Principal>
+            <Dependent Role="EnrollEmpCouseClass">
+              <PropertyRef Name="EnClassId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -745,20 +799,6 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
             </Principal>
             <Dependent Role="Enroll_Emp_Pos">
               <PropertyRef Name="Position_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Fk_EnrCouseId">
-          <End Role="EnrollCouse" Type="Self.EnrollCouse" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="EnrollStudentCouse" Type="Self.EnrollStudentCouse" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EnrollCouse">
-              <PropertyRef Name="EnrollCouseID" />
-            </Principal>
-            <Dependent Role="EnrollStudentCouse">
-              <PropertyRef Name="EnrollCouseId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -921,6 +961,7 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
           <EntitySet Name="EnrollClass" EntityType="Self.EnrollClass" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="EnrollCouse" EntityType="Self.EnrollCouse" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="EnrollEmpCouse" EntityType="Self.EnrollEmpCouse" Schema="santisart" store:Type="Tables" />
+          <EntitySet Name="EnrollEmpCouseClass" EntityType="Self.EnrollEmpCouseClass" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="EnrollFamilyStudent" EntityType="Self.EnrollFamilyStudent" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="EnrollFinishStudent" EntityType="Self.EnrollFinishStudent" Schema="santisart" store:Type="Tables" />
           <EntitySet Name="EnrollStudentCouse" EntityType="Self.EnrollStudentCouse" Schema="santisart" store:Type="Tables" />
@@ -1135,6 +1176,10 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
             <End Role="Course" EntitySet="Course" />
             <End Role="EnrollCouse" EntitySet="EnrollCouse" />
           </AssociationSet>
+          <AssociationSet Name="Fk_couse2" Association="Self.Fk_couse2">
+            <End Role="EnrollCouse" EntitySet="EnrollCouse" />
+            <End Role="EnrollEmpCouse" EntitySet="EnrollEmpCouse" />
+          </AssociationSet>
           <AssociationSet Name="FK_depart1" Association="Self.FK_depart1">
             <End Role="Department" EntitySet="Department" />
             <End Role="EnrollCouse" EntitySet="EnrollCouse" />
@@ -1151,17 +1196,21 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
             <End Role="Employee" EntitySet="Employee" />
             <End Role="EnrollEmpCouse" EntitySet="EnrollEmpCouse" />
           </AssociationSet>
-          <AssociationSet Name="Fk_emp4" Association="Self.Fk_emp4">
+          <AssociationSet Name="Fk_EmpCouse" Association="Self.Fk_EmpCouse">
             <End Role="EnrollEmpCouse" EntitySet="EnrollEmpCouse" />
-            <End Role="EnrollCouse" EntitySet="EnrollCouse" />
+            <End Role="EnrollEmpCouseClass" EntitySet="EnrollEmpCouseClass" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_EmpCouseClass" Association="Self.Fk_EmpCouseClass">
+            <End Role="EnrollEmpCouseClass" EntitySet="EnrollEmpCouseClass" />
+            <End Role="EnrollStudentCouse" EntitySet="EnrollStudentCouse" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_EnClass" Association="Self.Fk_EnClass">
+            <End Role="EnrollClass" EntitySet="EnrollClass" />
+            <End Role="EnrollEmpCouseClass" EntitySet="EnrollEmpCouseClass" />
           </AssociationSet>
           <AssociationSet Name="Fk_enr_pos" Association="Self.Fk_enr_pos">
             <End Role="Position" EntitySet="Position" />
             <End Role="Enroll_Emp_Pos" EntitySet="Enroll_Emp_Pos" />
-          </AssociationSet>
-          <AssociationSet Name="Fk_EnrCouseId" Association="Self.Fk_EnrCouseId">
-            <End Role="EnrollCouse" EntitySet="EnrollCouse" />
-            <End Role="EnrollStudentCouse" EntitySet="EnrollStudentCouse" />
           </AssociationSet>
           <AssociationSet Name="Fk_enroll_fam" Association="Self.Fk_enroll_fam">
             <End Role="Family" EntitySet="Family" />
@@ -1339,6 +1388,19 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
           </AssociationSet>
           <AssociationSet Name="Fk_yearSem" Association="santisar_Model.Fk_yearSem">
             <End Role="EnrollYearSemester" EntitySet="EnrollYearSemester" />
+            <End Role="EnrollStudentCouse" EntitySet="EnrollStudentCouse" />
+          </AssociationSet>
+          <EntitySet Name="EnrollEmpCouseClass" EntityType="santisar_Model.EnrollEmpCouseClass" />
+          <AssociationSet Name="Fk_EnClass" Association="santisar_Model.Fk_EnClass">
+            <End Role="EnrollClass" EntitySet="EnrollClass" />
+            <End Role="EnrollEmpCouseClass" EntitySet="EnrollEmpCouseClass" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_EmpCouse" Association="santisar_Model.Fk_EmpCouse">
+            <End Role="EnrollEmpCouse" EntitySet="EnrollEmpCouse" />
+            <End Role="EnrollEmpCouseClass" EntitySet="EnrollEmpCouseClass" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_EmpCouseClass" Association="santisar_Model.Fk_EmpCouseClass">
+            <End Role="EnrollEmpCouseClass" EntitySet="EnrollEmpCouseClass" />
             <End Role="EnrollStudentCouse" EntitySet="EnrollStudentCouse" />
           </AssociationSet>
           </EntityContainer>
@@ -2127,6 +2189,7 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
           <NavigationProperty Name="EnrollCouse" Relationship="santisar_Model.Fk_enCouse" FromRole="EnrollEmpCouse" ToRole="EnrollCouse" />
           <NavigationProperty Name="EnrollYearSemester" Relationship="santisar_Model.Fk_year2" FromRole="EnrollEmpCouse" ToRole="EnrollYearSemester" />
           <NavigationProperty Name="EnrollCouse1" Relationship="santisar_Model.Fk_emp4" FromRole="EnrollEmpCouse" ToRole="EnrollCouse" />
+          <NavigationProperty Name="EnrollEmpCouseClass" Relationship="santisar_Model.Fk_EmpCouse" FromRole="EnrollEmpCouse" ToRole="EnrollEmpCouseClass" />
         </EntityType>
         <Association Name="Fk_emp2">
           <End Type="santisar_Model.Employee" Role="Employee" Multiplicity="0..1">
@@ -2194,6 +2257,7 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
           <Property Name="EnrollClass_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="ClassInSchool" Relationship="santisar_Model.C__fk_class" FromRole="EnrollClass" ToRole="ClassInSchool" />
           <NavigationProperty Name="Enroll_student_class" Relationship="santisar_Model.fk_class" FromRole="EnrollClass" ToRole="Enroll_student_class" />
+          <NavigationProperty Name="EnrollEmpCouseClass" Relationship="santisar_Model.Fk_EnClass" FromRole="EnrollClass" ToRole="EnrollEmpCouseClass" />
         </EntityType>
         <Association Name="C__fk_class">
           <End Type="santisar_Model.ClassInSchool" Role="ClassInSchool" Multiplicity="0..1">
@@ -2256,6 +2320,9 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
           <NavigationProperty Name="Enroll_student_class" Relationship="santisar_Model.Fk_enrollStudent" FromRole="EnrollStudentCouse" ToRole="Enroll_student_class" />
           <NavigationProperty Name="EnrollCouse" Relationship="santisar_Model.Fk_EnrCouseId" FromRole="EnrollStudentCouse" ToRole="EnrollCouse" />
           <NavigationProperty Name="EnrollYearSemester" Relationship="santisar_Model.Fk_yearSem" FromRole="EnrollStudentCouse" ToRole="EnrollYearSemester" />
+          <Property Name="EnEmpCouseId" Type="Int32" />
+          <Property Name="EnEmpCouseClassId" Type="Int32" />
+          <NavigationProperty Name="EnrollEmpCouseClass" Relationship="santisar_Model.Fk_EmpCouseClass" FromRole="EnrollStudentCouse" ToRole="EnrollEmpCouseClass" />
         </EntityType>
         <Association Name="Fk_enrollStudent">
           <End Type="santisar_Model.Enroll_student_class" Role="Enroll_student_class" Multiplicity="0..1">
@@ -2296,6 +2363,59 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
             </Principal>
             <Dependent Role="EnrollStudentCouse">
               <PropertyRef Name="EnYearSemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EnrollEmpCouseClass">
+          <Key>
+            <PropertyRef Name="EnrollEmpCouseClassId" />
+          </Key>
+          <Property Name="EnrollEmpCouseClassId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EnEmpCouseId" Type="Int32" />
+          <Property Name="EnClassId" Type="Int32" />
+          <Property Name="Timestamp" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="EnrollClass" Relationship="santisar_Model.Fk_EnClass" FromRole="EnrollEmpCouseClass" ToRole="EnrollClass" />
+          <NavigationProperty Name="EnrollEmpCouse" Relationship="santisar_Model.Fk_EmpCouse" FromRole="EnrollEmpCouseClass" ToRole="EnrollEmpCouse" />
+          <NavigationProperty Name="EnrollStudentCouse" Relationship="santisar_Model.Fk_EmpCouseClass" FromRole="EnrollEmpCouseClass" ToRole="EnrollStudentCouse" />
+          <Property Name="Status" Type="Int32" />
+        </EntityType>
+        <Association Name="Fk_EnClass">
+          <End Type="santisar_Model.EnrollClass" Role="EnrollClass" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="santisar_Model.EnrollEmpCouseClass" Role="EnrollEmpCouseClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnrollClass">
+              <PropertyRef Name="EnrollClass_id" />
+            </Principal>
+            <Dependent Role="EnrollEmpCouseClass">
+              <PropertyRef Name="EnClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_EmpCouse">
+          <End Type="santisar_Model.EnrollEmpCouse" Role="EnrollEmpCouse" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="santisar_Model.EnrollEmpCouseClass" Role="EnrollEmpCouseClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnrollEmpCouse">
+              <PropertyRef Name="EnrollEmpCouseId" />
+            </Principal>
+            <Dependent Role="EnrollEmpCouseClass">
+              <PropertyRef Name="EnEmpCouseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_EmpCouseClass">
+          <End Type="santisar_Model.EnrollEmpCouseClass" Role="EnrollEmpCouseClass" Multiplicity="0..1" />
+          <End Type="santisar_Model.EnrollStudentCouse" Role="EnrollStudentCouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnrollEmpCouseClass">
+              <PropertyRef Name="EnrollEmpCouseClassId" />
+            </Principal>
+            <Dependent Role="EnrollStudentCouse">
+              <PropertyRef Name="EnEmpCouseClassId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2910,6 +3030,8 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
           <EntitySetMapping Name="EnrollStudentCouse">
             <EntityTypeMapping TypeName="santisar_Model.EnrollStudentCouse">
               <MappingFragment StoreEntitySet="EnrollStudentCouse">
+                <ScalarProperty Name="EnEmpCouseClassId" ColumnName="EnEmpCouseClassId" />
+                <ScalarProperty Name="EnEmpCouseId" ColumnName="EnEmpCouseId" />
                 <ScalarProperty Name="EnYearSemId" ColumnName="EnYearSemId" />
                 <ScalarProperty Name="EnrollStudentClassId" ColumnName="EnrollStudentClassId" />
                 <ScalarProperty Name="Semester" ColumnName="Semester" />
@@ -2922,6 +3044,17 @@ warning 6002: The table/view 'santisar_.santisart.ViewEmpPos' does not have a pr
                 <ScalarProperty Name="EnrollCouseId" ColumnName="EnrollCouseId" />
                 <ScalarProperty Name="studentId" ColumnName="studentId" />
                 <ScalarProperty Name="EnrollStudentCouseId" ColumnName="EnrollStudentCouseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnrollEmpCouseClass">
+            <EntityTypeMapping TypeName="santisar_Model.EnrollEmpCouseClass">
+              <MappingFragment StoreEntitySet="EnrollEmpCouseClass">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="EnClassId" ColumnName="EnClassId" />
+                <ScalarProperty Name="EnEmpCouseId" ColumnName="EnEmpCouseId" />
+                <ScalarProperty Name="EnrollEmpCouseClassId" ColumnName="EnrollEmpCouseClassId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
