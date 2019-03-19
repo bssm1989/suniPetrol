@@ -31,6 +31,8 @@ namespace santisart_app.Controllers
             ViewBag.Emp = db.Employee.Find(EnEmpCoues.EnEmpId);
             ViewBag.Couse = db.EnrollCouse.Find(EnEmpCoues.EnCouseId);
             ViewBag.EnEmpCouseId = id;
+            int itemGetEnrollCouseID = EnEmpCoues.EnrollCouse.EnrollCouseID ;
+            ViewBag.enCouseClassAllEmp = db.EnrollEmpCouseClass.Where(x => x.EnrollEmpCouse.EnrollCouse.EnrollCouseID == itemGetEnrollCouseID&&x.Status!=0).ToList();
             return View(db.EnrollClass.Where(x => x.ClassSchoolid == EnEmpCoues.EnrollCouse.ClassInSchool.ClassID&& x.Status_class==1)
             .ToList());
         }
@@ -223,6 +225,13 @@ namespace santisart_app.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(enrollEmpCouse).State = EntityState.Modified;
+                db.SaveChanges();
+                IEnumerable<EnrollEmpCouseClass> getEnrollEmpCouseClassXEMpCouseId = db.EnrollEmpCouseClass
+                    .Where(x => x.EnEmpCouseId == enrollEmpCouse.EnrollEmpCouseId);
+                foreach (var item in getEnrollEmpCouseClassXEMpCouseId)
+                {
+                    db.EnrollEmpCouseClass.Remove(item);
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

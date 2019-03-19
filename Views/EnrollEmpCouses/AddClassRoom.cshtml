@@ -38,31 +38,51 @@
 
       
         @foreach (var item in Model)
-            {
+        {
+            @*@((IEnumerable<EnrollEmpCouseClass>)ViewBag.enCouseClassAllEmp).Where(x=>x.EnClassId==item.EnrollClass_id).Count();*@
+            //var temp= ViewData["enCouseClassAllEmp"] as List<EnrollEmpCouseClass>;
             <tr>
                 
                 <input type="hidden" value="@ViewBag.EnEmpCouseId" name="EnrollEmpCouseClass2[@indexClass].EnEmpCouseId" />
                 <input type="hidden" value="@item.ClassSchoolid" name="EnrollEmpCouseClass2[@indexClass].Status"/>
                 <td>
-                    @if (item.EnrollEmpCouseClass.Where(z=>z.Status!=0&&z.EnEmpCouseId== ViewBag.EnEmpCouseId).Count() > 0)
+
+                    @if (item.EnrollEmpCouseClass.Where(z => z.Status != 0).Count() > 0)
                     {
-                        @Html.CheckBox(item.EnrollClass_id.ToString(), new
-                                       {
-                                           @class = "form-control",
-                                           Name = "EnrollEmpCouseClass2[" + indexClass + "].EnClassId",
-                                           Value= item.EnrollClass_id,
-                                           @checked = "checked"
-                                       })
+                        if (item.EnrollEmpCouseClass.Where(z => z.EnEmpCouseId == ViewBag.EnEmpCouseId&& z.Status != 0).Count() > 0)
+                        {
+                            @Html.CheckBox(item.EnrollClass_id.ToString(), new
+                       {
+                           @class = "form-control",
+                           Name = "EnrollEmpCouseClass2[" + indexClass + "].EnClassId",
+                           Value = item.EnrollClass_id,
+                           @checked = "checked"
+                       })
+                        }
+                        else
+                        {
+                            @Html.CheckBox(item.EnrollClass_id.ToString(), new
+                       {
+                           @class = "form-control",
+                           Name = "EnrollEmpCouseClass2[" + indexClass + "].EnClassId",
+                           Value = item.EnrollClass_id,
+                           @checked = "checked",
+                           @disabled = "disabled"
+                       })
+                        }
                     }
                     else
                     {
+
                         @Html.CheckBox(item.EnrollClass_id.ToString(), new
-                                      {
-                                          @class = "form-control",
-                                          Name = "EnrollEmpCouseClass2[" + indexClass + "].EnClassId",
-                                          Value= item.EnrollClass_id
-                                      })
+                        {
+                            @class = "form-control",
+                            Name = "EnrollEmpCouseClass2[" + indexClass + "].EnClassId",
+                            Value= item.EnrollClass_id
+                        })
                     }
+
+
 
                 </td>
 
