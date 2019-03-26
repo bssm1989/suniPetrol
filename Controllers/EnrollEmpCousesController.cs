@@ -150,6 +150,7 @@ namespace santisart_app.Controllers
             ViewBag.EnCouseId = new SelectList(newListCouse, "Id", "Name");
             ViewBag.EnEmpId = new SelectList(newListEmp, "Id", "Name");
             ViewBag.EnYearSemId = new SelectList(newListYear, "Id", "Name");
+            ddClass();
             return View();
         }
 
@@ -208,12 +209,49 @@ namespace santisart_app.Controllers
                     Name =  Couse.CouseTxtId + " " + Couse.Course.CourseName + " " + Couse.ClassInSchool.ClassShortName
 
                 });
+           
             ViewBag.EnCouseId = new SelectList(newListCouse, "Id", "Name",enrollEmpCouse.EnCouseId);
             ViewBag.EnEmpId = new SelectList(newListEmp, "Id", "Name", enrollEmpCouse.EnEmpId);
             ViewBag.EnYearSemId = new SelectList(newListYear, "Id", "Name", enrollEmpCouse.EnYearSemId);
             return View(enrollEmpCouse);
         }
+        public void ddClass()
+        {
+            List<object> newListClass = new List<object>();
+            foreach (var Couse in db.ClassInSchool)
+                newListClass.Add(new
+                {
+                    Id = Couse.ClassID,
+                    Name = Couse.ClassName
 
+                });
+            ViewBag.ClassInSchool = new SelectList(newListClass, "Id", "Name");
+        }
+        [HttpPost]
+        public JsonResult getDdEnCouse(int? id)
+        {
+            List<object> newListCouse = new List<object>();
+            foreach (var Couse in db.EnrollCouse.Where(x => x.ClassId==id))
+                newListCouse.Add(new
+                {
+                    Id = Couse.EnrollCouseID,
+                    Name = Couse.CouseTxtId + " " + Couse.Course.CourseName + " " + Couse.ClassInSchool.ClassShortName
+
+                });
+            return Json(new SelectList(newListCouse, "Id", "Name", JsonRequestBehavior.AllowGet));
+        }[HttpPost]
+        public JsonResult getDdEnYear(int? id)
+        {
+            List<object> newListYear = new List<object>();
+            foreach (var year in db.EnrollYearSemester)
+                newListYear.Add(new
+                {
+                    Id = year.YearEduId,
+                    Name = "ปีการศึกษา " + year.YearEdu.yearName + " เทอม" + year.Semester
+
+                });
+            return Json(new SelectList(newListYear, "Id", "Name", JsonRequestBehavior.AllowGet));
+        }
         // POST: EnrollEmpCouses/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
