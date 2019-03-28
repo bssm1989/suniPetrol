@@ -17,8 +17,8 @@ namespace santisart_app.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ClassInSchool()
         {
-            this.EnrollCouse = new HashSet<EnrollCouse>();
             this.EnrollClass = new HashSet<EnrollClass>();
+            this.EnrollCouse = new HashSet<EnrollCouse>();
         }
     
         public string ClassShortName { get; set; }
@@ -26,8 +26,8 @@ namespace santisart_app.Models
         public int ClassID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EnrollCouse> EnrollCouse { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EnrollClass> EnrollClass { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EnrollCouse> EnrollCouse { get; set; }
     }
 }

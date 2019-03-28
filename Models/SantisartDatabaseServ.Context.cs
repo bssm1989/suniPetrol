@@ -41,9 +41,14 @@ namespace santisart_app.Models
         public virtual DbSet<Enroll_RoomSession_Emp> Enroll_RoomSession_Emp { get; set; }
         public virtual DbSet<Enroll_student_all_event> Enroll_student_all_event { get; set; }
         public virtual DbSet<Enroll_student_class> Enroll_student_class { get; set; }
+        public virtual DbSet<EnrollClass> EnrollClass { get; set; }
         public virtual DbSet<EnrollCouse> EnrollCouse { get; set; }
+        public virtual DbSet<EnrollEmpCouse> EnrollEmpCouse { get; set; }
+        public virtual DbSet<EnrollEmpCouseClass> EnrollEmpCouseClass { get; set; }
         public virtual DbSet<EnrollFamilyStudent> EnrollFamilyStudent { get; set; }
         public virtual DbSet<EnrollFinishStudent> EnrollFinishStudent { get; set; }
+        public virtual DbSet<EnrollStudentCouse> EnrollStudentCouse { get; set; }
+        public virtual DbSet<EnrollYearSemester> EnrollYearSemester { get; set; }
         public virtual DbSet<Family> Family { get; set; }
         public virtual DbSet<FinishType> FinishType { get; set; }
         public virtual DbSet<Food> Food { get; set; }
@@ -61,10 +66,5 @@ namespace santisart_app.Models
         public virtual DbSet<studentEduContest2561> studentEduContest2561 { get; set; }
         public virtual DbSet<View_Couse> View_Couse { get; set; }
         public virtual DbSet<ViewEmpPos> ViewEmpPos { get; set; }
-        public virtual DbSet<EnrollYearSemester> EnrollYearSemester { get; set; }
-        public virtual DbSet<EnrollEmpCouse> EnrollEmpCouse { get; set; }
-        public virtual DbSet<EnrollClass> EnrollClass { get; set; }
-        public virtual DbSet<EnrollStudentCouse> EnrollStudentCouse { get; set; }
-        public virtual DbSet<EnrollEmpCouseClass> EnrollEmpCouseClass { get; set; }
     }
 }

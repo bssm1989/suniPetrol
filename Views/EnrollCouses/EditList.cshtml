@@ -37,15 +37,15 @@
                         <div class="col-md-12">
                               <select class="form-control"  Name ="EnrollCouse[@indexEnroll].CouseId">
            @foreach (SelectListItem option in ViewBag.CouseId)
-                                {
-                                      var trueTxT = "";
-                                      if (Convert.ToInt32(option.Value) == item.CouseId)
-                                      {
-                                          trueTxT = "selected";
-                                    }
+           {
+               var trueTxT = "";
+               if (Convert.ToInt32(option.Value) == item.CouseId)
+               {
+                   trueTxT = "selected";
+               }
 
                                     <option value="@option.Value" @trueTxT>@option.Text</option>
-                                }
+           }
 
                             </select>
 </div>

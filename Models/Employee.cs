@@ -19,7 +19,6 @@ namespace santisart_app.Models
         {
             this.Enroll_RoomSession_Emp = new HashSet<Enroll_RoomSession_Emp>();
             this.Enroll_Emp_Pos = new HashSet<Enroll_Emp_Pos>();
-            this.EnrollCouse = new HashSet<EnrollCouse>();
             this.EnrollEmpCouse = new HashSet<EnrollEmpCouse>();
         }
     
@@ -42,8 +41,6 @@ namespace santisart_app.Models
         public virtual ICollection<Enroll_RoomSession_Emp> Enroll_RoomSession_Emp { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Enroll_Emp_Pos> Enroll_Emp_Pos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EnrollCouse> EnrollCouse { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EnrollEmpCouse> EnrollEmpCouse { get; set; }
     }

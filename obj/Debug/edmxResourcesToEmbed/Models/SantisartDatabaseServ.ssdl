@@ -255,10 +255,9 @@
     <Key>
       <PropertyRef Name="EnrollStudentCouseId" />
     </Key>
-    <Property Name="EnrollStudentCouseId" Type="int" Nullable="false" />
     <Property Name="studentId" Type="int" />
     <Property Name="EnrollCouseId" Type="int" />
-    <Property Name="Score" Type="float" />
+    <Property Name="Score1" Type="float" />
     <Property Name="Grade" Type="float" />
     <Property Name="TeacerId" Type="int" />
     <Property Name="Timestamp" Type="datetime" />
@@ -269,6 +268,10 @@
     <Property Name="EnYearSemId" Type="int" />
     <Property Name="EnEmpCouseId" Type="int" />
     <Property Name="EnEmpCouseClassId" Type="int" />
+    <Property Name="EnrollStudentCouseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Score2" Type="float" />
+    <Property Name="Score3" Type="float" />
+    <Property Name="Status" Type="int" />
   </EntityType>
   <EntityType Name="EnrollYearSemester">
     <Key>

@@ -38,7 +38,7 @@
             @item.Employee.EmpTitle @item.Employee.EmpName @item.Employee.EmpLname
         </td>
         <td>
-            @item.EnrollCouse.CouseTxtId 
+            @item.EnrollCouse.CouseTxtId
         </td>
         <td>
             @item.EnrollCouse.Course.CourseName
@@ -48,24 +48,27 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EnrollYearSemester.YearEdu.yearName)
-        </td><td>
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.EnrollYearSemester.Semester)
         </td>
-             <td>
-                 
-                 @foreach (var items in item.EnrollEmpCouseClass.Where(x=>x.Status!=0))
-                 {
-                     <span class="badge badge-primary">@items.EnrollClass.ClassInSchool.ClassShortName/@items.EnrollClass.Class_room</span>
-                 }
-             </td>
+        <td>
+
+            @foreach (var items in item.EnrollEmpCouseClass.Where(x => x.Status != 0))
+            {
+                <a href="@Url.Action("IndexByIdEmpcouseClass", "EnrollStudentCouses", new { id = items.EnrollEmpCouseClassId })">
+                    <span class="badge badge-primary">@items.EnrollClass.ClassInSchool.ClassShortName/@items.EnrollClass.Class_room</span>
+                </a>
+            }
+        </td> 
         <td>
             @Html.DisplayFor(modelItem => item.EnEmpCosTimestamp)
         </td>
         <td>
-            @Html.ActionLink("เพิ่มชั้นเรียน", "AddClassRoom", new { id=item.EnrollEmpCouseId }) |
-            @Html.ActionLink("Edit", "Edit", new { id=item.EnrollEmpCouseId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EnrollEmpCouseId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EnrollEmpCouseId })
+            @Html.ActionLink("เพิ่มชั้นเรียน", "AddClassRoom", new { id = item.EnrollEmpCouseId }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.EnrollEmpCouseId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.EnrollEmpCouseId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.EnrollEmpCouseId })
         </td>
     </tr>
 }

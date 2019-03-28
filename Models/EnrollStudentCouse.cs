@@ -14,10 +14,9 @@ namespace santisart_app.Models
     
     public partial class EnrollStudentCouse
     {
-        public int EnrollStudentCouseId { get; set; }
         public Nullable<int> studentId { get; set; }
         public Nullable<int> EnrollCouseId { get; set; }
-        public Nullable<double> Score { get; set; }
+        public Nullable<double> Score1 { get; set; }
         public Nullable<double> Grade { get; set; }
         public Nullable<int> TeacerId { get; set; }
         public Nullable<System.DateTime> Timestamp { get; set; }
@@ -28,10 +27,13 @@ namespace santisart_app.Models
         public Nullable<int> EnYearSemId { get; set; }
         public Nullable<int> EnEmpCouseId { get; set; }
         public Nullable<int> EnEmpCouseClassId { get; set; }
+        public int EnrollStudentCouseId { get; set; }
+        public Nullable<double> Score2 { get; set; }
+        public Nullable<double> Score3 { get; set; }
+        public Nullable<int> Status { get; set; }
     
         public virtual Enroll_student_class Enroll_student_class { get; set; }
-        public virtual EnrollCouse EnrollCouse { get; set; }
-        public virtual EnrollYearSemester EnrollYearSemester { get; set; }
         public virtual EnrollEmpCouseClass EnrollEmpCouseClass { get; set; }
+        public virtual EnrollYearSemester EnrollYearSemester { get; set; }
     }
 }

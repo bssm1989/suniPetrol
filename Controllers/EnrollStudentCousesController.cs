@@ -18,18 +18,66 @@ namespace santisart_app.Controllers
         public ActionResult IndexById(int? id)
         {
             var enrollStudentCouse = db.EnrollStudentCouse
-                                        .Where(x=>x.studentId==id)
-                                        .Include(e => e.EnrollCouse)
-                                        .Include(e => e.Enroll_student_class)
-                                        .OrderBy(x=>x.EnrollCouse.ClassId)
-                                        .ThenBy(x=>x.EnrollCouse.CouseId);
+                                        .Where(x => x.studentId == id)
+                                        .Include(e => e.Enroll_student_class);
             ViewBag.studentCouse = enrollStudentCouse.ToList();
+            return View(enrollStudentCouse.ToList());
+        }
+       public ActionResult EditListScoreByCouse(int? id)
+        {
+
+            var enrollStudentCouse = db.EnrollStudentCouse
+                                        .Where(x => x.EnEmpCouseClassId == id)
+                                        .Include(e => e.Enroll_student_class)
+                                        .Where(x => x.EnEmpCouseClassId == id);
+            //ViewBag.studentCouse = enrollStudentCouse.ToList();
+            return View(enrollStudentCouse.ToList());
+        }
+        [HttpPost]
+        public ActionResult EditListScoreByCouse(List<EnrollStudentCouse> EnrollStudentCouse)
+        {
+            foreach (var item in EnrollStudentCouse)
+            {
+                EnrollStudentCouse EditListScoreByCouse = db.EnrollStudentCouse.Find(item.EnrollStudentCouseId);
+                EditListScoreByCouse.Score1 = item.Score1;
+                EditListScoreByCouse.Score2 = item.Score2;
+                EditListScoreByCouse.Score3 = item.Score3;
+                EditListScoreByCouse.Grade = item.Grade;
+                EditListScoreByCouse.Timestamp = System.DateTime.Now;
+
+            }
+            db.SaveChanges();
+            return RedirectToAction("IndexByIdEmpcouseClass", new { id = EnrollStudentCouse.First().EnEmpCouseClassId });
+            //return RedirectToAction("IndexByIdEmpcouseClass",new { id = 26});
+        }
+        public ActionResult IndexByIdEmpcouseClass(int? id)
+        {
+            var getClass = db.EnrollEmpCouseClass.Find(id).EnClassId;
+            var getListStudents = db.Enroll_student_class.Where(x => x.EnrollClass.EnrollClass_id == getClass);
+            if (db.EnrollStudentCouse.Where(x => x.EnEmpCouseClassId == id).Count() == 0)
+            {
+                foreach (var student in getListStudents)
+                {
+                    db.EnrollStudentCouse.Add(new EnrollStudentCouse
+                    {
+                        EnrollStudentClassId = student.Enrol_stu_class_id,
+                        EnEmpCouseClassId = id,
+                        Timestamp = System.DateTime.Now
+                    });
+                }
+db.SaveChanges();
+            }
+
+            var enrollStudentCouse = db.EnrollStudentCouse
+                                        .Where(x => x.EnEmpCouseClassId == id)
+                                        .Include(e => e.Enroll_student_class)
+                                        .Where(x => x.EnEmpCouseClassId == id);
+            //ViewBag.studentCouse = enrollStudentCouse.ToList();
             return View(enrollStudentCouse.ToList());
         }
         public ActionResult Index()
         {
             var enrollStudentCouse = db.EnrollStudentCouse
-                                        .Include(e => e.EnrollCouse)
                                         .Include(e => e.Enroll_student_class);
             return View(enrollStudentCouse.ToList());
         }

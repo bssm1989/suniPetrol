@@ -4134,6 +4134,8 @@
     <Content Include="Views\EnrollEmpCouses\Index.cshtml" />
     <Content Include="Views\EnrollCouses\EditList.cshtml" />
     <Content Include="Views\EnrollEmpCouses\AddClassRoom.cshtml" />
+    <Content Include="Views\EnrollStudentCouses\IndexByIdEmpcouseClass.cshtml" />
+    <Content Include="Views\EnrollStudentCouses\EditListScoreByCouse.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

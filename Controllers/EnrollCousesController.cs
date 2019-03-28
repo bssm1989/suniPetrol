@@ -18,7 +18,6 @@ namespace santisart_app.Controllers
         public ActionResult Index()
         {
             var enrollCouse = db.EnrollCouse
-                .Include(e => e.Employee)
                 .Include(e => e.ClassInSchool)
                 .Include(e => e.Course)
                 .Include(e => e.Department)
@@ -31,7 +30,6 @@ namespace santisart_app.Controllers
         {
             var enrollCouse = db.EnrollCouse
                 .Where(xx=>xx.ClassInSchool.ClassShortName=="ป.1")
-                .Include(e => e.Employee)
                 .Include(e => e.ClassInSchool)
                 .Include(e => e.Course)
                 .Include(e => e.Department)
