@@ -1,0 +1,66 @@
+﻿@model santisart_app.Models.payPetrol
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>payPetrol</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.system_petrol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.system_petrol)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.meter_truck)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.meter_truck)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pay_petrol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pay_petrol)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mem_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mem_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.timestamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.timestamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.truck.id_truck)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.truck.id_truck)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

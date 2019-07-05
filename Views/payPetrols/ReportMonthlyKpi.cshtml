@@ -1,0 +1,134 @@
+﻿@model IEnumerable < santisart_app.Models.payPetrol >
+    @using santisart_app.Models;
+    @{  var listLastmeter = ViewData["listMeterLast"] as List<payPetrol>;
+                    if (ViewData["listTruck"] != null)
+                    {
+                        if (ViewData.Values != null && ViewData.Values.Count() > 0)
+                        {
+                            foreach (int itemCarid in (List<int>)ViewData["listTruck"])
+                            {
+
+                                var truckId = Model.Where(x => x.car_id == itemCarid).FirstOrDefault();
+                                if (truckId != null)
+                                {
+<h2>@truckId.truck.id_truck.ToString()</h2>
+                                }
+<table class="table">
+    <tr>
+        <th>
+            วันที่เติม
+        </th>
+        <th>
+            มิเตอร์รถ
+        <th>
+            ระยะทาง	
+
+        </th>
+        <th>
+            น้ำมันที่เติม
+        </th>
+        <th>
+           
+        </th>
+        
+        
+            <tr>
+                <td>    ยอดยกมา</td>
+                <td>
+                    @{
+                        var meterTruck = listLastmeter.Where(a => a.car_id == itemCarid).FirstOrDefault();
+
+                        // float lastMeterByCarid = listLastmeter.Where(a => a.car_id == itemCarid).FirstOrDefault().meter_truck ?? 0;
+                        float lastMeterByCarid;
+                        float lastPetrol;
+                        if (meterTruck!=null)
+                        {
+                            lastMeterByCarid = meterTruck.meter_truck.Value;
+                            lastPetrol = meterTruck.pay_petrol.Value;
+                        }
+                        else
+                        {
+                            lastMeterByCarid = 0;
+                            lastPetrol = 0;
+                        }
+
+                    }
+                    @lastMeterByCarid
+                </td>
+                <td>
+                    
+                </td>
+                <td>    @lastPetrol </td>
+                <td>   </td>
+            </tr>
+       @{ 
+           int[] tempMeter = new int[60];
+           int[] tempPetrol = new int[60];
+           int sumMeter=0, sumPetrol=0;
+           var intIndex = 0;
+       }
+
+    
+        @foreach (var item in Model.Where(x => x.car_id == itemCarid))
+        {
+        <tr>
+            <td>
+                @{var datePayPetrol = item.mem_date.HasValue ? item.mem_date.Value.ToString("dd/MM/yyyy") : "[N/A]"; }
+            @datePayPetrol
+        </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.meter_truck)
+            </td>
+            <td>@{ 
+                float diffmeter = 0;
+                int meterTruckLast = 0;
+                tempMeter[intIndex] = item.meter_truck == null ? 0 : (int)item.meter_truck;
+                tempPetrol[intIndex] = item.pay_petrol == null ? 0 : (int)item.pay_petrol;
+
+                sumPetrol = sumPetrol + tempPetrol[intIndex];
+                if (item.meter_truck == null)
+                {
+                    meterTruckLast = 0;
+                }
+                else
+                {
+                    meterTruckLast = (int)item.meter_truck;
+                }
+                if (intIndex == 0)
+                {
+                    diffmeter = meterTruckLast - lastMeterByCarid;
+
+                }
+                else
+                {
+
+                    diffmeter = meterTruckLast - tempMeter[intIndex - 1];
+                }
+                sumMeter =(int) diffmeter + tempMeter[intIndex];
+                intIndex++;
+
+            }
+             @diffmeter
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pay_petrol)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+        }
+    <tr>
+        <td></td>
+        <td>รวม</td>
+        <td>@sumMeter</td>
+        <td>@sumPetrol</td>
+    </tr>
+
+</table>
+                    }
+                }
+            }
+        }

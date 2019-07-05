@@ -1,0 +1,50 @@
+﻿@model santisart_app.Models.truck
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>truck</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.id_truck)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_truck)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.timestamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.timestamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.company.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.company.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.car_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

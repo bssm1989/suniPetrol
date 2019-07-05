@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dd0302fb51bd4233a2a67d6b419a986b" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="backupServerModel.attendance" Width="1.5" PointX="9.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.attendance_day" Width="1.5" PointX="5.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.C_enrollattstudent" Width="1.5" PointX="7.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.Class" Width="1.5" PointX="10.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.ClassInSchool" Width="1.5" PointX="1.5" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.ContestEducationSchool" Width="1.5" PointX="11.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.Course" Width="1.5" PointX="1.5" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.Department" Width="1.5" PointX="1.5" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.Employee" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.Enroll_EduContest" Width="1.5" PointX="11.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.Enroll_Emp_Pos" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.Enroll_paid" Width="1.5" PointX="12.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.Enroll_pay" Width="1.5" PointX="9.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.Enroll_RoomSession_Emp" Width="1.5" PointX="6" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.Enroll_student_all_event" Width="1.5" PointX="13.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.Enroll_student_class" Width="1.5" PointX="5.25" PointY="35.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.EnrollClass" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.EnrollCouse" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.EnrollEmpCouse" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.EnrollEmpCouseClass" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.EnrollFamilyStudent" Width="1.5" PointX="8.25" PointY="35" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.EnrollFinishStudent" Width="1.5" PointX="5.25" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.EnrollStudentAttdance" Width="1.5" PointX="13.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.EnrollStudentCouse" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.EnrollYearSemester" Width="1.5" PointX="0.75" PointY="26.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.Family" Width="1.5" PointX="6" PointY="38.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.FinishType" Width="1.5" PointX="3" PointY="27.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.Food" Width="1.5" PointX="11.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.Monthly" Width="1.5" PointX="13.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.Position" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.RoomSession" Width="1.5" PointX="3.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.student2561" Width="1.5" PointX="5.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.student2561_copy1" Width="1.5" PointX="14.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.student2561_food" Width="1.5" PointX="15.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.studentEduContest2561" Width="1.5" PointX="15.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.Student" Width="1.5" PointX="3" PointY="34.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.Students_food" Width="1.5" PointX="16.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.UserProfile" Width="1.5" PointX="7.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.View_Couse" Width="1.5" PointX="17.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.ViewEmpPos" Width="1.5" PointX="18.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.YearEdu" Width="1.5" PointX="1.5" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.Employee_copy1" Width="1.5" PointX="8.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.Enroll_Emp_Pos_copy1" Width="1.5" PointX="11" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.TestCourse" Width="1.5" PointX="18.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.TestCourseInstructor" Width="1.5" PointX="9.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.TestDepartment" Width="1.5" PointX="11.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.TestInstructor" Width="1.5" PointX="3.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.TestStudent" Width="1.5" PointX="5.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.TestStudentCourse" Width="1.5" PointX="19.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.C_enrollattstudent1" Width="1.5" PointX="19.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.EnrollStudentAttdance1" Width="1.5" PointX="13.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.student25611" Width="1.5" PointX="19.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.student2561_copy11" Width="1.5" PointX="20.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.student2561_food1" Width="1.5" PointX="15.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.studentEduContest25611" Width="1.5" PointX="21.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="backupServerModel.ViewEmpPos1" Width="1.5" PointX="7.75" PointY="22.75" IsExpanded="true" />
+        <AssociationConnector Association="backupServerModel.FK_C__fk_class" ManuallyRouted="false" />
+        <AssociationConnector Association="backupServerModel.FK_class1" ManuallyRouted="false" />
+        <AssociationConnector Association="backupServerModel.Fk_couse1" ManuallyRouted="false" />
+        <AssociationConnector Association="backupServerModel.FK_depart1" ManuallyRouted="false" />
+        <AssociationConnector Association="backupServerModel.Fk_emp" ManuallyRouted="false" />
+        <AssociationConnector Association="backupServerModel.Fk_emp_enr" ManuallyRouted="false" />
+        <AssociationConnector Association="backupServerModel.Fk_emp2" ManuallyRouted="false" />
+        <AssociationConnector Association="backupServerModel.Fk_enr_pos" ManuallyRouted="false" />
+        <AssociationConnector Association="backupServerModel.Fk_room" ManuallyRouted="false" />
+        <AssociationConnector Association="backupServerModel.fk_class" ManuallyRouted="false" />
+        <AssociationConnector Association="backupServerModel.Fk_enrollStudent" ManuallyRouted="false" />
+        <AssociationConnector Association="backupServerModel.Fk_student2" ManuallyRouted="false" />
+        <AssociationConnector Association="backupServerModel.Fk_EnClass" ManuallyRouted="false" />
+        <AssociationConnector Association="backupServerModel.Fk_couse2" ManuallyRouted="false" />
+        <AssociationConnector Association="backupServerModel.Fk_EmpCouse" ManuallyRouted="false" />
+        <AssociationConnector Association="backupServerModel.Fk_year2" ManuallyRouted="false" />
+        <AssociationConnector Association="backupServerModel.Fk_EmpCouseClass" ManuallyRouted="false" />
+        <AssociationConnector Association="backupServerModel.Fk_enroll_fam" ManuallyRouted="false" />
+        <AssociationConnector Association="backupServerModel.Fk_enroll_Studnet" ManuallyRouted="false" />
+        <AssociationConnector Association="backupServerModel.Fk_finish_student" ManuallyRouted="false" />
+        <AssociationConnector Association="backupServerModel.Fk_finsh_form" ManuallyRouted="false" />
+        <AssociationConnector Association="backupServerModel.Fk_yearSem" ManuallyRouted="false" />
+        <AssociationConnector Association="backupServerModel.Fk_Year" ManuallyRouted="false" />
+        <AssociationConnector Association="backupServerModel.positions" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="backupServerModel.Test" Width="1.5" PointX="10.375" PointY="22.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

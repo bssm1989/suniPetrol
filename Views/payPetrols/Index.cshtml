@@ -1,0 +1,196 @@
+﻿@model IEnumerable<santisart_app.Models.payPetrol>
+
+@{
+    ViewBag.Title = "Index";
+}
+<head>
+    <script type="text/javascript" language="javascript" class="init">
+        var editor;
+        $(document).ready(function () {
+            $('#example').DataTable({
+               
+                "scrollCollapse": false,
+                "info": true,
+                "paging": true,
+                'aoColumns': [
+                    { sWidth: "15%", bSearchable: true, bSortable: true },
+                    { sWidth: "15%", bSearchable: true, bSortable: true },
+                    { sWidth: "15%", bSearchable: true, bSortable: true },
+                    { sWidth: "15%", bSearchable: true, bSortable: true },
+                    { sWidth: "15%", bSearchable: true, bSortable: true },
+                    { sWidth: "15%", bSearchable: true, bSortable: true },
+                    { sWidth: "15%", bSearchable: true, bSortable: true }
+             ], 'buttons': [
+                   { extend: "create", editor: editor },
+                   { extend: "edit", editor: editor },
+                   { extend: "remove", editor: editor }
+               ],
+
+                'keys': {
+                    columns: ':not(:first-child)',
+                    editor: editor
+                },
+                'select': {
+                    style: 'os',
+                    selector: 'td:first-child',
+                    blurable: true
+                },
+            });
+        });
+        //$(document).ready(function () {
+        //    editor = new $.fn.dataTable.Editor({
+
+        //        table: "#example",
+        //        fields: [{
+        //            label: "First name:",
+        //            name: "first_name"
+        //        }, {
+        //            label: "Last name:",
+        //            name: "last_name"
+        //        }, {
+        //            label: "Position:",
+        //            name: "position"
+        //        }, {
+        //            label: "Office:",
+        //            name: "office"
+        //        }, {
+        //            label: "Extension:",
+        //            name: "extn"
+        //        }, {
+        //            label: "Start date:",
+        //            name: "start_date",
+        //            type: "datetime"
+        //        }, {
+        //            label: "Salary:",
+        //            name: "salary"
+        //        }
+        //        ]
+        //    });
+
+        //    var table = $('#example').DataTable({
+        //        dom: "Bfrtip",
+
+                
+        //        keys: {
+        //            columns: ':not(:first-child)',
+        //            editor: editor
+        //        },
+        //        select: {
+        //            style: 'os',
+        //            selector: 'td:first-child',
+        //            blurable: true
+        //        },
+        //        buttons: [
+        //            { extend: "create", editor: editor },
+        //            { extend: "edit", editor: editor },
+        //            { extend: "remove", editor: editor }
+        //        ]
+        //    });
+        //});
+
+    </script>
+    </head>
+        <h2>Index</h2>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <table id="example"  class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info" >
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.system_petrol)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.meter_truck)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.pay_petrol)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.mem_date)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.truck.company.Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.truck.id_truck)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.system_petrol)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.meter_truck)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.pay_petrol)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.mem_date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.truck.company.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.truck.id_truck)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+        @*<div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <table id="example"  class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th width="18%">Start date</th>
+                            <th>Salary</th>
+                        </tr>
+                        </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.system_petrol)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.meter_truck)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.pay_petrol)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.mem_date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.truck.company.Name)
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+</table>
+            </div>
+        </div>*@
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>

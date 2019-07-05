@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3c87bc60b9b7407ea4447a119860eaef" Name="Diagram1">
+        <EntityTypeShape EntityType="suniPetrolModel1.company" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="suniPetrolModel1.Enroll_reportTruckKpi" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="suniPetrolModel1.Enroll_truck" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="suniPetrolModel1.payPetrol" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="suniPetrolModel1.truck" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <AssociationConnector Association="suniPetrolModel1.fk_company" ManuallyRouted="false" />
+        <AssociationConnector Association="suniPetrolModel1.fk_car_id2" ManuallyRouted="false" />
+        <AssociationConnector Association="suniPetrolModel1.fk_car_id" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

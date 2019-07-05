@@ -1,0 +1,56 @@
+﻿@model santisart_app.Models.truck
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>truck</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.id_truck)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_truck)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.timestamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.timestamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.company.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.company.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

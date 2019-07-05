@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="suniPetrolModel1StoreContainer" CdmEntityContainer="suniPetrolEntities1">
+    <EntitySetMapping Name="companies">
+      <EntityTypeMapping TypeName="suniPetrolModel1.company">
+        <MappingFragment StoreEntitySet="company">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="ReportKpiFile" ColumnName="ReportKpiFile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Enroll_reportTruckKpi">
+      <EntityTypeMapping TypeName="suniPetrolModel1.Enroll_reportTruckKpi">
+        <MappingFragment StoreEntitySet="Enroll_reportTruckKpi">
+          <ScalarProperty Name="id_report" ColumnName="id_report" />
+          <ScalarProperty Name="kpi" ColumnName="kpi" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="meter_last" ColumnName="meter_last" />
+          <ScalarProperty Name="petrol_last" ColumnName="petrol_last" />
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+          <ScalarProperty Name="car_id" ColumnName="car_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Enroll_truck">
+      <EntityTypeMapping TypeName="suniPetrolModel1.Enroll_truck">
+        <MappingFragment StoreEntitySet="Enroll_truck">
+          <ScalarProperty Name="car_id" ColumnName="car_id" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="payPetrols">
+      <EntityTypeMapping TypeName="suniPetrolModel1.payPetrol">
+        <MappingFragment StoreEntitySet="payPetrol">
+          <ScalarProperty Name="system_petrol" ColumnName="system_petrol" />
+          <ScalarProperty Name="meter_truck" ColumnName="meter_truck" />
+          <ScalarProperty Name="pay_petrol" ColumnName="pay_petrol" />
+          <ScalarProperty Name="car_id" ColumnName="car_id" />
+          <ScalarProperty Name="mem_date" ColumnName="mem_date" />
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trucks">
+      <EntityTypeMapping TypeName="suniPetrolModel1.truck">
+        <MappingFragment StoreEntitySet="truck">
+          <ScalarProperty Name="id_truck" ColumnName="id_truck" />
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="car_id" ColumnName="car_id" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+          <ScalarProperty Name="excelPageReportKpi" ColumnName="excelPageReportKpi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

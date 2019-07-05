@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="suniPetrolModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="company">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" />
+          <Property Name="timestamp" Type="datetime2" Precision="7" />
+          <Property Name="type" Type="varchar" MaxLength="255" />
+          <Property Name="ReportKpiFile" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Enroll_reportTruckKpi">
+          <Key>
+            <PropertyRef Name="id_report" />
+          </Key>
+          <Property Name="id_report" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kpi" Type="float" />
+          <Property Name="date" Type="date" />
+          <Property Name="meter_last" Type="int" />
+          <Property Name="petrol_last" Type="float" />
+          <Property Name="timestamp" Type="datetime" />
+          <Property Name="car_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Enroll_truck">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="car_id" Type="int" />
+          <Property Name="company_id" Type="int" />
+          <Property Name="timestamp" Type="datetime" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="payPetrol">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="system_petrol" Type="real" />
+          <Property Name="meter_truck" Type="real" />
+          <Property Name="pay_petrol" Type="real" />
+          <Property Name="car_id" Type="int" />
+          <Property Name="mem_date" Type="date" />
+          <Property Name="timestamp" Type="datetime" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="truck">
+          <Key>
+            <PropertyRef Name="car_id" />
+          </Key>
+          <Property Name="id_truck" Type="varchar" MaxLength="20" />
+          <Property Name="timestamp" Type="datetime" />
+          <Property Name="type" Type="varchar" MaxLength="20" />
+          <Property Name="car_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="company_id" Type="int" />
+          <Property Name="excelPageReportKpi" Type="int" />
+        </EntityType>
+        <Association Name="fk_car_id">
+          <End Role="truck" Type="Self.truck" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="payPetrol" Type="Self.payPetrol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="truck">
+              <PropertyRef Name="car_id" />
+            </Principal>
+            <Dependent Role="payPetrol">
+              <PropertyRef Name="car_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_car_id2">
+          <End Role="truck" Type="Self.truck" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Enroll_reportTruckKpi" Type="Self.Enroll_reportTruckKpi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="truck">
+              <PropertyRef Name="car_id" />
+            </Principal>
+            <Dependent Role="Enroll_reportTruckKpi">
+              <PropertyRef Name="car_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_company">
+          <End Role="company" Type="Self.company" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="truck" Type="Self.truck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="truck">
+              <PropertyRef Name="company_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="suniPetrolModel1StoreContainer">
+          <EntitySet Name="company" EntityType="Self.company" Schema="ph20301762147" store:Type="Tables" />
+          <EntitySet Name="Enroll_reportTruckKpi" EntityType="Self.Enroll_reportTruckKpi" Schema="ph20301762147" store:Type="Tables" />
+          <EntitySet Name="Enroll_truck" EntityType="Self.Enroll_truck" Schema="ph20301762147" store:Type="Tables" />
+          <EntitySet Name="payPetrol" EntityType="Self.payPetrol" Schema="ph20301762147" store:Type="Tables" />
+          <EntitySet Name="truck" EntityType="Self.truck" Schema="ph20301762147" store:Type="Tables" />
+          <AssociationSet Name="fk_car_id" Association="Self.fk_car_id">
+            <End Role="truck" EntitySet="truck" />
+            <End Role="payPetrol" EntitySet="payPetrol" />
+          </AssociationSet>
+          <AssociationSet Name="fk_car_id2" Association="Self.fk_car_id2">
+            <End Role="truck" EntitySet="truck" />
+            <End Role="Enroll_reportTruckKpi" EntitySet="Enroll_reportTruckKpi" />
+          </AssociationSet>
+          <AssociationSet Name="fk_company" Association="Self.fk_company">
+            <End Role="company" EntitySet="company" />
+            <End Role="truck" EntitySet="truck" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="suniPetrolModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="company">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="timestamp" Type="DateTime" Precision="7" />
+          <Property Name="type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ReportKpiFile" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="trucks" Relationship="Self.fk_company" FromRole="company" ToRole="truck" />
+        </EntityType>
+        <EntityType Name="Enroll_reportTruckKpi">
+          <Key>
+            <PropertyRef Name="id_report" />
+          </Key>
+          <Property Name="id_report" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kpi" Type="Double" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="meter_last" Type="Int32" />
+          <Property Name="petrol_last" Type="Double" />
+          <Property Name="timestamp" Type="DateTime" Precision="3" />
+          <Property Name="car_id" Type="Int32" />
+          <NavigationProperty Name="truck" Relationship="Self.fk_car_id2" FromRole="Enroll_reportTruckKpi" ToRole="truck" />
+        </EntityType>
+        <EntityType Name="Enroll_truck">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="car_id" Type="Int32" />
+          <Property Name="company_id" Type="Int32" />
+          <Property Name="timestamp" Type="DateTime" Precision="3" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="payPetrol">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="system_petrol" Type="Single" />
+          <Property Name="meter_truck" Type="Single" />
+          <Property Name="pay_petrol" Type="Single" />
+          <Property Name="car_id" Type="Int32" />
+          <Property Name="mem_date" Type="DateTime" Precision="0" />
+          <Property Name="timestamp" Type="DateTime" Precision="3" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="truck" Relationship="Self.fk_car_id" FromRole="payPetrol" ToRole="truck" />
+        </EntityType>
+        <EntityType Name="truck">
+          <Key>
+            <PropertyRef Name="car_id" />
+          </Key>
+          <Property Name="id_truck" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="timestamp" Type="DateTime" Precision="3" />
+          <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="car_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="company_id" Type="Int32" />
+          <Property Name="excelPageReportKpi" Type="Int32" />
+          <NavigationProperty Name="company" Relationship="Self.fk_company" FromRole="truck" ToRole="company" />
+          <NavigationProperty Name="Enroll_reportTruckKpi" Relationship="Self.fk_car_id2" FromRole="truck" ToRole="Enroll_reportTruckKpi" />
+          <NavigationProperty Name="payPetrols" Relationship="Self.fk_car_id" FromRole="truck" ToRole="payPetrol" />
+        </EntityType>
+        <Association Name="fk_company">
+          <End Role="company" Type="Self.company" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="truck" Type="Self.truck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="truck">
+              <PropertyRef Name="company_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_car_id2">
+          <End Role="truck" Type="Self.truck" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Enroll_reportTruckKpi" Type="Self.Enroll_reportTruckKpi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="truck">
+              <PropertyRef Name="car_id" />
+            </Principal>
+            <Dependent Role="Enroll_reportTruckKpi">
+              <PropertyRef Name="car_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_car_id">
+          <End Role="truck" Type="Self.truck" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="payPetrol" Type="Self.payPetrol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="truck">
+              <PropertyRef Name="car_id" />
+            </Principal>
+            <Dependent Role="payPetrol">
+              <PropertyRef Name="car_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="suniPetrolEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="companies" EntityType="Self.company" />
+          <EntitySet Name="Enroll_reportTruckKpi" EntityType="Self.Enroll_reportTruckKpi" />
+          <EntitySet Name="Enroll_truck" EntityType="Self.Enroll_truck" />
+          <EntitySet Name="payPetrols" EntityType="Self.payPetrol" />
+          <EntitySet Name="trucks" EntityType="Self.truck" />
+          <AssociationSet Name="fk_company" Association="Self.fk_company">
+            <End Role="company" EntitySet="companies" />
+            <End Role="truck" EntitySet="trucks" />
+          </AssociationSet>
+          <AssociationSet Name="fk_car_id2" Association="Self.fk_car_id2">
+            <End Role="truck" EntitySet="trucks" />
+            <End Role="Enroll_reportTruckKpi" EntitySet="Enroll_reportTruckKpi" />
+          </AssociationSet>
+          <AssociationSet Name="fk_car_id" Association="Self.fk_car_id">
+            <End Role="truck" EntitySet="trucks" />
+            <End Role="payPetrol" EntitySet="payPetrols" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="suniPetrolModel1StoreContainer" CdmEntityContainer="suniPetrolEntities1">
+          <EntitySetMapping Name="companies">
+            <EntityTypeMapping TypeName="suniPetrolModel1.company">
+              <MappingFragment StoreEntitySet="company">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="ReportKpiFile" ColumnName="ReportKpiFile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enroll_reportTruckKpi">
+            <EntityTypeMapping TypeName="suniPetrolModel1.Enroll_reportTruckKpi">
+              <MappingFragment StoreEntitySet="Enroll_reportTruckKpi">
+                <ScalarProperty Name="id_report" ColumnName="id_report" />
+                <ScalarProperty Name="kpi" ColumnName="kpi" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="meter_last" ColumnName="meter_last" />
+                <ScalarProperty Name="petrol_last" ColumnName="petrol_last" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="car_id" ColumnName="car_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enroll_truck">
+            <EntityTypeMapping TypeName="suniPetrolModel1.Enroll_truck">
+              <MappingFragment StoreEntitySet="Enroll_truck">
+                <ScalarProperty Name="car_id" ColumnName="car_id" />
+                <ScalarProperty Name="company_id" ColumnName="company_id" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="payPetrols">
+            <EntityTypeMapping TypeName="suniPetrolModel1.payPetrol">
+              <MappingFragment StoreEntitySet="payPetrol">
+                <ScalarProperty Name="system_petrol" ColumnName="system_petrol" />
+                <ScalarProperty Name="meter_truck" ColumnName="meter_truck" />
+                <ScalarProperty Name="pay_petrol" ColumnName="pay_petrol" />
+                <ScalarProperty Name="car_id" ColumnName="car_id" />
+                <ScalarProperty Name="mem_date" ColumnName="mem_date" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="trucks">
+            <EntityTypeMapping TypeName="suniPetrolModel1.truck">
+              <MappingFragment StoreEntitySet="truck">
+                <ScalarProperty Name="id_truck" ColumnName="id_truck" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="car_id" ColumnName="car_id" />
+                <ScalarProperty Name="company_id" ColumnName="company_id" />
+                <ScalarProperty Name="excelPageReportKpi" ColumnName="excelPageReportKpi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

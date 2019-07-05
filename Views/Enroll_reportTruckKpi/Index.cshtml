@@ -1,0 +1,63 @@
+﻿@model IEnumerable<santisart_app.Models.Enroll_reportTruckKpi>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.kpi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.meter_last)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.petrol_last)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.timestamp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.truck.id_truck)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.kpi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.meter_last)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.petrol_last)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.timestamp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.truck.id_truck)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_report }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_report }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_report })
+        </td>
+    </tr>
+}
+
+</table>

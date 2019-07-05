@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="suniPetrolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="suniPetrolEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Enroll_reportTruckKpi" EntityType="suniPetrolModel.Enroll_reportTruckKpi" />
+    <EntitySet Name="Enroll_truck" EntityType="suniPetrolModel.Enroll_truck" />
+    <EntitySet Name="payPetrols" EntityType="suniPetrolModel.payPetrol" />
+    <EntitySet Name="companies" EntityType="suniPetrolModel.company" />
+    <EntitySet Name="trucks" EntityType="suniPetrolModel.truck" />
+    <AssociationSet Name="fk_company" Association="suniPetrolModel.fk_company">
+      <End Role="company" EntitySet="companies" />
+      <End Role="truck" EntitySet="trucks" />
+    </AssociationSet>
+    <AssociationSet Name="fk_car_id2" Association="suniPetrolModel.fk_car_id2">
+      <End Role="truck" EntitySet="trucks" />
+      <End Role="Enroll_reportTruckKpi" EntitySet="Enroll_reportTruckKpi" />
+    </AssociationSet>
+    <AssociationSet Name="fk_car_id" Association="suniPetrolModel.fk_car_id">
+      <End Role="truck" EntitySet="trucks" />
+      <End Role="payPetrol" EntitySet="payPetrols" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Enroll_reportTruckKpi">
+    <Key>
+      <PropertyRef Name="id_report" />
+    </Key>
+    <Property Name="id_report" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kpi" Type="Double" />
+    <Property Name="date" Type="DateTime" Precision="0" />
+    <Property Name="meter_last" Type="Int32" />
+    <Property Name="petrol_last" Type="Double" />
+    <Property Name="timestamp" Type="DateTime" Precision="3" />
+    <Property Name="car_id" Type="Int32" />
+    <NavigationProperty Name="truck" Relationship="suniPetrolModel.fk_car_id2" FromRole="Enroll_reportTruckKpi" ToRole="truck" />
+  </EntityType>
+  <EntityType Name="Enroll_truck">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="car_id" Type="Int32" />
+    <Property Name="company_id" Type="Int32" />
+    <Property Name="timestamp" Type="DateTime" Precision="3" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="payPetrol">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="system_petrol" Type="Single" />
+    <Property Name="meter_truck" Type="Single" />
+    <Property Name="pay_petrol" Type="Single" />
+    <Property Name="car_id" Type="Int32" />
+    <Property Name="mem_date" Type="DateTime" Precision="0" />
+    <Property Name="timestamp" Type="DateTime" Precision="3" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="truck" Relationship="suniPetrolModel.fk_car_id" FromRole="payPetrol" ToRole="truck" />
+  </EntityType>
+  <EntityType Name="company">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="timestamp" Type="DateTime" Precision="7" />
+    <Property Name="type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ReportKpiFile" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="trucks" Relationship="suniPetrolModel.fk_company" FromRole="company" ToRole="truck" />
+  </EntityType>
+  <EntityType Name="truck">
+    <Key>
+      <PropertyRef Name="car_id" />
+    </Key>
+    <Property Name="id_truck" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="timestamp" Type="DateTime" Precision="3" />
+    <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="car_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="company_id" Type="Int32" />
+    <Property Name="excelPageReportKpi" Type="Int32" />
+    <NavigationProperty Name="company" Relationship="suniPetrolModel.fk_company" FromRole="truck" ToRole="company" />
+    <NavigationProperty Name="Enroll_reportTruckKpi" Relationship="suniPetrolModel.fk_car_id2" FromRole="truck" ToRole="Enroll_reportTruckKpi" />
+    <NavigationProperty Name="payPetrols" Relationship="suniPetrolModel.fk_car_id" FromRole="truck" ToRole="payPetrol" />
+  </EntityType>
+  <Association Name="fk_company">
+    <End Type="suniPetrolModel.company" Role="company" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="suniPetrolModel.truck" Role="truck" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="company">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="truck">
+        <PropertyRef Name="company_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_car_id2">
+    <End Type="suniPetrolModel.truck" Role="truck" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="suniPetrolModel.Enroll_reportTruckKpi" Role="Enroll_reportTruckKpi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="truck">
+        <PropertyRef Name="car_id" />
+      </Principal>
+      <Dependent Role="Enroll_reportTruckKpi">
+        <PropertyRef Name="car_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_car_id">
+    <End Type="suniPetrolModel.truck" Role="truck" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="suniPetrolModel.payPetrol" Role="payPetrol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="truck">
+        <PropertyRef Name="car_id" />
+      </Principal>
+      <Dependent Role="payPetrol">
+        <PropertyRef Name="car_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
