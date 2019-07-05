@@ -17,8 +17,8 @@ namespace santisart_app.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public EnrollYearSemester()
         {
-            this.EnrollEmpCouse = new HashSet<EnrollEmpCouse>();
-            this.EnrollStudentCouse = new HashSet<EnrollStudentCouse>();
+            this.EnrollEmpCouses = new HashSet<EnrollEmpCouse>();
+            this.EnrollStudentCouses = new HashSet<EnrollStudentCouse>();
         }
     
         public Nullable<int> YearEduId { get; set; }
@@ -28,9 +28,9 @@ namespace santisart_app.Models
         public Nullable<System.DateTime> EndDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EnrollEmpCouse> EnrollEmpCouse { get; set; }
+        public virtual ICollection<EnrollEmpCouse> EnrollEmpCouses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EnrollStudentCouse> EnrollStudentCouse { get; set; }
+        public virtual ICollection<EnrollStudentCouse> EnrollStudentCouses { get; set; }
         public virtual YearEdu YearEdu { get; set; }
     }
 }

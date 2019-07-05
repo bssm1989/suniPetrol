@@ -18,7 +18,7 @@ namespace santisart_app.Models
         public EnrollClass()
         {
             this.Enroll_student_class = new HashSet<Enroll_student_class>();
-            this.EnrollEmpCouseClass = new HashSet<EnrollEmpCouseClass>();
+            this.EnrollEmpCouseClasses = new HashSet<EnrollEmpCouseClass>();
         }
     
         public Nullable<int> Status_class { get; set; }
@@ -32,6 +32,6 @@ namespace santisart_app.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Enroll_student_class> Enroll_student_class { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EnrollEmpCouseClass> EnrollEmpCouseClass { get; set; }
+        public virtual ICollection<EnrollEmpCouseClass> EnrollEmpCouseClasses { get; set; }
     }
 }

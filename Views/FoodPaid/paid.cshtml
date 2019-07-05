@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Paid";
+    var listIndex = 0;
 }
 <style>
      .tile h2 {
@@ -97,13 +98,14 @@
             <thead>
                 <tr>
 
-                    <th class="sorting_asc">เดือน(ไทย)</th>
-                    <th class="sorting_asc">ปีการศึกษา</th>
+                    <th class="sorting_asc">ลำดับ</th>
+                    <th class="">เดือน(ไทย)</th>
+                    <th class="">ปี</th>
 
-                    <th class="sorting_asc">ชั้น</th>
-                    <th class="sorting_asc">ค่าอาหาร</th>
-                    <th class="sorting_asc">จ่าย</th>
-                    <th class="sorting_asc">ยอดเหลือ</th>
+                    <th class="">ชั้น</th>
+                    <th class="">ค่าอาหาร</th>
+                    <th class="">จ่าย</th>
+                    <th class="">ยอดเหลือ</th>
                     <th style="display:none;"></th>
                     <th>กราฟ</th>
                 </tr>
@@ -111,10 +113,11 @@
             <tbody>
                 @foreach (var item in Model)
                 {
+                    listIndex++;
                     <tr id="@item.Monthly_id">
-
+                        <td>@listIndex</td>
                         <td>@item.Month_name</td>
-                        <td>@item.Month_year</td>
+                        <td>@item.Month_yearindex</td>
                         <td>@item.Class_name_id/@item.Class_room</td>
                         <td class="font-weight-bold text-primary ">@Convert.ToDecimal(item.Month_course).ToString("#,##0.00") </td>
                         <td class="font-weight-bold text-success ">@Convert.ToDecimal(item.totalPaid).ToString("#,##0.00")</td>

@@ -12,21 +12,22 @@ namespace santisart_app.Controllers
 {
     public class EnrollStudentCousesController : Controller
     {
-        private santisar_Entities db = new santisar_Entities();
+        private backupServerEntities1 db = new backupServerEntities1();
 
         // GET: EnrollStudentCouses
         public ActionResult IndexById(int? id)
         {
-            var enrollStudentCouse = db.EnrollStudentCouse
+            var enrollStudentCouse = db.EnrollStudentCouses
                                         .Where(x => x.studentId == id)
                                         .Include(e => e.Enroll_student_class);
             ViewBag.studentCouse = enrollStudentCouse.ToList();
             return View(enrollStudentCouse.ToList());
         }
+
        public ActionResult EditListScoreByCouse(int? id)
         {
 
-            var enrollStudentCouse = db.EnrollStudentCouse
+            var enrollStudentCouse = db.EnrollStudentCouses
                                         .Where(x => x.EnEmpCouseClassId == id)
                                         .Include(e => e.Enroll_student_class)
                                         .Where(x => x.EnEmpCouseClassId == id);
@@ -38,7 +39,7 @@ namespace santisart_app.Controllers
         {
             foreach (var item in EnrollStudentCouse)
             {
-                EnrollStudentCouse EditListScoreByCouse = db.EnrollStudentCouse.Find(item.EnrollStudentCouseId);
+                EnrollStudentCouse EditListScoreByCouse = db.EnrollStudentCouses.Find(item.EnrollStudentCouseId);
                 EditListScoreByCouse.Score1 = item.Score1;
                 EditListScoreByCouse.Score2 = item.Score2;
                 EditListScoreByCouse.Score3 = item.Score3;
@@ -52,13 +53,13 @@ namespace santisart_app.Controllers
         }
         public ActionResult IndexByIdEmpcouseClass(int? id)
         {
-            var getClass = db.EnrollEmpCouseClass.Find(id).EnClassId;
+            var getClass = db.EnrollEmpCouseClasses.Find(id).EnClassId;
             var getListStudents = db.Enroll_student_class.Where(x => x.EnrollClass.EnrollClass_id == getClass);
-            if (db.EnrollStudentCouse.Where(x => x.EnEmpCouseClassId == id).Count() == 0)
+            if (db.EnrollStudentCouses.Where(x => x.EnEmpCouseClassId == id).Count() == 0)
             {
                 foreach (var student in getListStudents)
                 {
-                    db.EnrollStudentCouse.Add(new EnrollStudentCouse
+                    db.EnrollStudentCouses.Add(new EnrollStudentCouse
                     {
                         EnrollStudentClassId = student.Enrol_stu_class_id,
                         EnEmpCouseClassId = id,
@@ -68,7 +69,7 @@ namespace santisart_app.Controllers
 db.SaveChanges();
             }
 
-            var enrollStudentCouse = db.EnrollStudentCouse
+            var enrollStudentCouse = db.EnrollStudentCouses
                                         .Where(x => x.EnEmpCouseClassId == id)
                                         .Include(e => e.Enroll_student_class)
                                         .Where(x => x.EnEmpCouseClassId == id);
@@ -77,7 +78,7 @@ db.SaveChanges();
         }
         public ActionResult Index()
         {
-            var enrollStudentCouse = db.EnrollStudentCouse
+            var enrollStudentCouse = db.EnrollStudentCouses
                                         .Include(e => e.Enroll_student_class);
             return View(enrollStudentCouse.ToList());
         }
@@ -89,7 +90,7 @@ db.SaveChanges();
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EnrollStudentCouse enrollStudentCouse = db.EnrollStudentCouse.Find(id);
+            EnrollStudentCouse enrollStudentCouse = db.EnrollStudentCouses.Find(id);
             if (enrollStudentCouse == null)
             {
                 return HttpNotFound();
@@ -101,7 +102,7 @@ db.SaveChanges();
         public ActionResult Create()
         {
             ViewBag.TeacerId = new SelectList(db.Enroll_Emp_Pos, "EnrEmpPosId", "EnrEmpPosId");
-            ViewBag.EnrollCouseId = new SelectList(db.EnrollCouse, "EnrollCouseID", "CouseTxtId");
+            ViewBag.EnrollCouseId = new SelectList(db.EnrollCouses, "EnrollCouseID", "CouseTxtId");
             ViewBag.studentId = new SelectList(db.Students, "Student_id", "Student_title");
             return View();
         }
@@ -115,13 +116,13 @@ db.SaveChanges();
         {
             if (ModelState.IsValid)
             {
-                db.EnrollStudentCouse.Add(enrollStudentCouse);
+                db.EnrollStudentCouses.Add(enrollStudentCouse);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             ViewBag.TeacerId = new SelectList(db.Enroll_Emp_Pos, "EnrEmpPosId", "EnrEmpPosId", enrollStudentCouse.TeacerId);
-            ViewBag.EnrollCouseId = new SelectList(db.EnrollCouse, "EnrollCouseID", "CouseTxtId", enrollStudentCouse.EnrollCouseId);
+            ViewBag.EnrollCouseId = new SelectList(db.EnrollCouses, "EnrollCouseID", "CouseTxtId", enrollStudentCouse.EnrollCouseId);
             ViewBag.studentId = new SelectList(db.Students, "Student_id", "Student_title", enrollStudentCouse.studentId);
             return View(enrollStudentCouse);
         }
@@ -133,13 +134,13 @@ db.SaveChanges();
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EnrollStudentCouse enrollStudentCouse = db.EnrollStudentCouse.Find(id);
+            EnrollStudentCouse enrollStudentCouse = db.EnrollStudentCouses.Find(id);
             if (enrollStudentCouse == null)
             {
                 return HttpNotFound();
             }
             ViewBag.TeacerId = new SelectList(db.Enroll_Emp_Pos, "EnrEmpPosId", "EnrEmpPosId", enrollStudentCouse.TeacerId);
-            ViewBag.EnrollCouseId = new SelectList(db.EnrollCouse, "EnrollCouseID", "CouseTxtId", enrollStudentCouse.EnrollCouseId);
+            ViewBag.EnrollCouseId = new SelectList(db.EnrollCouses, "EnrollCouseID", "CouseTxtId", enrollStudentCouse.EnrollCouseId);
             ViewBag.studentId = new SelectList(db.Students, "Student_id", "Student_title", enrollStudentCouse.studentId);
             return View(enrollStudentCouse);
         }
@@ -158,7 +159,7 @@ db.SaveChanges();
                 return RedirectToAction("Index");
             }
             ViewBag.TeacerId = new SelectList(db.Enroll_Emp_Pos, "EnrEmpPosId", "EnrEmpPosId", enrollStudentCouse.TeacerId);
-            ViewBag.EnrollCouseId = new SelectList(db.EnrollCouse, "EnrollCouseID", "CouseTxtId", enrollStudentCouse.EnrollCouseId);
+            ViewBag.EnrollCouseId = new SelectList(db.EnrollCouses, "EnrollCouseID", "CouseTxtId", enrollStudentCouse.EnrollCouseId);
             ViewBag.studentId = new SelectList(db.Students, "Student_id", "Student_title", enrollStudentCouse.studentId);
             return View(enrollStudentCouse);
         }
@@ -170,7 +171,7 @@ db.SaveChanges();
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EnrollStudentCouse enrollStudentCouse = db.EnrollStudentCouse.Find(id);
+            EnrollStudentCouse enrollStudentCouse = db.EnrollStudentCouses.Find(id);
             if (enrollStudentCouse == null)
             {
                 return HttpNotFound();
@@ -183,8 +184,8 @@ db.SaveChanges();
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            EnrollStudentCouse enrollStudentCouse = db.EnrollStudentCouse.Find(id);
-            db.EnrollStudentCouse.Remove(enrollStudentCouse);
+            EnrollStudentCouse enrollStudentCouse = db.EnrollStudentCouses.Find(id);
+            db.EnrollStudentCouses.Remove(enrollStudentCouse);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

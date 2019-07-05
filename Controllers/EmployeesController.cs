@@ -8,16 +8,17 @@ using System.Web;
 using System.Web.Mvc;
 using santisart_app.Models;
 
+
 namespace santisart_app.Controllers
 {
     public class EmployeesController : Controller
     {
-        private santisar_Entities db = new santisar_Entities();
+        private backupServerEntities1 db = new backupServerEntities1();
 
         // GET: Employees
         public ActionResult Index()
         {
-            return View(db.Employee.ToList());
+            return View(db.Employees.ToList());
         }
 
         // GET: Employees/Details/5
@@ -27,7 +28,7 @@ namespace santisart_app.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employee.Find(id);
+            Employee employee = db.Employees.Find(id);
             if (employee == null)
             {
                 return HttpNotFound();
@@ -50,7 +51,7 @@ namespace santisart_app.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Employee.Add(employee);
+                db.Employees.Add(employee);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +66,7 @@ namespace santisart_app.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employee.Find(id);
+            Employee employee = db.Employees.Find(id);
             if (employee == null)
             {
                 return HttpNotFound();
@@ -96,7 +97,7 @@ namespace santisart_app.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employee.Find(id);
+            Employee employee = db.Employees.Find(id);
             if (employee == null)
             {
                 return HttpNotFound();
@@ -109,8 +110,8 @@ namespace santisart_app.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Employee employee = db.Employee.Find(id);
-            db.Employee.Remove(employee);
+            Employee employee = db.Employees.Find(id);
+            db.Employees.Remove(employee);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

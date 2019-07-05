@@ -17,7 +17,7 @@ namespace santisart_app.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Family()
         {
-            this.EnrollFamilyStudent = new HashSet<EnrollFamilyStudent>();
+            this.EnrollFamilyStudents = new HashSet<EnrollFamilyStudent>();
         }
     
         public int FamilyId { get; set; }
@@ -34,6 +34,6 @@ namespace santisart_app.Models
         public string Idcard { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EnrollFamilyStudent> EnrollFamilyStudent { get; set; }
+        public virtual ICollection<EnrollFamilyStudent> EnrollFamilyStudents { get; set; }
     }
 }

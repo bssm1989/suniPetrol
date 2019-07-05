@@ -23,6 +23,6 @@ namespace santisart_app.Models
         public Nullable<int> staftId { get; set; }
     
         public virtual Family Family { get; set; }
-        public virtual Students Students { get; set; }
+        public virtual Student Student { get; set; }
     }
 }

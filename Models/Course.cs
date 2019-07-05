@@ -17,7 +17,7 @@ namespace santisart_app.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Course()
         {
-            this.EnrollCouse = new HashSet<EnrollCouse>();
+            this.EnrollCouses = new HashSet<EnrollCouse>();
         }
     
         public string CourseName { get; set; }
@@ -26,6 +26,6 @@ namespace santisart_app.Models
         public Nullable<int> CourseStatus { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EnrollCouse> EnrollCouse { get; set; }
+        public virtual ICollection<EnrollCouse> EnrollCouses { get; set; }
     }
 }

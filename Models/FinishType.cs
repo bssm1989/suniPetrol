@@ -17,7 +17,7 @@ namespace santisart_app.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public FinishType()
         {
-            this.EnrollFinishStudent = new HashSet<EnrollFinishStudent>();
+            this.EnrollFinishStudents = new HashSet<EnrollFinishStudent>();
         }
     
         public string FormName { get; set; }
@@ -25,6 +25,6 @@ namespace santisart_app.Models
         public int FinishFormID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EnrollFinishStudent> EnrollFinishStudent { get; set; }
+        public virtual ICollection<EnrollFinishStudent> EnrollFinishStudents { get; set; }
     }
 }

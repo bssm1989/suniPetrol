@@ -34,7 +34,7 @@ namespace santisart_app.Models
         public string physical2 { get; set; }
         public Nullable<int> ExcelForm { get; set; }
     
-        public virtual Students Students { get; set; }
+        public virtual Student Student { get; set; }
         public virtual FinishType FinishType { get; set; }
     }
 }
